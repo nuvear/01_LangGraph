@@ -2,7 +2,7 @@
 
 ## Teaching purpose and preparation
 
-**SUPPLEMENTARY / ADDED PRACTICE — 60 minutes.** P00 has no source-video window. Its environment audit, public-profile exercise and safety controls are original preparation, not homework assigned by the video presenter. The next lesson starts with the [video introduction at 00:00:00](https://youtu.be/jGg_1h0qzaM?t=0). Preserve that attribution distinction when presenting the material.
+**SUPPLEMENTARY PRACTICE — 60 minutes.** P00 is preparation for the approved course. Its environment audit, public-profile exercise and safety controls establish a foundation for later lessons.
 
 The outcome is disciplined diagnosis, not a wall of green service indicators. Learners must distinguish executable local code, syntactically acceptable settings, real authenticated requests, persisted telemetry, and dashboard inspection. They may complete P00 without an account or internet connection once dependencies are provisioned. The independent task is exactly the three-function public-profile checker described in the workbook; do not replace it with an API-call assignment.
 
@@ -25,7 +25,7 @@ Expect an honest unfinished-starter message. Keep the reference solution separat
 
 Ask, “If a local graph succeeds, which remote service has been authenticated?” The correct response is “None.” Invite learners to name what else a real check needs: approved credentials, a supported endpoint, resource access, and connectivity. Explain that backend selection describes where telemetry may leave the process; it is not just a cosmetic display preference.
 
-Show the original diagram. Walk the local demonstration path, then the workbook path. Point out that the separate instructor-authorized connection CLI is disconnected from both. In the workbook, `backend: both` is inert profile data. Actual P00 command-line tracing remains `none`.
+Show the concept diagram. Walk the local demonstration path, then the workbook path. Point out that the separate instructor-authorized connection CLI is disconnected from both. In the workbook, `backend: both` is inert profile data. Actual P00 command-line tracing remains `none`.
 
 <!-- ORIGINAL_DIAGRAM -->
 

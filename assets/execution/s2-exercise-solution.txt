@@ -1,5 +1,5 @@
 Command: python -m exercises.solutions.s2 --output-dir <run-output>/S2/exercise-solution --live --backend langwatch
-UTC: 2026-11-03T01:49:11.670018+00:00
+UTC: 2026-11-03T04:35:30.079602+00:00
 Exit: 0
 
 STDOUT
@@ -32,7 +32,7 @@ STDOUT
             }
           ]
         },
-        "answer": "Handout TRACE-101 (page 1) says that **flush drains pending export work**. It also says that **a flush does not prove dashboard visibility**, so server acknowledgment needs to be checked separately."
+        "answer": "Handout TRACE-101 (page 1) says that **a flush drains pending export work**. It also cautions that **a flush does not prove dashboard visibility**, so you should check server acknowledgment separately."
       },
       {
         "document_id": "MISSING-999",
@@ -49,7 +49,7 @@ STDOUT
           "found": false,
           "documents": []
         },
-        "answer": "I looked up handout **MISSING-999**, but no such handout was found and nothing came back. I have **no evidence** of what it says about flush, or about anything else.\n\nIf you have a different document ID, I can look that one up instead."
+        "answer": "There's no evidence to answer this. The lookup for handout MISSING-999 found no document, so I can't say what it says about flush.\n\nIf you have a different document ID, I can look that one up."
       }
     ],
     "privacy_plans": [
@@ -99,7 +99,7 @@ STDOUT
       "dashboard_visibility": "not_checked"
     },
     "flush_owner": "CLI tracing context after run_demo returns",
-    "report": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/S2/exercise-solution/artifacts/s2-solution.txt"
+    "report": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T043435Z-a15f52/S2/exercise-solution/artifacts/s2-solution.txt"
   }
 }
 

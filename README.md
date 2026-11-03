@@ -1,8 +1,8 @@
 # 01_LangGraph
 
-A complete, step-by-step Python course for learners who know basic Python and are new to LangGraph. Based on [Vaibhav Mehra’s freeCodeCamp video](https://youtu.be/jGg_1h0qzaM), with current Anthropic examples, separate student starters and instructor solutions, local-embedding RAG, durable-memory and human-approval labs, LangSmith, LangWatch, and a capstone.
+A complete, self-contained Python course for learners who know basic Python and are new to LangGraph, with current Anthropic examples, separate student starters and instructor solutions, local-embedding RAG, durable-memory and human-approval labs, LangSmith, LangWatch, and a capstone.
 
-Development and deliverables are on **`course/anthropic-observability-2026-11-03`**. The original training index is preserved. The full track follows P00 → L01–L11 → U1–U2 → S1–S2 → C01 and is planned for approximately 29h 55m excluding breaks. Chapters point to useful insertion locations for the added labs.
+Development and deliverables are on **`course/anthropic-observability-2026-11-03`**. Version 1.1 presents the course as a standalone sequence with original concept illustrations. The full track follows P00 → L01–L11 → U1–U2 → S1–S2 → C01 and is planned for approximately 29h 55m excluding breaks. Chapters point to useful insertion locations for the advanced labs.
 
 ## The three complete handbooks
 
@@ -10,7 +10,7 @@ Development and deliverables are on **`course/anthropic-observability-2026-11-03
 - **Teacher Handbook:** [Word](docs/LangGraph_Teacher_Handbook.docx), [self-contained HTML](docs/LangGraph_Teacher_Handbook.html), [Markdown](docs/LangGraph_Teacher_Handbook.md).
 - **Exercise Workbook:** [Word](docs/LangGraph_Exercise_Workbook.docx), [self-contained HTML](docs/LangGraph_Exercise_Workbook.html), [Markdown](docs/LangGraph_Exercise_Workbook.md).
 
-Both handbooks embed timestamped video illustrations, original diagrams, the exact delivered Python examples/solutions, and genuine screenshots of actual captured execution. Screenshots explicitly identify the browser-rendered stdout source; they do not pretend to be a native Terminal window. Full logs and source hashes are supplied alongside them. HTML embeds its illustrations; Markdown needs the relative asset folders.
+Both handbooks embed original concept illustrations and flowcharts, the delivered Python examples/solutions, and genuine screenshots of actual captured execution. Screenshots explicitly identify the browser-rendered stdout source; they do not pretend to be a native Terminal window. Full logs and source hashes are supplied alongside them. HTML embeds its illustrations; Markdown needs the relative asset folders. Official technical-documentation references and evidence citations remain intact.
 
 ## Fresh checkout and macOS setup
 
@@ -73,11 +73,11 @@ python -m exercises.solutions.c01 --live --backend both
 
 Save exercises use fresh per-run output directories under `.work/student-runs` unless `--output-dir` is specified. Safe writing rejects traversal, symlinks and existing files instead of silently overwriting them. The capstone actually retrieves evidence, performs the model/tool continuation, pauses for review, tests revision/isolation/error paths, and verifies the saved artifact. Its finite CLI harness scripts human decisions; it is not an authenticated approval interface. U1 separately demonstrates SQLite reopen and fresh-process checkpoint reading; U2/C01 use in-process checkpoint state and do not claim restart durability.
 
-## RAG and source adaptation
+## RAG and synthetic teaching data
 
 `course_support/retrieval.py` uses a real local all-MiniLM-L6-v2 ONNX embedding model through Chroma, persistent indexing, compatible index fingerprints, and source/page metadata. The first embedding operation downloads model weights and requires Internet access; no paid embedding key is needed. Anthropic generation and selected tracing still transmit the relevant synthetic lesson text.
 
-The original source PDF was found and inspected, but the course deliberately supplies an **original three-page synthetic Harbor Learning Lab handbook** instead. This is clearly labeled, not presented as the video’s finance PDF. See [dataset provenance](data/rag_provenance.md). `data/rag_build_pdf.py` rebuilds the committed PDF from editable JSON. Chroma product telemetry is disabled. A provenance-valid citation is not proof of semantic entailment; inspect the evidence.
+The course supplies an **original three-page synthetic Harbor Learning Lab handbook** with fictional, inspectable policy facts and a clearly labeled classroom dataset. See [dataset provenance](data/rag_provenance.md). `data/rag_build_pdf.py` rebuilds the committed PDF from editable JSON. Chroma product telemetry is disabled. A provenance-valid citation is not proof of semantic entailment; inspect the evidence.
 
 ## Tracing and service checks
 
@@ -122,18 +122,19 @@ python -m pip install -r requirements-docs.txt
 python tools/build_handbooks.py --output-dir docs
 ```
 
-The three formats are generated from matched chapter sources in `course/chapters`, the actual Python sources, attributed video stills, diagrams, and recorded execution evidence. `requirements-docs.lock.txt` preserves the full tested authoring environment in addition to the separate runtime lock.
+The three formats are generated from matched chapter sources in `course/chapters`, actual Python sources, original diagrams, and recorded execution evidence. `requirements-docs.lock.txt` preserves the full tested authoring environment in addition to the separate runtime lock.
 
 To regenerate diagrams, install Node and Google Chrome, then:
 
 ```bash
 npm --prefix .work/tools/diagrams install --no-audit --no-fund --ignore-scripts @mermaid-js/mermaid-cli
+python tools/create_concept_diagrams.py
 python tools/create_overview_diagrams.py
 python tools/render_course_diagrams.py
 python tools/render_course_diagrams.py --overview
 ```
 
-Use `--chrome /path/to/chrome` for another executable location. Detailed flowcharts remain unchanged; compact printed overviews keep dense diagrams readable. Source-video stills can be regenerated by `tools/extract_video_figures.py --source /path/to/authorized-local-copy.mp4`; the complete source media is not redistributed.
+Use `--chrome /path/to/chrome` for another executable location. Editable concept diagrams explain mental models; compact printed overviews keep dense implementation flowcharts readable.
 
 To repeat all actual model/service executions and replace the evidence, explicitly authorize the cost and synthetic tracing, install the authoring dependencies and Chrome, then run:
 
@@ -143,12 +144,12 @@ python tools/validate_course.py --live --screenshots
 
 `--only L02 L07` limits validation to named modules. `tools/inspect_handbooks.py` checks DOCX packaging and rendered page proofs after LibreOffice renders the three Word files into `.work/previews/handbooks`; Poppler creates the page images and text/bounding-box checks. Working proofs are not published as extra course PDFs.
 
-## Preserved index and source review
+## Course packaging
 
-- [Original editable Word index](docs/LangGraph_Training_Index.docx) and [index source](course/training_index.md).
-- [Complete timestamped source map](course/video_source_map.md), [whole-track visual review](course/video_visual_review.md), and [foundation technical sources](course/technical_sources.md).
-- [Full production notes](course/handbook_production_notes.md). Each chapter includes verified current official references and source-versus-adaptation differences.
+The course archive preserves the three manual editions, code, data, editable original diagram sources, tests, and current validation records. Historical planning/index artifacts remain in repository history and are excluded from the standalone export.
 
-The full 03:09:51 caption track was reviewed across eleven sections, supported by 36 source-frame checks in the index phase and additional visual selection for the handbook illustrations. This is a complete content review supported by sampled visuals, not a claim that every video frame was watched in real time. Source illustrations credit Vaibhav Mehra/freeCodeCamp with exact timestamps; rights in those excerpts remain with their respective owners. The adaptations do not imply publisher endorsement.
+```bash
+python tools/package_course.py --standalone --overwrite
+```
 
-Credentials, virtual environments, complete downloaded video/captions, task metadata, working logs, preview PDFs, and local delivery copies remain ignored. The approval/save examples are classroom patterns, not production authentication, transactional crash recovery, or security certification.
+Credentials, virtual environments, task metadata, working logs, preview PDFs, and local delivery copies remain ignored. The approval/save examples are classroom patterns, not production authentication, transactional crash recovery, or security certification.

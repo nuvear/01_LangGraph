@@ -1,0 +1,4 @@
+flowchart LR
+A["PDF pages"] --> B["Chunks + page data"] --> C["Local vector index"] --> D["Retrieved evidence"]
+Q["Question"] --> D
+D --> E["Anthropic"] --> F["Grounded answer"]

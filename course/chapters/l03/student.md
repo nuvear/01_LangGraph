@@ -6,15 +6,15 @@ A graph invocation can receive more than one value. In this lesson, one state di
 
 **Prerequisite:** L02, including dictionaries, functions, compilation, and invocation. Allow approximately 75 minutes. By the end, you should be able to describe mixed-type state, return only computed fields, distinguish optional keys from nullable values, and test two arithmetic paths without adding graph branches.
 
-**Video-backed material:** the source window is [00:33:07–00:44:29](https://youtu.be/jGg_1h0qzaM?t=1987). Coding begins at [00:34:02](https://youtu.be/jGg_1h0qzaM?t=2042); the addition/multiplication exercise begins at [00:43:27](https://youtu.be/jGg_1h0qzaM?t=2607). The presenter explicitly keeps this section non-LLM. The supplied whole-track visual review confirms the multiple-input exercise slide at 00:43:35. Figures below are reserved for parent-captured source and execution images, not invented evidence.
+This lesson keeps the computation deterministic: one node validates state, performs ordinary Python arithmetic, and returns a partial update. Figures below are reserved for parent-supplied concept and execution diagrams.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ### Mixed types belong in named fields
 
 Our baseline `SumState` has required inputs `values: list[int]` and `name: str`. Derived fields are `total: NotRequired[int]` and `result: NotRequired[str]`. A schema describes the intended keys and their types. Here, `values` is a list, while `name` and `result` are strings. Different fields do not need the same type.
 
-`total` is useful for checking arithmetic without parsing a sentence. `result` is useful for displaying that arithmetic to a person. Separating them is an **added teaching adaptation**; it does not make the graph more intelligent. Both outputs are produced by the same node.
+`total` is useful for checking arithmetic without parsing a sentence. `result` is useful for displaying that arithmetic to a person. Both outputs are produced by the same node.
 
 Python's [TypedDict documentation](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) explains that a typed dictionary remains a plain dictionary at runtime. An annotation is a description for tools and readers, not an automatic input validator. A caller can still supply a float, a boolean, or a missing field. Our explicit validation rejects those mistakes with `ValueError` before calculating.
 
@@ -32,7 +32,7 @@ A **partial update** is a dictionary containing only fields the node writes. The
 
 Our node neither assigns into the supplied dictionary nor changes its list. This makes it easier to compare the input with the final state. If callers supply an old `total` or `result`, the newly calculated values replace them rather than accumulating text.
 
-The original diagram shows the exercise topology. Validation and the Python `if` happen inside the one calculator node. START and END mark boundaries; they are not two additional arithmetic workers. The baseline uses the same shape with its node named `processor`.
+The concept diagram shows the exercise topology. Validation and the Python `if` happen inside the one calculator node. START and END mark boundaries; they are not two additional arithmetic workers. The baseline uses the same shape with its node named `processor`.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -98,8 +98,8 @@ Run `python -m exercises.starters.l03`. Before implementation, it exits normally
 
 If the builder has no `invoke` method, use the value returned by `compile`. If a key is missing, check the actual invocation dictionary; do not assume TypedDict inserted `None`. If a graph node returns an integer or string directly, wrap outputs in the specified update dictionary. If every product is zero, check whether a hand-written accumulator incorrectly starts at zero.
 
-The source uses historical entry/finish helpers and in-place state mutation. This adaptation uses explicit START/END edges and partial updates, following current official guidance. The source's discussion of an omitted result is not a general initialization guarantee. Strict validation, exact punctuation, the numeric output, and empty-list rules are added here to make the exercise assessable. Graph-level conditional routing belongs to L05, not this task.
+Use explicit START/END edges and partial updates, following the current official Graph API guidance. An omitted result is not automatically initialized; the invocation must provide the required inputs, and the node must return the specified output fields. Strict validation, exact punctuation, the numeric output, and empty-list rules make the exercise assessable. Graph-level conditional routing belongs to L05, not this task.
 
 ## References
 
-[Video intro](https://youtu.be/jGg_1h0qzaM?t=1987) · [Original exercise](https://youtu.be/jGg_1h0qzaM?t=2607) · [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api) · [StateGraph](https://reference.langchain.com/python/langgraph/graph/state/StateGraph) · [TypedDict](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) · [math.prod](https://docs.python.org/3.12/library/math.html#math.prod).
+[Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api) · [StateGraph](https://reference.langchain.com/python/langgraph/graph/state/StateGraph) · [TypedDict](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) · [math.prod](https://docs.python.org/3.12/library/math.html#math.prod).

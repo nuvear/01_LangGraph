@@ -2,7 +2,7 @@
 
 ## Task: make typed workshop badges
 
-This is **added practice**, not source-video homework. It applies types and graph vocabulary introduced at [00:01:24](https://youtu.be/jGg_1h0qzaM?t=84) and [00:08:35](https://youtu.be/jGg_1h0qzaM?t=515), within L01's 00:00:00–00:18:39 window. Allow 30 minutes after guided practice. Use P00's Python 3.12 environment from the project root. No model or credentials are needed.
+This task applies L01's type and graph vocabulary in a standalone workshop-badge exercise. Allow 30 minutes after guided practice. Use P00's Python 3.12 environment from the project root. No model or credentials are needed.
 
 Starter: `exercises/starters/l01.py`. Instructor reference: `exercises/solutions/l01.py`; try the task first. The demonstration `course_lessons/l01.py` uses movies, not badges, so reproducing its output does not complete this exercise.
 
@@ -44,7 +44,7 @@ Each caller input must remain unchanged. Also check name 42 raises TypeError, se
 
 Sketch a two-work-node alternative: START to normalization; then `sessions == 0` to END or `sessions > 0` to badge formatting, then END. Assume a valid nonnegative count. Label both routes and identify the absent zero-case output: no badge has been generated.
 
-Keep the sketch separate. It previews L05 and intentionally differs from the runnable, where zero still receives a badge. START/END are boundaries, not work functions. The student chapter's original diagram instead illustrates the movie demonstration.
+Keep the sketch separate. It previews L05 and intentionally differs from the runnable, where zero still receives a badge. START/END are boundaries, not work functions. The student chapter's concept diagram illustrates the movie demonstration.
 
 ## Three progressive hints
 
@@ -69,4 +69,4 @@ Finish when all TODOs are implemented independently, exact cases and invalid-typ
 
 Compare afterward with `python -m exercises.solutions.l01`. Run `python -m pytest tests/lessons/test_l01.py -q -p no:cacheprovider` to validate distributed demo/reference artifacts. That file does not grade your edited starter; use its own command. Keep backend `none`; no `--live` is needed.
 
-For a stretch, check `"  Mei Lin  "`/1 and an empty-string name/3 without changing required rules. Predict both badges first. Explain why constructing an AIMessage does not prove an API call. The [message guide](https://docs.langchain.com/oss/python/langchain/messages), typing and graph references were verified on 3 November 2026.
+For a stretch, check `"  Mei Lin  "/1` and an empty-string name/3 without changing required rules. Predict both badges first. Explain why constructing an AIMessage does not prove an API call. Consult the [message guide](https://docs.langchain.com/oss/python/langchain/messages), typing reference, and graph guide when reviewing the relevant concepts.

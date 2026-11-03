@@ -2,7 +2,7 @@
 
 ## Explain: establish what the evidence can prove
 
-Allow **160 minutes**: explanation 20, illustration 15, timed demonstration 25, guided practice 35, independent answer-card work 45, and review 20. Prerequisites are message/tool routing from L09 and controlled outputs from L10. Learners should know Python functions, dictionaries and partial graph updates. The source window is 02:52:09–03:09:51. The opening seconds conclude the previous homework invitation; the whole-track review confirms there is no missing detailed RAG assignment. Label the answer-card exercise as added practice.
+Allow **160 minutes**: explanation 20, illustration 15, timed demonstration 25, guided practice 35, independent answer-card work 45, and review 20. Prerequisites are message/tool routing from L09 and controlled outputs from L10. Learners should know Python functions, dictionaries and partial graph updates.
 
 Open with a question: “If an assistant cites a page, what have we established?” Expect “there is a source,” then refine it: citation presence is weaker than citation provenance, which is weaker than semantic support. Today's code checks provenance and known teaching facts. It does not provide a general entailment proof. Make this distinction before anyone sees a fluent generated answer.
 
@@ -10,9 +10,9 @@ Define RAG as retrieving passages at question time and passing them to generatio
 
 ## Illustrate: source identity and page identity
 
-Show the [source PDF walkthrough](https://youtu.be/jGg_1h0qzaM?t=10381), then open the delivered synthetic PDF. Say explicitly: the original stock-market PDF is available, but its financial assertions have not been independently validated for this course. We use an original three-page fictional policy handbook for inspectable evidence and safe tracing. Do not teach the original finance answer as the replacement's answer, and do not report nine pages.
+Open the delivered synthetic PDF and establish its role as inspectable evidence and safe tracing. Use an original three-page fictional policy handbook rather than treating unrelated financial assertions as course evidence. Do not teach an external finance answer as the replacement's answer, and do not report a different page count.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -68,18 +68,21 @@ Award 10 points: 2 for faithful source/page formatting; 3 for correct retrieval 
 
 **3. Do three late-fee hits establish a fee?** No. Top-k retrieves nearest candidates even when none answers the question. Empty retrieval can skip generation and abstain deterministically. Nonempty insufficient evidence needs evidence inspection and model abstention; here the exact missing-fee response is `NOT_IN_DOCUMENT`. A real retrieval exception must propagate as a failure, not be renamed “empty.”
 
-## Recovery and current-source notes
+## Recovery and current implementation notes
 
 For a missing or textless PDF, repair the asset/OCR stage first. For failed ONNX downloads, diagnose connectivity and cache access; never silently switch embeddings. For wrong citations, compare each cited page to returned hits and the actual PDF. For Anthropic failures, return to P00's safe checks without showing secrets. If the turn budget is exhausted, inspect visible tool calls before changing the limit. Use a fresh output directory for collection incompatibility and preserve evidence before deleting an index.
 
-The historical source uses OpenAI generation and embeddings, `k=5`, and a Windows persistence path. We adapt those choices deliberately. Current upstream source's tool-name comprehension is valid, so do not repeat an older review's alleged undefined-variable defect as fact [1116]. LangGraph conditional routing and reducers remain the source-aligned concepts [1117]. U1/U2 and C01 add checkpointing and approval behavior; this lesson does not claim to implement them.
+Use Anthropic generation, local embeddings, portable persistence and `k=3` for this lesson. Keep tool names consistent between the registry and dispatch lookup. LangGraph conditional routing and reducers are the relevant graph concepts [1116]. U1/U2 and C01 add checkpointing and approval behavior; this lesson does not claim to implement them.
 
 ## References
+
+**Official guidance:** [embeddings][1111] · [text splitting][1112] · [Anthropic tools][1113] · [persistence][1114] · [telemetry][1115] · [graph API][1116].
+
+<!-- REFERENCES_INLINE -->
 
 [1111]: https://docs.trychroma.com/docs/embeddings/embedding-functions "Chroma default embedding function"
 [1112]: https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter "Recursive character splitting"
 [1113]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "Anthropic tool binding"
 [1114]: https://cookbook.chromadb.dev/core/clients/ "Chroma persistent client"
 [1115]: https://cookbook.chromadb.dev/core/configuration/ "Chroma anonymized telemetry opt-out"
-[1116]: https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py "Current upstream course RAG code"
-[1117]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph graph and message-state APIs"
+[1116]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph graph and message-state APIs"

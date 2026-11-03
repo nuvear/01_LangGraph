@@ -2,7 +2,7 @@
 
 ## Your independent task
 
-**SUPPLEMENTARY / ADDED PRACTICE.** Build an offline public-profile readiness checker. This is new preparation, not an original video exercise, and has no source-video timestamp. Use basic Python dictionaries, functions and conditionals. The graph wrapper is supplied so you can focus on safe validation. No account, key, `.env`, model invocation or tracing export is part of this task.
+**SUPPLEMENTARY PRACTICE.** Build an offline public-profile readiness checker. Use basic Python dictionaries, functions and conditionals. The graph wrapper is supplied so you can focus on safe validation. No account, key, `.env`, model invocation or tracing export is part of this task.
 
 Edit only `exercises/starters/p00.py`. Complete its three TODO functions without importing the demonstration or reference solution. Keep the supplied fixtures and graph wiring. The independent teacher reference is `exercises/solutions/p00.py`; the demonstration is `course_lessons/p00.py`.
 

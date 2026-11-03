@@ -2,9 +2,9 @@
 
 ## Why a draft needs a boundary
 
-A useful drafting assistant must distinguish “the model produced text” from “the user approved a file write.” This added 90-minute lab makes that boundary executable. Complete L10 and U1 first. You should already recognize a state dictionary, a node, a conditional edge, a tool message, and a checkpoint thread.
+A useful drafting assistant must distinguish “the model produced text” from “the user approved a file write.” This 90-minute lab makes that boundary executable. Complete L10 and U1 first. You should already recognize a state dictionary, a node, a conditional edge, a tool message, and a checkpoint thread.
 
-**SUPPLEMENTARY / CURRENT-API UPDATE:** U2 has no source-video start or end time. Its context is L10, [02:28:46–02:52:09](https://youtu.be/jGg_1h0qzaM?t=8926), where Drafter updates and saves a document. The global draft buffer is a source teaching workaround, not a multi-session design. The whole-track review also confirms that the closing voice/GUI/knowledge-base invitation is not a missing detailed assignment. Everything required below is added course practice.
+The lab uses a shared draft-writing pattern as a starting point, then makes state ownership, approval, replay, and bounded recovery explicit. Everything required below is self-contained practice.
 
 By the end, you will keep drafts in explicit thread state, inspect a real interrupt, resume the correct checkpoint, and prove that rejection creates no file. You will also test traversal, overwrite, and failed-save behavior. This is not an email sender or a production authorization service.
 
@@ -55,7 +55,7 @@ Use a trusted output directory. These teaching checks are not a complete sandbox
 
 <!-- ORIGINAL_DIAGRAM -->
 
-The original diagram separates the baseline path from the workbook extension. In both paths, a pending interrupt precedes any write. The extension has a second approval boundary only after the first save fails.
+The concept diagram separates the baseline path from the workbook extension. In both paths, a pending interrupt precedes any write. The extension has a second approval boundary only after the first save fails.
 
 <!-- EXAMPLE_CODE -->
 
@@ -89,4 +89,4 @@ If a filename fails, do not loosen validation. Select a new simple filename with
 - [LangChain tools](https://docs.langchain.com/oss/python/langchain/tools): runtime injection, hidden tool arguments, and state-updating commands.
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence): thread checkpoints, stores, and memory-only limitations.
 
-Official pages were searched and fetched on 3 November 2026. U2 is added material, not a claim that the video implemented these APIs.
+The official documentation links above provide the current API guidance for this lab.

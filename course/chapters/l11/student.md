@@ -2,7 +2,7 @@
 
 ## Explain: give the model evidence it can inspect
 
-**Video-aligned lesson:** 02:52:09–03:09:51, approximately 160 teaching minutes including practice. Prerequisites are L09's tool-call loop and L10's distinction between a draft and a saved artifact. Start with the [RAG introduction](https://youtu.be/jGg_1h0qzaM?t=10329), then inspect the [document walkthrough](https://youtu.be/jGg_1h0qzaM?t=10381). The independent answer-card task below is **added practice**, not an original video assignment.
+Prerequisites are L09's tool-call loop and L10's distinction between a draft and a saved artifact. This lesson develops retrieval-augmented generation (RAG), local embeddings, persistent Chroma storage, evidence-aware tool use, and a retrieve-first graph.
 
 By the end, you should be able to extract PDF pages, split text without losing provenance, explain local embeddings, build a persistent Chroma collection, follow a retrieval-tool loop, and distinguish an answer with evidence from plausible unsupported wording. You will also build a simpler retrieve-first graph and explain why it need not let a model decide whether to search.
 
@@ -12,9 +12,9 @@ An **embedding** is a numeric vector representing text. Similarity search compar
 
 ## Illustrate: follow text and provenance together
 
-The source video uses a stock-market PDF. That original file is available in its repository, but this lesson deliberately uses `data/rag_teaching_handbook.pdf`: an **original synthetic teaching replacement** about fictional Harbor Learning Lab policies. Its three pages describe an open day, equipment loans, and practice-record handling. It is neither the original finance document nor a nine-page copy. The editable text, rebuild script and decision record live in `data/rag_teaching_handbook.json`, `data/rag_build_pdf.py` and `data/rag_provenance.md`.
+This lesson uses `data/rag_teaching_handbook.pdf`: an **original synthetic teaching document** about fictional Harbor Learning Lab policies. Its three pages describe an open day, equipment loans, and practice-record handling. The editable text, rebuild script and decision record live in `data/rag_teaching_handbook.json`, `data/rag_build_pdf.py` and `data/rag_provenance.md`.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -28,7 +28,7 @@ The recursive splitter tries paragraph, line, word and character boundaries. Our
 
 The demonstration starts at `agent`, invokes a tool-bound model, routes tool calls to `retrieve`, and loops back to the model. A response without tool calls ends the graph. `MessagesState` accumulates messages through its reducer, while nodes return only their new messages [1104]. Every `ToolMessage` must carry the ID of the tool call it answers. Inspect public tool arguments and returned evidence, not private reasoning.
 
-This adaptation requests retrieval using `tool_choice="auto"` and an explicit prompt. The configured model rejected forced named-tool selection during live validation, so the course does not rely on that option. A missing actual retrieval fails the acceptance check rather than being silently treated as success. Later turns may search again or answer. The prompt restricts answers to supplied passages, treats document text as untrusted data, and requires citations such as `[rag_teaching_handbook.pdf p.2]`. Three model turns and two tool calls per turn bound the loop. Budget exhaustion raises an error; it does not become a fabricated successful answer. `execution_config()` retains the selected tracing callbacks and the separate recursion guard. Anthropic supports tool binding through `bind_tools` [1105].
+This implementation requests retrieval using `tool_choice="auto"` and an explicit prompt. The configured model rejected forced named-tool selection during live validation, so the course does not rely on that option. A missing actual retrieval fails the acceptance check rather than being silently treated as success. Later turns may search again or answer. The prompt restricts answers to supplied passages, treats document text as untrusted data, and requires citations such as `[rag_teaching_handbook.pdf p.2]`. Three model turns and two tool calls per turn bound the loop. Budget exhaustion raises an error; it does not become a fabricated successful answer. `execution_config()` retains the selected tracing callbacks and the separate recursion guard. Anthropic supports tool binding through `bind_tools` [1105].
 
 <!-- EXAMPLE_CODE -->
 
@@ -71,11 +71,11 @@ A citation validator can check that page 2 was retrieved. It cannot prove every 
 2. Why must ingestion and query embeddings use the same model, and what should you do after changing that model or the chunking policy?
 3. If Chroma returns three chunks for a late-fee question, can you conclude the document contains a fee? Explain the different checks for empty retrieval and insufficient nonempty evidence.
 
-## Troubleshooting and source/current differences
+## Troubleshooting and current implementation notes
 
 A missing PDF should raise a file error, not silently create an empty index. A scanned, textless PDF needs OCR; our helper rejects it. A model-download failure is an embedding setup issue, not evidence that Claude rejected your key. Preserve the error and fix connectivity/cache access; never replace embeddings with a keyword fallback. A collection compatibility error calls for a fresh run directory, not disabling checks. A citation failure means inspect the retrieved pages and prompt before relaxing acceptance. Do not use the offline test doubles in the live CLI.
 
-The video demonstrates a Windows persistence path, OpenAI chat/embeddings and `k=5`; this lesson uses portable run directories, Anthropic generation, a real local embedding model and `k=3`. The splitter's character/token distinction is corrected. Direct `chromadb` avoids requiring `langchain-chroma`. Current upstream RAG source has a valid tool-name comprehension; an earlier review's variable-warning is not a current defect to reproduce [1107]. The [testing section](https://youtu.be/jGg_1h0qzaM?t=11175) supports the grounding discussion, while the [outro](https://youtu.be/jGg_1h0qzaM?t=11344) suggests future projects, not another detailed exercise. This lesson's new policy dataset and deterministic acceptance checks are adaptations.
+Use portable run directories, Anthropic generation, a real local embedding model and `k=3`. The splitter's character/token distinction is important: character sizing does not establish a safe token budget. Direct `chromadb` avoids requiring `langchain-chroma`. The current RAG implementation uses a valid tool-name comprehension; preserve that implementation rather than introducing an undefined-variable pattern. The testing section's grounding discussion is represented by the acceptance checks and evidence review in this lesson. The policy dataset and deterministic acceptance checks provide a focused practice context.
 
 ## References
 
@@ -85,4 +85,3 @@ The video demonstrates a Windows persistence path, OpenAI chat/embeddings and `k
 [1104]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph messages state and graph routing"
 [1105]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic integration and tool calls"
 [1106]: https://cookbook.chromadb.dev/core/configuration/ "Chroma telemetry configuration"
-[1107]: https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py "Original course RAG implementation"

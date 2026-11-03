@@ -1,0 +1,4 @@
+flowchart LR
+A["Full transcript"] --> B["Select prompt"] --> C["Model context"] --> D["New reply"]
+D -->|"Append"| A
+A --> E["Plain-text log"]

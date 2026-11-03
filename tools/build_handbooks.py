@@ -83,13 +83,13 @@ def frontmatter(kind: str, title: str, modules: list) -> str:
 
 ## {title}
 
-**Version 1.0 · 3 November 2026 · Author: Manus AI**
+**Version 1.1 · 3 November 2026 · Author: Manus AI**
 
-A complete Python course based on Vaibhav Mehra’s freeCodeCamp video, *LangGraph Complete Course for Beginners – Complex AI Agents with Python*. Source: https://youtu.be/jGg_1h0qzaM. Repository: https://github.com/nuvear/01_LangGraph.
+A self-contained, step-by-step Python course for learners who know basic Python and are new to LangGraph. Course repository: https://github.com/nuvear/01_LangGraph.
 
 {purpose}
 
-The eleven video-aligned lessons retain the source progression. Preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01 are clearly labeled additions. The estimated full teaching track is 29 hours 55 minutes excluding breaks; source viewing is included rather than added twice.
+The course progresses through eleven core lessons, preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01. The estimated full teaching track is 29 hours 55 minutes excluding breaks, combining explanation, demonstration, guided practice, independent work, and assessment.
 
 **Validation and platforms.** Delivered demonstrations and independent reference solutions are executed and recorded in the validation appendix. Model-based checks use the real configured Anthropic API; offline tests use explicitly identified test doubles. macOS/Python 3.12 is the actual execution platform. Windows commands are supplied but Windows execution is untested. Dashboard visual inspection is not implied by API ingestion checks.
 
@@ -127,9 +127,6 @@ def appendices(kind: str, modules: list, report: dict, output: Path) -> str:
             commands.append(f"python -m exercises.solutions.{ident}{flag}{tracing}")
         if kind == "workbook":
             commands.append(f"python -m exercises.starters.{ident}")
-    source_index = []
-    for f in json.loads((ROOT / "assets/video/attribution.json").read_text()):
-        source_index.append(f"- {f['lesson']}: {f['description']}, [{f['timestamp']}]({f['source_url']}).")
     return f'''
 
 <!-- PAGEBREAK -->
@@ -201,19 +198,17 @@ HTTP 401 indicates a credential/authentication problem, not proof of an unavaila
 
 For file-save errors, check the explicitly selected output directory and filename. A rejected traversal, symlink, or overwrite is an intended safety check. For SQLite persistence, keep the same database and thread ID when testing recovery, and use different IDs when testing isolation. For RAG, inspect pages, chunks, collection path, embedding identity, and retrieved evidence before judging the generated answer.
 
-## E. Source illustrations and attribution
+## E. Original illustrations and technical references
 
-The source stills illustrate the historical teaching material; they are not proof that the adapted code executed. Credit for every listed still: Vaibhav Mehra / freeCodeCamp, *LangGraph Complete Course for Beginners – Complex AI Agents with Python*, https://youtu.be/jGg_1h0qzaM. Historical OpenAI names may appear in source slides; all adapted model calls in this repository use Anthropic.
+The concept illustrations and flowcharts are original diagrams created for this course. Editable Mermaid sources are supplied under `assets/diagrams`. Concept diagrams explain data flow and mental models; complete implementation flowcharts include more detailed guards and error paths.
 
-{chr(10).join(source_index)}
-
-Original diagrams are separately labeled and supplied as editable Mermaid source under `assets/diagrams`. Full source video/captions are not redistributed. [Publisher’s course page](https://www.freecodecamp.org/news/learn-langgraph-and-build-conversational-ai-with-python/) and [original example repository](https://github.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp) provide context; chapter-specific current documentation is cited beside the material it supports.
+Execution screenshots are separate evidence of actual runs, not conceptual mockups. Chapter-specific official technical documentation is retained beside the material it supports. Source/page citations in retrieval exercises refer to the supplied synthetic teaching dataset and must remain inspectable.
 
 ## F. Delivery and classroom use
 
 The Student Handbook, Teacher Handbook, and Exercise Workbook share the same identifiers and sequence. Runnable baselines live in `course_lessons`, unfinished tasks in `exercises/starters`, instructor answers in `exercises/solutions`, and regression tests in `tests/lessons`. Directory separation is not an access-control boundary: instructors should omit solutions when distributing a learner-only package.
 
-Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive. The approved training index is preserved separately; these are new manuals, not silent edits of that index.
+Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive.
 
 ## G. Working glossary
 
@@ -237,7 +232,6 @@ def assemble(kind: str, output: Path) -> str:
     modules = json.loads((ROOT / "course/lesson_manifest.json").read_text())
     report = json.loads((ROOT / "course/validation/execution_manifest.json").read_text())
     evidence = {(r["id"], r["role"]): r for r in report["records"]}
-    video = {v["lesson"]: v for v in json.loads((ROOT / "assets/video/attribution.json").read_text())}
     text = frontmatter(kind, BOOKS[kind][1], modules)
     for module in modules:
         ident, low = module["id"], module["id"].lower()
@@ -247,7 +241,7 @@ def assemble(kind: str, output: Path) -> str:
         chapter = re.sub(r"^#\s+[^\n]+", f"# {ident} — {module['title']}", chapter, count=1)
         overview = ROOT / "assets/diagrams/overviews" / f"{low}.png"
         diagram_path = f"assets/diagrams/overviews/{low}.png" if overview.is_file() else f"assets/diagrams/{low}.png"
-        diagram_caption = f"{ident}: original {'overview' if overview.is_file() else 'teaching'} diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart."
+        diagram_caption = f"{ident}: original {'overview' if overview.is_file() else 'teaching'} diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart."
         diagram = illustration(diagram_path, diagram_caption, output)
         diagram += f"\n[Editable complete {ident} flowchart]({relative(f'assets/diagrams/{low}.mmd', output)}).\n"
         replacements = {
@@ -256,16 +250,16 @@ def assemble(kind: str, output: Path) -> str:
             "<!-- ORIGINAL_DIAGRAM -->": diagram,
             "<!-- EXECUTION_FIGURES -->": execution_block(ident, evidence, output) if kind != "workbook" else "",
         }
-        if ident in video:
-            v = video[ident]
-            replacements["<!-- VIDEO_FIGURE -->"] = illustration(v["file"], f"Source illustration {ident}, {v['timestamp']}: {v['description']}. Credit: {v['credit']}.{v.get('note','')} Source: {v['source_url']}", output)
-        else:
-            replacements["<!-- VIDEO_FIGURE -->"] = ""
+        concept = ROOT / "assets/diagrams" / f"{low}-concept.png"
+        concept_caption = f"{ident}: original concept diagram — {module['title']}."
+        if ident == "L05":
+            concept_caption += " Operand pairs remain independent; the calculation steps run sequentially."
+        replacements["<!-- CONCEPT_FIGURE -->"] = illustration(concept, concept_caption, output) if concept.is_file() else ""
         for marker, replacement in replacements.items():
             chapter = chapter.replace(marker, replacement)
         # Explicitly distinguish optional design prompts from executed core work.
         chapter = re.sub(r"(?im)^(#{2,3})\s+(?:Optional )?[Ss]tretch(?: task| exercise| challenge)?", r"\1 Optional design extension — not part of the validated execution set", chapter)
-        if re.search(r"<!-- (?:EXAMPLE|SOLUTION|ORIGINAL|VIDEO|EXECUTION)_", chapter):
+        if re.search(r"<!-- (?:EXAMPLE|SOLUTION|ORIGINAL|CONCEPT|VIDEO|EXECUTION)_", chapter):
             raise ValueError(f"Unresolved injection marker in {ident}/{kind}")
         # Link-reference definitions alone are invisible in rendered Markdown.
         # Keep them for citations, and show their titles/URLs in the source list.
@@ -377,7 +371,7 @@ def configure_document(title: str):
     header=section.header.paragraphs[0]
     run=header.add_run(f"LANGGRAPH  /  {title.upper()}");run.font.size=Pt(8);run.font.color.rgb=RGBColor.from_string(GRAY)
     footer=section.footer.paragraphs[0];footer.alignment=WD_ALIGN_PARAGRAPH.RIGHT
-    run=footer.add_run("Version 1.0  |  3 November 2026  |  ");run.font.size=Pt(8)
+    run=footer.add_run("Version 1.1  |  3 November 2026  |  ");run.font.size=Pt(8)
     add_field(footer,"PAGE")
     doc.core_properties.title=f"LangGraph Python Training — {title}"
     doc.core_properties.author="Manus AI"

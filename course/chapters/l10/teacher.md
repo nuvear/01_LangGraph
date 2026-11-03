@@ -2,15 +2,15 @@
 
 ## Explain: teaching purpose and preparation
 
-Teach this core lesson after L09. The video window is 02:28:46–02:52:09; allow 160 minutes. Students must distinguish a model's suggestion, a Python tool's action, and evidence on disk. Prerequisites are tool-call IDs, `add_messages`, and conditional edges.
+Teach this core lesson after L09; allow 160 minutes. Students must distinguish a model's suggestion, a Python tool's action, and evidence on disk. Prerequisites are tool-call IDs, `add_messages`, and conditional edges.
 
 Before class, activate the prepared environment and run only the focused offline tests. Parent live validation supplies execution figures; do not treat test-double output as Anthropic evidence. For an authorized demonstration, run `python -m course_lessons.l10 --live --backend none` with synthetic data and a fresh output directory. Never expose credentials.
 
 Allocate 15 minutes to explanation, 10 to illustration, 25 to demonstration, 25 to guided practice, 65 to the independent workshop task, and 20 to review. Installation and service troubleshooting belong to P00, not to the practice allocation.
 
-Use the [source introduction at 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926) and [meeting-email demonstration at 02:45:53](https://youtu.be/jGg_1h0qzaM?t=9953). The source's global-buffer workaround is acknowledged rather than recommended. This adaptation uses a per-graph closure over a dataclass, retains process-local limitations, and defers state injection and durable approval to U2. The complete caption review resolves the brief homework invitation across the boundary: voice, GUI, and knowledge-base ideas are optional extensions, not a detailed source exercise.
+Frame the lesson around a controlled drafting collaboration: a per-graph closure over a dataclass holds the editable document, Python tools enforce file policy, and the host collects further human feedback until a real save succeeds. Emphasize the process-local limitation and defer state injection and durable approval to U2. The workshop notice is a complete practice task with explicit acceptance criteria.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Illustrate: establish the two stopping conditions
 
@@ -44,7 +44,7 @@ Discuss the rejected multi-call batch. Although binding disables parallel tool r
 
 ## Independent exercise: solution walkthrough
 
-The exact added task is the workshop notice in the student chapter and workbook. Students implement `make_tools`, `after_tools`, and `build_graph` in `exercises/starters/l10.py`; the supplied host driver and acceptance scenario stay in place. Initial content addresses Elena, postpones the training workshop, proposes `17 November at 09:00 Singapore time`, and signs Arun. The revision changes the schedule to `18 November at 14:30 Singapore time` and removes the old schedule, keeping a blank line before the closing.
+The exact task is the workshop notice in the student chapter and workbook. Students implement `make_tools`, `after_tools`, and `build_graph` in `exercises/starters/l10.py`; the supplied host driver and acceptance scenario stay in place. Initial content addresses Elena, postpones the training workshop, proposes `17 November at 09:00 Singapore time`, and signs Arun. The revision changes the schedule to `18 November at 14:30 Singapore time` and removes the old schedule, keeping a blank line before the closing.
 
 Walk through `exercises/solutions/l10.py` only after an independent attempt. It is independent implementation, not an import of the baseline. `make_tools` protects empty/finished sessions, counts successful updates, and delegates safe file creation. `after_tools` routes on actual `saved_path` and the budget. `build_graph` supplies model, dispatch, matched messages, error statuses, and conditional edges.
 

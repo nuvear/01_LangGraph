@@ -2,7 +2,7 @@
 
 ## Teaching position and evidence
 
-Teach this supplementary 90-minute lab after L10, with U1 completed first. It has no source-video timestamps. For context only, L10 occupies [02:28:46–02:52:09](https://youtu.be/jGg_1h0qzaM?t=8926). The source's global draft buffer motivates this update; do not attribute `ToolRuntime`, checkpointed approval, or the workbook repair protocol to the video. The later whole-track review resolves the closing homework invitation: voice, GUI, and knowledge-base extensions were suggestions, not this assignment.
+Teach this supplementary 90-minute lab after L10, with U1 completed first. Begin with the shared draft-buffer pattern, then make state ownership, checkpointed approval, and bounded filename repair explicit. Keep the focus on the assigned protocol rather than adding a GUI, voice interface, or knowledge-base integration.
 
 The student sequence is explanation, baseline illustration, timed demonstration, guided practice, one independent workbook task, and review. Preserve it. The baseline demonstrates runtime-injected state through `ToolNode`. The workbook independently implements direct state updates with hash-bound approval and a single filename-repair opportunity. Both call real Anthropic through the shared runtime when explicitly run live. Offline evidence is produced with named doubles only.
 
@@ -18,7 +18,7 @@ Explain that a side effect changes something outside graph state. A text file re
 
 ## Minutes 15–30: illustrate runtime injection and replay
 
-Trace `generate → update → review → save`. Anthropic returns plain text. The coordinator builds a fixed update-tool request, and `ToolNode` injects `runtime.state`. Make the distinction explicit: Claude is not autonomously selecting this tool. The adaptation intentionally removes that variable while teaching state ownership.
+Trace `generate → update → review → save`. Anthropic returns plain text. The coordinator builds a fixed update-tool request, and `ToolNode` injects `runtime.state`. Make the distinction explicit: Claude is not autonomously selecting this tool. Keeping that choice in the coordinator makes state ownership and approval behavior observable.
 
 Show the tool's `Command(update=...)` and the `ToolMessage` with the matching call ID. The runtime parameter is hidden from the model-facing schema. The official [tool guide](https://docs.langchain.com/oss/python/langchain/tools) documents this pattern; the local imports use `langchain_core` and `langgraph.prebuilt` rather than requiring the umbrella `langchain` distribution.
 
@@ -47,7 +47,7 @@ In `attempt_save`, check approved status and the current content's hash before c
 
 In `build_graph`, require five nodes: generate, review, save, repair, and retry_save. First failure routes to repair. Approved repair routes to retry_save, which always ends. There is no backward edge and no third approval prompt. A repaired unsafe filename therefore produces a terminal `save_failed`, not a recursion-limit exception. Rejection at either approval ends without a new write.
 
-The independent reference lives at `exercises/solutions/u2.py`. Run `python -m exercises.solutions.u2 --live --backend none` only when authorized. Its first filename deliberately traverses upward, then its scripted repair chooses `recovered.txt`. Expected stable properties are one generation per thread, unchanged text across repair, one repair consumed, a real exact-content file, and the second thread untouched until rejection.
+The independent reference implementation lives at `exercises/solutions/u2.py`. Run `python -m exercises.solutions.u2 --live --backend none` only when authorized. Its first filename deliberately traverses upward, then its scripted repair chooses `recovered.txt`. Expected stable properties are one generation per thread, unchanged text across repair, one repair consumed, a real exact-content file, and the second thread untouched until rejection.
 
 <!-- SOLUTION_CODE -->
 
@@ -75,4 +75,4 @@ If saving fails, inspect the error and output directory. Do not bypass traversal
 
 ## References
 
-The official [interrupt guide](https://docs.langchain.com/oss/python/langgraph/interrupts), [tool guide](https://docs.langchain.com/oss/python/langchain/tools), and [persistence guide](https://docs.langchain.com/oss/python/langgraph/persistence) were searched and fetched on 3 November 2026. Metadata records the locally checked package versions and remaining live-validation limits.
+Use the official [interrupt guide](https://docs.langchain.com/oss/python/langgraph/interrupts), [tool guide](https://docs.langchain.com/oss/python/langchain/tools), and [persistence guide](https://docs.langchain.com/oss/python/langgraph/persistence) for the current API behavior. Metadata records the locally checked package versions and remaining live-validation limits.

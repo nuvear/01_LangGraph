@@ -2,9 +2,9 @@
 
 ## Your task: produce an evidence-gated answer card
 
-This is **added practice** based on the video's RAG lesson, 02:52:09–03:09:51. The video demonstrates a model/retriever loop; your task deliberately chooses a simpler retrieve-first topology. Build `START → retrieve → generate or abstain → END`. Explain why this guarantees a search happens without asking a model to select a tool. Budget approximately 45 minutes for implementation, followed by evidence review.
+This exercise develops a simpler retrieve-first topology than the model-selected retrieval loop. Build `START → retrieve → generate or abstain → END`. Explain why this guarantees a search happens without asking a model to select a tool. Budget approximately 45 minutes for implementation, followed by evidence review.
 
-Use the original synthetic replacement `data/rag_teaching_handbook.pdf`, not the video's stock-market PDF. Read its three pages first. Your supported question is: **“How long is the equipment loan, and what renewal is allowed? Use digits.”** Your unsupported question is: **“What is the exact equipment late fee in dollars?”** Do not invent any amount, substitute an external policy, or answer from general knowledge. Source/page citations must refer to the actual teaching PDF.
+Use the original synthetic teaching document `data/rag_teaching_handbook.pdf`. Read its three pages first. Your supported question is: **“How long is the equipment loan, and what renewal is allowed? Use digits.”** Your unsupported question is: **“What is the exact equipment late fee in dollars?”** Do not invent any amount, substitute an external policy, or answer from general knowledge. Source/page citations must refer to the actual teaching PDF.
 
 Start in `exercises/starters/l11.py`. It contains three independent TODO functions and no import of the reference implementation. The reference is `exercises/solutions/l11.py`; use it after making your own attempt. The demonstration in `course_lessons/l11.py` is a different architecture, not your exercise solution.
 
@@ -55,4 +55,4 @@ For a stretch task, try three paraphrases of the supported question and one cate
 
 ## Reference
 
-The [official recursive splitter guide](https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter) explains character sizing. The [Chroma embedding guide](https://docs.trychroma.com/docs/embeddings/embedding-functions) explains the real local default model and its initial download. Use the student chapter for the full source/current-API comparison and troubleshooting.
+The [official recursive splitter guide](https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter) explains character sizing. The [Chroma embedding guide](https://docs.trychroma.com/docs/embeddings/embedding-functions) explains the real local default model and its initial download. Use the student chapter for the full implementation notes and troubleshooting.

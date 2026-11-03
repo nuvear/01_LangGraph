@@ -2,7 +2,7 @@
 
 ## Your task: bounded prompt, complete transcript
 
-Build a text-chat graph that sends a bounded recent window to the model while retaining a complete process-local transcript. This is **added practice** based on the source's [01:42:54–02:03:20 history/logging demonstration][812], not a missing original homework assignment. The source code section begins at 01:43:58. Use Anthropic through the shared runtime, not an OpenAI client or a canned live response.
+Build a text-chat graph that sends a bounded recent window to the model while retaining a complete process-local transcript. Use Anthropic through the shared runtime, not an OpenAI client or a canned live response.
 
 Work in `exercises/starters/l08.py`. The independent instructor reference is `exercises/solutions/l08.py`; consult it only after attempting the task. Do not import either that reference or `course_lessons/l08.py` to replace your implementation. The delivered demonstration and reference have different state-update strategies, even though both carry history between calls.
 
@@ -105,4 +105,3 @@ For a stretch task, compare `max_pairs=0` and `2` using the offline double. Pred
 [809]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: MessagesState and reducer updates"
 [810]: https://docs.langchain.com/oss/python/langgraph/add-memory "LangGraph memory: trimming model input versus retained state"
 [811]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic: messages, content blocks, and token counting"
-[812]: https://youtu.be/jGg_1h0qzaM?t=6174 "Source video: conversation history at 01:42:54"

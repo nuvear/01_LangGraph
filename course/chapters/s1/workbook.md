@@ -2,7 +2,7 @@
 
 ## Task: audit synthetic shipping receipts
 
-**SUPPLEMENTARY added practice · No source-video timestamp · Allow 25 minutes of independent work.** Complete three functions that calculate a synthetic shipping quote, decode the model's receipt, and score actual output. The supplied graph and report writer remain unchanged. Your implementation must not import the demonstration or teacher solution.
+**SUPPLEMENTARY practice · Allow 25 minutes of independent work.** Complete three functions that calculate a synthetic shipping quote, decode the model's receipt, and score actual output. The supplied graph and report writer remain unchanged. Your implementation must not import the demonstration or teacher solution.
 
 Start in `exercises/starters/s1.py`. The independent reference is `exercises/solutions/s1.py`; consult it only after attempting the task. The separate demonstration is `course_lessons/s1.py`. Required background is L09 and the S1 guided trace inspection. All data are invented teaching values, not shipping prices or customer information.
 

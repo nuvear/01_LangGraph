@@ -2,7 +2,7 @@
 
 ## Purpose and prerequisites
 
-**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 before inspecting retrieval.** This module has no source-video start or end time. The source course introduces graph execution and tool loops, but does not teach this LangSmith lab. The demonstration, shipping exercise, diagram, and evaluation rules here are original course additions. The whole-track review supersedes earlier caption-boundary caveats; it does not turn supplementary observability into a video topic.
+**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 before inspecting retrieval.** This module teaches graph observability, evidence discipline, and deterministic evaluation. The demonstration, shipping exercise, diagram, and evaluation rules form one coherent lab.
 
 By the end, you should be able to follow a graph invocation into its node, tool, and model runs; distinguish sending telemetry from verifying stored data; and evaluate model output using fixed reference examples. You need the course Python 3.12 environment and instructor-approved Anthropic and LangSmith access. Keep keys in the established private configuration, never in this chapter's examples or graph state.
 
@@ -20,7 +20,7 @@ The normal path is START → quote → format → check → END. If the receipt 
 
 <!-- ORIGINAL_DIAGRAM -->
 
-The original diagram distinguishes local evaluation from the separate telemetry pipeline. `trace_log` is a small teaching record of visited nodes, not proof that LangSmith stored a trace. Likewise, `run_id` is assigned locally before invocation; its presence in a report is not an ingestion acknowledgment.
+The diagram distinguishes local evaluation from the separate telemetry pipeline. `trace_log` is a small teaching record of visited nodes, not proof that LangSmith stored a trace. Likewise, `run_id` is assigned locally before invocation; its presence in a report is not an ingestion acknowledgment.
 
 ## Configure destination and privacy
 
@@ -85,7 +85,7 @@ If authentication fails, ask the instructor to check region, workspace, key perm
 
 A failed evaluation still saves its diagnostic report before asserting. A model or tool exception propagates instead of fabricating a receipt; an interrupted run may have no report. Reusing an explicit output directory with the same report filename raises `FileExistsError` rather than overwriting evidence. Use a new directory for a new validation run.
 
-Unlike common older snippets, this lesson uses explicit runtime callbacks, real ChatAnthropic calls, asynchronous retrieval guidance, and a bounded repair loop. Its local report is **not** an uploaded LangSmith dataset or experiment. Official SDK `evaluate` can run examples with evaluators and create an experiment, but that is a later deliberate workflow with separate permissions [1405]. A three-case teaching set is not a production benchmark.
+This lesson uses explicit runtime callbacks, real ChatAnthropic calls, asynchronous retrieval guidance, and a bounded repair loop. Its local report is **not** an uploaded LangSmith dataset or experiment. Official SDK `evaluate` can run examples with evaluators and create an experiment, but that is a later deliberate workflow with separate permissions [1405]. A three-case teaching set is not a production benchmark.
 
 ## References
 

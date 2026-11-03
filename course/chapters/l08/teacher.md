@@ -4,21 +4,21 @@
 
 Teach this 125-minute lesson after L07. Learners should leave able to trace a human/AI message list, distinguish an ordinary state replacement from a reducer update, export unchanged raw input, and explain why neither a text file nor a message reducer creates restart-durable memory. Success is a correct data path, not a particularly fluent model sentence.
 
-The video window is [01:42:54–02:03:20][805]; code begins at [01:43:58](https://youtu.be/jGg_1h0qzaM?t=6238). Attribute the name-recall demonstration, prediction pause, restart loss, and logging to the source. Its terminal loop and prototype overwrite-style logging are not the exact delivered implementation. We use finite scripted calls, Anthropic, safe new files, and an added bounded-prompt exercise. Whole-track review resolves the recap at approximately 02:03:19–02:03:26; do not imply a lost exercise or truncated original caption track.
+Use the name-recall demonstration, prediction pause, restart-loss distinction, and logging example to establish the learning goal. The delivered implementation uses finite scripted calls, Anthropic, safe new files, and a bounded-prompt exercise. Its terminal loop and logging behavior should be taught from the runnable implementation described below.
 
 Check that the P00 environment is ready before class. Do not ask students to expose keys during debugging. Use only the synthetic names and inputs provided. Parent/instructor validation must separately record real demo and solution execution: offline doubles establish orchestration behavior, not Anthropic access, model recall, screenshots, or telemetry delivery.
 
 ## Illustrate: timed teaching sequence
 
-Use minutes 0–12 to contrast L07's independent requests with caller-carried history. Ask, “Where does Steve's name physically appear before the second model call?” The expected response is “In the earlier human message that Python sends again,” not “inside a permanent model memory.” At minutes 12–20 draw `H1, A1, H2` and explain the original diagram. Emphasize the separate full-history and prompt-window paths.[806]
+Use minutes 0–12 to contrast L07's independent requests with caller-carried history. Ask, “Where does Steve's name physically appear before the second model call?” The expected response is “In the earlier human message that Python sends again,” not “inside a permanent model memory.” At minutes 12–20 draw `H1, A1, H2` and explain the separate full-history and prompt-window paths.[806]
 
 <!-- ORIGINAL_DIAGRAM -->
 
-At minutes 20–35 perform the demonstration. Minutes 35–45 are guided inspection and prediction. Reserve minutes 45–100 for the independent task, 100–110 for offline checks and artifact inspection, and 110–125 for the three knowledge checks and review. These periods total 125 minutes, including selected source clips rather than adding the entire video again.
+At minutes 20–35 perform the demonstration. Minutes 35–45 are guided inspection and prediction. Reserve minutes 45–100 for the independent task, 100–110 for offline checks and artifact inspection, and 110–125 for the three knowledge checks and review. These periods total 125 minutes.
 
-A useful source illustration is the history/state segment around [01:50:00](https://youtu.be/jGg_1h0qzaM?t=6600), followed by the logging segment around [02:00:00](https://youtu.be/jGg_1h0qzaM?t=7200). Source frames illustrate the original course; they do not establish execution of this Anthropic adaptation.
+A concept diagram can contrast the history/state path with the logging path. The diagram supports explanation; execution evidence comes from the runnable command and the checks below.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Demonstrate: run and inspect rather than narrate an imagined result
 
@@ -90,7 +90,6 @@ If histories collapse, identify plain replacement versus reducer use. If history
 
 ## References
 
-[805]: https://youtu.be/jGg_1h0qzaM?t=6174 "Source video: conversation history and logging"
 [806]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: reducers, IDs, and MessagesState"
 [807]: https://docs.langchain.com/oss/python/langgraph/add-memory "LangGraph memory: checkpoints versus selected model input"
 [808]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic: response blocks, usage, and remote token counting"

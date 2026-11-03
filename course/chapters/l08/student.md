@@ -6,9 +6,9 @@ A chatbot can answer a follow-up about your name only if relevant information re
 
 Prerequisites are L07, Python lists and dictionaries, and the prepared Anthropic connection from P00. Allow 125 minutes including practice. Both completed examples require real Anthropic calls when run from the terminal. Offline tests use explicitly named doubles instead; they are not proof of model access or recall.
 
-**Video-backed material:** [01:42:54–02:03:20][804], with history code beginning at [01:43:58](https://youtu.be/jGg_1h0qzaM?t=6238). The source demonstrates Steve recall, a state-prediction pause, restart-related loss, and role-labeled logging. The later whole-track review confirms the recap continues through approximately 02:03:26 and assigns no missing detailed homework. **Current-API adaptation:** Anthropic replaces the original OpenAI integration. **Added practice:** our finite scripted runners, safe output files, reducer comparison, tests, and bounded-prompt task.
+Use the Steve name-recall scenario, a state-prediction pause, the distinction between process restarts and retained history, and role-labeled logging to establish the lesson goal. The finite scripted runners, safe output files, reducer comparison, tests, and bounded-prompt task provide the practice. Anthropic is the configured provider for the live examples.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Explain: messages carry the conversation
 
@@ -22,7 +22,7 @@ Keep structured messages until you deliberately export text. Anthropic responses
 
 ## Illustrate: two histories serve different purposes
 
-The original diagram shows the exercise's modern reducer path. “Full history” means all turns still held by the caller. “Prompt window” means the subset sent to this particular model call. Returning one AI delta updates full state; selecting a smaller prompt does not delete older state. The demonstration uses the same one-node graph shape but replaces its plain list with the complete updated list instead of using a reducer.
+The diagram shows the exercise's reducer path. “Full history” means all turns still held by the caller. “Prompt window” means the subset sent to this particular model call. Returning one AI delta updates full state; selecting a smaller prompt does not delete older state. The demonstration uses the same one-node graph shape but replaces its plain list with the complete updated list instead of using a reducer.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -64,7 +64,7 @@ Running without `--live` intentionally refuses to construct a model. It does not
 
 ## Independent task: bounded prompt, complete transcript
 
-This is **added practice**, not an original video homework brief. Complete `exercises/starters/l08.py` without importing the demonstration or reference solution. The provided orchestration already carries history and safely writes a file. Implement its three TODO functions.
+Complete `exercises/starters/l08.py` without importing the demonstration or reference solution. The provided orchestration already carries history and safely writes a file. Implement its three TODO functions.
 
 1. `select_prompt(history, max_pairs=1)` accepts complete alternating human/AI pairs followed by one pending human. Return a new list containing at most the newest `max_pairs` pairs plus the pending human. Accept zero to keep only that human. Reject negative, Boolean, and noninteger limits, empty/even/nonalternating histories, and AI tool calls with `ValueError`. Do not mutate the input list.
 2. `build_graph(model, max_pairs=1)` validates the limit at construction, uses `MessagesState`, and compiles `START → respond → END`. Inside the node, send the selected prompt with its configuration. Require a visible-text `AIMessage` without tool calls and return only `{"messages": [response]}`. Raise `TypeError` for a wrong role or tools, and `ValueError` for empty visible text. Do not add a checkpointer or call the model while building.
@@ -76,7 +76,7 @@ Use the workbook for the exact scenario and progressive hints. The fixed scenari
 
 ## Growth, safe trimming, and troubleshooting
 
-The source discusses removing an oldest human message after an arbitrary threshold. Our adaptation retains complete plain-text pairs instead, avoiding an orphaned AI reply at the start of the prompt. This caps message count, not tokens: one long message may still exceed a model's context window. Official guidance also offers token-aware trimming, deletion, and summarization.[802] Anthropic's provider token-counting method uses a remote API; it is not an offline test helper.[803]
+Retain complete plain-text pairs when trimming an input window, avoiding an orphaned AI reply at the start of the prompt. This caps message count, not tokens: one long message may still exceed a model's context window. Official guidance also offers token-aware trimming, deletion, and summarization.[802] Anthropic's provider token-counting method uses a remote API; it is not an offline test helper.[803]
 
 An omitted human turn does not guarantee forgetting. Its information may have been repeated in a retained AI reply. Nor does prompt trimming bound full-history RAM or log size. A production policy must address those separately and preserve tool-call/result relationships when tools are introduced.
 
@@ -93,4 +93,3 @@ If recall fails, inspect which messages reached the model before changing the pr
 [801]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API overview: reducers and MessagesState"
 [802]: https://docs.langchain.com/oss/python/langgraph/add-memory "LangGraph memory: prompt trimming and persistence"
 [803]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic integration: invocation, content, and token counting"
-[804]: https://youtu.be/jGg_1h0qzaM?t=6174 "Source video: conversation history section at 01:42:54"

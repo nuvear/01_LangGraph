@@ -2,13 +2,13 @@
 
 ## Teacher Handbook
 
-**Version 1.0 · 3 November 2026 · Author: Manus AI**
+**Version 1.1 · 3 November 2026 · Author: Manus AI**
 
-A complete Python course based on Vaibhav Mehra’s freeCodeCamp video, *LangGraph Complete Course for Beginners – Complex AI Agents with Python*. Source: https://youtu.be/jGg_1h0qzaM. Repository: https://github.com/nuvear/01_LangGraph.
+A self-contained, step-by-step Python course for learners who know basic Python and are new to LangGraph. Course repository: https://github.com/nuvear/01_LangGraph.
 
 Use the same module IDs and sequence as the Student Handbook. Each chapter supplies demonstration guidance, complete exercise solutions, assessment answers with reasoning, misconceptions, and recovery steps. Distribute the student materials separately from the instructor solution directory when appropriate.
 
-The eleven video-aligned lessons retain the source progression. Preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01 are clearly labeled additions. The estimated full teaching track is 29 hours 55 minutes excluding breaks; source viewing is included rather than added twice.
+The course progresses through eleven core lessons, preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01. The estimated full teaching track is 29 hours 55 minutes excluding breaks, combining explanation, demonstration, guided practice, independent work, and assessment.
 
 **Validation and platforms.** Delivered demonstrations and independent reference solutions are executed and recorded in the validation appendix. Model-based checks use the real configured Anthropic API; offline tests use explicitly identified test doubles. macOS/Python 3.12 is the actual execution platform. Windows commands are supplied but Windows execution is untested. Dashboard visual inspection is not implied by API ingestion checks.
 
@@ -49,7 +49,7 @@ Use these links in HTML/Markdown and Word’s linked contents or Navigation Pane
 
 ## Teaching purpose and preparation
 
-**SUPPLEMENTARY / ADDED PRACTICE — 60 minutes.** P00 has no source-video window. Its environment audit, public-profile exercise and safety controls are original preparation, not homework assigned by the video presenter. The next lesson starts with the [video introduction at 00:00:00](https://youtu.be/jGg_1h0qzaM?t=0). Preserve that attribution distinction when presenting the material.
+**SUPPLEMENTARY PRACTICE — 60 minutes.** P00 is preparation for the approved course. Its environment audit, public-profile exercise and safety controls establish a foundation for later lessons.
 
 The outcome is disciplined diagnosis, not a wall of green service indicators. Learners must distinguish executable local code, syntactically acceptable settings, real authenticated requests, persisted telemetry, and dashboard inspection. They may complete P00 without an account or internet connection once dependencies are provisioned. The independent task is exactly the three-function public-profile checker described in the workbook; do not replace it with an API-call assignment.
 
@@ -72,11 +72,11 @@ Expect an honest unfinished-starter message. Keep the reference solution separat
 
 Ask, “If a local graph succeeds, which remote service has been authenticated?” The correct response is “None.” Invite learners to name what else a real check needs: approved credentials, a supported endpoint, resource access, and connectivity. Explain that backend selection describes where telemetry may leave the process; it is not just a cosmetic display preference.
 
-Show the original diagram. Walk the local demonstration path, then the workbook path. Point out that the separate instructor-authorized connection CLI is disconnected from both. In the workbook, `backend: both` is inert profile data. Actual P00 command-line tracing remains `none`.
+Show the concept diagram. Walk the local demonstration path, then the workbook path. Point out that the separate instructor-authorized connection CLI is disconnected from both. In the workbook, `backend: both` is inert profile data. Actual P00 command-line tracing remains `none`.
 
-![P00: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/p00.png)
+![P00: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/p00.png)
 
-*P00: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*P00: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete P00 flowchart](../assets/diagrams/p00.mmd).
 
@@ -357,11 +357,11 @@ Real connection checks are a later instructor-authorized activity through `cours
 
 Follow the student sequence Explain → Illustrate → Demonstrate → Guided practice → Independent exercise → Review. Allocate 100 minutes: 20 for Python types, 15 for graph vocabulary, 10 for demonstration, 15 for guided practice, 30 for independent work, and 10 for assessment. P00 should provide an activated Python 3.12 environment. Work from the project root. No credentials, model initialization or tracing service is needed.
 
-The source window is [00:00:00–00:18:39](https://youtu.be/jGg_1h0qzaM?t=0). Select concepts at [00:01:24](https://youtu.be/jGg_1h0qzaM?t=84) and [00:08:35](https://youtu.be/jGg_1h0qzaM?t=515) within the allocated time. The supplied whole-track record includes sampled visual checks, not continuous viewing. No source-assigned exercise occurs here. Label the movie graph, badge exercise, validation rules and conditional sketch as original added practice.
+Frame this lesson as a standalone introduction to Python typing, graph vocabulary, message roles, and partial state updates. Use the deterministic movie graph and the workshop-badge exercise to make the distinctions observable. No source recording, model request, or remote service is required.
 
-![Source illustration L01, 00:12:40: The source explanation of conditional edges. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=760](../assets/video/l01.png)
+![L01: original concept diagram — Python types and graph elements.](../assets/diagrams/l01-concept.png)
 
-*Source illustration L01, 00:12:40: The source explanation of conditional edges. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=760*
+*L01: original concept diagram — Python types and graph elements.*
 
 
 Inspect `course_lessons/l01.py`, `exercises/starters/l01.py`, and `exercises/solutions/l01.py`. Keep backend `none`. Both complete modules have independent `run_demo` entry points. The starter is deliberately incomplete; a successful process exit initially means only that it honestly reported incomplete work.
@@ -376,11 +376,11 @@ Show `Union[int, float]` beside `int | float`, then `Any`. Neither converts or v
 
 ## Illustrate: minutes 20–35, graph vocabulary
 
-Use the original diagram to identify two work nodes and two boundary sentinels. START and END do not trim strings or format cards.
+Use the concept diagram to identify two work nodes and two boundary sentinels. START and END do not trim strings or format cards.
 
-![L01: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l01.png)
+![L01: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l01.png)
 
-*L01: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L01: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L01 flowchart](../assets/diagrams/l01.mmd).
 
@@ -396,7 +396,7 @@ Distinguish builder from compiled runnable. Compilation checks structure; assert
 3. For two minutes, trace `START → normalize_title → describe_movie → END`. Ask which line preserves year. Precise answer: neither node must return it; update application retains untouched state channels.
 4. For three minutes, read `message_examples`. System carries instructions/context; human carries user input; AI carries assistant content or requests; tool carries a result. All objects are hand-authored, and `l01-square-1` links request and result. No model generated them.
 
-The [message guide](https://docs.langchain.com/oss/python/langchain/messages) supports AI tool-call requests paired with ToolMessage results. The video's “function message” wording is legacy/imprecise here, not a fifth required role. This course imports `langchain_core.messages`; documentation may use `langchain.messages`. No provider migration is needed because L01 makes no provider request.
+The [message guide](https://docs.langchain.com/oss/python/langchain/messages) supports AI tool-call requests paired with ToolMessage results. Use the current terminology and explain that the request ID must match the result's `tool_call_id`. This course imports `langchain_core.messages`; documentation may use `langchain.messages`. No provider migration is needed because L01 makes no provider request.
 
 ![L01 demonstration: actual captured execution on macOS, 2026-11-03T01:41:23 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l01-demonstration.png)
 
@@ -548,7 +548,7 @@ For import failures, recover the P00 environment and module invocation rather th
 
 ## References and publication boundary
 
-Official [typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [construction](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [message](https://docs.langchain.com/oss/python/langchain/messages) pages were searched and retrieved on 3 November 2026. Parent handles figures, rendering and handbook integration. No Windows execution, model request or dashboard inspection is claimed.
+Official [typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [construction](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [message](https://docs.langchain.com/oss/python/langchain/messages) pages. Parent handles figures, rendering and handbook integration. No Windows execution, model request or dashboard inspection is claimed.
 
 
 <!-- PAGEBREAK -->
@@ -559,11 +559,11 @@ Official [typing](https://docs.python.org/3.12/library/typing.html), [map](https
 
 Teach Explain → Illustrate → Demonstrate → Guided practice → Independent exercise → Review in 70 minutes. The prerequisite is L01, not access to an AI provider. Learners need dictionary access, functions, f-strings, and the idea that `TypedDict` describes a structure. The observable outcome is a compiled graph with exactly one working node and two explicit boundary edges. Avoid adding messages, tools, history, or model calls to make the lesson appear more sophisticated.
 
-The [source window begins at 00:18:39](https://youtu.be/jGg_1h0qzaM?t=1119) and ends at 00:33:07; [code begins at 00:21:08](https://youtu.be/jGg_1h0qzaM?t=1268), and the [exercise chapter begins at 00:32:22](https://youtu.be/jGg_1h0qzaM?t=1942). The supplied whole-track review confirms the compliment slide at 00:32:30. The earlier caption-only caveat does not override that later confirmation. Exact output punctuation and validation requirements in these materials are our adaptation, not a transcription of unreadable source code.
+Use the lesson's exact output punctuation and validation requirements as the acceptance contract for the classroom exercise.
 
-![Source illustration L02, 00:32:30: The original personalized-compliment exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=1950](../assets/video/l02.png)
+![L02: original concept diagram — Hello World and personalized compliment.](../assets/diagrams/l02-concept.png)
 
-*Source illustration L02, 00:32:30: The original personalized-compliment exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=1950*
+*L02: original concept diagram — Hello World and personalized compliment.*
 
 
 Before teaching, activate the prepared Python 3.12 environment and identify `course_lessons/l02.py`, `exercises/starters/l02.py`, `exercises/solutions/l02.py`, and `tests/lessons/test_l02.py`. Use only synthetic names. Run the following locally with tracing disabled; no model account or credential inspection is needed:
@@ -575,17 +575,17 @@ python -m exercises.starters.l02
 python -m pytest tests/lessons/test_l02.py -q
 ```
 
-The untouched starter must say `STARTER_NOT_COMPLETED`, not `passed`. Distinguish these preparation expectations from actual execution evidence. Source frames and execution screenshots are inserted by the parent production process; do not treat the source video frame as proof of our implementation running.
+The untouched starter must say `STARTER_NOT_COMPLETED`, not `passed`. Distinguish these preparation expectations from actual execution evidence. Treat the command output as execution evidence for the implementation; a prepared example or diagram is not proof that the learner's implementation ran.
 
 ## Explain and illustrate: minutes 0–15
 
 During minutes 0–8, establish that the graph schedules ordinary code. Ask learners to identify the Python function that constructs text and the edges that determine execution order. Expected response: the greeting node constructs the greeting; START → greeter → END gives the path. `read_name` is called inside the node, so it does not make this a two-node graph.
 
-During minutes 8–15, walk through the original diagram with `{"message": "Bob"}`. Use either the greeter or the compliment as its single middle node; never imply that both run in one invocation.
+During minutes 8–15, walk through the diagram with `{"message": "Bob"}`. Use either the greeter or the compliment as its single middle node; never imply that both run in one invocation.
 
-![L02: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l02.png)
+![L02: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l02.png)
 
-*L02: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L02: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L02 flowchart](../assets/diagrams/l02.mmd).
 
@@ -758,7 +758,7 @@ For import recovery, return to the project root and active environment; use modu
 
 ## Current API and references
 
-The video mutates state and uses entry/finish helpers. Our explicit START/END edges make the path visible; current documentation still contains entry-point helpers, so do not call them removed. The [official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) advises returning updates rather than mutating state. The [Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) supports the ordinary-dictionary explanation. These official sources were searched and fetched on 3 November 2026. Input validation, exact punctuation, tests, and CLI summaries are added teaching safeguards. No Windows execution, model request, tracing dashboard, or publication result is established by this chapter.
+Use explicit START/END edges to make the path visible; current documentation still contains entry-point helpers, so do not call them removed. The [official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) advises returning updates rather than mutating state. The [Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) supports the ordinary-dictionary explanation. Input validation, exact punctuation, tests, and CLI summaries are teaching safeguards for this lesson. No model request or tracing dashboard is needed for this chapter.
 
 
 <!-- PAGEBREAK -->
@@ -769,7 +769,7 @@ The video mutates state and uses entry/finish helpers. Our explicit START/END ed
 
 Teach this as deterministic graph programming, not as an AI agent demonstration. Learners bring Python lists, dictionaries, functions, and L02's compile/invoke distinction. The desired transfer is that a node can consume several differently typed state fields and produce a small update without changing graph topology. Keep model access and observability setup out of the lesson.
 
-The source window is [00:33:07–00:44:29](https://youtu.be/jGg_1h0qzaM?t=1987). Its original exercise uses one node to add or multiply a list; the supplied whole-track review confirms the exercise slide at 00:43:35. This adaptation adds strict validation, separate numeric output, precise punctuation, and empty-list rules. Do not attribute those assessment choices to the presenter. Current partial-update guidance comes from the [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), verified for this lesson.
+The core activity uses one node to add or multiply a list. Teach strict validation, separate numeric output, precise punctuation, and empty-list rules as the explicit assessment contract. Current partial-update guidance comes from the [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
 Before class, activate the prepared Python 3.12 environment at the repository root. Have these commands ready:
 
@@ -786,18 +786,18 @@ Do not use `--live`. The demo and solution use the real installed LangGraph engi
 
 Spend the first five minutes eliciting the inputs and outputs. Ask, “Which field is a list? Which field do we calculate?” Expected responses are `values` and `total`/`result`, respectively. Write `NotRequired` beside derived fields. Explain that it permits absence, whereas `str | None` permits a null value in a present key. The [Python typing reference](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) states that TypedDict does not enforce values at runtime.
 
-At minutes 5–9, show the source coding context near [00:34:20](https://youtu.be/jGg_1h0qzaM?t=2060), then compare it with the adapted schema. Clarify that the supplied visual review is sampled, not a claim that every video frame was inspected. Do not infer exact Python syntax from the low-resolution source figure.
+At minutes 5–9, compare the baseline schema with the exercise schema. Emphasize that the same node pattern supports several typed inputs and a small partial update. Use the exact Python code supplied in the lesson rather than inferring syntax from a diagram.
 
-![Source illustration L03, 00:43:55: The original one-node arithmetic exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=2635](../assets/video/l03.png)
+![L03: original concept diagram — Multiple inputs and one-node arithmetic.](../assets/diagrams/l03-concept.png)
 
-*Source illustration L03, 00:43:55: The original one-node arithmetic exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=2635*
+*L03: original concept diagram — Multiple inputs and one-node arithmetic.*
 
 
-At minutes 9–12, use the original diagram to ask learners how many work-performing nodes execute. The answer is one. START and END are boundary markers, not extra computation nodes. In the baseline the node is `processor`; in the exercise it is `calculator`. The `if` changes arithmetic inside that node, not the graph's route.
+At minutes 9–12, use the concept diagram to ask learners how many work-performing nodes execute. The answer is one. START and END are boundary markers, not extra computation nodes. In the baseline the node is `processor`; in the exercise it is `calculator`. The `if` changes arithmetic inside that node, not the graph's route.
 
-![L03: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l03.png)
+![L03: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l03.png)
 
-*L03: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L03: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L03 flowchart](../assets/diagrams/l03.mmd).
 
@@ -969,7 +969,6 @@ For recovery, isolate the earliest failing layer. Test `validate_inputs` directl
 
 ## References
 
-- [Source lesson](https://youtu.be/jGg_1h0qzaM?t=1987) and [source exercise](https://youtu.be/jGg_1h0qzaM?t=2607).
 - [LangGraph Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) and [StateGraph reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph).
 - [Python 3.12 TypedDict](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) and [math.prod](https://docs.python.org/3.12/library/math.html#math.prod).
 
@@ -984,26 +983,22 @@ This 80-minute lesson moves from one-node calculations to ordered state transfor
 
 Check dictionary lookups, f-strings, list concatenation, and dictionary returns. Re-establish L03's builder-versus-compiled-graph distinction if necessary. No credentials, Anthropic access, or dashboard is relevant here.
 
-**Video-backed sequence:** [00:44:29–00:55:36](https://youtu.be/jGg_1h0qzaM?t=2669) introduces sequential nodes, demonstrates the overwrite error at about [00:48:00](https://youtu.be/jGg_1h0qzaM?t=2880), fixes preservation, then assigns the three-node profile exercise in the chapter starting [00:54:04](https://youtu.be/jGg_1h0qzaM?t=3244). Whole-track sampled visual review confirms exercise identity at 00:54:10; do not describe that as frame-by-frame viewing or execution of our adaptation.
-
-**Added/current practice:** integer ages, singular-year wording, runtime validation, empty skills, visited lists, and exact acceptance tests are authored teaching decisions. The source's central profile components and Linda example remain intact. Keep this distinction explicit when learners compare punctuation or state annotations with the source.
-
 ## Illustrate: make replacement visible
 
-Use the original diagram to distinguish boundary markers from the work nodes. The upper path is the two-node demonstration; the lower path extends that pattern to the independent exercise. There is no branch and no loop.
+Use the diagram to distinguish boundary markers from the work nodes. The upper path is the two-node demonstration; the lower path extends that pattern to the independent exercise. There is no branch and no loop.
 
-![L04: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l04.png)
+![L04: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l04.png)
 
-*L04: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L04: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L04 flowchart](../assets/diagrams/l04.mmd).
 
 
-Show the source figure only to situate the original exercise. Explain that a source screenshot and an adapted-code execution screenshot have different evidential roles.
+Use the concept figure to situate the sequence and the two update patterns. Explain that a visual summary and executable assertions serve different purposes: the figure clarifies the model, while the module's checks establish the observed behavior.
 
-![Source illustration L04, 00:54:40: The original three-node profile exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=3280](../assets/video/l04.png)
+![L04: original concept diagram — Three-node sequential profile.](../assets/diagrams/l04-concept.png)
 
-*Source illustration L04, 00:54:40: The original three-node profile exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=3280*
+*L04: original concept diagram — Three-node sequential profile.*
 
 
 The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) explicitly describes partial updates and default per-key replacement. Draw three separate records: input state, node return dictionary, and accumulated state. This prevents students treating a streaming update as if it were the entire state. Ask which record contains the name after a node returns only a new `final` value. Expected response: the accumulated state still contains the name; the update itself does not need to repeat it.
@@ -1012,9 +1007,9 @@ Explain manual preservation precisely: `old_text + new_text` creates the complet
 
 ## Demonstrate: an 80-minute delivery sequence
 
-### Minutes 0–10: prediction and source context
+### Minutes 0–10: prediction and concept framing
 
-Introduce the objective and show the source's overwrite moment. Ask, “If both nodes finish successfully, can the final string still be incomplete?” Expected response: yes, the second node can replace the greeting. Have learners predict both the broken string and corrected string before running anything.
+Introduce the objective and the overwrite example. Ask, “If both nodes finish successfully, can the final string still be incomplete?” Expected response: yes, the second node can replace the greeting. Have learners predict both the broken string and corrected string before running anything.
 
 ### Minutes 10–25: live local demonstration, not a live API call
 
@@ -1210,7 +1205,7 @@ For a `KeyError`, inspect the previous node's return and edge names before addin
 
 ## References and evidence limits
 
-The [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), and [add_edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) were verified on 3 November 2026. Explicit boundaries and partial updates modernize the video; `add_sequence` is available but intentionally unused. Offline tests do not establish Windows execution or remote dashboard visibility. The embedded figures and validation appendix record actual delivered execution evidence.
+The [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), and [add_edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) provide the relevant guidance. Explicit boundaries and partial updates are used here; `add_sequence` is available but intentionally unused. Offline tests do not establish Windows execution or remote dashboard visibility. The embedded figures and validation appendix record actual delivered execution evidence.
 
 
 <!-- PAGEBREAK -->
@@ -1221,22 +1216,20 @@ The [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use
 
 Teach this lesson after L04. Allocate 115 minutes: minutes 0–12 explain the decision boundary; 12–22 interpret the diagram; 22–40 demonstrate the baseline; 40–65 guide practice; 65–100 run the independent exercise; and 100–115 assess and recover. Learners need dictionary access, return values, `TypedDict`, and ordinary sequential edges. Do not introduce model credentials, tools, reducers, or checkpointing as requirements.
 
-**Video-backed material:** 00:55:36–01:14:14 introduces separate addition/subtraction nodes, a routing callable, a path map, and a two-section exercise. Use the [opening at 00:55:36](https://youtu.be/jGg_1h0qzaM?t=3336), [construction around 01:06:02](https://youtu.be/jGg_1h0qzaM?t=3962), and [exercise opening at 01:13:09](https://youtu.be/jGg_1h0qzaM?t=4389) selectively rather than adding the whole source runtime to the teaching allowance. **Added/current practice:** validation, branch evidence, fresh partial updates, and deterministic tests are adaptations.
+![L05: original concept diagram — Conditional routes and two independent calculations. Operand pairs remain independent; the calculation steps run sequentially.](../assets/diagrams/l05-concept.png)
 
-![Source illustration L05, 01:13:25: The original two-section conditional exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=4405](../assets/video/l05.png)
-
-*Source illustration L05, 01:13:25: The original two-section conditional exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=4405*
+*L05: original concept diagram — Conditional routes and two independent calculations. Operand pairs remain independent; the calculation steps run sequentially.*
 
 
 Ask: “Where was L03's decision made?” Expect “inside its one processing node.” Then ask: “What changes today?” Expect “the next graph node is selected.” A student who says only “we add another if statement” has missed the orchestration distinction. Explain that ordinary nodes return update dictionaries, whereas this conditional-edge callable returns a label. Current documentation explicitly separates the two mechanisms [504].
 
 ## Illustrate: trace only one outgoing branch
 
-Use the original diagram below to predict the independent exercise. With `operation1="-"` and `operation2="+"`, learners should trace `router1`, `subtract1`, `router2`, and `add2`. Emphasize that the convergence at `router2` does not require both first arithmetic branches. One branch is selected on each run.
+Use the diagram below to predict the independent exercise. With `operation1="-"` and `operation2="+"`, learners should trace `router1`, `subtract1`, `router2`, and `add2`. Emphasize that the convergence at `router2` does not require both first arithmetic branches. One branch is selected on each run.
 
-![L05: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l05.png)
+![L05: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l05.png)
 
-*L05: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L05: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L05 flowchart](../assets/diagrams/l05.mmd).
 
@@ -1270,7 +1263,7 @@ Expected properties are four successful checked cases, a selected arithmetic nod
 [Complete L05 exercise-solution execution log](../assets/execution/l05-exercise-solution.txt). Source SHA-256: `a9bdefe6bc4f2c48fc3c…`.
 
 
-The current API accepts an explicit path map and uses return hints/map information to constrain visualization [505]. Do not repeat the video's suggestion that entry-point helpers have disappeared: `set_entry_point` is still documented as equivalent to an explicit START edge [506]. Retain explicit boundaries here for consistency. Replace historical full-state mutation and the incorrect router-state annotation with partial updates and label return annotations.
+The current API accepts an explicit path map and uses return hints/map information to constrain visualization [505]. `set_entry_point` is still documented as equivalent to an explicit START edge [506]. Retain explicit boundaries here for consistency. Prefer partial updates and label return annotations over full-state mutation and an incorrect router-state annotation.
 
 ## Guided practice: check predictions before execution
 
@@ -1498,7 +1491,7 @@ For mismatched labels, compare callable return strings against map keys, then ma
 - [505: Conditional-edge callable and path-map reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges)
 - [506: Documented entry-point helper equivalence](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/set_entry_point)
 
-Official sources searched and fetched on 3 November 2026. The repeated caption fragment near the exercise is resolved as the pair `7` and `2` by the supplied source review; do not introduce a fifth operand.
+Official sources searched and fetched on 3 November 2026. The repeated value near the exercise represents the pair `7` and `2`; do not introduce a fifth operand.
 
 [504]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: state updates and routing mechanisms"
 [505]: https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges "Conditional-edge callable and path-map reference"
@@ -1515,27 +1508,27 @@ This 110-minute lesson completes the deterministic foundations. After L05's cond
 
 Before class, select the prepared Python 3.12 environment and open `course_lessons/l06.py`, `exercises/starters/l06.py`, and the workbook. Keep `exercises/solutions/l06.py` for the debrief. Work from the repository root so imports resolve. Use installed course dependencies; provider keys are unnecessary. The shared runtime imports foundation packages but never requests configuration here.
 
-Allocate 15 minutes to explanation, 10 to illustration, 10 to the demonstration, 25 to guided practice, 40 to independent work, and 10 to review. Selected video viewing is included in these periods, not added afterward. Source context is [01:14:14–01:31:01](https://youtu.be/jGg_1h0qzaM?t=4454), with the automatic game assignment near [01:29:19](https://youtu.be/jGg_1h0qzaM?t=5359). The supplied whole-track visual review confirms the exercise identity and seven-guess cap; it supersedes the older caption review's statement that no frames had been inspected.
+Allocate 15 minutes to explanation, 10 to illustration, 10 to the demonstration, 25 to guided practice, 40 to independent work, and 10 to review.
 
 ## Illustrate: make the stopping rule visible
 
 In minutes 0–15, ask, “What state changes when a node runs for the second time?” Expected response: it receives accumulated updates, not the original input. Sketch the greeting reset followed by generation and conditional return. Define a back-edge as graph control flow, not Python call-stack recursion. Have learners identify the progress value, its increment, its initial value, and the comparison that ends the loop.
 
-In minutes 15–25, use the original diagram and source figure separately. The first explains our implementation; the second attributes the video's conceptual loop. Do not imply that a source frame is an execution screenshot of adapted code.
+In minutes 15–25, use the original diagram and the conceptual figure separately. The first explains our implementation; the second explains the conceptual loop. Do not imply that a conceptual figure is an execution screenshot of adapted code.
 
-![L06: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l06.png)
+![L06: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l06.png)
 
-*L06: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L06: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L06 flowchart](../assets/diagrams/l06.mmd).
 
 
-![Source illustration L06, 01:29:30: The original automatic higher/lower exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=5370](../assets/video/l06.png)
+![L06: original concept diagram — Bounded loops and automatic higher/lower game.](../assets/diagrams/l06-concept.png)
 
-*Source illustration L06, 01:29:30: The original automatic higher/lower exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=5370*
+*L06: original concept diagram — Bounded loops and automatic higher/lower game.*
 
 
-Ask why resetting only the counter is incomplete. Expected response: stale values in the list would still appear in a new run, even if the number of new generations were correct. Our adaptation clears both derived fields and preserves `name` in a separate field. Explain that current LangGraph partial updates replace ordinary list-valued keys unless a reducer is supplied. Here the node explicitly builds the complete new list; no accumulator reducer is present.
+Ask why resetting only the counter is incomplete. Expected response: stale values in the list would still appear in a new run, even if the number of new generations were correct. The implementation clears both derived fields and preserves `name` in a separate field. Explain that current LangGraph partial updates replace ordinary list-valued keys unless a reducer is supplied. Here the node explicitly builds the complete new list; no accumulator reducer is present.
 
 ## Demonstrate: a ten-minute bounded run
 
@@ -1547,17 +1540,17 @@ python -m course_lessons.l06 --backend none
 
 Spend two minutes locating reset and progress updates, three tracing the conditional path map, three examining the returned summary, and two distinguishing the safety limit from the loop rule. Expected stable properties are counter five, list length five, every integer within 0–10, a Student greeting, and repeatability across fresh runs. Do not grade the exact random list or narrate unrecorded service evidence.
 
-The local `Random(seed + counter)` policy is added for deterministic instruction. It neither uses a global random seed nor leaves a mutable generator advancing between runs. The source used random generation to teach graph repetition; its exact output is not the goal. Modern explicit `START` edges and dictionary updates also replace historical presentation choices. The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) supports these current semantics.
+The local `Random(seed + counter)` policy provides deterministic instruction. It neither uses a global random seed nor leaves a mutable generator advancing between runs. Random generation makes graph repetition visible; its exact output is not the goal. Explicit `START` edges and dictionary updates support the current Graph API semantics described in the [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
-![L06 demonstration: actual captured execution on macOS, 2026-11-03T01:41:35 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-demonstration.png)
+![L06 demonstration: actual captured execution on macOS, 2026-11-03T04:31:10 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-demonstration.png)
 
-*L06 demonstration: actual captured execution on macOS, 2026-11-03T01:41:35 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
+*L06 demonstration: actual captured execution on macOS, 2026-11-03T04:31:10 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
 
-[Complete L06 demonstration execution log](../assets/execution/l06-demonstration.txt). Source SHA-256: `b1d73c626b8e3a07893f…`.
+[Complete L06 demonstration execution log](../assets/execution/l06-demonstration.txt). Source SHA-256: `5ff6b8b7b39424076bb8…`.
 
-![L06 exercise-solution: actual captured execution on macOS, 2026-11-03T01:41:36 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-exercise-solution.png)
+![L06 exercise-solution: actual captured execution on macOS, 2026-11-03T04:31:11 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-exercise-solution.png)
 
-*L06 exercise-solution: actual captured execution on macOS, 2026-11-03T01:41:36 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
+*L06 exercise-solution: actual captured execution on macOS, 2026-11-03T04:31:11 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete L06 exercise-solution execution log](../assets/execution/l06-exercise-solution.txt). Source SHA-256: `1b1da1eaee3c2a2283b2…`.
 
@@ -1772,7 +1765,7 @@ If history is truncated, inspect singleton list replacement. If guesses repeat, 
 
 ## References
 
-The [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) and [loop/control guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) were verified by search and fetch on 3 November 2026. They support the current state-update, compilation, conditional-edge, and recursion-error teaching points. Source attribution follows the supplied caption and whole-track visual reviews. Parent-managed rendering, screenshots, integration, and any later platform validation remain separate from this offline lesson.
+The [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) and [loop/control guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) support the current state-update, compilation, conditional-edge, and recursion-error teaching points. Parent-managed rendering, screenshots, integration, and any later platform validation remain separate from this offline lesson.
 
 
 <!-- PAGEBREAK -->
@@ -1783,9 +1776,9 @@ The [official Graph API overview](https://docs.langchain.com/oss/python/langgrap
 
 Teach one new boundary: a Python graph node can invoke a language model. Preserve the intentionally stateless behavior; do not introduce a checkpointer, append previous messages, or add tools. Learners should leave with a precise account of what was sent, not a belief that a Python loop automatically gives a bot memory.
 
-Allocate 80 minutes: 10 to explain, 10 to illustrate, 15 for demonstration, 15 for guided practice, 20 for the independent task, and 10 for review. These periods include selected source clips. Prerequisites are L06 completion and an approved P00 Anthropic setup. Prepare synthetic prompts, the project environment, and permission for paid requests. Run the focused offline file, not the entire course suite while other lessons are being developed.
+Allocate 80 minutes: 10 to explain, 10 to illustrate, 15 for demonstration, 15 for guided practice, 20 for the independent task, and 10 for review. Prerequisites are L06 completion and an approved P00 Anthropic setup. Prepare synthetic prompts, the project environment, and permission for paid requests. Run the focused offline file, not the entire course suite while other lessons are being developed.
 
-The source window is [01:31:01–01:42:54](https://youtu.be/jGg_1h0qzaM?t=5461); coding begins at [01:32:49](https://youtu.be/jGg_1h0qzaM?t=5569). The presenter uses OpenAI, calls the example a basic wrapper rather than a mature agent, and assigns no original exercise. The Anthropic adaptation and help-desk assignment are explicitly added practice. The supplied full-track review supersedes older “no visual review” caveats: selected frames were inspected, not every frame continuously.
+The example is a basic wrapper rather than a mature agent. The Anthropic implementation and help-desk assignment provide the complete practice sequence.
 
 ## Explain and illustrate: minutes 0–20
 
@@ -1793,20 +1786,20 @@ Ask learners to predict which component chooses the next node. Expected answer: 
 
 Trace the three invocations verbally. Compilation creates an executable graph. Graph invocation processes state. Model invocation inside the node produces an `AIMessage`. Emphasize partial updates: returning `reply`, `usage`, and `sent_messages` does not remove unchanged `messages` from the final graph state. A `TypedDict` annotation describes shape but does not validate incoming values; explicit checks enforce the lesson's one-message contract. These behaviors follow the [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
-Use the original diagram to distinguish the external input loop from a graph cycle. Point at the fresh-state node before each START. Collecting results for display is not the same as forwarding them to the model.
+Use the concept diagram to distinguish the external input loop from a graph cycle. Point at the fresh-state node before each START. Collecting results for display is not the same as forwarding them to the model.
 
-![L07: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l07.png)
+![L07: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l07.png)
 
-*L07: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L07: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L07 flowchart](../assets/diagrams/l07.mmd).
 
 
-Use the source figure at approximately [01:33:00](https://youtu.be/jGg_1h0qzaM?t=5580) for historical context. Attribute it to the original video, not the adapted program. At [01:41:25](https://youtu.be/jGg_1h0qzaM?t=6085), the Bob/name demonstration establishes the intended teaching question.
+Use the concept figure to establish the intended teaching question: could the model guess a name even with no history?
 
-![Source illustration L07, 01:31:55: The original simple-bot objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=5515](../assets/video/l07.png)
+![L07: original concept diagram — Anthropic stateless bot.](../assets/diagrams/l07-concept.png)
 
-*Source illustration L07, 01:31:55: The original simple-bot objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=5515*
+*L07: original concept diagram — Anthropic stateless bot.*
 
 
 Ask, “Could the model guess a name even with no history?” Expected answer: yes. This is why exact response wording is not our test of state isolation. Anthropic's [Messages API documentation](https://platform.claude.com/docs/en/build-with-claude/working-with-messages) states that conversational context must be supplied by the caller. Explain that API statelessness is not a promise about data-retention policy.
@@ -1845,7 +1838,7 @@ Use the final three minutes to inspect `terminal_chat`: blank input is skipped, 
 
 Have pairs annotate the actual second request. Correct response: only `What is my name?`, without Bob, the first greeting, or an earlier AI response. Ask learners to predict behavior for blank input, ` ExIt `, and a model returning text blocks. The first two cause no model call; the helper extracts only textual response blocks from the third.
 
-Introduce `exercises/starters/l07.py`. It is a separate implementation exercise with three TODO functions, not an import wrapper. Its initial CLI deliberately prints `STARTER_NOT_COMPLETED`; successful process exit is not successful assessment. Learners use the workbook's offline harness to check their own implementation. The delivered focused tests validate the demo and reference answer, not unfinished learner functions.
+Introduce `exercises/starters/l07.py`. It is a separate implementation exercise with three TODO functions, not an import wrapper. Its initial CLI deliberately prints `STARTER_NOT_COMPLETED`; successful process exit is not successful assessment. Learners use the workbook's offline harness to check their own implementation. The delivered focused tests validate the demo and reference answer; the workbook harness assesses the learner functions.
 
 The task's graph input is `prompt`, not the demonstration's `messages`. This deliberate variation checks whether learners can construct a message rather than merely copy a call. The required input sequence contains a blank, Mira's introduction, a name question, a mixed-case exit, and an unreachable final prompt. Require exact control behavior and inspectable one-message requests.
 
@@ -2022,7 +2015,7 @@ If learners accidentally append history, remove that list and reconstruct state 
 
 ## References
 
-Verified on 3 November 2026: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages). The [source video](https://youtu.be/jGg_1h0qzaM?t=5461) supplies the conceptual sequence, not the provider adaptation or independent assignment.
+References: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages).
 
 
 <!-- PAGEBREAK -->
@@ -2033,28 +2026,28 @@ Verified on 3 November 2026: [ChatAnthropic integration](https://docs.langchain.
 
 Teach this 125-minute lesson after L07. Learners should leave able to trace a human/AI message list, distinguish an ordinary state replacement from a reducer update, export unchanged raw input, and explain why neither a text file nor a message reducer creates restart-durable memory. Success is a correct data path, not a particularly fluent model sentence.
 
-The video window is [01:42:54–02:03:20][805]; code begins at [01:43:58](https://youtu.be/jGg_1h0qzaM?t=6238). Attribute the name-recall demonstration, prediction pause, restart loss, and logging to the source. Its terminal loop and prototype overwrite-style logging are not the exact delivered implementation. We use finite scripted calls, Anthropic, safe new files, and an added bounded-prompt exercise. Whole-track review resolves the recap at approximately 02:03:19–02:03:26; do not imply a lost exercise or truncated original caption track.
+Use the name-recall demonstration, prediction pause, restart-loss distinction, and logging example to establish the learning goal. The delivered implementation uses finite scripted calls, Anthropic, safe new files, and a bounded-prompt exercise. Its terminal loop and logging behavior should be taught from the runnable implementation described below.
 
 Check that the P00 environment is ready before class. Do not ask students to expose keys during debugging. Use only the synthetic names and inputs provided. Parent/instructor validation must separately record real demo and solution execution: offline doubles establish orchestration behavior, not Anthropic access, model recall, screenshots, or telemetry delivery.
 
 ## Illustrate: timed teaching sequence
 
-Use minutes 0–12 to contrast L07's independent requests with caller-carried history. Ask, “Where does Steve's name physically appear before the second model call?” The expected response is “In the earlier human message that Python sends again,” not “inside a permanent model memory.” At minutes 12–20 draw `H1, A1, H2` and explain the original diagram. Emphasize the separate full-history and prompt-window paths.[806]
+Use minutes 0–12 to contrast L07's independent requests with caller-carried history. Ask, “Where does Steve's name physically appear before the second model call?” The expected response is “In the earlier human message that Python sends again,” not “inside a permanent model memory.” At minutes 12–20 draw `H1, A1, H2` and explain the separate full-history and prompt-window paths.[806]
 
-![L08: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l08.png)
+![L08: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l08.png)
 
-*L08: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L08: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L08 flowchart](../assets/diagrams/l08.mmd).
 
 
-At minutes 20–35 perform the demonstration. Minutes 35–45 are guided inspection and prediction. Reserve minutes 45–100 for the independent task, 100–110 for offline checks and artifact inspection, and 110–125 for the three knowledge checks and review. These periods total 125 minutes, including selected source clips rather than adding the entire video again.
+At minutes 20–35 perform the demonstration. Minutes 35–45 are guided inspection and prediction. Reserve minutes 45–100 for the independent task, 100–110 for offline checks and artifact inspection, and 110–125 for the three knowledge checks and review. These periods total 125 minutes.
 
-A useful source illustration is the history/state segment around [01:50:00](https://youtu.be/jGg_1h0qzaM?t=6600), followed by the logging segment around [02:00:00](https://youtu.be/jGg_1h0qzaM?t=7200). Source frames illustrate the original course; they do not establish execution of this Anthropic adaptation.
+A concept diagram can contrast the history/state path with the logging path. The diagram supports explanation; execution evidence comes from the runnable command and the checks below.
 
-![Source illustration L08, 01:43:30: The original conversation-memory objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=6210](../assets/video/l08.png)
+![L08: original concept diagram — Conversation history and logging.](../assets/diagrams/l08-concept.png)
 
-*Source illustration L08, 01:43:30: The original conversation-memory objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=6210*
+*L08: original concept diagram — Conversation history and logging.*
 
 
 ## Demonstrate: run and inspect rather than narrate an imagined result
@@ -2285,12 +2278,10 @@ If histories collapse, identify plain replacement versus reducer use. If history
 ## References
 
 
-- [805: Source video: conversation history and logging](https://youtu.be/jGg_1h0qzaM?t=6174)
 - [806: LangGraph Graph API: reducers, IDs, and MessagesState](https://docs.langchain.com/oss/python/langgraph/graph-api)
 - [807: LangGraph memory: checkpoints versus selected model input](https://docs.langchain.com/oss/python/langgraph/add-memory)
 - [808: ChatAnthropic: response blocks, usage, and remote token counting](https://docs.langchain.com/oss/python/integrations/chat/anthropic)
 
-[805]: https://youtu.be/jGg_1h0qzaM?t=6174 "Source video: conversation history and logging"
 [806]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: reducers, IDs, and MessagesState"
 [807]: https://docs.langchain.com/oss/python/langgraph/add-memory "LangGraph memory: checkpoints versus selected model input"
 [808]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic: response blocks, usage, and remote token counting"
@@ -2302,7 +2293,7 @@ If histories collapse, identify plain replacement versus reducer use. If history
 
 ## Explain: teaching intent and preparation
 
-Teach this lesson after L08. The source window is [02:03:20–02:28:46](https://youtu.be/jGg_1h0qzaM?t=7400). Its tool-definition and graph-building sequence is video-backed; the audit exercise, explicit execution budgets, and automated failure checks are course additions. The approved teaching allocation is 150 minutes. The core learning distinction is model selection versus deterministic execution versus graph orchestration. Learners should leave able to explain each one without describing a tool call as an already completed action.
+Teach this lesson after L08. The tool-definition and graph-building sequence, audit exercise, explicit execution budgets, and automated failure checks are all part of this lesson. The approved teaching allocation is 150 minutes. The core learning distinction is model selection versus deterministic execution versus graph orchestration. Learners should leave able to explain each one without describing a tool call as an already completed action.
 
 Before class, confirm the project Python 3.12 environment and separately authorized service validation. Never display credentials. Use synthetic requests if tracing is enabled. An offline test pass establishes neither live service access nor dashboard ingestion.
 
@@ -2314,27 +2305,25 @@ Run the focused checks with `python -m pytest tests/lessons/test_l09.py -q`. The
 
 **Minutes 15–30:** work through message roles and reducers. Ask what happens if a node replaces the message list with only its newest response. Learners should predict loss of the user request and prior call/result context. Then explain `Annotated` and `add_messages`: new IDs append; an existing ID updates. Contrast a tool-call ID with a message ID. The [Graph API reference](https://docs.langchain.com/oss/python/langgraph/graph-api) supports this distinction.
 
-![L09: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l09.png)
+![L09: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l09.png)
 
-*L09: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L09: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L09 flowchart](../assets/diagrams/l09.mmd).
 
 
-Use the original diagram to trace a greeting and a dependent calculation. Point out that the tool-result edge returns to the model rather than directly to END. A request may stop through an exception when the budget is exhausted; that is not the successful exit branch.
+Use the concept diagram to trace a greeting and a dependent calculation. Point out that the tool-result edge returns to the model rather than directly to END. A request may stop through an exception when the budget is exhausted; that is not the successful exit branch.
 
-Show an attributed source frame around [02:12:40](https://youtu.be/jGg_1h0qzaM?t=7960), where the arithmetic implementation is underway. Explain that the original provider is OpenAI, whereas this delivered lesson uses Anthropic. The frame is source illustration, not an execution screenshot.
+![L09: original concept diagram — ReAct arithmetic tool loop.](../assets/diagrams/l09-concept.png)
 
-![Source illustration L09, 02:04:20: The original agent–tool loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=7460](../assets/video/l09.png)
-
-*Source illustration L09, 02:04:20: The original agent–tool loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=7460*
+*L09: original concept diagram — ReAct arithmetic tool loop.*
 
 
 ## Demonstrate: minutes 30–50
 
 Open `course_lessons/l09.py`. Spend the first part on the typed tools and their docstrings. Ask why subtract's argument order is explicit. Expected answer: subtraction is not commutative; `a - b` and `b - a` can differ. Then locate the same `TOOLS` list at binding and at `ToolNode` construction. Binding exposes schemas; registering the node supplies executable functions.
 
-Trace the model node's input. It includes a `SystemMessage` followed by all current messages. Reproduce the source's missing-user-message bug conceptually rather than spending paid requests on it. Show the partial update containing one new AI message and the replacement counter value. The [official calculator quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart) confirms the two-node loop, while this course deliberately uses `ToolNode` and the ID-aware reducer.
+Trace the model node's input. It includes a `SystemMessage` followed by all current messages. Show why omitting the user message would make the graph lose the actual problem. Show the partial update containing one new AI message and the replacement counter value. The [official calculator quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart) confirms the two-node loop, while this course deliberately uses `ToolNode` and the ID-aware reducer.
 
 After authorization, execute:
 
@@ -2603,26 +2592,26 @@ Current provider behavior is documented in [ChatAnthropic](https://docs.langchai
 
 ## Explain: teaching purpose and preparation
 
-Teach this core lesson after L09. The video window is 02:28:46–02:52:09; allow 160 minutes. Students must distinguish a model's suggestion, a Python tool's action, and evidence on disk. Prerequisites are tool-call IDs, `add_messages`, and conditional edges.
+Teach this core lesson after L09; allow 160 minutes. Students must distinguish a model's suggestion, a Python tool's action, and evidence on disk. Prerequisites are tool-call IDs, `add_messages`, and conditional edges.
 
 Before class, activate the prepared environment and run only the focused offline tests. Parent live validation supplies execution figures; do not treat test-double output as Anthropic evidence. For an authorized demonstration, run `python -m course_lessons.l10 --live --backend none` with synthetic data and a fresh output directory. Never expose credentials.
 
 Allocate 15 minutes to explanation, 10 to illustration, 25 to demonstration, 25 to guided practice, 65 to the independent workshop task, and 20 to review. Installation and service troubleshooting belong to P00, not to the practice allocation.
 
-Use the [source introduction at 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926) and [meeting-email demonstration at 02:45:53](https://youtu.be/jGg_1h0qzaM?t=9953). The source's global-buffer workaround is acknowledged rather than recommended. This adaptation uses a per-graph closure over a dataclass, retains process-local limitations, and defers state injection and durable approval to U2. The complete caption review resolves the brief homework invitation across the boundary: voice, GUI, and knowledge-base ideas are optional extensions, not a detailed source exercise.
+Frame the lesson around a controlled drafting collaboration: a per-graph closure over a dataclass holds the editable document, Python tools enforce file policy, and the host collects further human feedback until a real save succeeds. Emphasize the process-local limitation and defer state injection and durable approval to U2. The workshop notice is a complete practice task with explicit acceptance criteria.
 
-![Source illustration L10, 02:29:45: The source human–AI drafting requirements. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=8985](../assets/video/l10.png)
+![L10: original concept diagram — Human–AI Drafter collaboration.](../assets/diagrams/l10-concept.png)
 
-*Source illustration L10, 02:29:45: The source human–AI drafting requirements. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=8985*
+*L10: original concept diagram — Human–AI Drafter collaboration.*
 
 
 ## Illustrate: establish the two stopping conditions
 
 Ask students to explain what `END` proves. Expected initial response: “the graph stopped.” Refine it to “this invocation stopped”; that does not prove saving. Draw the no-tool route from agent back to the host, then the tool-success route that also leaves a non-null saved path. The host accepts another human turn only in the first case.
 
-![L10: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l10.png)
+![L10: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l10.png)
 
-*L10: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L10: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L10 flowchart](../assets/diagrams/l10.mmd).
 
@@ -2664,7 +2653,7 @@ Discuss the rejected multi-call batch. Although binding disables parallel tool r
 
 ## Independent exercise: solution walkthrough
 
-The exact added task is the workshop notice in the student chapter and workbook. Students implement `make_tools`, `after_tools`, and `build_graph` in `exercises/starters/l10.py`; the supplied host driver and acceptance scenario stay in place. Initial content addresses Elena, postpones the training workshop, proposes `17 November at 09:00 Singapore time`, and signs Arun. The revision changes the schedule to `18 November at 14:30 Singapore time` and removes the old schedule, keeping a blank line before the closing.
+The exact task is the workshop notice in the student chapter and workbook. Students implement `make_tools`, `after_tools`, and `build_graph` in `exercises/starters/l10.py`; the supplied host driver and acceptance scenario stay in place. Initial content addresses Elena, postpones the training workshop, proposes `17 November at 09:00 Singapore time`, and signs Arun. The revision changes the schedule to `18 November at 14:30 Singapore time` and removes the old schedule, keeping a blank line before the closing.
 
 Walk through `exercises/solutions/l10.py` only after an independent attempt. It is independent implementation, not an import of the baseline. `make_tools` protects empty/finished sessions, counts successful updates, and delegates safe file creation. `after_tools` routes on actual `saved_path` and the budget. `build_graph` supplies model, dispatch, matched messages, error statuses, and conditional edges.
 
@@ -2959,7 +2948,7 @@ A frequent misconception is that returning `END` automatically saved something. 
 
 ## Explain: establish what the evidence can prove
 
-Allow **160 minutes**: explanation 20, illustration 15, timed demonstration 25, guided practice 35, independent answer-card work 45, and review 20. Prerequisites are message/tool routing from L09 and controlled outputs from L10. Learners should know Python functions, dictionaries and partial graph updates. The source window is 02:52:09–03:09:51. The opening seconds conclude the previous homework invitation; the whole-track review confirms there is no missing detailed RAG assignment. Label the answer-card exercise as added practice.
+Allow **160 minutes**: explanation 20, illustration 15, timed demonstration 25, guided practice 35, independent answer-card work 45, and review 20. Prerequisites are message/tool routing from L09 and controlled outputs from L10. Learners should know Python functions, dictionaries and partial graph updates.
 
 Open with a question: “If an assistant cites a page, what have we established?” Expect “there is a source,” then refine it: citation presence is weaker than citation provenance, which is weaker than semantic support. Today's code checks provenance and known teaching facts. It does not provide a general entailment proof. Make this distinction before anyone sees a fluent generated answer.
 
@@ -2967,16 +2956,16 @@ Define RAG as retrieving passages at question time and passing them to generatio
 
 ## Illustrate: source identity and page identity
 
-Show the [source PDF walkthrough](https://youtu.be/jGg_1h0qzaM?t=10381), then open the delivered synthetic PDF. Say explicitly: the original stock-market PDF is available, but its financial assertions have not been independently validated for this course. We use an original three-page fictional policy handbook for inspectable evidence and safe tracing. Do not teach the original finance answer as the replacement's answer, and do not report nine pages.
+Open the delivered synthetic PDF and establish its role as inspectable evidence and safe tracing. Use an original three-page fictional policy handbook rather than treating unrelated financial assertions as course evidence. Do not teach an external finance answer as the replacement's answer, and do not report a different page count.
 
-![Source illustration L11, 02:52:38: The original model/retriever loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=10358](../assets/video/l11.png)
+![L11: original concept diagram — Local-embedding Chroma RAG.](../assets/diagrams/l11-concept.png)
 
-*Source illustration L11, 02:52:38: The original model/retriever loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=10358*
+*L11: original concept diagram — Local-embedding Chroma RAG.*
 
 
-![L11: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l11.png)
+![L11: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l11.png)
 
-*L11: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L11: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L11 flowchart](../assets/diagrams/l11.mmd).
 
@@ -2995,15 +2984,15 @@ Before class, obtain authorized live validation on the configured Anthropic mode
 4. **Minutes 17–22:** compare the late-fee case and the real empty-collection case. Both should return exactly `NOT_IN_DOCUMENT`. The former can still retrieve nearby chunks. The latter has no passages. Ask learners which stage they would investigate in each case.
 5. **Minutes 22–25:** show the bounded turn budget and `execution_config()`. Three model turns limit normal work, while the recursion limit is a separate safety backstop. Explain why a raised retrieval or budget error must not be reclassified as an answer.
 
-![L11 demonstration: actual captured execution on macOS, 2026-11-03T01:48:29 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-demonstration.png)
+![L11 demonstration: actual captured execution on macOS, 2026-11-03T04:34:48 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-demonstration.png)
 
-*L11 demonstration: actual captured execution on macOS, 2026-11-03T01:48:29 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*L11 demonstration: actual captured execution on macOS, 2026-11-03T04:34:48 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
-[Complete L11 demonstration execution log](../assets/execution/l11-demonstration.txt). Source SHA-256: `7f6751d639c213b7d7eb…`.
+[Complete L11 demonstration execution log](../assets/execution/l11-demonstration.txt). Source SHA-256: `03074089df22b7146e77…`.
 
-![L11 exercise-solution: actual captured execution on macOS, 2026-11-03T01:48:35 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-exercise-solution.png)
+![L11 exercise-solution: actual captured execution on macOS, 2026-11-03T04:34:56 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-exercise-solution.png)
 
-*L11 exercise-solution: actual captured execution on macOS, 2026-11-03T01:48:35 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*L11 exercise-solution: actual captured execution on macOS, 2026-11-03T04:34:56 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete L11 exercise-solution execution log](../assets/execution/l11-exercise-solution.txt). Source SHA-256: `603a1a8dbf3b330e16eb…`.
 
@@ -3178,30 +3167,24 @@ Award 10 points: 2 for faithful source/page formatting; 3 for correct retrieval 
 
 **3. Do three late-fee hits establish a fee?** No. Top-k retrieves nearest candidates even when none answers the question. Empty retrieval can skip generation and abstain deterministically. Nonempty insufficient evidence needs evidence inspection and model abstention; here the exact missing-fee response is `NOT_IN_DOCUMENT`. A real retrieval exception must propagate as a failure, not be renamed “empty.”
 
-## Recovery and current-source notes
+## Recovery and current implementation notes
 
 For a missing or textless PDF, repair the asset/OCR stage first. For failed ONNX downloads, diagnose connectivity and cache access; never silently switch embeddings. For wrong citations, compare each cited page to returned hits and the actual PDF. For Anthropic failures, return to P00's safe checks without showing secrets. If the turn budget is exhausted, inspect visible tool calls before changing the limit. Use a fresh output directory for collection incompatibility and preserve evidence before deleting an index.
 
-The historical source uses OpenAI generation and embeddings, `k=5`, and a Windows persistence path. We adapt those choices deliberately. Current upstream source's tool-name comprehension is valid, so do not repeat an older review's alleged undefined-variable defect as fact [1116]. LangGraph conditional routing and reducers remain the source-aligned concepts [1117]. U1/U2 and C01 add checkpointing and approval behavior; this lesson does not claim to implement them.
+Use Anthropic generation, local embeddings, portable persistence and `k=3` for this lesson. Keep tool names consistent between the registry and dispatch lookup. LangGraph conditional routing and reducers are the relevant graph concepts [1116]. U1/U2 and C01 add checkpointing and approval behavior; this lesson does not claim to implement them.
 
 ## References
 
+**Official guidance:** [embeddings][1111] · [text splitting][1112] · [Anthropic tools][1113] · [persistence][1114] · [telemetry][1115] · [graph API][1116].
 
-- [1111: Chroma default embedding function](https://docs.trychroma.com/docs/embeddings/embedding-functions)
-- [1112: Recursive character splitting](https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter)
-- [1113: Anthropic tool binding](https://docs.langchain.com/oss/python/integrations/chat/anthropic)
-- [1114: Chroma persistent client](https://cookbook.chromadb.dev/core/clients/)
-- [1115: Chroma anonymized telemetry opt-out](https://cookbook.chromadb.dev/core/configuration/)
-- [1116: Current upstream course RAG code](https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py)
-- [1117: LangGraph graph and message-state APIs](https://docs.langchain.com/oss/python/langgraph/graph-api)
+
 
 [1111]: https://docs.trychroma.com/docs/embeddings/embedding-functions "Chroma default embedding function"
 [1112]: https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter "Recursive character splitting"
 [1113]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "Anthropic tool binding"
 [1114]: https://cookbook.chromadb.dev/core/clients/ "Chroma persistent client"
 [1115]: https://cookbook.chromadb.dev/core/configuration/ "Chroma anonymized telemetry opt-out"
-[1116]: https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py "Current upstream course RAG code"
-[1117]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph graph and message-state APIs"
+[1116]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph graph and message-state APIs"
 
 
 <!-- PAGEBREAK -->
@@ -3210,7 +3193,7 @@ The historical source uses OpenAI generation and embeddings, `k=5`, and a Window
 
 ## Explain: scope, preparation, and teaching sequence
 
-This is a **SUPPLEMENTARY / CURRENT-API UPDATE**, placed after L08, with a 60-minute teaching allocation. There is no U1 source-video interval. L08's contextual source is 01:42:54–02:03:20, starting at [the memory section](https://youtu.be/jGg_1h0qzaM?t=6174). Its recap crosses the editorial boundary; do not suggest missing source homework. The SQLite exercise and original diagram are newly authored additions, not claims about the presenter's implementation.
+This is a **SUPPLEMENTARY / CURRENT-API UPDATE**, placed after L08, with a 60-minute teaching allocation. It extends the conversation-history concepts from L08 with durable SQLite checkpoints.
 
 The sequence is Explain → Illustrate → Demonstrate → Guided practice → Independent exercise → Review. Before teaching, confirm Python 3.12, the prepared course environment, and `langgraph-checkpoint-sqlite`. Live work uses the shared Anthropic runtime and synthetic facts only. Never project credentials or open configuration during the lesson. If access is unavailable, teach with the named offline doubles and explicitly label the evidence as offline; do not report a real model pass.
 
@@ -3222,9 +3205,9 @@ Ask, “What survives if the Python process disappears?” Expected responses di
 
 Use the diagram to distinguish the message reducer, thread selector, database, and connection lifetime. `MessagesState` manages message updates. A checkpointer persists them. A thread ID selects a conversation within that storage. The `with` block owns an open SQLite connection. None of these is an authorization system.
 
-![U1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u1.png)
+![U1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u1.png)
 
-*U1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*U1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete U1 flowchart](../assets/diagrams/u1.mmd).
 
@@ -3243,11 +3226,11 @@ python -m course_lessons.u1 --live --backend none
 
 At minutes 16–19, locate `send_turn` and the first saver context. Predict the three initial calls: teach `project-a` `ORCHID-42`, ask `project-a`, then ask uninformed `project-b`. Counts are 2, 4, and 2 respectively for those returned states. The other thread's answer should contain `UNKNOWN`, and its state must not contain the code. Assess the structural state separately from generated wording.
 
-At minutes 19–23, locate the first context exit and fresh-process helper. The subprocess invokes only a checkpoint reader. It receives a database path and thread string, not a model or history list. It must recover four messages and the two exact human inputs. This is actual fresh-interpreter disk-read evidence, not a second reference to an existing graph object. It does not test operating-system reboot, abrupt power failure, or production crash recovery.
+At minutes 19–23, locate the first context exit and fresh-process helper. The subprocess invokes only a checkpoint reader. It receives a database path and thread string, not a model or history list. It must recover four messages and the two exact human inputs. This is actual fresh-interpreter disk-read evidence, independent of the first graph object. It does not test operating-system reboot, abrupt power failure, or production crash recovery.
 
 At minutes 23–27, locate the second context and newly compiled graph. Before any fourth call, the restored checkpoint ID must equal the saved ID, with four messages and no pending node. The fourth real call asks for the code again, taking `project-a` to six messages; `project-b` remains at two. The saver factory must be entered as a context manager, as the official API demonstrates.[1213]
 
-The live response may include punctuation or introductory wording. Accept the exact supplied code appearing within an answer; do not assert a whole generated sentence. The summary's booleans describe assertions in that run, not pre-existing publication evidence. Parent validation supplies actual execution captures for the handbook.
+The live response may include punctuation or introductory wording. Accept the exact supplied code appearing within an answer; do not assert a whole generated sentence. The summary's booleans describe assertions in that run, not prior execution evidence.
 
 ![U1 demonstration: actual captured execution on macOS, 2026-11-03T01:48:43 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/u1-demonstration.png)
 
@@ -3270,7 +3253,7 @@ Ask learners to read `get_state` before `send_turn` and identify the paid operat
 
 ## Independent exercise: solution walkthrough
 
-The workbook requires a separate three-function travel notebook, not a renamed demonstration. Its solution is `exercises/solutions/u1.py`, independently implemented without importing the demo. The completed starter runs an explicitly labeled offline self-check, deleting its temporary database afterward. Run the retained live reference with:
+The workbook requires a separate three-function travel notebook, not a renamed demonstration. Its solution is `exercises/solutions/u1.py`, independently implemented without importing the demonstration. The completed starter runs an explicitly labeled offline self-check, deleting its temporary database afterward. Run the retained live reference with:
 
 ```bash
 python -m exercises.solutions.u1 --live
@@ -3450,7 +3433,7 @@ Award 10 points: two for the injectable single-response graph and delta updates;
 
 Common misconceptions are “thread means operating-system thread,” “the model remembers independently,” and “durable means unlimited.” Here a thread is a checkpoint key; the node explicitly passes restored messages to the model. History and checkpoint growth require separate context and retention policies.[1214] SQLite's lightweight synchronous scope is appropriate for this lab, not a claim of production-scale multi-worker support.
 
-For missing history, compare the resolved file and thread ID first. For closed-connection errors, restore `with` indentation and compile inside each new context. For an API exception, inspect whether only a human input remains with pending work; do not append a fake AI success. Use a new run file for a clean retry, preserving the failed artifact for diagnosis. For recall mismatch, inspect synthetic model inputs and the system rule without weakening structural assertions. Never claim live calls, Windows behavior, dashboards, hard-crash recovery, migrations, or backups were tested without corresponding parent evidence.
+For missing history, compare the resolved file and thread ID first. For closed-connection errors, restore `with` indentation and compile inside each new context. For an API exception, inspect whether only a human input remains with pending work; do not append a fake AI success. Use a new run file for a clean retry, preserving the failed artifact for diagnosis. For recall mismatch, inspect synthetic model inputs and the system rule without weakening structural assertions. Never claim live calls, Windows behavior, dashboards, hard-crash recovery, migrations, or backups were tested without corresponding evidence.
 
 ## References
 
@@ -3474,7 +3457,7 @@ For missing history, compare the resolved file and thread ID first. For closed-c
 
 ## Teaching position and evidence
 
-Teach this supplementary 90-minute lab after L10, with U1 completed first. It has no source-video timestamps. For context only, L10 occupies [02:28:46–02:52:09](https://youtu.be/jGg_1h0qzaM?t=8926). The source's global draft buffer motivates this update; do not attribute `ToolRuntime`, checkpointed approval, or the workbook repair protocol to the video. The later whole-track review resolves the closing homework invitation: voice, GUI, and knowledge-base extensions were suggestions, not this assignment.
+Teach this supplementary 90-minute lab after L10, with U1 completed first. Begin with the shared draft-buffer pattern, then make state ownership, checkpointed approval, and bounded filename repair explicit. Keep the focus on the assigned protocol rather than adding a GUI, voice interface, or knowledge-base integration.
 
 The student sequence is explanation, baseline illustration, timed demonstration, guided practice, one independent workbook task, and review. Preserve it. The baseline demonstrates runtime-injected state through `ToolNode`. The workbook independently implements direct state updates with hash-bound approval and a single filename-repair opportunity. Both call real Anthropic through the shared runtime when explicitly run live. Offline evidence is produced with named doubles only.
 
@@ -3490,15 +3473,15 @@ Explain that a side effect changes something outside graph state. A text file re
 
 ## Minutes 15–30: illustrate runtime injection and replay
 
-Trace `generate → update → review → save`. Anthropic returns plain text. The coordinator builds a fixed update-tool request, and `ToolNode` injects `runtime.state`. Make the distinction explicit: Claude is not autonomously selecting this tool. The adaptation intentionally removes that variable while teaching state ownership.
+Trace `generate → update → review → save`. Anthropic returns plain text. The coordinator builds a fixed update-tool request, and `ToolNode` injects `runtime.state`. Make the distinction explicit: Claude is not autonomously selecting this tool. Keeping that choice in the coordinator makes state ownership and approval behavior observable.
 
 Show the tool's `Command(update=...)` and the `ToolMessage` with the matching call ID. The runtime parameter is hidden from the model-facing schema. The official [tool guide](https://docs.langchain.com/oss/python/langchain/tools) documents this pattern; the local imports use `langchain_core` and `langgraph.prebuilt` rather than requiring the umbrella `langchain` distribution.
 
 Next, explain that `interrupt()` suspends through the graph runtime, and the interrupted node restarts from its beginning on resume. A model call before the interrupt inside that same node could run twice. A file write there could happen before approval and repeat on resume. Separate completed generation and later saving solve the teaching case. Do not wrap the interrupt in a broad `try/except`. The [interrupt guide](https://docs.langchain.com/oss/python/langgraph/interrupts) is the current source for these rules.
 
-![U2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u2.png)
+![U2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u2.png)
 
-*U2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*U2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete U2 flowchart](../assets/diagrams/u2.mmd).
 
@@ -3535,7 +3518,7 @@ In `attempt_save`, check approved status and the current content's hash before c
 
 In `build_graph`, require five nodes: generate, review, save, repair, and retry_save. First failure routes to repair. Approved repair routes to retry_save, which always ends. There is no backward edge and no third approval prompt. A repaired unsafe filename therefore produces a terminal `save_failed`, not a recursion-limit exception. Rejection at either approval ends without a new write.
 
-The independent reference lives at `exercises/solutions/u2.py`. Run `python -m exercises.solutions.u2 --live --backend none` only when authorized. Its first filename deliberately traverses upward, then its scripted repair chooses `recovered.txt`. Expected stable properties are one generation per thread, unchanged text across repair, one repair consumed, a real exact-content file, and the second thread untouched until rejection.
+The independent reference implementation lives at `exercises/solutions/u2.py`. Run `python -m exercises.solutions.u2 --live --backend none` only when authorized. Its first filename deliberately traverses upward, then its scripted repair chooses `recovered.txt`. Expected stable properties are one generation per thread, unchanged text across repair, one repair consumed, a real exact-content file, and the second thread untouched until rejection.
 
 ```python
 """U2 workbook extension: approve exact content, then allow ONE filename repair."""
@@ -3766,7 +3749,7 @@ If saving fails, inspect the error and output directory. Do not bypass traversal
 
 ## References
 
-The official [interrupt guide](https://docs.langchain.com/oss/python/langgraph/interrupts), [tool guide](https://docs.langchain.com/oss/python/langchain/tools), and [persistence guide](https://docs.langchain.com/oss/python/langgraph/persistence) were searched and fetched on 3 November 2026. Metadata records the locally checked package versions and remaining live-validation limits.
+Use the official [interrupt guide](https://docs.langchain.com/oss/python/langgraph/interrupts), [tool guide](https://docs.langchain.com/oss/python/langchain/tools), and [persistence guide](https://docs.langchain.com/oss/python/langgraph/persistence) for the current API behavior. Metadata records the locally checked package versions and remaining live-validation limits.
 
 
 <!-- PAGEBREAK -->
@@ -3775,7 +3758,7 @@ The official [interrupt guide](https://docs.langchain.com/oss/python/langgraph/i
 
 ## Preparation and evidence discipline
 
-**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 for retrieval inspection.** S1 has no source-video timestamp. Teach it as an original observability addition, not a missing section of the video. The student chapter, workbook, starter, and reference solution all use the same shipping-receipt task; the seat-quote demonstration is deliberately separate.
+**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 for retrieval inspection.** Teach S1 as an observability addition. The student chapter, workbook, starter, and reference solution all use the same shipping-receipt task; the seat-quote demonstration is deliberately separate.
 
 Before class, have the environment owner validate the configured Anthropic model and the correct LangSmith destination using the existing credential-safe checker. Do not project configuration files. Confirm that the credential can both ingest and read traces if read-back is planned. A tracing-only key cannot read stored runs; do not diagnose that as proof that ingestion failed [1411]. For agent-based workspaces, provision the agent/environment and use its tracing-project compatibility name with the course's existing project-based helper.
 
@@ -3787,9 +3770,9 @@ Use the first ten minutes to distinguish a run, a trace, and an evaluation. Ask:
 
 During minutes 10–20, draw the graph and the evidence pipeline separately. One tool invocation precedes a formatting loop. Invalid schema can repeat `format` once; the tool does not repeat. A schema-valid incorrect amount ends the graph and fails evaluation. This design isolates formatting recovery from factual grading and provides a comprehensible bounded loop.
 
-![S1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s1.png)
+![S1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s1.png)
 
-*S1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*S1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete S1 flowchart](../assets/diagrams/s1.mmd).
 
@@ -3805,15 +3788,15 @@ Ask learners to predict the longest path: `quote, format, check, format, check`.
 
 If dashboard access fails, use local reports to continue evaluation teaching and mark remote inspection pending. Do not create illustrative screenshots that appear to prove a live run. The execution figures below are reserved for the parent's actual demo and solution evidence.
 
-![S1 demonstration: actual captured execution on macOS, 2026-11-03T01:44:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-demonstration.png)
+![S1 demonstration: actual captured execution on macOS, 2026-11-03T04:35:02 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-demonstration.png)
 
-*S1 demonstration: actual captured execution on macOS, 2026-11-03T01:44:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S1 demonstration: actual captured execution on macOS, 2026-11-03T04:35:02 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S1 demonstration execution log](../assets/execution/s1-demonstration.txt). Source SHA-256: `77947d4986c6bf8f4857…`.
 
-![S1 exercise-solution: actual captured execution on macOS, 2026-11-03T01:44:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-exercise-solution.png)
+![S1 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-exercise-solution.png)
 
-*S1 exercise-solution: actual captured execution on macOS, 2026-11-03T01:44:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S1 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S1 exercise-solution execution log](../assets/execution/s1-exercise-solution.txt). Source SHA-256: `2e35b103c8aeccd0020e…`.
 
@@ -4077,7 +4060,7 @@ Close by explaining the scope boundary: this small local evaluation is not a Lan
 
 ## Teaching purpose and preparation
 
-**Supplementary module · 90 minutes · prerequisite L09; L11 recommended for retrieval context.** S2 has no source-video timestamp. The [video tool-agent section at 02:03:20](https://youtu.be/jGg_1h0qzaM?t=7400) supports the loop concept only. Do not attribute this SDK setup, privacy comparison, or exercise to the presenter.
+**Supplementary module · 90 minutes · prerequisite L09; L11 recommended for retrieval context.** S2 develops graph-level tracing, bounded tool loops, privacy comparison, and conservative evidence interpretation.
 
 Prepare the approved Python 3.12 environment and authorized Anthropic/LangWatch project access. Comparison needs LangSmith access with its correct workspace and regional endpoint. Never display credential files. Read `course_support/runtime.py` and `course_support/observability.py` before class: the CLI already creates the parent trace, selects callbacks, and flushes on context exit. Students should not add a second SDK initialization or attach another callback inside every node.
 
@@ -4095,9 +4078,9 @@ In minutes 0–10, establish the distinction between an application assertion an
 
 In minutes 10–20, trace the diagram and have learners predict `prepare, agent, tools, agent, finish`. Clarify that the two `agent` visits are intentional. The first model call uses automatic tool choice with an explicit instruction; the graph rejects a missing or multiple first call. The second call is unbound. Forced named-tool choices were rejected by the configured model during live validation, so the course keeps its chosen model and uses the supported option. A two-call budget and explicit validation bound failures before a recursion-limit error.
 
-![S2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s2.png)
+![S2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s2.png)
 
-*S2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*S2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete S2 flowchart](../assets/diagrams/s2.mmd).
 
@@ -4112,15 +4095,15 @@ Explain `add_messages` as the message-combining rule and list addition as the ev
 4. Explain cleanup after `run_demo` returns: parent context closes, provider flush is attempted, then shutdown occurs. The helper does not expose exporter acknowledgment through the lesson summary. The terminal `passed` label is not a dashboard certificate.
 5. If time and permissions permit, run `python -m course_support.check_connections --service langwatch`. Inspect its HTTP status and rejected-span count. This is a separate connection-check trace, not read-back of the demonstration.
 
-![S2 demonstration: actual captured execution on macOS, 2026-11-03T01:49:00 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-demonstration.png)
+![S2 demonstration: actual captured execution on macOS, 2026-11-03T04:35:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-demonstration.png)
 
-*S2 demonstration: actual captured execution on macOS, 2026-11-03T01:49:00 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S2 demonstration: actual captured execution on macOS, 2026-11-03T04:35:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S2 demonstration execution log](../assets/execution/s2-demonstration.txt). Source SHA-256: `0afc8f0ca1d8e88e350d…`.
 
-![S2 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-exercise-solution.png)
+![S2 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:30 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-exercise-solution.png)
 
-*S2 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S2 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:30 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S2 exercise-solution execution log](../assets/execution/s2-exercise-solution.txt). Source SHA-256: `325068cfabe70207d331…`.
 
@@ -4408,7 +4391,7 @@ Use a ten-point rubric: two points for the correct four-backend privacy plan; tw
 
 Common misconceptions are treating `supported` as automatic factual correctness, treating HTTP 200 as complete acceptance, equating `none` with no network, and treating identical-looking answers as evidence of identical traces. Ask students which specific field or visible span supports each claim.
 
-For provider failures, check sanitized model access/rate-limit diagnostics without showing headers. For export failures, check LangWatch project scope and the course-supported cloud endpoint separately. For missing nodes, inspect callback placement/config propagation. For file collisions, select a new output directory. For current SDK mismatch, do not copy newer `setup(project_id=..., flush_on_exit=...)` options: installed LangWatch 1.4.0 lacks them, and the shared helper already handles scope and flush.
+For provider failures, check sanitized model access/rate-limit diagnostics without showing headers. For export failures, check LangWatch project scope and the course-supported cloud endpoint separately. For missing nodes, inspect callback placement/config propagation. For file collisions, select a new output directory. For current SDK mismatch, do not use `setup(project_id=..., flush_on_exit=...)`: installed LangWatch 1.4.0 lacks those keywords, and the shared helper already handles scope and flush.
 
 ## References
 
@@ -4421,9 +4404,9 @@ Official pages verified on 3 November 2026: [LangWatch LangGraph integration](ht
 
 ## Prepare the capstone without confusing evidence types
 
-**SUPPLEMENTARY · 180 minutes.** Learners need L01–L11, U1–U2 and S1–S2. The related source is [Drafter at 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926) and [RAG at 02:52:09](https://youtu.be/jGg_1h0qzaM?t=10329), not an original capstone assignment. Explain that this assessment combines earlier concepts and adds current approval and testing practices. The source video's global draft buffer and provider choices are not the required implementation.
+**SUPPLEMENTARY · 180 minutes.** Learners need L01–L11, U1–U2 and S1–S2. Explain that this assessment combines earlier concepts and adds current approval and testing practices. The required implementation uses an isolated draft state, explicit review and bounded tool activity.
 
-Before class, have the parent or authorized instructor validate both real commands in fresh output directories. Confirm L11's `course_support.retrieval` and `data/rag_*` fixtures are integrated. Confirm the local embedding download has completed and record the actual fixture's name and nature. Do not claim the source video's finance answer or document page count for a replacement teaching document. Keep the runtime's credential handling unchanged; no credentials belong in teaching slides, graph state or screenshots.
+Before class, have the parent or authorized instructor validate both real commands in fresh output directories. Confirm L11's `course_support.retrieval` and `data/rag_*` fixtures are integrated. Confirm the local embedding download has completed and record the actual fixture's name and nature. Do not claim a finance answer or document page count for a replacement teaching document. Keep the runtime's credential handling unchanged; no credentials belong in teaching slides, graph state or screenshots.
 
 The implementation author ran offline tests only. Treat a passing scripted-model test, a real Anthropic response, an inspected file and a server-side trace as different evidence. None substitutes for the others. Windows instructions remain unvalidated unless someone actually records a Windows run.
 
@@ -4431,11 +4414,11 @@ The implementation author ran offline tests only. Treat a passing scripted-model
 
 ### Minutes 0–15: explain and predict
 
-Present the brief: produce a grounded teammate briefing, permit one revision, require review, and save a new file safely. Ask learners to draw the graph before displaying the original diagram. Expected predictions include a retrieval branch, a failure exit, an interrupt and a save node after approval. Challenge any drawing that saves within the model node or shares one global draft between threads.
+Present the brief: produce a grounded teammate briefing, permit one revision, require review, and save a new file safely. Ask learners to draw the graph before displaying the diagram. Expected predictions include a retrieval branch, a failure exit, an interrupt and a save node after approval. Challenge any drawing that saves within the model node or shares one global draft between threads.
 
-![C01: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/c01.png)
+![C01: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/c01.png)
 
-*C01: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*C01: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete C01 flowchart](../assets/diagrams/c01.mmd).
 
@@ -4444,7 +4427,7 @@ Present the brief: produce a grounded teammate briefing, permit one revision, re
 
 Run `python -m pytest tests/lessons/test_c01.py -q`, then `python -m exercises.starters.c01`. Explain that the starter's honest result is `STARTER_NOT_COMPLETED`; the learner-acceptance test skips unfinished work rather than asserting that it passed. The other checks use named offline doubles and do not contact Chroma or Anthropic.
 
-When authorized, run `python -m course_lessons.c01 --live --backend none`. Narrate the teaching driver: A and B both pause for clarification; A receives a request and reaches review; B remains empty. A requests one concise revision and is approved by the script. B receives an empty answer and terminates. Open the actual `saved_path`, compare its text with the reviewed state, and locate the source/page markers. Emphasize that a scripted approval demonstrates orchestration, not an authenticated person clicking an approval button.
+When authorized, run `python -m course_lessons.c01 --live --backend none`. Narrate the teaching driver: A and B both pause for clarification; A receives a request and reaches review; B remains empty. A requests one concise revision and is approved by the script. B receives an empty answer and terminates. Open the actual `saved_path`, compare its text with the reviewed state, and locate the source/page markers. Emphasize that scripted approval demonstrates orchestration, not an authenticated person clicking an approval button.
 
 ### Minutes 40–65: inspect evidence and messages
 
@@ -4458,7 +4441,7 @@ Inspect the focused tests rather than spending paid calls manufacturing every ed
 
 ### Minutes 85–120: independent implementation
 
-Assign the workbook's exact three functions in `exercises/starters/c01.py`: `assess_citations`, `decide_review` and `render_artifact`. Preserve the provided graph, real retrieval boundary and runtime. The exercise adds fingerprint-bound approval and a deterministic evidence inventory; it is not simply a rerun of the baseline. Offer the three hints in order, only when needed.
+Assign the workbook's exact three functions in `exercises/starters/c01.py`: `assess_citations`, `decide_review` and `render_artifact`. Preserve the provided graph, real retrieval boundary and runtime. The exercise adds fingerprint-bound approval and a deterministic evidence inventory. Offer the three hints in order, only when needed.
 
 ### Minutes 120–145: assess and recover
 
@@ -4468,15 +4451,15 @@ Run `python -m pytest tests/lessons/test_c01.py -q -k implemented_starter_accept
 
 Run `python -m exercises.solutions.c01 --live` in a fresh run directory. With synthetic fixtures only, repeat the demonstration separately using `--backend langsmith` and `--backend langwatch`. Locate the graph/tool/model relationships, review interrupts and save operation. Require server-side trace evidence before describing ingestion as successful. Defer backend-account issues to S1/S2 rather than modifying C01 to swallow them.
 
-![C01 demonstration: actual captured execution on macOS, 2026-11-03T01:49:31 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-demonstration.png)
+![C01 demonstration: actual captured execution on macOS, 2026-11-03T04:35:50 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-demonstration.png)
 
-*C01 demonstration: actual captured execution on macOS, 2026-11-03T01:49:31 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*C01 demonstration: actual captured execution on macOS, 2026-11-03T04:35:50 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete C01 demonstration execution log](../assets/execution/c01-demonstration.txt). Source SHA-256: `a014b0d2bd77be4923f4…`.
 
-![C01 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:52 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-exercise-solution.png)
+![C01 exercise-solution: actual captured execution on macOS, 2026-11-03T04:36:12 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-exercise-solution.png)
 
-*C01 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:52 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*C01 exercise-solution: actual captured execution on macOS, 2026-11-03T04:36:12 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete C01 exercise-solution execution log](../assets/execution/c01-exercise-solution.txt). Source SHA-256: `bb7d511a334d521c0408…`.
 
@@ -4996,29 +4979,17 @@ HTTP 401 indicates a credential/authentication problem, not proof of an unavaila
 
 For file-save errors, check the explicitly selected output directory and filename. A rejected traversal, symlink, or overwrite is an intended safety check. For SQLite persistence, keep the same database and thread ID when testing recovery, and use different IDs when testing isolation. For RAG, inspect pages, chunks, collection path, embedding identity, and retrieved evidence before judging the generated answer.
 
-## E. Source illustrations and attribution
+## E. Original illustrations and technical references
 
-The source stills illustrate the historical teaching material; they are not proof that the adapted code executed. Credit for every listed still: Vaibhav Mehra / freeCodeCamp, *LangGraph Complete Course for Beginners – Complex AI Agents with Python*, https://youtu.be/jGg_1h0qzaM. Historical OpenAI names may appear in source slides; all adapted model calls in this repository use Anthropic.
+The concept illustrations and flowcharts are original diagrams created for this course. Editable Mermaid sources are supplied under `assets/diagrams`. Concept diagrams explain data flow and mental models; complete implementation flowcharts include more detailed guards and error paths.
 
-- L01: The source explanation of conditional edges, [00:12:40](https://youtu.be/jGg_1h0qzaM?t=760).
-- L02: The original personalized-compliment exercise, [00:32:30](https://youtu.be/jGg_1h0qzaM?t=1950).
-- L03: The original one-node arithmetic exercise, [00:43:55](https://youtu.be/jGg_1h0qzaM?t=2635).
-- L04: The original three-node profile exercise, [00:54:40](https://youtu.be/jGg_1h0qzaM?t=3280).
-- L05: The original two-section conditional exercise, [01:13:25](https://youtu.be/jGg_1h0qzaM?t=4405).
-- L06: The original automatic higher/lower exercise, [01:29:30](https://youtu.be/jGg_1h0qzaM?t=5370).
-- L07: The original simple-bot objectives, [01:31:55](https://youtu.be/jGg_1h0qzaM?t=5515).
-- L08: The original conversation-memory objectives, [01:43:30](https://youtu.be/jGg_1h0qzaM?t=6210).
-- L09: The original agent–tool loop diagram, [02:04:20](https://youtu.be/jGg_1h0qzaM?t=7460).
-- L10: The source human–AI drafting requirements, [02:29:45](https://youtu.be/jGg_1h0qzaM?t=8985).
-- L11: The original model/retriever loop diagram, [02:52:38](https://youtu.be/jGg_1h0qzaM?t=10358).
-
-Original diagrams are separately labeled and supplied as editable Mermaid source under `assets/diagrams`. Full source video/captions are not redistributed. [Publisher’s course page](https://www.freecodecamp.org/news/learn-langgraph-and-build-conversational-ai-with-python/) and [original example repository](https://github.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp) provide context; chapter-specific current documentation is cited beside the material it supports.
+Execution screenshots are separate evidence of actual runs, not conceptual mockups. Chapter-specific official technical documentation is retained beside the material it supports. Source/page citations in retrieval exercises refer to the supplied synthetic teaching dataset and must remain inspectable.
 
 ## F. Delivery and classroom use
 
 The Student Handbook, Teacher Handbook, and Exercise Workbook share the same identifiers and sequence. Runnable baselines live in `course_lessons`, unfinished tasks in `exercises/starters`, instructor answers in `exercises/solutions`, and regression tests in `tests/lessons`. Directory separation is not an access-control boundary: instructors should omit solutions when distributing a learner-only package.
 
-Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive. The approved training index is preserved separately; these are new manuals, not silent edits of that index.
+Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive.
 
 ## G. Working glossary
 

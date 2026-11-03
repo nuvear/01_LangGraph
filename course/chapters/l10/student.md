@@ -2,15 +2,15 @@
 
 ## Explain: a draft is not a saved document
 
-**Video-backed core:** 02:28:46–02:52:09. Allow 160 minutes, including guided practice and review. Before starting, complete L09 and be comfortable reading `AIMessage.tool_calls`, matching tool-result IDs, and following a conditional graph edge. This lesson adds a document that changes across human feedback, plus a filesystem side effect: writing a file.
+Allow 160 minutes, including guided practice and review. Before starting, complete L09 and be comfortable reading `AIMessage.tool_calls`, matching tool-result IDs, and following a conditional graph edge. This lesson adds a document that changes across human feedback, plus a filesystem side effect: writing a file.
 
-The source Drafter drafts an email, receives corrections, and saves when the human is satisfied. Watch the [introduction at 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926), then the [drafting demonstration at 02:45:53](https://youtu.be/jGg_1h0qzaM?t=9953). Its important outcome is not beautiful prose. It is a controlled progression from request, to editable draft, to reviewed revision, to a real saved artifact. The system must also handle a request too vague to draft responsibly.
+A Drafter drafts an email, receives corrections, and saves when the human is satisfied. Its important outcome is not beautiful prose. It is a controlled progression from request, to editable draft, to reviewed revision, to a real saved artifact. The system must also handle a request too vague to draft responsibly.
 
 By the end, you should be able to explain an agent/tools graph, replace a whole draft through a tool, retain conversation history between human turns, and prove that a successful save wrote the latest content. You should also recognize what this baseline does **not** provide: durable memory, concurrent editing, or a suspended graph that resumes after a restart.
 
-The supplied whole-track review resolves the source's chapter-boundary ambiguity. At 02:52:08–02:52:18, the presenter offers voice, GUI, and knowledge-base extensions as possible homework. There is no missing detailed assignment. Our workshop-email exercise below is **added practice**, not an invented original brief.
+The workshop-email exercise below provides additional practice with the same collaboration pattern. Treat it as a complete classroom task with its own acceptance criteria.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Illustrate: model choices and Python authority
 
@@ -24,7 +24,7 @@ Two different meanings of “stop” matter. A clarification or draft preview en
 
 `DraftState` contains messages and a model-call counter. The `add_messages` reducer merges newly returned messages with the existing history, using message IDs when replacing existing entries. Nodes return only their new messages, not another copy of the entire history. Without that discipline it is easy to append the same conversation twice. [1003]
 
-The document itself lives in `DraftSession`, a dataclass: a Python object whose declared fields provide a convenient initializer. Tool functions close over this object. A **closure** is a function that retains access to values from the enclosing function where it was created. This avoids the source's single module-global buffer, but it remains mutable process-local storage. It is not LangGraph state injection, a checkpointer, or a multi-user service design.
+The document itself lives in `DraftSession`, a dataclass: a Python object whose declared fields provide a convenient initializer. Tool functions close over this object. A **closure** is a function that retains access to values from the enclosing function where it was created. This avoids a module-global buffer, but it remains mutable process-local storage. It is not LangGraph state injection, a checkpointer, or a multi-user service design.
 
 ## Demonstrate: run and inspect the meeting email
 
@@ -52,9 +52,9 @@ Read `course_lessons/l10.py` in this order: the session dataclass, `make_tools`,
 
 The shared writer accepts a new simple `.txt` basename, rejects traversal and symlinks, and creates the file exclusively so it cannot silently overwrite one. `saved_path` is assigned only after that operation returns. The tools node converts expected validation and file errors into `status="error"` messages so the model can respond honestly. Prompt instructions alone cannot enforce these file policies.
 
-Both graph invocation and nested model/tool invocation preserve runtime configuration, including selected callbacks. The model wrapper is `ChatAnthropic`, not the original video's OpenAI integration. Tool binding remains the same general pattern in the current official integration. [1001]
+Both graph invocation and nested model/tool invocation preserve runtime configuration, including selected callbacks. The model wrapper is `ChatAnthropic`. Tool binding remains the same general pattern in the current official integration. [1001]
 
-**Added implementation policies:** unlike the source's fixed agent-to-tools edge, our conditional edge skips tools on a clarification turn. Actual saved state replaces scanning result text for a successful-save phrase. Require the complete `.txt` filename rather than automatically adding an extension. Scripted human turns make classroom validation finite; the source instead reads feedback at terminal prompts. None of these adaptations introduces durable interrupt/resume.
+The implementation also applies several direct safeguards: a conditional edge skips tools on a clarification turn; actual saved state replaces scanning result text for a successful-save phrase; the complete `.txt` filename is required rather than automatically adding an extension; and scripted human turns make classroom validation finite. None of these safeguards introduces durable interrupt/resume.
 
 <!-- EXAMPLE_CODE -->
 

@@ -1,0 +1,5 @@
+flowchart LR
+A["TypedDict"] -.->|"Documents keys"| B["Input state"]
+B --> C["Node function"] --> D["Partial update"]
+B --> E["State merge"]
+D --> E --> F["Next node"]

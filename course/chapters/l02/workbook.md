@@ -1,10 +1,10 @@
 # L02 — Hello World and personalized compliment
 
-## Task and source
+## Task
 
 Build a deterministic personalized-compliment graph with one working node. The input dictionary contains one field, `message`, holding a person's name. The output uses that same field for the completed compliment. Do not add a model, provider key, tool, second node, conversation history, randomness, or a saved file.
 
-This task preserves the exercise introduced at [00:32:22 in the source video](https://youtu.be/jGg_1h0qzaM?t=1942), inside L02's 00:18:39–00:33:07 window. The supplied whole-track review confirms its slide at 00:32:30. Exact spelling, validation, padded-name handling, and executable acceptance checks below are **added course requirements**, not claims about source notebook punctuation. Plan about 20 minutes of independent work after guided practice.
+The exact spelling, validation, padded-name handling, and executable acceptance checks below define the exercise contract. Plan about 20 minutes of independent work after guided practice.
 
 Start with `exercises/starters/l02.py`. It is a separate scaffold, not an import of the answer. Implement only the three marked functions and retain the supplied checks. After your attempt, compare with the independent reference at `exercises/solutions/l02.py`. The greeting demonstration is `course_lessons/l02.py`; do not simply submit its greeting as your compliment exercise.
 
@@ -88,4 +88,4 @@ For an optional stretch, write an additional local test using a hyphenated name 
 
 ## References
 
-Current patterns were verified on 3 November 2026 against the official [LangGraph Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [Graph API usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [Python TypedDict specification](https://typing.python.org/en/latest/spec/typeddict.html). The video uses historical mutation and entry/finish presentation; this workbook uses returned updates and explicit START/END edges.
+Current patterns use the official [LangGraph Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [Graph API usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [Python TypedDict specification](https://typing.python.org/en/latest/spec/typeddict.html). Use returned updates and explicit START/END edges.

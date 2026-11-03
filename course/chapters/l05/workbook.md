@@ -2,7 +2,7 @@
 
 ## Task: connect two conditional sections
 
-Build a deterministic graph that accepts four integers and two operation strings, then returns two independent pairwise answers. The sections execute in sequence, but the second calculation must never use the first answer as an operand. This preserves the original two-section exercise introduced at [01:13:09](https://youtu.be/jGg_1h0qzaM?t=4389), within the lesson's 00:55:36–01:14:14 source window. Validation and branch evidence below are added practice.
+Build a deterministic graph that accepts four integers and two operation strings, then returns two independent pairwise answers. The sections execute in sequence, but the second calculation must never use the first answer as an operand. Validation and branch evidence below support careful verification.
 
 Use `exercises/starters/l05.py`. Complete exactly three focused functions: `route_first`, `route_second`, and `build_graph`. The starter already provides `PairState`, validation, four arithmetic nodes, the second router node, and acceptance checks. Do not replace the graph with one Python calculator function, import the solution, or hard-code the sample answers.
 

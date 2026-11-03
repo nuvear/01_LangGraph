@@ -2,7 +2,7 @@
 
 ## Explain: from conversation to action
 
-**Source window:** [02:03:20–02:28:46](https://youtu.be/jGg_1h0qzaM?t=7400). Allow 150 minutes including practice and review. Prerequisites are L08, Python functions and lists, conditional edges, and a working Anthropic setup from P00. U1 is an optional memory update after L08, not a prerequisite for this fresh-request graph.
+Allow 150 minutes including practice and review. Prerequisites are L08, Python functions and lists, conditional edges, and a working Anthropic setup from P00. U1 is an optional memory update after L08, not a prerequisite for this fresh-request graph.
 
 By the end, you should be able to define documented arithmetic tools, bind their schemas to a model, preserve message history with a reducer, route a model response to a tool node or END, and audit each result against its call ID. You will also distinguish successful termination from a safety limit that stopped an unfinished run.
 
@@ -24,18 +24,16 @@ Two independent calculations may be requested together. Their results must be pa
 
 <!-- ORIGINAL_DIAGRAM -->
 
-The original diagram shows both normal routes and explicit failure bounds. Follow its return edge from tools to the model. A tool result is not automatically the final user answer; the model normally needs another turn to interpret it. The no-tool route exits directly after a model response.
+The concept diagram shows both normal routes and explicit failure bounds. Follow its return edge from tools to the model. A tool result is not automatically the final user answer; the model normally needs another turn to interpret it. The no-tool route exits directly after a model response.
 
-**Video-backed illustration:** the source introduces the tool graph near [02:03:26](https://youtu.be/jGg_1h0qzaM?t=7406), explains reducers near [02:10:29](https://youtu.be/jGg_1h0qzaM?t=7829), and shows coding near [02:12:40](https://youtu.be/jGg_1h0qzaM?t=7960). A source frame is evidence of the original lesson, not execution of this adaptation.
-
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Demonstrate: run the complete baseline
 
 The demonstration is `course_lessons/l09.py`. Its tools add, subtract, and multiply integers. Useful docstrings describe their purpose, while argument names and annotations form schemas for the model. The [tools guide](https://docs.langchain.com/oss/python/langchain/tools) explains that functions become tools with descriptions and input schemas. Subtraction's description specifically preserves argument order.
 
 1. Open the demonstration and find `TOOLS`, `build_graph`, and `route_after_model`. Predict which function actually executes the arithmetic. It is not the routing function: the route returns a label, and `ToolNode` performs execution.
-2. Follow `START → model`. The model input prepends the system instruction to **all** current state messages. Passing only the system instruction would discard the user's actual problem, a debugging issue also demonstrated in the video.
+2. Follow `START → model`. The model input prepends the system instruction to **all** current state messages. Passing only the system instruction would discard the user's actual problem.
 3. Follow the conditional edge. Any valid `tool_calls` route to tools; no calls route to END. After tool execution, the ordinary edge returns to the model. The model-call counter starts at zero for every request.
 4. In the activated project environment, run the focused offline checks first:
 
@@ -69,7 +67,7 @@ The demonstration permits at most six model calls per request and four tool call
 
 ## Independent task: build an audited arithmetic runner
 
-This is **added practice**, not a separate homework assignment claimed from the source. Complete `exercises/starters/l09.py` using the exact workbook specification. Implement `route_next`, `make_agent`, and `collect_audit` without importing the demonstration or reference solution. Keep the provided typed tools and acceptance harness.
+Complete `exercises/starters/l09.py` using the exact workbook specification. Implement `route_next`, `make_agent`, and `collect_audit` without importing the demonstration or reference solution. Keep the provided typed tools and acceptance harness.
 
 Use a default limit of four model calls and a maximum of three tools per batch. Produce an audit row for every result with `call_id`, `tool`, `args`, `result`, and `status`. Reject mismatched or missing results instead of fabricating evidence. Validate three requests: subtract five from eighteen and then multiply the observed result by four; independently compute nine plus six and eight times three; and give a greeting with no calculation. The workbook provides progressive hints, failure cases, and completion criteria. The independent solution is `exercises/solutions/l09.py`.
 
@@ -83,10 +81,10 @@ Use a default limit of four model calls and a maximum of three tools per batch. 
 
 If the model ignores tools, check that the same tool list reaches both `bind_tools` and `ToolNode`, and that your prompt explicitly asks for tool-backed arithmetic. Do not fix this by fabricating calls. If the provider rejects the transcript, check every call/result ID and whether all results precede the next model turn. If a greeting reaches tools, inspect structured calls rather than searching text for arithmetic keywords.
 
-The video uses OpenAI; this adaptation uses the shared Anthropic factory with locally configured model selection and no temperature override. [ChatAnthropic](https://docs.langchain.com/oss/python/integrations/chat/anthropic) exposes normalized `AIMessage.tool_calls`. At the direct [Anthropic client-tool layer](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview), the corresponding blocks are `tool_use` and `tool_result`, linked by `tool_use_id`. Do not manually mix those wire-format dictionaries into LangChain tool-message construction.
+This lesson uses the shared Anthropic factory with locally configured model selection and no temperature override. [ChatAnthropic](https://docs.langchain.com/oss/python/integrations/chat/anthropic) exposes normalized `AIMessage.tool_calls`. At the direct [Anthropic client-tool layer](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview), the corresponding blocks are `tool_use` and `tool_result`, linked by `tool_use_id`. Do not manually mix those wire-format dictionaries into LangChain tool-message construction.
 
 The installed ToolNode wraps schema-validation failures in a `ToolException` subtype. The supplied narrowly typed handler supports that path without swallowing arbitrary programming errors. Empty or malformed call JSON is rejected explicitly. This example does not add durable memory, division, file-writing tools, or private reasoning logs. If execution reaches a safety exception, inspect the last observable call and correct the cause rather than simply raising the limit.
 
 ## References
 
-The linked video supplies the arithmetic-loop progression and demonstrated `312` calculation. Current official references linked above were verified on 3 November 2026. The explicit budgets, audit acceptance checks, offline doubles, and independent workbook task are additions for this course.
+Current official references linked above support the arithmetic-loop progression. The explicit budgets, audit acceptance checks, offline doubles, and independent workbook task are part of this course.

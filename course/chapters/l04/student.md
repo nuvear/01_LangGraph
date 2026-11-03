@@ -6,10 +6,6 @@ A graph can run in the correct order and still produce the wrong answer. In this
 
 By the end, you should be able to build a directed sequence, predict intermediate state, distinguish a partial update from the accumulated state, and extend the sequence to produce a complete profile. Prerequisites are L03, dictionaries, lists, f-strings, and ordinary Python functions. Allow about 80 minutes, including guided practice and the independent exercise. No model, credentials, paid API, or tracing backend is needed.
 
-**Video-backed content:** the source section is [00:44:29–00:55:36](https://youtu.be/jGg_1h0qzaM?t=2669). It demonstrates two name/age nodes, introduces the overwrite mistake around [00:48:00](https://youtu.be/jGg_1h0qzaM?t=2880), then assigns a three-node profile exercise in the chapter beginning [00:54:04](https://youtu.be/jGg_1h0qzaM?t=3244). The reviewed exercise uses Linda, age 31, with Python, machine learning, and LangGraph skills. Exact punctuation here is an adaptation, not a transcription of a low-resolution frame.
-
-**Added practice and current-API update:** this version uses integer ages, explicit input validation, partial updates, a visited-node list, and defined empty-skill behavior. These additions make correctness observable and testable without changing the source exercise's purpose.
-
 ## Illustrate: state, updates, and directed edges
 
 The demonstration state has input keys `name` and `age`, plus generated keys `final` and `visited`. A `TypedDict` describes the expected dictionary shape to readers and type-checking tools. `NotRequired` means a key need not exist initially. It does not mean LangGraph invents a useful value for it. The greeting node creates the generated keys before the age node reads them.
@@ -20,15 +16,15 @@ For Charlie, age 20, the greeting node returns `{"final": "Hi Charlie.", "visite
 
 The same rule applies to `visited`. Writing `["age"]` would replace `["greet"]`. Returning `state["visited"] + ["age"]` constructs a new list preserving the earlier item. Neither strings nor lists accumulate automatically in this lesson. A **reducer** is a rule that can combine old and new values for a key; configuring one is not necessary here.
 
-The original diagram below shows the two-node demonstration and its three-node extension. Boundary labels mark entry and termination; they do not perform profile work.
+The diagram below shows the two-node demonstration and its three-node extension. Boundary labels mark entry and termination; they do not perform profile work.
 
 <!-- ORIGINAL_DIAGRAM -->
 
 An edge from one node to another makes the destination wait for that source to finish, as specified in the official [add_edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge). Merely registering functions with `add_node` does not establish their order. The exercise needs `START → welcome → age → skills → END`: four edges in total, with two edges between work nodes.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
-Source figure context: the supplied visual review confirms the sequential-profile exercise title at [00:54:10](https://youtu.be/jGg_1h0qzaM?t=3250). A source frame illustrates the original lesson; it is not evidence that this adapted code executed.
+Use the concept figure to compare the two-node overwrite demonstration with the three-node profile sequence. The figure is a visual aid for the state transition ideas explained here; the executable module and its assertions are the evidence for program behavior.
 
 ## Demonstrate: run the tested baseline
 
@@ -56,13 +52,13 @@ The `updates` list comes from a separate, fresh streaming invocation using `stre
 2. Run the demonstration and compare the two final strings. Explain why both versions can report the same visited-node order. Correct control flow is necessary but does not prove correct string construction.
 3. Inspect the first streaming update. Find the two keys it contains and the input keys it omits. Explain why omission is not deletion. Then locate the second update and identify where it carries the earlier greeting forward.
 4. Trace the four construction stages: define the state, register nodes, connect edges, and compile. Invocation uses the compiled graph, not the builder. Compilation checks structure, not whether your sentence has the right words.
-5. Predict the age wording for 0 and 1. This adaptation uses `0 years old` and `1 year old`. Input validation rejects negative ages, strings such as `"31"`, and booleans. Python treats `bool` as related to `int`, so the supplied validator deliberately requires `type(age) is int`.
+5. Predict the age wording for 0 and 1. This lesson uses `0 years old` and `1 year old`. Input validation rejects negative ages, strings such as `"31"`, and booleans. Python treats `bool` as related to `int`, so the supplied validator deliberately requires `type(age) is int`.
 
 These are reading and prediction activities. You do not need to alter another lesson or the shared runtime. The official [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) also shows `add_sequence`, but explicit edges are retained here so you can explain every transition.
 
 ## Independent exercise: welcome, age, and skills
 
-Open `exercises/starters/l04.py`; the full task and recording fields are in `course/chapters/l04/workbook.md`. Complete exactly three TODO functions: `welcome`, `describe_age`, and `describe_skills`. Validation, graph registration, and all four edges are supplied. Explain the edges in the workbook rather than hiding the entire calculation in one function.
+Open `exercises/starters/l04.py`; the full task and exercise fields are in `course/chapters/l04/workbook.md`. Complete exactly three TODO functions: `welcome`, `describe_age`, and `describe_skills`. Validation, graph registration, and all four edges are supplied. Explain the edges in the workbook rather than hiding the entire calculation in one function.
 
 Each node must return only `result` and `visited` updates without mutating its input dictionary or lists. `welcome` starts a fresh message and sets `visited` to `["welcome"]`, even if stale generated fields were supplied. The age node preserves that message, adds age without a trailing period, and extends the list with `"age"`. The skills node preserves both earlier components, finishes the sentence, and adds `"skills"`.
 
@@ -90,6 +86,6 @@ A skills list printed with brackets means Python's list representation was used 
 
 Completion means you can predict the overwrite, explain each edge, produce the exact Linda message and boundary cases, and show unchanged input values. The learner result is a deterministic profile builder, not an autonomous agent.
 
-## References and source differences
+## References
 
-The [source video](https://youtu.be/jGg_1h0qzaM?t=2669) supplies the overwrite demonstration and three-node exercise. The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) were verified by search and fetch on 3 November 2026. This implementation uses explicit `START`/`END` boundaries and returned partial updates rather than reproducing historical mutation-style examples. Historical entry/finish terminology remains conceptually useful; it is not a requirement to use those convenience methods. No LLM integration is added to this deterministic source section.
+The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) provide the relevant guidance. This lesson uses explicit `START`/`END` boundaries and returned partial updates. No LLM integration is added to this deterministic lesson.

@@ -17,16 +17,27 @@ ROOT = Path(__file__).resolve().parents[1]
 FORBIDDEN = {'.git', '.venv', '.work', '.manus', 'outputs', 'inputs', '__pycache__', '.pytest_cache'}
 KEY_PATTERN = re.compile(rb'(?:sk-ant-|lsv2_pt_|gh[oaprsu]_)[A-Za-z0-9_-]{25,}')
 BOOKS = ('LangGraph_Student_Handbook', 'LangGraph_Teacher_Handbook', 'LangGraph_Exercise_Workbook')
+ARCHIVAL_FILES = {
+    'docs/LangGraph_Training_Index.docx', 'course/training_index.md',
+    'course/syllabus.md', 'course/video_source_map.md',
+    'course/video_visual_review.md', 'course/handbook_production_notes.md',
+    'tools/build_training_index.py', 'tools/extract_video_figures.py',
+}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'outputs/course-handbooks')
     parser.add_argument('--overwrite', action='store_true', help='Replace an earlier generated export.')
+    parser.add_argument('--standalone', action='store_true', help='Omit historical planning and borrowed visual assets.')
     args = parser.parse_args()
     output = args.output_dir.resolve()
     names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).decode().split('\0')
     files = [Path(name) for name in names if name]
+    if args.standalone:
+        files = [p for p in files if p.as_posix() not in ARCHIVAL_FILES
+                 and not p.as_posix().startswith('assets/video/')
+                 and not (p.as_posix().startswith('course/chapters/') and p.name == 'metadata.json')]
     secrets = [value.encode() for key, value in dotenv_values(ROOT / '.env').items()
                if value and len(value) >= 8 and re.search('API_KEY|TOKEN|PASSWORD|SECRET', key)]
     manifest = {}
@@ -58,7 +69,8 @@ def main() -> None:
         shutil.copy2(ROOT / relative, target)
     metadata = output / 'DELIVERY_MANIFEST.json'
     metadata.write_text(json.dumps({'files': manifest, 'credential_scan': 'passed',
-                                   'private_environment_included': False}, indent=2))
+                                   'private_environment_included': False,
+                                   'standalone_edition': args.standalone}, indent=2))
     archive = output / 'LangGraph_Complete_Course.zip'
     with ZipFile(archive, 'w', compression=ZIP_DEFLATED, compresslevel=6) as bundle:
         for relative in files:

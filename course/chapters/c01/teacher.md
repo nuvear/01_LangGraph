@@ -2,9 +2,9 @@
 
 ## Prepare the capstone without confusing evidence types
 
-**SUPPLEMENTARY · 180 minutes.** Learners need L01–L11, U1–U2 and S1–S2. The related source is [Drafter at 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926) and [RAG at 02:52:09](https://youtu.be/jGg_1h0qzaM?t=10329), not an original capstone assignment. Explain that this assessment combines earlier concepts and adds current approval and testing practices. The source video's global draft buffer and provider choices are not the required implementation.
+**SUPPLEMENTARY · 180 minutes.** Learners need L01–L11, U1–U2 and S1–S2. Explain that this assessment combines earlier concepts and adds current approval and testing practices. The required implementation uses an isolated draft state, explicit review and bounded tool activity.
 
-Before class, have the parent or authorized instructor validate both real commands in fresh output directories. Confirm L11's `course_support.retrieval` and `data/rag_*` fixtures are integrated. Confirm the local embedding download has completed and record the actual fixture's name and nature. Do not claim the source video's finance answer or document page count for a replacement teaching document. Keep the runtime's credential handling unchanged; no credentials belong in teaching slides, graph state or screenshots.
+Before class, have the parent or authorized instructor validate both real commands in fresh output directories. Confirm L11's `course_support.retrieval` and `data/rag_*` fixtures are integrated. Confirm the local embedding download has completed and record the actual fixture's name and nature. Do not claim a finance answer or document page count for a replacement teaching document. Keep the runtime's credential handling unchanged; no credentials belong in teaching slides, graph state or screenshots.
 
 The implementation author ran offline tests only. Treat a passing scripted-model test, a real Anthropic response, an inspected file and a server-side trace as different evidence. None substitutes for the others. Windows instructions remain unvalidated unless someone actually records a Windows run.
 
@@ -12,7 +12,7 @@ The implementation author ran offline tests only. Treat a passing scripted-model
 
 ### Minutes 0–15: explain and predict
 
-Present the brief: produce a grounded teammate briefing, permit one revision, require review, and save a new file safely. Ask learners to draw the graph before displaying the original diagram. Expected predictions include a retrieval branch, a failure exit, an interrupt and a save node after approval. Challenge any drawing that saves within the model node or shares one global draft between threads.
+Present the brief: produce a grounded teammate briefing, permit one revision, require review, and save a new file safely. Ask learners to draw the graph before displaying the diagram. Expected predictions include a retrieval branch, a failure exit, an interrupt and a save node after approval. Challenge any drawing that saves within the model node or shares one global draft between threads.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -20,7 +20,7 @@ Present the brief: produce a grounded teammate briefing, permit one revision, re
 
 Run `python -m pytest tests/lessons/test_c01.py -q`, then `python -m exercises.starters.c01`. Explain that the starter's honest result is `STARTER_NOT_COMPLETED`; the learner-acceptance test skips unfinished work rather than asserting that it passed. The other checks use named offline doubles and do not contact Chroma or Anthropic.
 
-When authorized, run `python -m course_lessons.c01 --live --backend none`. Narrate the teaching driver: A and B both pause for clarification; A receives a request and reaches review; B remains empty. A requests one concise revision and is approved by the script. B receives an empty answer and terminates. Open the actual `saved_path`, compare its text with the reviewed state, and locate the source/page markers. Emphasize that a scripted approval demonstrates orchestration, not an authenticated person clicking an approval button.
+When authorized, run `python -m course_lessons.c01 --live --backend none`. Narrate the teaching driver: A and B both pause for clarification; A receives a request and reaches review; B remains empty. A requests one concise revision and is approved by the script. B receives an empty answer and terminates. Open the actual `saved_path`, compare its text with the reviewed state, and locate the source/page markers. Emphasize that scripted approval demonstrates orchestration, not an authenticated person clicking an approval button.
 
 ### Minutes 40–65: inspect evidence and messages
 
@@ -34,7 +34,7 @@ Inspect the focused tests rather than spending paid calls manufacturing every ed
 
 ### Minutes 85–120: independent implementation
 
-Assign the workbook's exact three functions in `exercises/starters/c01.py`: `assess_citations`, `decide_review` and `render_artifact`. Preserve the provided graph, real retrieval boundary and runtime. The exercise adds fingerprint-bound approval and a deterministic evidence inventory; it is not simply a rerun of the baseline. Offer the three hints in order, only when needed.
+Assign the workbook's exact three functions in `exercises/starters/c01.py`: `assess_citations`, `decide_review` and `render_artifact`. Preserve the provided graph, real retrieval boundary and runtime. The exercise adds fingerprint-bound approval and a deterministic evidence inventory. Offer the three hints in order, only when needed.
 
 ### Minutes 120–145: assess and recover
 

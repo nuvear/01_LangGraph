@@ -6,9 +6,9 @@ You will read the typed Python used throughout the course, identify the parts of
 
 Prerequisites are P00 and basic Python variables, functions, lists, dictionaries, and `if` statements. Allow 100 minutes, including about 45 minutes of practice. Work from the project root with the prepared Python 3.12 environment active. This lesson needs no model, API key, internet connection during execution, or tracing backend.
 
-**Video-backed concepts:** [00:00:00–00:18:39](https://youtu.be/jGg_1h0qzaM?t=0). Type annotations begin at [00:01:24](https://youtu.be/jGg_1h0qzaM?t=84), graph elements at [00:08:35](https://youtu.be/jGg_1h0qzaM?t=515), and message roles at [00:17:45](https://youtu.be/jGg_1h0qzaM?t=1065). The supplied whole-track review confirms the early topic identities through sampled frames. This window contains no original coding assignment. The movie-card demonstration, badge exercise, validation rules, and graph sketch below are **added practice**, not the presenter's homework.
+This lesson introduces type annotations, graph elements, message roles, and partial state updates through a deterministic movie-card example and a workshop-badge exercise. The examples are designed for local inspection and practice; no model call or remote service is required.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Explain: type hints describe a contract
 
@@ -39,7 +39,7 @@ An ordinary **edge** fixes the next operation. A **conditional edge** calls rout
 
 `START` and `END` are boundary sentinels, not functions that do useful work. `StateGraph(MovieState)` creates a builder. Adding nodes and edges describes the workflow; `compile()` creates its executable form. The resulting **runnable** supports a standard execution interface such as `invoke`. A runnable is a broader concept than a node: a complete compiled graph is runnable too. Compilation checks structure, not whether your card has correct punctuation or your algorithm produces the intended answer. These concepts follow the [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
-Original diagram: the actual movie-card demonstration. Both work nodes run once, in order. The boundaries do not modify state.
+Concept diagram: the movie-card workflow. Both work nodes run once, in order. The boundaries do not modify state.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -65,7 +65,7 @@ Expect a JSON summary containing `mode: deterministic_no_model`, a trimmed movie
 
 `SystemMessage` supplies instructions or context. `HumanMessage` represents user input. `AIMessage` represents an assistant message and can contain tool-call requests. `ToolMessage` carries a tool result, with `tool_call_id` matching the request ID. The demonstration manually constructs all four objects and pairs the ID `l01-square-1`; it does not send them anywhere or run a tool dispatcher. An `AIMessage` constructor is not an API call. Compare the [official message guide](https://docs.langchain.com/oss/python/langchain/messages).
 
-The source video's “function message” wording is legacy or imprecise for this purpose. We teach the current AI-tool-call and tool-result pairing, not a new fifth core role. The guide may show imports from `langchain.messages`; this course uses the installed `langchain_core.messages` classes directly. Provider-specific examples are unnecessary here: Python logic computes values, LangGraph orchestrates functions, and no model behavior is involved.
+Use the current AI-tool-call and tool-result pairing: an AI tool-call request and its ToolMessage result are linked by the matching request ID. The guide may show imports from `langchain.messages`; this course uses the installed `langchain_core.messages` classes directly. Provider-specific examples are unnecessary here: Python logic computes values, LangGraph orchestrates functions, and no model behavior is involved.
 
 <!-- EXECUTION_FIGURES -->
 
@@ -83,7 +83,7 @@ Complete `exercises/starters/l01.py` without importing the demonstration or solu
 
 Normalize `None`, an empty string, or whitespace-only text to `Visitor`; otherwise strip only surrounding whitespace. Reject other name types with `TypeError`. Return only the name update. Validate that sessions is an integer but not a boolean; reject other types with `TypeError` and negative integers with `ValueError`. Return only a badge update using singular `session` for exactly one and plural `sessions` otherwise. Preserve the count and do not mutate inputs.
 
-Compile exactly `START → normalize_name → make_badge → END`. Expected badges are `Ada: 2 sessions` for `"  Ada  "`/2, `Visitor: 0 sessions` for `None`/0, and `Visitor: 1 session` for `"   "`/1. Run `python -m exercises.starters.l01`. Initially it must report `STARTER_NOT_COMPLETED`; after all checks succeed it reports `STARTER_CHECKS_PASSED`.
+Compile exactly `START → normalize_name → make_badge → END`. Expected badges are `Ada: 2 sessions` for `"  Ada  "/2`, `Visitor: 0 sessions` for `None`/0, and `Visitor: 1 session` for `"   "/1`. Run `python -m exercises.starters.l01`. Initially it must report `STARTER_NOT_COMPLETED`; after all checks succeed it reports `STARTER_CHECKS_PASSED`.
 
 Also draw a paper-only alternative: after normalization, route zero sessions to END and positive sessions to `make_badge`, then END. Label the branches. Do not implement that alternative: the required executable graph must still create the zero-session badge. The workbook provides observation fields, progressive hints, and completion criteria.
 
@@ -101,4 +101,4 @@ Run `python -m pytest tests/lessons/test_l01.py -q -p no:cacheprovider` to check
 
 ## References
 
-Official documentation was verified through search and retrieval on 3 November 2026: [Python 3.12 typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [graph construction guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [messages](https://docs.langchain.com/oss/python/langchain/messages). Source attribution: Vaibhav Mehra / freeCodeCamp, [LangGraph Complete Course for Beginners](https://youtu.be/jGg_1h0qzaM?t=0), L01 window 00:00:00–00:18:39.
+Official documentation: [Python 3.12 typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [graph construction guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [messages](https://docs.langchain.com/oss/python/langchain/messages).

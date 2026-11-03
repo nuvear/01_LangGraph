@@ -6,19 +6,15 @@ This 80-minute lesson moves from one-node calculations to ordered state transfor
 
 Check dictionary lookups, f-strings, list concatenation, and dictionary returns. Re-establish L03's builder-versus-compiled-graph distinction if necessary. No credentials, Anthropic access, or dashboard is relevant here.
 
-**Video-backed sequence:** [00:44:29–00:55:36](https://youtu.be/jGg_1h0qzaM?t=2669) introduces sequential nodes, demonstrates the overwrite error at about [00:48:00](https://youtu.be/jGg_1h0qzaM?t=2880), fixes preservation, then assigns the three-node profile exercise in the chapter starting [00:54:04](https://youtu.be/jGg_1h0qzaM?t=3244). Whole-track sampled visual review confirms exercise identity at 00:54:10; do not describe that as frame-by-frame viewing or execution of our adaptation.
-
-**Added/current practice:** integer ages, singular-year wording, runtime validation, empty skills, visited lists, and exact acceptance tests are authored teaching decisions. The source's central profile components and Linda example remain intact. Keep this distinction explicit when learners compare punctuation or state annotations with the source.
-
 ## Illustrate: make replacement visible
 
-Use the original diagram to distinguish boundary markers from the work nodes. The upper path is the two-node demonstration; the lower path extends that pattern to the independent exercise. There is no branch and no loop.
+Use the diagram to distinguish boundary markers from the work nodes. The upper path is the two-node demonstration; the lower path extends that pattern to the independent exercise. There is no branch and no loop.
 
 <!-- ORIGINAL_DIAGRAM -->
 
-Show the source figure only to situate the original exercise. Explain that a source screenshot and an adapted-code execution screenshot have different evidential roles.
+Use the concept figure to situate the sequence and the two update patterns. Explain that a visual summary and executable assertions serve different purposes: the figure clarifies the model, while the module's checks establish the observed behavior.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) explicitly describes partial updates and default per-key replacement. Draw three separate records: input state, node return dictionary, and accumulated state. This prevents students treating a streaming update as if it were the entire state. Ask which record contains the name after a node returns only a new `final` value. Expected response: the accumulated state still contains the name; the update itself does not need to repeat it.
 
@@ -26,9 +22,9 @@ Explain manual preservation precisely: `old_text + new_text` creates the complet
 
 ## Demonstrate: an 80-minute delivery sequence
 
-### Minutes 0–10: prediction and source context
+### Minutes 0–10: prediction and concept framing
 
-Introduce the objective and show the source's overwrite moment. Ask, “If both nodes finish successfully, can the final string still be incomplete?” Expected response: yes, the second node can replace the greeting. Have learners predict both the broken string and corrected string before running anything.
+Introduce the objective and the overwrite example. Ask, “If both nodes finish successfully, can the final string still be incomplete?” Expected response: yes, the second node can replace the greeting. Have learners predict both the broken string and corrected string before running anything.
 
 ### Minutes 10–25: live local demonstration, not a live API call
 
@@ -88,4 +84,4 @@ For a `KeyError`, inspect the previous node's return and edge names before addin
 
 ## References and evidence limits
 
-The [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), and [add_edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) were verified on 3 November 2026. Explicit boundaries and partial updates modernize the video; `add_sequence` is available but intentionally unused. Offline tests do not establish Windows execution or remote dashboard visibility. The embedded figures and validation appendix record actual delivered execution evidence.
+The [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), and [add_edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) provide the relevant guidance. Explicit boundaries and partial updates are used here; `add_sequence` is available but intentionally unused. Offline tests do not establish Windows execution or remote dashboard visibility. The embedded figures and validation appendix record actual delivered execution evidence.

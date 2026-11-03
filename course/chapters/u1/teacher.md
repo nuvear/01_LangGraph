@@ -2,7 +2,7 @@
 
 ## Explain: scope, preparation, and teaching sequence
 
-This is a **SUPPLEMENTARY / CURRENT-API UPDATE**, placed after L08, with a 60-minute teaching allocation. There is no U1 source-video interval. L08's contextual source is 01:42:54–02:03:20, starting at [the memory section](https://youtu.be/jGg_1h0qzaM?t=6174). Its recap crosses the editorial boundary; do not suggest missing source homework. The SQLite exercise and original diagram are newly authored additions, not claims about the presenter's implementation.
+This is a **SUPPLEMENTARY / CURRENT-API UPDATE**, placed after L08, with a 60-minute teaching allocation. It extends the conversation-history concepts from L08 with durable SQLite checkpoints.
 
 The sequence is Explain → Illustrate → Demonstrate → Guided practice → Independent exercise → Review. Before teaching, confirm Python 3.12, the prepared course environment, and `langgraph-checkpoint-sqlite`. Live work uses the shared Anthropic runtime and synthetic facts only. Never project credentials or open configuration during the lesson. If access is unavailable, teach with the named offline doubles and explicitly label the evidence as offline; do not report a real model pass.
 
@@ -30,11 +30,11 @@ python -m course_lessons.u1 --live --backend none
 
 At minutes 16–19, locate `send_turn` and the first saver context. Predict the three initial calls: teach `project-a` `ORCHID-42`, ask `project-a`, then ask uninformed `project-b`. Counts are 2, 4, and 2 respectively for those returned states. The other thread's answer should contain `UNKNOWN`, and its state must not contain the code. Assess the structural state separately from generated wording.
 
-At minutes 19–23, locate the first context exit and fresh-process helper. The subprocess invokes only a checkpoint reader. It receives a database path and thread string, not a model or history list. It must recover four messages and the two exact human inputs. This is actual fresh-interpreter disk-read evidence, not a second reference to an existing graph object. It does not test operating-system reboot, abrupt power failure, or production crash recovery.
+At minutes 19–23, locate the first context exit and fresh-process helper. The subprocess invokes only a checkpoint reader. It receives a database path and thread string, not a model or history list. It must recover four messages and the two exact human inputs. This is actual fresh-interpreter disk-read evidence, independent of the first graph object. It does not test operating-system reboot, abrupt power failure, or production crash recovery.
 
 At minutes 23–27, locate the second context and newly compiled graph. Before any fourth call, the restored checkpoint ID must equal the saved ID, with four messages and no pending node. The fourth real call asks for the code again, taking `project-a` to six messages; `project-b` remains at two. The saver factory must be entered as a context manager, as the official API demonstrates.[1213]
 
-The live response may include punctuation or introductory wording. Accept the exact supplied code appearing within an answer; do not assert a whole generated sentence. The summary's booleans describe assertions in that run, not pre-existing publication evidence. Parent validation supplies actual execution captures for the handbook.
+The live response may include punctuation or introductory wording. Accept the exact supplied code appearing within an answer; do not assert a whole generated sentence. The summary's booleans describe assertions in that run, not prior execution evidence.
 
 <!-- EXECUTION_FIGURES -->
 
@@ -46,7 +46,7 @@ Ask learners to read `get_state` before `send_turn` and identify the paid operat
 
 ## Independent exercise: solution walkthrough
 
-The workbook requires a separate three-function travel notebook, not a renamed demonstration. Its solution is `exercises/solutions/u1.py`, independently implemented without importing the demo. The completed starter runs an explicitly labeled offline self-check, deleting its temporary database afterward. Run the retained live reference with:
+The workbook requires a separate three-function travel notebook, not a renamed demonstration. Its solution is `exercises/solutions/u1.py`, independently implemented without importing the demonstration. The completed starter runs an explicitly labeled offline self-check, deleting its temporary database afterward. Run the retained live reference with:
 
 ```bash
 python -m exercises.solutions.u1 --live
@@ -72,7 +72,7 @@ Award 10 points: two for the injectable single-response graph and delta updates;
 
 Common misconceptions are “thread means operating-system thread,” “the model remembers independently,” and “durable means unlimited.” Here a thread is a checkpoint key; the node explicitly passes restored messages to the model. History and checkpoint growth require separate context and retention policies.[1214] SQLite's lightweight synchronous scope is appropriate for this lab, not a claim of production-scale multi-worker support.
 
-For missing history, compare the resolved file and thread ID first. For closed-connection errors, restore `with` indentation and compile inside each new context. For an API exception, inspect whether only a human input remains with pending work; do not append a fake AI success. Use a new run file for a clean retry, preserving the failed artifact for diagnosis. For recall mismatch, inspect synthetic model inputs and the system rule without weakening structural assertions. Never claim live calls, Windows behavior, dashboards, hard-crash recovery, migrations, or backups were tested without corresponding parent evidence.
+For missing history, compare the resolved file and thread ID first. For closed-connection errors, restore `with` indentation and compile inside each new context. For an API exception, inspect whether only a human input remains with pending work; do not append a fake AI success. Use a new run file for a clean retry, preserving the failed artifact for diagnosis. For recall mismatch, inspect synthetic model inputs and the system rule without weakening structural assertions. Never claim live calls, Windows behavior, dashboards, hard-crash recovery, migrations, or backups were tested without corresponding evidence.
 
 ## References
 

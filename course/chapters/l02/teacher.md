@@ -4,9 +4,9 @@
 
 Teach Explain → Illustrate → Demonstrate → Guided practice → Independent exercise → Review in 70 minutes. The prerequisite is L01, not access to an AI provider. Learners need dictionary access, functions, f-strings, and the idea that `TypedDict` describes a structure. The observable outcome is a compiled graph with exactly one working node and two explicit boundary edges. Avoid adding messages, tools, history, or model calls to make the lesson appear more sophisticated.
 
-The [source window begins at 00:18:39](https://youtu.be/jGg_1h0qzaM?t=1119) and ends at 00:33:07; [code begins at 00:21:08](https://youtu.be/jGg_1h0qzaM?t=1268), and the [exercise chapter begins at 00:32:22](https://youtu.be/jGg_1h0qzaM?t=1942). The supplied whole-track review confirms the compliment slide at 00:32:30. The earlier caption-only caveat does not override that later confirmation. Exact output punctuation and validation requirements in these materials are our adaptation, not a transcription of unreadable source code.
+Use the lesson's exact output punctuation and validation requirements as the acceptance contract for the classroom exercise.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 Before teaching, activate the prepared Python 3.12 environment and identify `course_lessons/l02.py`, `exercises/starters/l02.py`, `exercises/solutions/l02.py`, and `tests/lessons/test_l02.py`. Use only synthetic names. Run the following locally with tracing disabled; no model account or credential inspection is needed:
 
@@ -17,13 +17,13 @@ python -m exercises.starters.l02
 python -m pytest tests/lessons/test_l02.py -q
 ```
 
-The untouched starter must say `STARTER_NOT_COMPLETED`, not `passed`. Distinguish these preparation expectations from actual execution evidence. Source frames and execution screenshots are inserted by the parent production process; do not treat the source video frame as proof of our implementation running.
+The untouched starter must say `STARTER_NOT_COMPLETED`, not `passed`. Distinguish these preparation expectations from actual execution evidence. Treat the command output as execution evidence for the implementation; a prepared example or diagram is not proof that the learner's implementation ran.
 
 ## Explain and illustrate: minutes 0–15
 
 During minutes 0–8, establish that the graph schedules ordinary code. Ask learners to identify the Python function that constructs text and the edges that determine execution order. Expected response: the greeting node constructs the greeting; START → greeter → END gives the path. `read_name` is called inside the node, so it does not make this a two-node graph.
 
-During minutes 8–15, walk through the original diagram with `{"message": "Bob"}`. Use either the greeter or the compliment as its single middle node; never imply that both run in one invocation.
+During minutes 8–15, walk through the diagram with `{"message": "Bob"}`. Use either the greeter or the compliment as its single middle node; never imply that both run in one invocation.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -83,4 +83,4 @@ For import recovery, return to the project root and active environment; use modu
 
 ## Current API and references
 
-The video mutates state and uses entry/finish helpers. Our explicit START/END edges make the path visible; current documentation still contains entry-point helpers, so do not call them removed. The [official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) advises returning updates rather than mutating state. The [Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) supports the ordinary-dictionary explanation. These official sources were searched and fetched on 3 November 2026. Input validation, exact punctuation, tests, and CLI summaries are added teaching safeguards. No Windows execution, model request, tracing dashboard, or publication result is established by this chapter.
+Use explicit START/END edges to make the path visible; current documentation still contains entry-point helpers, so do not call them removed. The [official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) advises returning updates rather than mutating state. The [Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) supports the ordinary-dictionary explanation. Input validation, exact punctuation, tests, and CLI summaries are teaching safeguards for this lesson. No model request or tracing dashboard is needed for this chapter.

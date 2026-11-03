@@ -4,15 +4,13 @@
 
 Teach this lesson after L04. Allocate 115 minutes: minutes 0–12 explain the decision boundary; 12–22 interpret the diagram; 22–40 demonstrate the baseline; 40–65 guide practice; 65–100 run the independent exercise; and 100–115 assess and recover. Learners need dictionary access, return values, `TypedDict`, and ordinary sequential edges. Do not introduce model credentials, tools, reducers, or checkpointing as requirements.
 
-**Video-backed material:** 00:55:36–01:14:14 introduces separate addition/subtraction nodes, a routing callable, a path map, and a two-section exercise. Use the [opening at 00:55:36](https://youtu.be/jGg_1h0qzaM?t=3336), [construction around 01:06:02](https://youtu.be/jGg_1h0qzaM?t=3962), and [exercise opening at 01:13:09](https://youtu.be/jGg_1h0qzaM?t=4389) selectively rather than adding the whole source runtime to the teaching allowance. **Added/current practice:** validation, branch evidence, fresh partial updates, and deterministic tests are adaptations.
-
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 Ask: “Where was L03's decision made?” Expect “inside its one processing node.” Then ask: “What changes today?” Expect “the next graph node is selected.” A student who says only “we add another if statement” has missed the orchestration distinction. Explain that ordinary nodes return update dictionaries, whereas this conditional-edge callable returns a label. Current documentation explicitly separates the two mechanisms [504].
 
 ## Illustrate: trace only one outgoing branch
 
-Use the original diagram below to predict the independent exercise. With `operation1="-"` and `operation2="+"`, learners should trace `router1`, `subtract1`, `router2`, and `add2`. Emphasize that the convergence at `router2` does not require both first arithmetic branches. One branch is selected on each run.
+Use the diagram below to predict the independent exercise. With `operation1="-"` and `operation2="+"`, learners should trace `router1`, `subtract1`, `router2`, and `add2`. Emphasize that the convergence at `router2` does not require both first arithmetic branches. One branch is selected on each run.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -34,7 +32,7 @@ Expected properties are four successful checked cases, a selected arithmetic nod
 
 <!-- EXECUTION_FIGURES -->
 
-The current API accepts an explicit path map and uses return hints/map information to constrain visualization [505]. Do not repeat the video's suggestion that entry-point helpers have disappeared: `set_entry_point` is still documented as equivalent to an explicit START edge [506]. Retain explicit boundaries here for consistency. Replace historical full-state mutation and the incorrect router-state annotation with partial updates and label return annotations.
+The current API accepts an explicit path map and uses return hints/map information to constrain visualization [505]. `set_entry_point` is still documented as equivalent to an explicit START edge [506]. Retain explicit boundaries here for consistency. Prefer partial updates and label return annotations over full-state mutation and an incorrect router-state annotation.
 
 ## Guided practice: check predictions before execution
 
@@ -87,7 +85,7 @@ For mismatched labels, compare callable return strings against map keys, then ma
 
 ## References
 
-Official sources searched and fetched on 3 November 2026. The repeated caption fragment near the exercise is resolved as the pair `7` and `2` by the supplied source review; do not introduce a fifth operand.
+Official sources searched and fetched on 3 November 2026. The repeated value near the exercise represents the pair `7` and `2`; do not introduce a fifth operand.
 
 [504]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: state updates and routing mechanisms"
 [505]: https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges "Conditional-edge callable and path-map reference"

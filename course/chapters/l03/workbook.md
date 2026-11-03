@@ -2,7 +2,7 @@
 
 ## Task: finish one calculator node
 
-Build one compiled LangGraph graph that receives an integer list, a name, and an operation. Select addition or multiplication with Python logic inside one node. This follows the source's [addition/multiplication exercise at 00:43:27](https://youtu.be/jGg_1h0qzaM?t=2607), within the L03 source window 00:33:07–00:44:29. Strict validation, exact output formatting, numeric outputs, and empty-list rules below are added assessment requirements, not claims about the original slide.
+Build one compiled LangGraph graph that receives an integer list, a name, and an operation. Select addition or multiplication with Python logic inside one node. Strict validation, exact output formatting, numeric outputs, and empty-list rules below define the assessment contract.
 
 Start from `exercises/starters/l03.py`. Implement its three TODO functions, not a new script. Do not import `exercises.solutions.l03` or `course_lessons.l03` into your submission. The independent reference, for review after your attempt, is `exercises/solutions/l03.py`.
 

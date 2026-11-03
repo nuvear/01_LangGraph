@@ -2,7 +2,7 @@
 
 ## Exercise: trace a handout lookup without overstating evidence
 
-**Supplementary added practice · 25 minutes within the 90-minute module.** No source-video timestamp applies. Complete the S2 guided arithmetic demonstration first. You will build a different workflow: a synthetic handout lookup with real model, tool, and retriever operations, plus two small privacy/evidence helpers. This is a tracing fixture, not a replacement for L11 vector retrieval.
+**Supplementary practice · 25 minutes within the 90-minute module.** Complete the S2 guided arithmetic demonstration first. You will build a handout lookup workflow with real model, tool, and retriever operations, plus two small privacy/evidence helpers. This is a tracing fixture, not a replacement for L11 vector retrieval.
 
 Your starter is `exercises/starters/s2.py`; the independent reference is `exercises/solutions/s2.py`. Do not import the solution into the starter. The supplied `HandoutRetriever` returns one document for `TRACE-101` and no documents for `MISSING-999`. Its original text explains that flush does not prove acknowledgment or dashboard visibility. A found document has ID `TRACE-101`, source `synthetic-s2-handout`, page 1, and text in `DOCUMENT_TEXT`.
 

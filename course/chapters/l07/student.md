@@ -6,7 +6,7 @@ You will put a real Anthropic chat-model call inside a one-node LangGraph graph.
 
 By the end, you should be able to construct a `HumanMessage`, distinguish model invocation from graph invocation, inspect response text and available token-usage metadata, and explain why a terminal loop does not create conversation memory. Prerequisites are L01–L06, the P00 environment checks, and approved Anthropic access. Allow about 80 minutes, including guided and independent practice. Paid requests require deliberate `--live` opt-in.
 
-The source section is [01:31:01–01:42:54](https://youtu.be/jGg_1h0qzaM?t=5461). It demonstrates a basic model wrapper, a terminal input loop, and a name-recall failure. The presenter explicitly assigns no original exercise. Our Anthropic implementation, bounded execution, validation, offline tests, and help-desk exercise are **current-API updates and added practice**, not historical video homework.
+This lesson demonstrates a basic model wrapper, a terminal input loop, and a name-recall failure. The Anthropic implementation, bounded execution, validation, offline tests, and help-desk exercise provide the complete practice sequence.
 
 ## Explain: a model inside a node
 
@@ -22,13 +22,13 @@ The demo's `BotState` contains `messages`, `reply`, `usage`, and `sent_messages`
 
 A **stateless** request does not carry conversational context from an earlier request unless your application supplies it. Anthropic's [Messages API guide](https://platform.claude.com/docs/en/build-with-claude/working-with-messages) explicitly describes this contract. Sending “My name is Bob” once does not make the next fresh request contain Bob's name. Reusing the same model object does not add conversation history automatically. This concerns conversational context, not a claim about the provider's data-retention policy.
 
-Our original diagram separates the outer Python loop from the graph execution. The arrow back to input is application control flow; there is no graph back-edge. Each visit to START receives new state.
+The diagram separates the outer Python loop from the graph execution. The arrow back to input is application control flow; there is no graph back-edge. Each visit to START receives new state.
 
 <!-- ORIGINAL_DIAGRAM -->
 
-The source introduces coding at [01:32:49](https://youtu.be/jGg_1h0qzaM?t=5569). A source figure around [01:33:00](https://youtu.be/jGg_1h0qzaM?t=5580) illustrates the original bot section; it is not evidence that the adapted Anthropic code ran.
+The concept figure illustrates the bot boundary and the separation between application control flow and each graph execution.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Demonstrate: read the complete implementation
 
@@ -38,7 +38,7 @@ The runnable baseline is `course_lessons/l07.py`. Read `build_bot` first, then `
 
 `ask` constructs a new list containing exactly one `HumanMessage` on every call. The node rejects an empty list, multiple messages, a wrong message role, and blank text. `TypedDict` helps document the state shape, but it does not perform these runtime checks for you.
 
-The shared `get_model` helper obtains the approved key and model configuration locally when live execution is authorized. Secrets never enter graph state. It creates `ChatAnthropic` with a response limit, timeout, and bounded retries. We do not set `temperature`: some current models reject non-default sampling parameters. Do not hard-code a model name merely because it appeared in a video or documentation example; use the model approved during P00.
+The shared `get_model` helper obtains the approved key and model configuration locally when live execution is authorized. Secrets never enter graph state. It creates `ChatAnthropic` with a response limit, timeout, and bounded retries. We do not set `temperature`: some current models reject non-default sampling parameters. Do not hard-code a model name from an example; use the model approved during P00.
 
 `message_text` handles ordinary string content and textual content blocks. It does not print hidden thinking or dump all provider metadata. `usage_metadata` may supply input, output, and total token counts. A token is a unit used by a model to process text, not necessarily one word. Usage is returned when available, otherwise `{}`. It is not a price calculation or proof of memory.
 
@@ -71,7 +71,7 @@ The shared `get_model` helper obtains the approved key and model configuration l
 
 ## Independent task: stateless help-desk session
 
-This is added practice. Complete the separate starter `exercises/starters/l07.py`, without importing the demonstration or solution. Implement its three TODO functions: `classify_entry`, `build_bot`, and `run_session`. The workbook contains the precise interface and acceptance harness.
+Complete the separate starter `exercises/starters/l07.py`, without importing the demonstration or solution. Implement its three TODO functions: `classify_entry`, `build_bot`, and `run_session`. The workbook contains the precise interface and acceptance harness.
 
 Your one-node graph receives a `prompt` string and returns displayable `reply`, optional `usage`, and `sent_messages` recording the one original prompt sent. Its input schema deliberately differs from the demonstration so you must construct the message yourself. The session controller must preserve raw prompt text, skip whitespace-only entries, stop before calling the model for `exit`, and inspect at most six raw entries by default. Returned turns are a local report, never input for later calls.
 
@@ -91,4 +91,4 @@ If the model guesses Bob or Mira, inspect the actual request messages. A plausib
 
 ## References
 
-Official documentation was verified by search and page extraction on 3 November 2026: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [LangGraph memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages). Source attribution is to Vaibhav Mehra/freeCodeCamp's [video section](https://youtu.be/jGg_1h0qzaM?t=5461), originally using OpenAI rather than Anthropic. The supplied whole-track review confirms topic identity with sampled visuals; publication figures and live evidence are added separately.
+Official documentation: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [LangGraph memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages).

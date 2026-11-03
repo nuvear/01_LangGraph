@@ -43,7 +43,7 @@ def build_graph(*, seed: int = 23):
     """Compile a repeatable graph; no mutable random generator is shared.
 
     Each visit uses seed + counter for a local Random instance. This is an
-    explicit teaching adaptation, not the video's uncontrolled random stream.
+    explicit reproducibility policy for repeatable execution and debugging.
     """
     if type(seed) is not int:
         raise ValueError("seed must be an integer")

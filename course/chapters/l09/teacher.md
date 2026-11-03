@@ -2,7 +2,7 @@
 
 ## Explain: teaching intent and preparation
 
-Teach this lesson after L08. The source window is [02:03:20–02:28:46](https://youtu.be/jGg_1h0qzaM?t=7400). Its tool-definition and graph-building sequence is video-backed; the audit exercise, explicit execution budgets, and automated failure checks are course additions. The approved teaching allocation is 150 minutes. The core learning distinction is model selection versus deterministic execution versus graph orchestration. Learners should leave able to explain each one without describing a tool call as an already completed action.
+Teach this lesson after L08. The tool-definition and graph-building sequence, audit exercise, explicit execution budgets, and automated failure checks are all part of this lesson. The approved teaching allocation is 150 minutes. The core learning distinction is model selection versus deterministic execution versus graph orchestration. Learners should leave able to explain each one without describing a tool call as an already completed action.
 
 Before class, confirm the project Python 3.12 environment and separately authorized service validation. Never display credentials. Use synthetic requests if tracing is enabled. An offline test pass establishes neither live service access nor dashboard ingestion.
 
@@ -16,17 +16,15 @@ Run the focused checks with `python -m pytest tests/lessons/test_l09.py -q`. The
 
 <!-- ORIGINAL_DIAGRAM -->
 
-Use the original diagram to trace a greeting and a dependent calculation. Point out that the tool-result edge returns to the model rather than directly to END. A request may stop through an exception when the budget is exhausted; that is not the successful exit branch.
+Use the concept diagram to trace a greeting and a dependent calculation. Point out that the tool-result edge returns to the model rather than directly to END. A request may stop through an exception when the budget is exhausted; that is not the successful exit branch.
 
-Show an attributed source frame around [02:12:40](https://youtu.be/jGg_1h0qzaM?t=7960), where the arithmetic implementation is underway. Explain that the original provider is OpenAI, whereas this delivered lesson uses Anthropic. The frame is source illustration, not an execution screenshot.
-
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Demonstrate: minutes 30–50
 
 Open `course_lessons/l09.py`. Spend the first part on the typed tools and their docstrings. Ask why subtract's argument order is explicit. Expected answer: subtraction is not commutative; `a - b` and `b - a` can differ. Then locate the same `TOOLS` list at binding and at `ToolNode` construction. Binding exposes schemas; registering the node supplies executable functions.
 
-Trace the model node's input. It includes a `SystemMessage` followed by all current messages. Reproduce the source's missing-user-message bug conceptually rather than spending paid requests on it. Show the partial update containing one new AI message and the replacement counter value. The [official calculator quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart) confirms the two-node loop, while this course deliberately uses `ToolNode` and the ID-aware reducer.
+Trace the model node's input. It includes a `SystemMessage` followed by all current messages. Show why omitting the user message would make the graph lose the actual problem. Show the partial update containing one new AI message and the replacement counter value. The [official calculator quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart) confirms the two-node loop, while this course deliberately uses `ToolNode` and the ID-aware reducer.
 
 After authorization, execute:
 

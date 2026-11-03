@@ -1,0 +1,4 @@
+flowchart LR
+A["Current state"] --> B["One work step"] --> C["Update progress"] --> D{"Continue?"}
+D -->|"Budget remains"| A
+D -->|"Goal or limit reached"| E["Stop safely"]

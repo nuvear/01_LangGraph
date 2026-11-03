@@ -1,5 +1,5 @@
 Command: python -m exercises.solutions.l11 --output-dir <run-output>/L11/exercise-solution --live --backend none
-UTC: 2026-11-03T01:48:35.166753+00:00
+UTC: 2026-11-03T04:34:56.168181+00:00
 Exit: 0
 
 STDOUT
@@ -11,7 +11,7 @@ STDOUT
   "result": {
     "supported_card": {
       "question": "How long is the equipment loan, and what renewal is allowed? Use digits.",
-      "answer": "The standard equipment loan is 7 calendar days. You can request 1 renewal of 3 additional calendar days, but only if no other learner has reserved the equipment. The renewal must be requested before the original due date. [rag_teaching_handbook.pdf p.2]",
+      "answer": "The standard equipment loan lasts **7 calendar days**. You may request **1 renewal of 3 additional calendar days**, but only if no other learner has reserved the equipment. You must request the renewal before the original due date. [rag_teaching_handbook.pdf p.2]",
       "status": "grounded",
       "sources": [
         {
@@ -32,7 +32,7 @@ STDOUT
     },
     "blank_search_hits": 0,
     "indexed_chunks": 6,
-    "index_directory": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/L11/exercise-solution/artifacts/answer-card-index/chroma"
+    "index_directory": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T043435Z-a15f52/L11/exercise-solution/artifacts/answer-card-index/chroma"
   }
 }
 

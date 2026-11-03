@@ -2,7 +2,7 @@
 
 ## Preparation and evidence discipline
 
-**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 for retrieval inspection.** S1 has no source-video timestamp. Teach it as an original observability addition, not a missing section of the video. The student chapter, workbook, starter, and reference solution all use the same shipping-receipt task; the seat-quote demonstration is deliberately separate.
+**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 for retrieval inspection.** Teach S1 as an observability addition. The student chapter, workbook, starter, and reference solution all use the same shipping-receipt task; the seat-quote demonstration is deliberately separate.
 
 Before class, have the environment owner validate the configured Anthropic model and the correct LangSmith destination using the existing credential-safe checker. Do not project configuration files. Confirm that the credential can both ingest and read traces if read-back is planned. A tracing-only key cannot read stored runs; do not diagnose that as proof that ingestion failed [1411]. For agent-based workspaces, provision the agent/environment and use its tracing-project compatibility name with the course's existing project-based helper.
 

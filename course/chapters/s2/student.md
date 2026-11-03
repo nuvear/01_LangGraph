@@ -2,7 +2,7 @@
 
 ## Purpose and prerequisites
 
-**Supplementary observability module · 90 minutes.** This is added course material, not a section of the source video, so it has no video start/end timestamp. Complete L09 first; L11 is useful when inspecting retrieval evidence. The original course's [tool-agent section at 02:03:20](https://youtu.be/jGg_1h0qzaM?t=7400) supplies the agent/tool-loop concept, not this LangWatch integration.
+**Supplementary observability module · 90 minutes.** Complete L09 first; L11 is useful when inspecting retrieval evidence. This module develops graph-level tracing, bounded tool loops, ingestion evidence, and privacy-aware comparison of telemetry destinations.
 
 By the end, you should be able to attach tracing at the graph boundary, explain a parent trace and its child spans, follow a bounded model/tool loop, interpret ingestion evidence without exaggeration, and choose which tracing services receive synthetic data. You will also distinguish retrieval failure from exporter failure. You need the prepared Python 3.12 environment and authorized Anthropic access. LangWatch access is needed for the default live command; LangSmith access is needed only for comparison commands that select it. Never paste credentials into lesson code or screenshots.
 
@@ -16,7 +16,7 @@ The program checks the actual tool result, the two-call count, the event order, 
 
 <!-- ORIGINAL_DIAGRAM -->
 
-The original S2 diagram follows the application path and then separates callback routing from export evidence. A route marked `none` means no tracing callbacks selected by this runtime; it does not remove the real model request.
+The S2 diagram follows the application path and then separates callback routing from export evidence. A route marked `none` means no tracing callbacks selected by this runtime; it does not remove the real model request.
 
 ## Attach the callback where the whole graph runs
 
@@ -92,7 +92,7 @@ Missing model access or rate limits are provider problems, not proof of broken t
 
 Configure `LANGWATCH_API_KEY`, `LANGWATCH_PROJECT_ID`, and the course's `LANGWATCH_ENDPOINT` through the prepared local configuration process. The official cloud default is `https://app.langwatch.ai`; this course helper intentionally allows that official endpoint only. Project-scoped/service-key requirements must match the authorized project. Comparison also requires the correct LangSmith project/workspace and regional endpoint from S1.
 
-The current online guide shows newer `setup(project_id=..., flush_on_exit=...)` options. Read-only inspection found installed LangWatch 1.4.0 does not accept those keywords. The shared helper supplies project scope through the environment during setup and flushes its provider explicitly. Do not copy the documentation's OpenAI model example: this course uses current installed ChatAnthropic and real Anthropic requests. These are supplementary current-API adaptations, not changes claimed to be present in the original video.
+The current online guide shows newer `setup(project_id=..., flush_on_exit=...)` options. Read-only inspection found installed LangWatch 1.4.0 does not accept those keywords. The shared helper supplies project scope through the environment during setup and flushes its provider explicitly. Do not copy the documentation's OpenAI model example: this course uses current installed ChatAnthropic and real Anthropic requests. Use the installed SDK behavior and the shared helper as the authoritative configuration for this course.
 
 ## References
 

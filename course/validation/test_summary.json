@@ -8,5 +8,7 @@
     "U2 unfinished learner acceptance: 7"
   ],
   "clean_runtime_same_result": true,
-  "all_34_real_execution_cases_passed": true
+  "all_34_real_execution_cases_passed": true,
+  "standalone_revalidated_at_utc": "2026-11-03T04:37:59.100492+00:00",
+  "clean_runtime_revalidated": true
 }

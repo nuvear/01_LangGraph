@@ -6,9 +6,7 @@ In L03, one node used a Python `if` to decide which arithmetic expression to eva
 
 Allow 115 minutes, including practice and review. You should already understand L04's sequential edges, dictionary access, Python functions, and partial state updates. By the end, you should be able to return a routing label, map that label to a registered node, explain the executed branch, and connect two conditional sections without mixing their inputs.
 
-**Video-backed scope:** this lesson follows 00:55:36–01:14:14 of Vaibhav Mehra's freeCodeCamp course. The [section opening at 00:55:36](https://youtu.be/jGg_1h0qzaM?t=3336) introduces graph-level conditions; coding begins at [00:56:37](https://youtu.be/jGg_1h0qzaM?t=3397). The original exercise asks for two pairwise calculations. **Added practice/current implementation:** this chapter supplies explicit validation, branch evidence, negative/zero examples, and offline tests. Those safeguards are not claims about the original notebook.
-
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ### State updates and route labels do different jobs
 
@@ -22,9 +20,7 @@ The demonstration's registered `router` node runs `validate_inputs`. It returns 
 
 For the single-pair demonstration, the route is START → router → add **or** subtract → END. START and END mark the graph boundaries; they do not calculate anything. The router has conditional outgoing edges, not ordinary edges to both arithmetic nodes. Two ordinary outgoing edges would schedule both destinations rather than implement an either/or decision [501].
 
-The original diagram below shows the exercise's extension. Follow one line out of `router1`, then one line out of `router2`. Each run visits four work nodes. The lines converge at the second router, but only one first arithmetic branch is selected, so this is not a parallel join requiring both branches to run.
-
-**Original course illustration, not a source-video screenshot:**
+The diagram below shows the exercise's extension. Follow one line out of `router1`, then one line out of `router2`. Each run visits four work nodes. The lines converge at the second router, but only one first arithmetic branch is selected, so this is not a parallel join requiring both branches to run.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -89,11 +85,11 @@ If you see an unknown route or node error, compare the routing label with the pa
 
 If the second answer depends on the first, inspect the operands in section two and its routing function. If the first answer disappears, use separate result keys and return partial updates. If validation rejects `"7"`, that is intentional: this task accepts integers, not numeric strings.
 
-The video uses historical names such as `finalNumber` and mutates state in place. This adaptation uses descriptive result keys and fresh update dictionaries. Routing return annotations describe labels with `Literal`, not `AgentState`. The current reference accepts explicit path maps and warns that missing map/type information can make visualizations overly broad [502]. Explicit START/END edges are used here, but `set_entry_point` remains a documented equivalent helper, not a removed API [503]. The [exercise opening at 01:13:09](https://youtu.be/jGg_1h0qzaM?t=4389) motivates two sections; the reviewed caption's repeated “7” is not an extra operand. The intended second pair is `7` and `2`.
+Historical examples may use names such as `finalNumber` or mutate state in place. Prefer descriptive result keys and fresh update dictionaries. Routing return annotations describe labels with `Literal`, not `AgentState`. The current reference accepts explicit path maps and warns that missing map/type information can make visualizations overly broad [502]. Explicit START/END edges are used here, but `set_entry_point` remains a documented equivalent helper, not a removed API [503]. The second pair is `7` and `2`; the repeated value is not an extra operand.
 
 ## References
 
-Official documentation searched and fetched on 3 November 2026. Video scope follows the supplied complete-track review; publication figures are added separately.
+Official documentation searched and fetched on 3 November 2026.
 
 [501]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: state updates, ordinary edges, and conditional edges"
 [502]: https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges "StateGraph add_conditional_edges reference"

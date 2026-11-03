@@ -3,10 +3,10 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--back);color:var(--ink);font:18px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1060px;margin:30px auto;padding:55px 65px;background:var(--paper);box-shadow:0 12px 45px #17324d12}h1,h2,h3{line-height:1.25}h1{font-size:2.1rem;color:var(--teal);margin-top:2.5em;padding-top:.5em;border-top:1px solid #dce8ed}h1:first-child{font-size:2.6rem;color:var(--ink);margin-top:0;border:0}h2{font-size:1.5rem;margin-top:1.8em}h3{font-size:1.16rem}a{color:#087f8c;text-underline-offset:3px}p,li{overflow-wrap:anywhere}pre{padding:22px;background:#112338;color:#eef6ff;border-radius:8px;overflow:auto;font:14px/1.55 Consolas,"SFMono-Regular",monospace}code{font-family:Consolas,"SFMono-Regular",monospace}p code,li code{font-size:.9em;background:#edf4f7;padding:.12em .28em;border-radius:3px}img{display:block;max-width:100%;max-height:780px;height:auto;margin:24px auto 8px;object-fit:contain}p:has(>em:only-child){font-size:.86em;color:var(--muted)}blockquote{margin:18px 0;padding:8px 22px;border-left:4px solid var(--teal);background:#edf6f8}table{border-collapse:collapse;width:100%}td,th{padding:8px;border:1px solid #dbe5ec;text-align:left}.top{position:fixed;right:20px;bottom:20px;background:#087f8c;color:white;padding:8px 14px;border-radius:6px;text-decoration:none;font-size:14px}@media(max-width:700px){body{font-size:17px}main{margin:0;padding:28px 22px}h1{font-size:1.8rem}pre{font-size:12px}}@media print{body{background:white;font-size:11pt}main{margin:0;padding:0;max-width:none;box-shadow:none}h1{page-break-before:always}h1:first-child{page-break-before:auto}.top{display:none}pre{white-space:pre-wrap;font-size:8pt}img{max-height:600px}}
 </style></head><body><main id="top"><h1>LangGraph Python Training</h1>
 <h2>Exercise Workbook</h2>
-<p><strong>Version 1.0 · 3 November 2026 · Author: Manus AI</strong></p>
-<p>A complete Python course based on Vaibhav Mehra’s freeCodeCamp video, <em>LangGraph Complete Course for Beginners – Complex AI Agents with Python</em>. Source: https://youtu.be/jGg_1h0qzaM. Repository: https://github.com/nuvear/01_LangGraph.</p>
+<p><strong>Version 1.1 · 3 November 2026 · Author: Manus AI</strong></p>
+<p>A self-contained, step-by-step Python course for learners who know basic Python and are new to LangGraph. Course repository: https://github.com/nuvear/01_LangGraph.</p>
 <p>Work in exercises/starters, record observations, and use the progressive hints before opening exercises/solutions. Acceptance criteria describe behavior rather than a single wording from a language model. This workbook accompanies the Student Handbook; it is not a substitute for the explanations or complete examples.</p>
-<p>The eleven video-aligned lessons retain the source progression. Preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01 are clearly labeled additions. The estimated full teaching track is 29 hours 55 minutes excluding breaks; source viewing is included rather than added twice.</p>
+<p>The course progresses through eleven core lessons, preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01. The estimated full teaching track is 29 hours 55 minutes excluding breaks, combining explanation, demonstration, guided practice, independent work, and assessment.</p>
 <p><strong>Validation and platforms.</strong> Delivered demonstrations and independent reference solutions are executed and recorded in the validation appendix. Model-based checks use the real configured Anthropic API; offline tests use explicitly identified test doubles. macOS/Python 3.12 is the actual execution platform. Windows commands are supplied but Windows execution is untested. Dashboard visual inspection is not implied by API ingestion checks.</p>
 <p><strong>Credentials and data.</strong> Keep <code>ANTHROPIC_API_KEY</code> in the local ignored <code>.env</code> and select the model with <code>ANTHROPIC_MODEL</code>. Do not put keys in state, prompts, source files, screenshots, traces, or submissions. Tracing sends synthetic lesson data to the selected service. A local embedding model requires a first download but no additional paid embedding API key. Examples are teaching applications, not production-security certifications.</p>
 <p><strong>How to run the code.</strong> Commands assume the repository root and an activated Python 3.12 virtual environment. Start with P00. Without activation, substitute <code>.venv/bin/python</code> on macOS or <code>.\.venv\Scripts\python.exe</code> in PowerShell for <code>python</code>. <code>--live</code> is an explicit opt-in to paid model calls; it is never a fake-response switch. Use a new <code>--output-dir</code> when repeating a save exercise because file writes do not silently overwrite existing work.</p>
@@ -37,7 +37,7 @@
 <p><a id="p00"></a></p>
 <h1>P00 — Setup and safe service checks</h1>
 <h2>Your independent task</h2>
-<p><strong>SUPPLEMENTARY / ADDED PRACTICE.</strong> Build an offline public-profile readiness checker. This is new preparation, not an original video exercise, and has no source-video timestamp. Use basic Python dictionaries, functions and conditionals. The graph wrapper is supplied so you can focus on safe validation. No account, key, <code>.env</code>, model invocation or tracing export is part of this task.</p>
+<p><strong>SUPPLEMENTARY PRACTICE.</strong> Build an offline public-profile readiness checker. Use basic Python dictionaries, functions and conditionals. The graph wrapper is supplied so you can focus on safe validation. No account, key, <code>.env</code>, model invocation or tracing export is part of this task.</p>
 <p>Edit only <code>exercises/starters/p00.py</code>. Complete its three TODO functions without importing the demonstration or reference solution. Keep the supplied fixtures and graph wiring. The independent teacher reference is <code>exercises/solutions/p00.py</code>; the demonstration is <code>course_lessons/p00.py</code>.</p>
 <p>From the project root, with the prepared Python 3.12 environment selected:</p>
 <pre><code class="language-bash">python -m course_lessons.p00 --backend none
@@ -93,7 +93,7 @@ python -m exercises.solutions.p00 --backend none
 <p><a id="l01"></a></p>
 <h1>L01 — Python types and graph elements</h1>
 <h2>Task: make typed workshop badges</h2>
-<p>This is <strong>added practice</strong>, not source-video homework. It applies types and graph vocabulary introduced at <a href="https://youtu.be/jGg_1h0qzaM?t=84">00:01:24</a> and <a href="https://youtu.be/jGg_1h0qzaM?t=515">00:08:35</a>, within L01's 00:00:00–00:18:39 window. Allow 30 minutes after guided practice. Use P00's Python 3.12 environment from the project root. No model or credentials are needed.</p>
+<p>This task applies L01's type and graph vocabulary in a standalone workshop-badge exercise. Allow 30 minutes after guided practice. Use P00's Python 3.12 environment from the project root. No model or credentials are needed.</p>
 <p>Starter: <code>exercises/starters/l01.py</code>. Instructor reference: <code>exercises/solutions/l01.py</code>; try the task first. The demonstration <code>course_lessons/l01.py</code> uses movies, not badges, so reproducing its output does not complete this exercise.</p>
 <p>The supplied <code>BadgeState</code> requires <code>name: str | None</code> and <code>sessions: int</code>; <code>badge: NotRequired[str]</code> may be absent initially. The name key must exist, but may contain None. Type hints do not enforce runtime rules; see the <a href="https://docs.python.org/3.12/library/typing.html">Python typing reference</a>.</p>
 <h2>Establish your baseline</h2>
@@ -120,7 +120,7 @@ python -m exercises.solutions.p00 --backend none
 <p>Each caller input must remain unchanged. Also check name 42 raises TypeError, sessions -1 raises ValueError, and sessions <code>&quot;2&quot;</code> or True raises TypeError. Missing required keys are outside this task. A completed starter reports <code>STARTER_CHECKS_PASSED</code>; a traceback means a failed check.</p>
 <h2>Draw a different route on paper</h2>
 <p>Sketch a two-work-node alternative: START to normalization; then <code>sessions == 0</code> to END or <code>sessions &gt; 0</code> to badge formatting, then END. Assume a valid nonnegative count. Label both routes and identify the absent zero-case output: no badge has been generated.</p>
-<p>Keep the sketch separate. It previews L05 and intentionally differs from the runnable, where zero still receives a badge. START/END are boundaries, not work functions. The student chapter's original diagram instead illustrates the movie demonstration.</p>
+<p>Keep the sketch separate. It previews L05 and intentionally differs from the runnable, where zero still receives a badge. START/END are boundaries, not work functions. The student chapter's concept diagram illustrates the movie demonstration.</p>
 <h2>Three progressive hints</h2>
 <ol>
 <li>Distinguish None before calling <code>.strip()</code>. A cleaned empty string needs the same fallback as None; a required nullable key is not a missing key.</li>
@@ -140,13 +140,13 @@ python -m exercises.solutions.p00 --backend none
 <h2>Completion and optional stretch</h2>
 <p>Finish when all TODOs are implemented independently, exact cases and invalid-type checks pass, outputs are partial updates, caller inputs remain unchanged, topology is linear, and the separate sketch has labeled routes. Explain why annotations alone did not validate values.</p>
 <p>Compare afterward with <code>python -m exercises.solutions.l01</code>. Run <code>python -m pytest tests/lessons/test_l01.py -q -p no:cacheprovider</code> to validate distributed demo/reference artifacts. That file does not grade your edited starter; use its own command. Keep backend <code>none</code>; no <code>--live</code> is needed.</p>
-<p>For a stretch, check <code>&quot;  Mei Lin  &quot;</code>/1 and an empty-string name/3 without changing required rules. Predict both badges first. Explain why constructing an AIMessage does not prove an API call. The <a href="https://docs.langchain.com/oss/python/langchain/messages">message guide</a>, typing and graph references were verified on 3 November 2026.</p>
+<p>For a stretch, check <code>&quot;  Mei Lin  &quot;/1</code> and an empty-string name/3 without changing required rules. Predict both badges first. Explain why constructing an AIMessage does not prove an API call. Consult the <a href="https://docs.langchain.com/oss/python/langchain/messages">message guide</a>, typing reference, and graph guide when reviewing the relevant concepts.</p>
 <!-- PAGEBREAK -->
 <p><a id="l02"></a></p>
 <h1>L02 — Hello World and personalized compliment</h1>
-<h2>Task and source</h2>
+<h2>Task</h2>
 <p>Build a deterministic personalized-compliment graph with one working node. The input dictionary contains one field, <code>message</code>, holding a person's name. The output uses that same field for the completed compliment. Do not add a model, provider key, tool, second node, conversation history, randomness, or a saved file.</p>
-<p>This task preserves the exercise introduced at <a href="https://youtu.be/jGg_1h0qzaM?t=1942">00:32:22 in the source video</a>, inside L02's 00:18:39–00:33:07 window. The supplied whole-track review confirms its slide at 00:32:30. Exact spelling, validation, padded-name handling, and executable acceptance checks below are <strong>added course requirements</strong>, not claims about source notebook punctuation. Plan about 20 minutes of independent work after guided practice.</p>
+<p>The exact spelling, validation, padded-name handling, and executable acceptance checks below define the exercise contract. Plan about 20 minutes of independent work after guided practice.</p>
 <p>Start with <code>exercises/starters/l02.py</code>. It is a separate scaffold, not an import of the answer. Implement only the three marked functions and retain the supplied checks. After your attempt, compare with the independent reference at <code>exercises/solutions/l02.py</code>. The greeting demonstration is <code>course_lessons/l02.py</code>; do not simply submit its greeting as your compliment exercise.</p>
 <h2>Exact acceptance contract</h2>
 <p>Keep <code>MessageState</code> with the one string field <code>message</code>. Register your node as <code>compliment</code> and connect START → compliment → END. <code>build_graph</code> must return the compiled graph rather than the builder. Use <code>execution_config()</code> at invocation, as the scaffold does.</p>
@@ -208,12 +208,12 @@ python -m pytest tests/lessons/test_l02.py -q
 <p>You are finished when all three TODOs are independently implemented, the starter reports <code>completed</code>, every acceptance case holds, and you can explain builder → compilation → invocation. Explain why one ordinary Python node needs no AI service and why successful compilation alone cannot prove correct wording.</p>
 <p>For an optional stretch, write an additional local test using a hyphenated name or a name with an apostrophe. Keep the original characters and the required suffix unchanged. Do not add input prompts, a second state field, or a model to solve the baseline task. Compare your reasoning with the student chapter's three knowledge checks before advancing to multiple-input processing in L03.</p>
 <h2>References</h2>
-<p>Current patterns were verified on 3 November 2026 against the official <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">LangGraph Graph API overview</a>, <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">Graph API usage guide</a>, and <a href="https://typing.python.org/en/latest/spec/typeddict.html">Python TypedDict specification</a>. The video uses historical mutation and entry/finish presentation; this workbook uses returned updates and explicit START/END edges.</p>
+<p>Current patterns use the official <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">LangGraph Graph API overview</a>, <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">Graph API usage guide</a>, and <a href="https://typing.python.org/en/latest/spec/typeddict.html">Python TypedDict specification</a>. Use returned updates and explicit START/END edges.</p>
 <!-- PAGEBREAK -->
 <p><a id="l03"></a></p>
 <h1>L03 — Multiple inputs and one-node arithmetic</h1>
 <h2>Task: finish one calculator node</h2>
-<p>Build one compiled LangGraph graph that receives an integer list, a name, and an operation. Select addition or multiplication with Python logic inside one node. This follows the source's <a href="https://youtu.be/jGg_1h0qzaM?t=2607">addition/multiplication exercise at 00:43:27</a>, within the L03 source window 00:33:07–00:44:29. Strict validation, exact output formatting, numeric outputs, and empty-list rules below are added assessment requirements, not claims about the original slide.</p>
+<p>Build one compiled LangGraph graph that receives an integer list, a name, and an operation. Select addition or multiplication with Python logic inside one node. Strict validation, exact output formatting, numeric outputs, and empty-list rules below define the assessment contract.</p>
 <p>Start from <code>exercises/starters/l03.py</code>. Implement its three TODO functions, not a new script. Do not import <code>exercises.solutions.l03</code> or <code>course_lessons.l03</code> into your submission. The independent reference, for review after your attempt, is <code>exercises/solutions/l03.py</code>.</p>
 <h3>Exact input and output agreement</h3>
 <p>The required inputs are <code>values</code>, <code>name</code>, and <code>operation</code>. <code>values</code> must be a list containing only actual integers; booleans and floats are invalid. Empty lists are valid. <code>name</code> must be a string containing at least one non-whitespace character. Preserve the supplied valid name exactly rather than trimming it. <code>operation</code> must be the string <code>+</code> or <code>*</code>. Missing or invalid required inputs must raise <code>ValueError</code>.</p>
@@ -266,7 +266,7 @@ python -m pytest tests/lessons/test_l03.py -q
 <p><a id="l04"></a></p>
 <h1>L04 — Three-node sequential profile</h1>
 <h2>Task: build a profile in three ordered updates</h2>
-<p>Complete <code>exercises/starters/l04.py</code> after studying the two-node demonstration. This is the source video's three-node name/age/skills exercise, with explicitly added validation and boundary cases. The source lesson runs <a href="https://youtu.be/jGg_1h0qzaM?t=2669">00:44:29–00:55:36</a>; the exercise chapter begins <a href="https://youtu.be/jGg_1h0qzaM?t=3244">00:54:04</a>. Do not use a model or tracing service.</p>
+<p>Complete <code>exercises/starters/l04.py</code> after studying the two-node demonstration. Build the three-node name/age/skills exercise with the supplied validation and boundary cases. Do not use a model or tracing service.</p>
 <p>The starter supplies the state schema, input validation, graph builder, and local checks. Your implementation work is confined to three TODO functions: <code>welcome</code>, <code>describe_age</code>, and <code>describe_skills</code>. Do not replace the graph with a single function or import the demonstration or reference solution. Keep the supplied edges and explain them below.</p>
 <h3>Required behavior</h3>
 <ol>
@@ -327,12 +327,12 @@ python -m pytest tests/lessons/test_l04.py -q
 <h2>Completion criteria and stretch</h2>
 <p>You are finished when all three nodes return nonmutating partial updates, all recorded cases match the wording rules, input fields remain unchanged, the visited list proves the required sequence, and you can explain why default replacement caused the baseline bug. Inspect each function: a hard-coded Linda sentence does not meet these criteria.</p>
 <p>Optional stretch: run a second profile through the same compiled graph, and then invoke it using a previous output as input. Predict whether any old generated text or visited items will leak. Record your prediction and actual result. Keep the same three-node topology, avoid persistence or model calls, and explain why resetting generated fields in <code>welcome</code> matters.</p>
-<p>For API clarification, consult the official <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">partial-update explanation</a> and <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">sequential graph guide</a>, verified on 3 November 2026. Their shorthand sequence builder is not required for this explicit-edge exercise.</p>
+<p>For API clarification, consult the official <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">partial-update explanation</a> and <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">sequential graph guide</a>. Their shorthand sequence builder is not required for this explicit-edge exercise.</p>
 <!-- PAGEBREAK -->
 <p><a id="l05"></a></p>
 <h1>L05 — Conditional routes and two independent calculations</h1>
 <h2>Task: connect two conditional sections</h2>
-<p>Build a deterministic graph that accepts four integers and two operation strings, then returns two independent pairwise answers. The sections execute in sequence, but the second calculation must never use the first answer as an operand. This preserves the original two-section exercise introduced at <a href="https://youtu.be/jGg_1h0qzaM?t=4389">01:13:09</a>, within the lesson's 00:55:36–01:14:14 source window. Validation and branch evidence below are added practice.</p>
+<p>Build a deterministic graph that accepts four integers and two operation strings, then returns two independent pairwise answers. The sections execute in sequence, but the second calculation must never use the first answer as an operand. Validation and branch evidence below support careful verification.</p>
 <p>Use <code>exercises/starters/l05.py</code>. Complete exactly three focused functions: <code>route_first</code>, <code>route_second</code>, and <code>build_graph</code>. The starter already provides <code>PairState</code>, validation, four arithmetic nodes, the second router node, and acceptance checks. Do not replace the graph with one Python calculator function, import the solution, or hard-code the sample answers.</p>
 <p>Your input fields are <code>number1</code>, <code>number2</code>, <code>number3</code>, <code>number4</code>, <code>operation1</code>, and <code>operation2</code>. Only the exact strings <code>+</code> and <code>-</code> are supported. Keep the supplied validation: actual integers are accepted, including zero and negatives, while numeric strings, floats, booleans, missing inputs, and unsupported operation tokens are rejected.</p>
 <p>Section one computes <code>result1</code> from the first two numbers. Section two computes <code>result2</code> from the last two numbers. Preserve both results, all original input fields, and a <code>visited</code> list naming the four executed work nodes. Routing functions return labels; arithmetic nodes return update dictionaries. Current official documentation describes the conditional edge's source, path callable, and optional label-to-node map <a href="https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges" title="Official conditional-edge reference, verified 3 November 2026">507</a>.</p>
@@ -393,7 +393,7 @@ python -m pytest tests/lessons/test_l05.py -q
 <p><a id="l06"></a></p>
 <h1>L06 — Bounded loops and automatic higher/lower game</h1>
 <h2>Your task: automatic guessing, not human input</h2>
-<p>Build a LangGraph game that finds a synthetic target between 1 and 20 using automatic higher/lower feedback. The default maximum is seven guesses. The graph must also stop honestly when a smaller allowed budget is exhausted. This adapts the <a href="https://youtu.be/jGg_1h0qzaM?t=5359">source exercise near 01:29:19</a> within the 01:14:14–01:31:01 source section. Deterministic midpoints, validation, and a reduced-budget test are added teaching requirements; exact video guesses are not acceptance criteria.</p>
+<p>Build a LangGraph game that finds a synthetic target between 1 and 20 using automatic higher/lower feedback. The default maximum is seven guesses. The graph must also stop honestly when a smaller allowed budget is exhausted. Deterministic midpoints, validation, and a reduced-budget test are required teaching conditions; exact random output is not an acceptance criterion.</p>
 <p>Use the separate starter at <code>exercises/starters/l06.py</code>. It does not import the answer. The reference solution is <code>exercises/solutions/l06.py</code>; consult it after attempting the task. The demonstration at <code>course_lessons/l06.py</code> teaches five bounded generations, not this game's solution. No model, API key, tracing service, <code>input()</code>, or additional package installation is needed for this prepared environment.</p>
 <p>Run these commands from the repository root:</p>
 <pre><code class="language-bash">python -m course_lessons.l06 --backend none
@@ -418,7 +418,7 @@ python -m exercises.starters.l06
 <li>Dirty input with target 10, guesses <code>[999]</code>, attempts <code>-8</code>, and wrong bounds: final guesses ___; attempts ___; original caller list unchanged ___ .</li>
 <li>Invalid target 0 and invalid budget 8: exception type ___; why neither should start guessing ___ .</li>
 </ul>
-<p>For the first case, expect <code>10, 15, 18, 16, 17</code> and a five-attempt win. For the two-attempt exhaustion case, expect <code>10, 15</code>, bounds 16–20, hint <code>higher</code>, and <code>lost</code>. The final-attempt case must win. These are predictions of the specified algorithm, not invented execution evidence.</p>
+<p>For the first case, expect <code>10, 15, 18, 16, 17</code> and a five-attempt win. For the two-attempt exhaustion case, expect <code>10, 15</code>, bounds 16–20, hint <code>higher</code>, and <code>lost</code>. The final-attempt case must win. These are predictions of the specified algorithm, not execution evidence.</p>
 <h2>Three progressive hints</h2>
 <h3>Hint 1: isolate fresh-run fields</h3>
 <p>Configuration identifies the game; derived fields describe its progress. Reset only the derived fields. Use exact integer type checks where accepting <code>True</code> as target one would be misleading.</p>
@@ -439,7 +439,7 @@ python -m pytest tests/lessons/test_l06.py -q
 <p><a id="l07"></a></p>
 <h1>L07 — Anthropic stateless bot</h1>
 <h2>Assignment: a stateless help-desk session</h2>
-<p>Build a bounded session controller around a single-node model graph. This is <strong>added practice</strong>, not original video homework. The source's <a href="https://youtu.be/jGg_1h0qzaM?t=5461">01:31:01–01:42:54 section</a> demonstrates a bot and a failed name-recall test but assigns no exercise. Your goal is to prove which messages are sent, not to obtain a particular Claude sentence. Allow approximately 20 minutes after the guided practice.</p>
+<p>Build a bounded session controller around a single-node model graph. Your goal is to prove which messages are sent, not to obtain a particular Claude sentence. Allow approximately 20 minutes after the guided practice.</p>
 <p>Work in <code>exercises/starters/l07.py</code>. The baseline demonstration is <code>course_lessons/l07.py</code>; the teacher reference is <code>exercises/solutions/l07.py</code>. Do not import either implementation into your starter. You may use shared runtime helpers. Use synthetic data only; credentials do not belong in state, worksheets, or screenshots.</p>
 <p>Start from the repository root in the prepared environment:</p>
 <pre><code class="language-bash">python -m exercises.starters.l07
@@ -462,7 +462,7 @@ python -m pytest tests/lessons/test_l07.py -q
 ]
 </code></pre>
 <h2>Check your starter without a paid request</h2>
-<p>After completing the TODOs, paste the following into a Python shell from the repository root. This is an explicit offline double, not Claude and not evidence of live integration. It supplies test responses only; it does not contain your solution's graph or controller logic.</p>
+<p>After completing the TODOs, paste the following into a Python shell from the repository root. This is an explicit offline double, not a live provider and not evidence of live integration. It supplies test responses only; it does not contain your solution's graph or controller logic.</p>
 <pre><code class="language-python">from langchain_core.messages import AIMessage, HumanMessage
 from exercises.starters import l07 as learner
 
@@ -510,7 +510,7 @@ python -m exercises.solutions.l07 --live
 <p><a id="l08"></a></p>
 <h1>L08 — Conversation history and logging</h1>
 <h2>Your task: bounded prompt, complete transcript</h2>
-<p>Build a text-chat graph that sends a bounded recent window to the model while retaining a complete process-local transcript. This is <strong>added practice</strong> based on the source's <a href="https://youtu.be/jGg_1h0qzaM?t=6174" title="Source video: conversation history at 01:42:54">01:42:54–02:03:20 history/logging demonstration</a>, not a missing original homework assignment. The source code section begins at 01:43:58. Use Anthropic through the shared runtime, not an OpenAI client or a canned live response.</p>
+<p>Build a text-chat graph that sends a bounded recent window to the model while retaining a complete process-local transcript. Use Anthropic through the shared runtime, not an OpenAI client or a canned live response.</p>
 <p>Work in <code>exercises/starters/l08.py</code>. The independent instructor reference is <code>exercises/solutions/l08.py</code>; consult it only after attempting the task. Do not import either that reference or <code>course_lessons/l08.py</code> to replace your implementation. The delivered demonstration and reference have different state-update strategies, even though both carry history between calls.</p>
 <p>Before editing, run:</p>
 <pre><code class="language-bash">python -m exercises.starters.l08
@@ -577,13 +577,12 @@ assert &quot;Human:\ngud morning!\nraw\n&quot; in l08.format_transcript(history)
 <li><a href="https://docs.langchain.com/oss/python/langgraph/graph-api">809: LangGraph Graph API: MessagesState and reducer updates</a></li>
 <li><a href="https://docs.langchain.com/oss/python/langgraph/add-memory">810: LangGraph memory: trimming model input versus retained state</a></li>
 <li><a href="https://docs.langchain.com/oss/python/integrations/chat/anthropic">811: ChatAnthropic: messages, content blocks, and token counting</a></li>
-<li><a href="https://youtu.be/jGg_1h0qzaM?t=6174">812: Source video: conversation history at 01:42:54</a></li>
 </ul>
 <!-- PAGEBREAK -->
 <p><a id="l09"></a></p>
 <h1>L09 — ReAct arithmetic tool loop</h1>
 <h2>Your task: an audited arithmetic runner</h2>
-<p>Build a small, bounded tool-using agent and prove what it executed. This is <strong>added practice</strong> based on the source's arithmetic loop, not a separate original video homework assignment. The source window is <a href="https://youtu.be/jGg_1h0qzaM?t=7400">02:03:20–02:28:46</a>. Use L08 message concepts and the baseline demonstration before starting. Plan approximately fifty minutes for the independent implementation within the lesson's broader practice allocation.</p>
+<p>Build a small, bounded tool-using agent and prove what it executed. Use L08 message concepts and the baseline demonstration before starting. Plan approximately fifty minutes for the independent implementation within the lesson's broader practice allocation.</p>
 <p>Your editable starter is <code>exercises/starters/l09.py</code>. The independent reference is <code>exercises/solutions/l09.py</code>; keep it closed until review. The baseline is <code>course_lessons/l09.py</code>, and focused offline tests are <code>tests/lessons/test_l09.py</code>. Do not solve the task by importing either completed implementation. The starter already provides the integer tools, state schema, prompt, error-observation handler, CLI readiness probe, and three-case acceptance harness.</p>
 <p>An unchanged starter must print <code>STARTER_NOT_COMPLETED</code> and exit successfully. That message is intentionally not a passing exercise result. The readiness probe detects unfinished TODOs without making model calls; it is not a substitute for testing your implementation.</p>
 <h2>Implement three focused functions</h2>
@@ -619,12 +618,12 @@ python -m pytest tests/lessons/test_l09.py -q
 </code></pre>
 <p>For a stretch, test negative and zero operands through your injected-model interface. Demonstrate that three minus eight returns a negative result and that a product with zero stays zero. Do not add division or new external services.</p>
 <h2>Reference to consult</h2>
-<p>The <a href="https://docs.langchain.com/oss/python/langgraph/quickstart">official graph quickstart</a> explains the tool loop, while the <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">Graph API message guide</a> explains ID-aware updates. These current-API references support the exercise; the stricter audit and execution budgets are course additions.</p>
+<p>The <a href="https://docs.langchain.com/oss/python/langgraph/quickstart">official graph quickstart</a> explains the tool loop, while the <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">Graph API message guide</a> explains ID-aware updates. These current-API references support the exercise; the stricter audit and execution budgets are part of this course.</p>
 <!-- PAGEBREAK -->
 <p><a id="l10"></a></p>
 <h1>L10 — Human–AI Drafter collaboration</h1>
 <h2>Your task: workshop notice and honest save recovery</h2>
-<p>This <strong>added practice</strong> follows the video's 02:28:46–02:52:09 drafting workflow, not a detailed original assignment. See the <a href="https://youtu.be/jGg_1h0qzaM?t=8926">Drafter introduction</a>. Prerequisite: L09. Allow 90 minutes including guided practice; use synthetic data only.</p>
+<p>This task applies a drafting workflow in which a complete email is revised through human feedback and saved only after an authorized successful write. Prerequisite: L09. Allow 90 minutes including guided practice; use synthetic data only.</p>
 <p>Build a process-local Drafter that revises a complete email, fails safely on an occupied filename, then saves after new human feedback. Assess orchestration and file evidence, not exact wording. Persistence, voice, GUI, retrieval, and durable interrupts are outside this task; U2 adds safer state and approval/resume.</p>
 <p>Implement <code>exercises/starters/l10.py</code> without importing the baseline <code>course_lessons/l10.py</code> or reference <code>exercises/solutions/l10.py</code>. Leave the reference closed during your first attempt.</p>
 <h2>Exact scenario and implementation boundary</h2>
@@ -677,8 +676,8 @@ python -m exercises.solutions.l10 --live
 <p><a id="l11"></a></p>
 <h1>L11 — Local-embedding Chroma RAG</h1>
 <h2>Your task: produce an evidence-gated answer card</h2>
-<p>This is <strong>added practice</strong> based on the video's RAG lesson, 02:52:09–03:09:51. The video demonstrates a model/retriever loop; your task deliberately chooses a simpler retrieve-first topology. Build <code>START → retrieve → generate or abstain → END</code>. Explain why this guarantees a search happens without asking a model to select a tool. Budget approximately 45 minutes for implementation, followed by evidence review.</p>
-<p>Use the original synthetic replacement <code>data/rag_teaching_handbook.pdf</code>, not the video's stock-market PDF. Read its three pages first. Your supported question is: <strong>“How long is the equipment loan, and what renewal is allowed? Use digits.”</strong> Your unsupported question is: <strong>“What is the exact equipment late fee in dollars?”</strong> Do not invent any amount, substitute an external policy, or answer from general knowledge. Source/page citations must refer to the actual teaching PDF.</p>
+<p>This exercise develops a simpler retrieve-first topology than the model-selected retrieval loop. Build <code>START → retrieve → generate or abstain → END</code>. Explain why this guarantees a search happens without asking a model to select a tool. Budget approximately 45 minutes for implementation, followed by evidence review.</p>
+<p>Use the original synthetic teaching document <code>data/rag_teaching_handbook.pdf</code>. Read its three pages first. Your supported question is: <strong>“How long is the equipment loan, and what renewal is allowed? Use digits.”</strong> Your unsupported question is: <strong>“What is the exact equipment late fee in dollars?”</strong> Do not invent any amount, substitute an external policy, or answer from general knowledge. Source/page citations must refer to the actual teaching PDF.</p>
 <p>Start in <code>exercises/starters/l11.py</code>. It contains three independent TODO functions and no import of the reference implementation. The reference is <code>exercises/solutions/l11.py</code>; use it after making your own attempt. The demonstration in <code>course_lessons/l11.py</code> is a different architecture, not your exercise solution.</p>
 <h2>Implement three functions</h2>
 <ol>
@@ -708,12 +707,12 @@ python -m exercises.solutions.l11 --live
 <p>Complete means both branches terminate, a blank question is rejected, empty evidence skips the model, the supported answer contains <strong>7</strong>, <strong>3</strong> and a page-2 citation, the fee answer is exactly <code>NOT_IN_DOCUMENT</code>, and fabricated/absent citations are rejected. Your card has exactly four public keys and truthful status. Show offline evidence for routing and validation plus human inspection of a real generated answer. Do not replace variable wording with a memorized exact supported sentence.</p>
 <p>For a stretch task, try three paraphrases of the supported question and one catering question. Record retrieved pages before judging answers, then compare <code>k=1</code> and <code>k=3</code> in your own harness. Explain one observed trade-off without claiming a universal optimal k. Do not alter the shared index specification mid-run or claim these few questions establish production reliability.</p>
 <h2>Reference</h2>
-<p>The <a href="https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter">official recursive splitter guide</a> explains character sizing. The <a href="https://docs.trychroma.com/docs/embeddings/embedding-functions">Chroma embedding guide</a> explains the real local default model and its initial download. Use the student chapter for the full source/current-API comparison and troubleshooting.</p>
+<p>The <a href="https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter">official recursive splitter guide</a> explains character sizing. The <a href="https://docs.trychroma.com/docs/embeddings/embedding-functions">Chroma embedding guide</a> explains the real local default model and its initial download. Use the student chapter for the full implementation notes and troubleshooting.</p>
 <!-- PAGEBREAK -->
 <p><a id="u1"></a></p>
 <h1>U1 — Thread memory and durable SQLite checkpoints</h1>
 <h2>Your task: recover three travel notebooks</h2>
-<p><strong>SUPPLEMENTARY / ADDED PRACTICE.</strong> This is a new exercise after L08, not source-video homework. The contextual history section is 01:42:54–02:03:20, available at <a href="https://youtu.be/jGg_1h0qzaM?t=6174">the L08 start</a>. U1 itself has no video timestamps. Allow about 18 minutes for the first implementation, then use review time to investigate failed assertions.</p>
+<p><strong>SUPPLEMENTARY PRACTICE.</strong> This exercise extends the conversation-history concepts from L08 with durable SQLite checkpoints. Allow about 18 minutes for the first implementation, then use review time to investigate failed assertions.</p>
 <p>Build a small travel notebook that stores three logically isolated conversations in one local SQLite file. The important outcome is not a polished answer: it is recovery after a real connection close, with evidence that each thread receives only its own human inputs. Use synthetic destinations only. A checkpoint database contains conversation data and needs protection even when tracing is off.</p>
 <p>Your starter is <code>exercises/starters/u1.py</code>. Your teacher's independent reference is <code>exercises/solutions/u1.py</code>; do not import it or the demonstration into your work. The three TODOs are deliberately separated so you can test graph construction, invocation, and persistence orchestration independently.</p>
 <h2>Commands and baseline observations</h2>
@@ -757,7 +756,7 @@ python -m course_lessons.u1 --live --backend none
 <p><a id="u2"></a></p>
 <h1>U2 — Safe draft state and human approval/resume</h1>
 <h2>Task: approve exact content, repair a filename once</h2>
-<p>This is <strong>added supplementary practice</strong>, not original video homework. Allow about 30 minutes within the 90-minute U2 lab. Complete L10 and U1 first. You are extending the safety protocol, not writing a GUI or adding another provider.</p>
+<p>This is supplementary practice for about 30 minutes within the 90-minute U2 lab. Complete L10 and U1 first. You are extending the safety protocol, not writing a GUI or adding another provider.</p>
 <p>Your fictional workshop assistant must generate each thread's notice once, pause before writing, and bind approval to the exact draft. If the first write fails, offer one filename-repair opportunity. Never regenerate or edit the text during repair. A second failed write must stop rather than create a retry loop.</p>
 <p>Edit <code>exercises/starters/u2.py</code>. It is independent of the demonstration and has three focused TODO functions. Read <code>course_lessons/u2.py</code> for the baseline pattern. Consult <code>exercises/solutions/u2.py</code> only after attempting the task or during teacher review. The reference uses direct state updates and an additional hash/repair protocol; it is not an import of the baseline.</p>
 <h2>Establish the starting behavior</h2>
@@ -799,12 +798,12 @@ python -m exercises.solutions.u2 --live --backend none
 <p>Completion requires no write before approval; isolated pending drafts; rejection of stale approval; an unchanged existing file after collision; exactly one repair; unchanged content and no extra generation during repair; and a terminal honest failure if the repaired name remains unsafe. A fresh successful output must contain the exact approved bytes. Only authorized parent or classroom live validation establishes real model behavior; offline doubles cannot do so.</p>
 <p>As a stretch, design a reconciliation policy for a crash after file creation but before checkpoint confirmation. Describe how to inspect the existing artifact without overwriting it or falsely declaring exactly-once delivery. Implementation is optional and must not weaken the required bounded workflow.</p>
 <h2>Reference</h2>
-<p>The current <a href="https://docs.langchain.com/oss/python/langgraph/interrupts">LangGraph interrupt documentation</a>, searched and fetched on 3 November 2026, explains same-thread <code>Command</code> resume and replay rules. The accompanying student chapter explains how this added task differs from L10's video workflow.</p>
+<p>The current <a href="https://docs.langchain.com/oss/python/langgraph/interrupts">LangGraph interrupt documentation</a> explains same-thread <code>Command</code> resume and replay rules.</p>
 <!-- PAGEBREAK -->
 <p><a id="s1"></a></p>
 <h1>S1 — LangSmith observability and evaluation</h1>
 <h2>Task: audit synthetic shipping receipts</h2>
-<p><strong>SUPPLEMENTARY added practice · No source-video timestamp · Allow 25 minutes of independent work.</strong> Complete three functions that calculate a synthetic shipping quote, decode the model's receipt, and score actual output. The supplied graph and report writer remain unchanged. Your implementation must not import the demonstration or teacher solution.</p>
+<p><strong>SUPPLEMENTARY practice · Allow 25 minutes of independent work.</strong> Complete three functions that calculate a synthetic shipping quote, decode the model's receipt, and score actual output. The supplied graph and report writer remain unchanged. Your implementation must not import the demonstration or teacher solution.</p>
 <p>Start in <code>exercises/starters/s1.py</code>. The independent reference is <code>exercises/solutions/s1.py</code>; consult it only after attempting the task. The separate demonstration is <code>course_lessons/s1.py</code>. Required background is L09 and the S1 guided trace inspection. All data are invented teaching values, not shipping prices or customer information.</p>
 <p>Run the starter from the repository root:</p>
 <pre><code class="language-bash">python -m exercises.starters.s1
@@ -853,7 +852,7 @@ python -m exercises.solutions.s1 --live
 <p><a id="s2"></a></p>
 <h1>S2 — LangWatch observability and comparison</h1>
 <h2>Exercise: trace a handout lookup without overstating evidence</h2>
-<p><strong>Supplementary added practice · 25 minutes within the 90-minute module.</strong> No source-video timestamp applies. Complete the S2 guided arithmetic demonstration first. You will build a different workflow: a synthetic handout lookup with real model, tool, and retriever operations, plus two small privacy/evidence helpers. This is a tracing fixture, not a replacement for L11 vector retrieval.</p>
+<p><strong>Supplementary practice · 25 minutes within the 90-minute module.</strong> Complete the S2 guided arithmetic demonstration first. You will build a handout lookup workflow with real model, tool, and retriever operations, plus two small privacy/evidence helpers. This is a tracing fixture, not a replacement for L11 vector retrieval.</p>
 <p>Your starter is <code>exercises/starters/s2.py</code>; the independent reference is <code>exercises/solutions/s2.py</code>. Do not import the solution into the starter. The supplied <code>HandoutRetriever</code> returns one document for <code>TRACE-101</code> and no documents for <code>MISSING-999</code>. Its original text explains that flush does not prove acknowledgment or dashboard visibility. A found document has ID <code>TRACE-101</code>, source <code>synthetic-s2-handout</code>, page 1, and text in <code>DOCUMENT_TEXT</code>.</p>
 <p>Run from the repository root with the prepared environment:</p>
 <pre><code class="language-bash">python -m exercises.starters.s2
@@ -890,7 +889,7 @@ python -m course_support.check_connections --service langwatch
 <p><a id="c01"></a></p>
 <h1>C01 — Document-grounded drafting capstone</h1>
 <h2>Independent task: approve the current draft, not an earlier version</h2>
-<p><strong>SUPPLEMENTARY · 180-minute capstone session.</strong> This added exercise combines the drafting and retrieval ideas from <a href="https://youtu.be/jGg_1h0qzaM?t=8926">Drafter, 02:28:46</a> and <a href="https://youtu.be/jGg_1h0qzaM?t=10329">RAG, 02:52:09</a>. It is not original video homework. Complete L01–L11, U1–U2 and S1–S2 before starting.</p>
+<p><strong>SUPPLEMENTARY · 180-minute capstone session.</strong> This added exercise combines drafting and retrieval ideas with explicit approval and bounded execution. Complete L01–L11, U1–U2 and S1–S2 before starting.</p>
 <p>Your client wants a short teammate briefing based only on the supplied L11 synthetic teaching document, <code>data/rag_teaching_handbook.pdf</code>. A reviewer may ask for one revision, reject the draft or approve its current contents. Saving must require explicit approval of the current draft. The finished file must include a reproducible inventory of the evidence the assistant retrieved. Do not add another knowledge base, paid provider, global draft buffer or unbounded tool loop.</p>
 <p>Use <code>exercises/starters/c01.py</code>. The independent instructor reference is <code>exercises/solutions/c01.py</code>; compare it only after your attempt. The baseline demonstration is <code>course_lessons/c01.py</code>. Keep the provided scaffold and implement its three TODO functions instead of importing another implementation.</p>
 <h2>Establish the baseline</h2>
@@ -1020,25 +1019,12 @@ if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 <p>A missing module normally means the environment or working directory is wrong: verify the selected interpreter, install the lock, and run a module command from the repository root. A graph-build error should be diagnosed before adding an LLM. A recursion-limit failure means the loop did not terminate as intended; inspect state, routing labels, and tool results instead of increasing the limit blindly.</p>
 <p>HTTP 401 indicates a credential/authentication problem, not proof of an unavailable graph. Model access, usage limits, network errors, and regional tracing endpoints are separate checks. Never paste a key into an exception report. A missing trace can result from a wrong backend, key scope, endpoint, or unflushed exporter; verify ingestion independently from callback completion. No-tracing mode should remain available for privacy and debugging.</p>
 <p>For file-save errors, check the explicitly selected output directory and filename. A rejected traversal, symlink, or overwrite is an intended safety check. For SQLite persistence, keep the same database and thread ID when testing recovery, and use different IDs when testing isolation. For RAG, inspect pages, chunks, collection path, embedding identity, and retrieved evidence before judging the generated answer.</p>
-<h2>E. Source illustrations and attribution</h2>
-<p>The source stills illustrate the historical teaching material; they are not proof that the adapted code executed. Credit for every listed still: Vaibhav Mehra / freeCodeCamp, <em>LangGraph Complete Course for Beginners – Complex AI Agents with Python</em>, https://youtu.be/jGg_1h0qzaM. Historical OpenAI names may appear in source slides; all adapted model calls in this repository use Anthropic.</p>
-<ul>
-<li>L01: The source explanation of conditional edges, <a href="https://youtu.be/jGg_1h0qzaM?t=760">00:12:40</a>.</li>
-<li>L02: The original personalized-compliment exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=1950">00:32:30</a>.</li>
-<li>L03: The original one-node arithmetic exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=2635">00:43:55</a>.</li>
-<li>L04: The original three-node profile exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=3280">00:54:40</a>.</li>
-<li>L05: The original two-section conditional exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=4405">01:13:25</a>.</li>
-<li>L06: The original automatic higher/lower exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=5370">01:29:30</a>.</li>
-<li>L07: The original simple-bot objectives, <a href="https://youtu.be/jGg_1h0qzaM?t=5515">01:31:55</a>.</li>
-<li>L08: The original conversation-memory objectives, <a href="https://youtu.be/jGg_1h0qzaM?t=6210">01:43:30</a>.</li>
-<li>L09: The original agent–tool loop diagram, <a href="https://youtu.be/jGg_1h0qzaM?t=7460">02:04:20</a>.</li>
-<li>L10: The source human–AI drafting requirements, <a href="https://youtu.be/jGg_1h0qzaM?t=8985">02:29:45</a>.</li>
-<li>L11: The original model/retriever loop diagram, <a href="https://youtu.be/jGg_1h0qzaM?t=10358">02:52:38</a>.</li>
-</ul>
-<p>Original diagrams are separately labeled and supplied as editable Mermaid source under <code>assets/diagrams</code>. Full source video/captions are not redistributed. <a href="https://www.freecodecamp.org/news/learn-langgraph-and-build-conversational-ai-with-python/">Publisher’s course page</a> and <a href="https://github.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp">original example repository</a> provide context; chapter-specific current documentation is cited beside the material it supports.</p>
+<h2>E. Original illustrations and technical references</h2>
+<p>The concept illustrations and flowcharts are original diagrams created for this course. Editable Mermaid sources are supplied under <code>assets/diagrams</code>. Concept diagrams explain data flow and mental models; complete implementation flowcharts include more detailed guards and error paths.</p>
+<p>Execution screenshots are separate evidence of actual runs, not conceptual mockups. Chapter-specific official technical documentation is retained beside the material it supports. Source/page citations in retrieval exercises refer to the supplied synthetic teaching dataset and must remain inspectable.</p>
 <h2>F. Delivery and classroom use</h2>
 <p>The Student Handbook, Teacher Handbook, and Exercise Workbook share the same identifiers and sequence. Runnable baselines live in <code>course_lessons</code>, unfinished tasks in <code>exercises/starters</code>, instructor answers in <code>exercises/solutions</code>, and regression tests in <code>tests/lessons</code>. Directory separation is not an access-control boundary: instructors should omit solutions when distributing a learner-only package.</p>
-<p>Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive. The approved training index is preserved separately; these are new manuals, not silent edits of that index.</p>
+<p>Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive.</p>
 <h2>G. Working glossary</h2>
 <p><strong>State</strong> is the graph's structured working data. A <strong>partial update</strong> contains only the state fields a node changes. A <strong>TypedDict</strong> describes expected dictionary keys for type checking; it does not automatically validate arbitrary input at runtime.</p>
 <p>A <strong>node</strong> is a named processing step. An <strong>edge</strong> schedules a next step. A <strong>conditional edge</strong> chooses a destination from state. <strong>START</strong> and <strong>END</strong> are graph boundaries, not work-performing business functions. A <strong>compiled graph</strong> is the executable produced by the builder; compilation does not prove its answers are correct.</p>

@@ -2,7 +2,7 @@
 
 ## Task: approve exact content, repair a filename once
 
-This is **added supplementary practice**, not original video homework. Allow about 30 minutes within the 90-minute U2 lab. Complete L10 and U1 first. You are extending the safety protocol, not writing a GUI or adding another provider.
+This is supplementary practice for about 30 minutes within the 90-minute U2 lab. Complete L10 and U1 first. You are extending the safety protocol, not writing a GUI or adding another provider.
 
 Your fictional workshop assistant must generate each thread's notice once, pause before writing, and bind approval to the exact draft. If the first write fails, offer one filename-repair opportunity. Never regenerate or edit the text during repair. A second failed write must stop rather than create a retry loop.
 
@@ -78,4 +78,4 @@ As a stretch, design a reconciliation policy for a crash after file creation but
 
 ## Reference
 
-The current [LangGraph interrupt documentation](https://docs.langchain.com/oss/python/langgraph/interrupts), searched and fetched on 3 November 2026, explains same-thread `Command` resume and replay rules. The accompanying student chapter explains how this added task differs from L10's video workflow.
+The current [LangGraph interrupt documentation](https://docs.langchain.com/oss/python/langgraph/interrupts) explains same-thread `Command` resume and replay rules.

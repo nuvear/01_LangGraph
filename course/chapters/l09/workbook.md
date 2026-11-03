@@ -2,7 +2,7 @@
 
 ## Your task: an audited arithmetic runner
 
-Build a small, bounded tool-using agent and prove what it executed. This is **added practice** based on the source's arithmetic loop, not a separate original video homework assignment. The source window is [02:03:20–02:28:46](https://youtu.be/jGg_1h0qzaM?t=7400). Use L08 message concepts and the baseline demonstration before starting. Plan approximately fifty minutes for the independent implementation within the lesson's broader practice allocation.
+Build a small, bounded tool-using agent and prove what it executed. Use L08 message concepts and the baseline demonstration before starting. Plan approximately fifty minutes for the independent implementation within the lesson's broader practice allocation.
 
 Your editable starter is `exercises/starters/l09.py`. The independent reference is `exercises/solutions/l09.py`; keep it closed until review. The baseline is `course_lessons/l09.py`, and focused offline tests are `tests/lessons/test_l09.py`. Do not solve the task by importing either completed implementation. The starter already provides the integer tools, state schema, prompt, error-observation handler, CLI readiness probe, and three-case acceptance harness.
 
@@ -61,4 +61,4 @@ For a stretch, test negative and zero operands through your injected-model inter
 
 ## Reference to consult
 
-The [official graph quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart) explains the tool loop, while the [Graph API message guide](https://docs.langchain.com/oss/python/langgraph/graph-api) explains ID-aware updates. These current-API references support the exercise; the stricter audit and execution budgets are course additions.
+The [official graph quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart) explains the tool loop, while the [Graph API message guide](https://docs.langchain.com/oss/python/langgraph/graph-api) explains ID-aware updates. These current-API references support the exercise; the stricter audit and execution budgets are part of this course.

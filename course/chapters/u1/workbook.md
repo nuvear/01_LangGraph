@@ -2,7 +2,7 @@
 
 ## Your task: recover three travel notebooks
 
-**SUPPLEMENTARY / ADDED PRACTICE.** This is a new exercise after L08, not source-video homework. The contextual history section is 01:42:54–02:03:20, available at [the L08 start](https://youtu.be/jGg_1h0qzaM?t=6174). U1 itself has no video timestamps. Allow about 18 minutes for the first implementation, then use review time to investigate failed assertions.
+**SUPPLEMENTARY PRACTICE.** This exercise extends the conversation-history concepts from L08 with durable SQLite checkpoints. Allow about 18 minutes for the first implementation, then use review time to investigate failed assertions.
 
 Build a small travel notebook that stores three logically isolated conversations in one local SQLite file. The important outcome is not a polished answer: it is recovery after a real connection close, with evidence that each thread receives only its own human inputs. Use synthetic destinations only. A checkpoint database contains conversation data and needs protection even when tracing is off.
 

@@ -2,7 +2,7 @@
 
 ## Explain: what changes after L08?
 
-**SUPPLEMENTARY / CURRENT-API UPDATE.** This 60-minute lab follows L08. It has no source-video start or end time. For context, the source's conversation-history section is 01:42:54–02:03:20, beginning at [the L08 video boundary](https://youtu.be/jGg_1h0qzaM?t=6174). The whole-track review confirms its recap continues briefly beyond that editorial boundary. The presenter demonstrates accumulated messages and text logging; this added lab teaches a different persistence mechanism, not an unshown original assignment.
+**SUPPLEMENTARY / CURRENT-API UPDATE.** This 60-minute lab extends the conversation-history concepts from L08 with a durable persistence mechanism.
 
 After this lesson you should be able to continue a conversation under a stable thread ID, inspect its saved state, reopen its SQLite file, and show that another thread does not inherit its messages. You need basic Python functions, `with` blocks, and L08's human/AI-message distinction. The course environment also needs `langgraph-checkpoint-sqlite`, a separately distributed backend. Do not change shared dependencies during class without the instructor's setup instructions.
 
@@ -16,7 +16,7 @@ The thread ID selects one sequence of saved checkpoints. It belongs inside invoc
 
 The SQLite database is the durable container. Both `project-a` and `project-b` live in the same file, but their checkpoint keys differ. This is logical isolation, not authentication: anyone permitted to read the file may inspect its data. A real multi-user service must authorize access to IDs and protect storage independently.
 
-The original diagram below separates the connection lifetime from the conversation lifetime. Its fresh-interpreter read has no model and receives no Python conversation list from the first run.
+The diagram below separates the connection lifetime from the conversation lifetime. Its fresh-interpreter read has no model and receives no Python conversation list from the first run.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -30,13 +30,13 @@ python -m course_lessons.u1 --live --backend none
 
 `--live` explicitly permits four real Anthropic calls through the shared runtime. Without it, this model-dependent demonstration rejects execution rather than inventing answers. The default output directory is a unique child of `.work/student-runs/u1`; `--output-dir` can select another directory. Each run creates a new UUID-named database so repeating the command does not silently reuse yesterday's conversation.
 
-Read the tested source at this point, particularly the indentation of both `with` blocks:
+Read the tested code at this point, particularly the indentation of both `with` blocks:
 
 <!-- EXAMPLE_CODE -->
 
 The first invocation teaches `project-a` the synthetic project code `ORCHID-42`. A second asks for that code under the same ID. Two completed turns mean four stored messages, alternating human and AI. The third call asks the same question under `project-b`, which has never received the introduction. That thread should contain just its question and its own answer. The system instruction asks for `UNKNOWN` rather than a guessed code.
 
-Next, the first `SqliteSaver` context exits and closes its connection. A subprocess starts a fresh Python interpreter, opens the database, and reads the saved checkpoint through `get_tuple`. That worker does not create a model, read configuration, or make a paid request. Its four-message count and exact human inputs provide evidence that persisted data, rather than the original graph's Python objects, supplied the result.
+Next, the first `SqliteSaver` context exits and closes its connection. A subprocess starts a fresh Python interpreter, opens the database, and reads the saved checkpoint through `get_tuple`. That worker does not create a model, read configuration, or make a paid request. Its four-message count and exact human inputs provide evidence that persisted data, rather than the first graph's Python objects, supplied the result.
 
 Finally, the parent process enters a second saver context and compiles a new graph. `get_state` returns a **StateSnapshot**: `values` holds restored state, `config` identifies the checkpoint, and `next` describes scheduled work. For our completed first phase, `next == ()`. Reading this snapshot makes no model request. Sending a new human question does: the final primary thread has six messages, while the other remains at two.[1202]
 
@@ -78,7 +78,7 @@ Persistence does not create unlimited context. This node sends the accumulated t
 
 ## References and current-API differences
 
-Unlike the source's process-local history and text-log workflow, this original added lab uses `MessagesState`, explicit thread configuration, and a file-backed `SqliteSaver` context. Official pages were checked during development; publication evidence for real requests is recorded separately by the parent validation process.
+This lab uses `MessagesState`, explicit thread configuration, and a file-backed `SqliteSaver` context. Official guidance distinguishes thread-scoped checkpointer memory from cross-thread stores and documents the current snapshot and context-manager APIs.
 
 [1201]: https://docs.langchain.com/oss/python/langgraph/persistence "LangGraph persistence: checkpointers versus stores"
 [1202]: https://docs.langchain.com/oss/python/langgraph/checkpointers "LangGraph checkpointers, threads, and StateSnapshot inspection"

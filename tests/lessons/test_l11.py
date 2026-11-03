@@ -97,12 +97,12 @@ def tool_request(*, name="retrieve_passages", args=None, call_id="lookup-1"):
     }])
 
 
-def test_pdf_is_original_three_page_replacement_with_real_page_metadata():
+def test_pdf_is_original_three_page_dataset_with_real_page_metadata():
     from pypdf import PdfReader
 
     pages = PdfReader(retrieval.PDF_PATH).pages
     assert len(pages) == 3
-    assert all("SYNTHETIC TEACHING REPLACEMENT" in p.extract_text() for p in pages)
+    assert all("SYNTHETIC TEACHING DATASET" in p.extract_text() for p in pages)
     chunks = retrieval.load_chunks()
     assert {h["page"] for h in chunks} == {1, 2, 3}
     assert len({h["id"] for h in chunks}) == len(chunks)

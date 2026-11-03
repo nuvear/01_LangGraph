@@ -2,7 +2,7 @@
 
 ## Assignment: a stateless help-desk session
 
-Build a bounded session controller around a single-node model graph. This is **added practice**, not original video homework. The source's [01:31:01–01:42:54 section](https://youtu.be/jGg_1h0qzaM?t=5461) demonstrates a bot and a failed name-recall test but assigns no exercise. Your goal is to prove which messages are sent, not to obtain a particular Claude sentence. Allow approximately 20 minutes after the guided practice.
+Build a bounded session controller around a single-node model graph. Your goal is to prove which messages are sent, not to obtain a particular Claude sentence. Allow approximately 20 minutes after the guided practice.
 
 Work in `exercises/starters/l07.py`. The baseline demonstration is `course_lessons/l07.py`; the teacher reference is `exercises/solutions/l07.py`. Do not import either implementation into your starter. You may use shared runtime helpers. Use synthetic data only; credentials do not belong in state, worksheets, or screenshots.
 
@@ -35,7 +35,7 @@ entries = [
 
 ## Check your starter without a paid request
 
-After completing the TODOs, paste the following into a Python shell from the repository root. This is an explicit offline double, not Claude and not evidence of live integration. It supplies test responses only; it does not contain your solution's graph or controller logic.
+After completing the TODOs, paste the following into a Python shell from the repository root. This is an explicit offline double, not a live provider and not evidence of live integration. It supplies test responses only; it does not contain your solution's graph or controller logic.
 
 ```python
 from langchain_core.messages import AIMessage, HumanMessage

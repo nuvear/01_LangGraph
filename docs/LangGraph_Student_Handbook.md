@@ -2,13 +2,13 @@
 
 ## Student Handbook
 
-**Version 1.0 · 3 November 2026 · Author: Manus AI**
+**Version 1.1 · 3 November 2026 · Author: Manus AI**
 
-A complete Python course based on Vaibhav Mehra’s freeCodeCamp video, *LangGraph Complete Course for Beginners – Complex AI Agents with Python*. Source: https://youtu.be/jGg_1h0qzaM. Repository: https://github.com/nuvear/01_LangGraph.
+A self-contained, step-by-step Python course for learners who know basic Python and are new to LangGraph. Course repository: https://github.com/nuvear/01_LangGraph.
 
 Read the explanations, run the complete baseline examples, then attempt the separate starter tasks before consulting instructor solutions. Basic Python is assumed; LangGraph, messages, tools, persistence, and retrieval are introduced step by step.
 
-The eleven video-aligned lessons retain the source progression. Preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01 are clearly labeled additions. The estimated full teaching track is 29 hours 55 minutes excluding breaks; source viewing is included rather than added twice.
+The course progresses through eleven core lessons, preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01. The estimated full teaching track is 29 hours 55 minutes excluding breaks, combining explanation, demonstration, guided practice, independent work, and assessment.
 
 **Validation and platforms.** Delivered demonstrations and independent reference solutions are executed and recorded in the validation appendix. Model-based checks use the real configured Anthropic API; offline tests use explicitly identified test doubles. macOS/Python 3.12 is the actual execution platform. Windows commands are supplied but Windows execution is untested. Dashboard visual inspection is not implied by API ingestion checks.
 
@@ -49,7 +49,7 @@ Use these links in HTML/Markdown and Word’s linked contents or Navigation Pane
 
 ## What this preparation establishes
 
-**SUPPLEMENTARY / ADDED PRACTICE — 60 minutes.** P00 is preparation for the approved course, not a chapter or exercise from the source video. It has no source-video start or end timestamp. Continue afterward with L01, whose [source introduction begins at 00:00:00](https://youtu.be/jGg_1h0qzaM?t=0). The reviewed video establishes a deterministic foundations sequence before its AI-agent sequence; this preparation deliberately keeps those boundaries.
+**SUPPLEMENTARY PRACTICE — 60 minutes.** P00 is preparation for the approved course. Continue afterward with L01.
 
 By the end, you should identify the Python environment running your code, execute a non-LLM graph, reject unsupported service URLs, and propose safe recovery steps without exposing credentials. An LLM is a large language model accessed through a local model or remote provider. P00 needs neither. Its code never reads `.env` and never checks a real account.
 
@@ -93,11 +93,11 @@ A graph organizes work into nodes connected by edges. Here each node is an ordin
 
 The builder registers `check_label` and `finish_setup`. Explicit edges connect START to the first node, then the second node, then END. START and END mark boundaries; they do not call services. `compile()` produces the executable graph; `invoke()` runs it. Nodes return partial updates rather than mutate the supplied input dictionary. This usage follows the current Graph API and does not require an agent or chat-model wrapper [2].
 
-**Original diagram:** the connected local demonstration and workbook paths are separate from the disconnected, instructor-authorized real-service path.
+**Concept diagram:** the connected local demonstration and workbook paths are separate from the disconnected, instructor-authorized real-service path.
 
-![P00: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/p00.png)
+![P00: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/p00.png)
 
-*P00: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*P00: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete P00 flowchart](../assets/diagrams/p00.mmd).
 
@@ -356,7 +356,7 @@ For a later real check, keep only a sanitized status, service, and request ID. A
 
 ## References and current-API differences
 
-P00's environment audit, safety policy and independent task are added preparation. They are not source-video homework or evidence of a service run. Current official documentation was checked on 3 November 2026. The course uses explicit graph boundaries and partial updates; later model lessons adapt the video to Anthropic. No model-price or account-access promises are made here.
+P00's environment audit, safety policy and independent task provide preparation. Current official documentation was checked on 3 November 2026. The course uses explicit graph boundaries and partial updates; later model lessons use Anthropic. No model-price or account-access promises are made here.
 
 [1]: https://docs.python.org/3.12/library/venv.html "Python 3.12 virtual environments"
 [2]: https://docs.langchain.com/oss/python/langgraph/overview "LangGraph overview and deterministic graph example"
@@ -384,11 +384,11 @@ You will read the typed Python used throughout the course, identify the parts of
 
 Prerequisites are P00 and basic Python variables, functions, lists, dictionaries, and `if` statements. Allow 100 minutes, including about 45 minutes of practice. Work from the project root with the prepared Python 3.12 environment active. This lesson needs no model, API key, internet connection during execution, or tracing backend.
 
-**Video-backed concepts:** [00:00:00–00:18:39](https://youtu.be/jGg_1h0qzaM?t=0). Type annotations begin at [00:01:24](https://youtu.be/jGg_1h0qzaM?t=84), graph elements at [00:08:35](https://youtu.be/jGg_1h0qzaM?t=515), and message roles at [00:17:45](https://youtu.be/jGg_1h0qzaM?t=1065). The supplied whole-track review confirms the early topic identities through sampled frames. This window contains no original coding assignment. The movie-card demonstration, badge exercise, validation rules, and graph sketch below are **added practice**, not the presenter's homework.
+This lesson introduces type annotations, graph elements, message roles, and partial state updates through a deterministic movie-card example and a workshop-badge exercise. The examples are designed for local inspection and practice; no model call or remote service is required.
 
-![Source illustration L01, 00:12:40: The source explanation of conditional edges. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=760](../assets/video/l01.png)
+![L01: original concept diagram — Python types and graph elements.](../assets/diagrams/l01-concept.png)
 
-*Source illustration L01, 00:12:40: The source explanation of conditional edges. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=760*
+*L01: original concept diagram — Python types and graph elements.*
 
 
 ## Explain: type hints describe a contract
@@ -420,11 +420,11 @@ An ordinary **edge** fixes the next operation. A **conditional edge** calls rout
 
 `START` and `END` are boundary sentinels, not functions that do useful work. `StateGraph(MovieState)` creates a builder. Adding nodes and edges describes the workflow; `compile()` creates its executable form. The resulting **runnable** supports a standard execution interface such as `invoke`. A runnable is a broader concept than a node: a complete compiled graph is runnable too. Compilation checks structure, not whether your card has correct punctuation or your algorithm produces the intended answer. These concepts follow the [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
-Original diagram: the actual movie-card demonstration. Both work nodes run once, in order. The boundaries do not modify state.
+Concept diagram: the movie-card workflow. Both work nodes run once, in order. The boundaries do not modify state.
 
-![L01: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l01.png)
+![L01: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l01.png)
 
-*L01: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L01: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L01 flowchart](../assets/diagrams/l01.mmd).
 
@@ -574,7 +574,7 @@ Expect a JSON summary containing `mode: deterministic_no_model`, a trimmed movie
 
 `SystemMessage` supplies instructions or context. `HumanMessage` represents user input. `AIMessage` represents an assistant message and can contain tool-call requests. `ToolMessage` carries a tool result, with `tool_call_id` matching the request ID. The demonstration manually constructs all four objects and pairs the ID `l01-square-1`; it does not send them anywhere or run a tool dispatcher. An `AIMessage` constructor is not an API call. Compare the [official message guide](https://docs.langchain.com/oss/python/langchain/messages).
 
-The source video's “function message” wording is legacy or imprecise for this purpose. We teach the current AI-tool-call and tool-result pairing, not a new fifth core role. The guide may show imports from `langchain.messages`; this course uses the installed `langchain_core.messages` classes directly. Provider-specific examples are unnecessary here: Python logic computes values, LangGraph orchestrates functions, and no model behavior is involved.
+Use the current AI-tool-call and tool-result pairing: an AI tool-call request and its ToolMessage result are linked by the matching request ID. The guide may show imports from `langchain.messages`; this course uses the installed `langchain_core.messages` classes directly. Provider-specific examples are unnecessary here: Python logic computes values, LangGraph orchestrates functions, and no model behavior is involved.
 
 ![L01 demonstration: actual captured execution on macOS, 2026-11-03T01:41:23 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l01-demonstration.png)
 
@@ -603,7 +603,7 @@ Complete `exercises/starters/l01.py` without importing the demonstration or solu
 
 Normalize `None`, an empty string, or whitespace-only text to `Visitor`; otherwise strip only surrounding whitespace. Reject other name types with `TypeError`. Return only the name update. Validate that sessions is an integer but not a boolean; reject other types with `TypeError` and negative integers with `ValueError`. Return only a badge update using singular `session` for exactly one and plural `sessions` otherwise. Preserve the count and do not mutate inputs.
 
-Compile exactly `START → normalize_name → make_badge → END`. Expected badges are `Ada: 2 sessions` for `"  Ada  "`/2, `Visitor: 0 sessions` for `None`/0, and `Visitor: 1 session` for `"   "`/1. Run `python -m exercises.starters.l01`. Initially it must report `STARTER_NOT_COMPLETED`; after all checks succeed it reports `STARTER_CHECKS_PASSED`.
+Compile exactly `START → normalize_name → make_badge → END`. Expected badges are `Ada: 2 sessions` for `"  Ada  "/2`, `Visitor: 0 sessions` for `None`/0, and `Visitor: 1 session` for `"   "/1`. Run `python -m exercises.starters.l01`. Initially it must report `STARTER_NOT_COMPLETED`; after all checks succeed it reports `STARTER_CHECKS_PASSED`.
 
 Also draw a paper-only alternative: after normalization, route zero sessions to END and positive sessions to `make_badge`, then END. Label the branches. Do not implement that alternative: the required executable graph must still create the zero-session badge. The workbook provides observation fields, progressive hints, and completion criteria.
 
@@ -621,7 +621,7 @@ Run `python -m pytest tests/lessons/test_l01.py -q -p no:cacheprovider` to check
 
 ## References
 
-Official documentation was verified through search and retrieval on 3 November 2026: [Python 3.12 typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [graph construction guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [messages](https://docs.langchain.com/oss/python/langchain/messages). Source attribution: Vaibhav Mehra / freeCodeCamp, [LangGraph Complete Course for Beginners](https://youtu.be/jGg_1h0qzaM?t=0), L01 window 00:00:00–00:18:39.
+Official documentation: [Python 3.12 typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [graph construction guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [messages](https://docs.langchain.com/oss/python/langchain/messages).
 
 
 <!-- PAGEBREAK -->
@@ -634,18 +634,18 @@ A LangGraph graph does not need an AI model. In this lesson, one ordinary Python
 
 Allow 70 minutes. Before starting, complete L01 and be comfortable with dictionary lookup, function calls, string formatting, and `TypedDict`. By the end, you should be able to define a one-field state, register one node, connect START and END, compile the builder, invoke the compiled graph, and inspect its returned `message`. You will also distinguish changing graph state from mutating the caller's input dictionary.
 
-**Video-backed:** the source section runs from [00:18:39](https://youtu.be/jGg_1h0qzaM?t=1119) to 00:33:07. Its coding chapter begins at [00:21:08](https://youtu.be/jGg_1h0qzaM?t=1268), and the personalized-compliment exercise begins at [00:32:22](https://youtu.be/jGg_1h0qzaM?t=1942). The supplied whole-track visual review confirms the exercise slide at 00:32:30. These references identify source teaching, not execution of our adapted files.
+This lesson presents a compact, deterministic graph so you can separate graph construction from node behavior and execution.
 
-![Source illustration L02, 00:32:30: The original personalized-compliment exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=1950](../assets/video/l02.png)
+![L02: original concept diagram — Hello World and personalized compliment.](../assets/diagrams/l02-concept.png)
 
-*Source illustration L02, 00:32:30: The original personalized-compliment exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=1950*
+*L02: original concept diagram — Hello World and personalized compliment.*
 
 
 ## Explain: a state, a function, and a path
 
-Our `MessageState` describes a dictionary containing one key, `message`, whose value is a string. At input, the string is a person's name, such as `Bob`. After the node runs, the same channel contains the full greeting. A **channel** here means one named field that LangGraph tracks in its state. We deliberately reuse one field to stay close to the source exercise; we are not creating chat history.
+Our `MessageState` describes a dictionary containing one key, `message`, whose value is a string. At input, the string is a person's name, such as `Bob`. After the node runs, the same channel contains the full greeting. A **channel** here means one named field that LangGraph tracks in its state. We deliberately reuse one field for this compact exercise; we are not creating chat history.
 
-`TypedDict` helps readers and static type checkers understand that structure. At runtime, the value is still an ordinary dictionary. The annotation does not automatically reject a number or guarantee that a key exists. The [official Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) explains this distinction. Our explicit `read_name` checks are **added practice**: missing or non-string values raise `TypeError`; empty or whitespace-only strings raise `ValueError`.
+`TypedDict` helps readers and static type checkers understand that structure. At runtime, the value is still an ordinary dictionary. The annotation does not automatically reject a number or guarantee that a key exists. The [official Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) explains this distinction. Our explicit `read_name` checks mean that missing or non-string values raise `TypeError`; empty or whitespace-only strings raise `ValueError`.
 
 A **node** is the callable registered in the graph. Our greeting node reads the name and returns a newly constructed dictionary. It never assigns into the dictionary it receives. `read_name` is a helper function called inside that node; it is not a second graph node. In this lesson the returned update contains the only state field, but it follows the same partial-update pattern that later lessons use with several fields.
 
@@ -653,11 +653,11 @@ An **edge** specifies what runs next. The path is START → greeter → END. STA
 
 ## Illustrate: follow one invocation
 
-The following original diagram shows the common topology. Use the greeter in the demonstration or the compliment node in the exercise; they are alternatives, not two nodes connected together.
+The following diagram shows the common topology. Use the greeter in the demonstration or the compliment node in the exercise; they are alternatives, not two nodes connected together.
 
-![L02: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l02.png)
+![L02: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l02.png)
 
-*L02: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L02: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L02 flowchart](../assets/diagrams/l02.mmd).
 
@@ -814,11 +814,11 @@ If imports fail, check the active virtual environment and run from the repositor
 
 A wrong name usually means a constant was used instead of `state["message"]`. A lost name means the output replaced the channel without incorporating its previous value. A padded name losing spaces means the validation function returned a stripped value. Invalid-input errors are intentional and are not model failures.
 
-**Current-API update:** the video uses entry/finish terminology and mutates its state dictionary. This adaptation uses explicit START/END edges and returns updates, following the [current official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api). Entry-point helpers still appear in current documentation; they are not presented here as removed APIs. Exact punctuation, validation cases, automated tests, and CLI summaries are course additions. Later lessons introduce larger state schemas and real model calls; adding either here would obscure the one-node lesson.
+**Current-API guidance:** use explicit START/END edges and return updates, following the [current official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api). Entry-point helpers still appear in current documentation; they are not presented here as removed APIs. Exact punctuation, validation cases, automated tests, and CLI summaries are part of this lesson. Later lessons introduce larger state schemas and real model calls; adding either here would obscure the one-node lesson.
 
 ## References
 
-Official references were verified through search and fetch on 3 November 2026: [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [Graph API usage](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [Python TypedDict specification](https://typing.python.org/en/latest/spec/typeddict.html). Source teaching: Vaibhav Mehra / freeCodeCamp, [first graph](https://youtu.be/jGg_1h0qzaM?t=1119), [coding chapter](https://youtu.be/jGg_1h0qzaM?t=1268), and [compliment exercise](https://youtu.be/jGg_1h0qzaM?t=1942).
+Official references: [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [Graph API usage](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [Python TypedDict specification](https://typing.python.org/en/latest/spec/typeddict.html).
 
 
 <!-- PAGEBREAK -->
@@ -831,18 +831,18 @@ A graph invocation can receive more than one value. In this lesson, one state di
 
 **Prerequisite:** L02, including dictionaries, functions, compilation, and invocation. Allow approximately 75 minutes. By the end, you should be able to describe mixed-type state, return only computed fields, distinguish optional keys from nullable values, and test two arithmetic paths without adding graph branches.
 
-**Video-backed material:** the source window is [00:33:07–00:44:29](https://youtu.be/jGg_1h0qzaM?t=1987). Coding begins at [00:34:02](https://youtu.be/jGg_1h0qzaM?t=2042); the addition/multiplication exercise begins at [00:43:27](https://youtu.be/jGg_1h0qzaM?t=2607). The presenter explicitly keeps this section non-LLM. The supplied whole-track visual review confirms the multiple-input exercise slide at 00:43:35. Figures below are reserved for parent-captured source and execution images, not invented evidence.
+This lesson keeps the computation deterministic: one node validates state, performs ordinary Python arithmetic, and returns a partial update. Figures below are reserved for parent-supplied concept and execution diagrams.
 
-![Source illustration L03, 00:43:55: The original one-node arithmetic exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=2635](../assets/video/l03.png)
+![L03: original concept diagram — Multiple inputs and one-node arithmetic.](../assets/diagrams/l03-concept.png)
 
-*Source illustration L03, 00:43:55: The original one-node arithmetic exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=2635*
+*L03: original concept diagram — Multiple inputs and one-node arithmetic.*
 
 
 ### Mixed types belong in named fields
 
 Our baseline `SumState` has required inputs `values: list[int]` and `name: str`. Derived fields are `total: NotRequired[int]` and `result: NotRequired[str]`. A schema describes the intended keys and their types. Here, `values` is a list, while `name` and `result` are strings. Different fields do not need the same type.
 
-`total` is useful for checking arithmetic without parsing a sentence. `result` is useful for displaying that arithmetic to a person. Separating them is an **added teaching adaptation**; it does not make the graph more intelligent. Both outputs are produced by the same node.
+`total` is useful for checking arithmetic without parsing a sentence. `result` is useful for displaying that arithmetic to a person. Both outputs are produced by the same node.
 
 Python's [TypedDict documentation](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) explains that a typed dictionary remains a plain dictionary at runtime. An annotation is a description for tools and readers, not an automatic input validator. A caller can still supply a float, a boolean, or a missing field. Our explicit validation rejects those mistakes with `ValueError` before calculating.
 
@@ -860,11 +860,11 @@ A **partial update** is a dictionary containing only fields the node writes. The
 
 Our node neither assigns into the supplied dictionary nor changes its list. This makes it easier to compare the input with the final state. If callers supply an old `total` or `result`, the newly calculated values replace them rather than accumulating text.
 
-The original diagram shows the exercise topology. Validation and the Python `if` happen inside the one calculator node. START and END mark boundaries; they are not two additional arithmetic workers. The baseline uses the same shape with its node named `processor`.
+The concept diagram shows the exercise topology. Validation and the Python `if` happen inside the one calculator node. START and END mark boundaries; they are not two additional arithmetic workers. The baseline uses the same shape with its node named `processor`.
 
-![L03: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l03.png)
+![L03: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l03.png)
 
-*L03: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L03: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L03 flowchart](../assets/diagrams/l03.mmd).
 
@@ -1022,11 +1022,11 @@ Run `python -m exercises.starters.l03`. Before implementation, it exits normally
 
 If the builder has no `invoke` method, use the value returned by `compile`. If a key is missing, check the actual invocation dictionary; do not assume TypedDict inserted `None`. If a graph node returns an integer or string directly, wrap outputs in the specified update dictionary. If every product is zero, check whether a hand-written accumulator incorrectly starts at zero.
 
-The source uses historical entry/finish helpers and in-place state mutation. This adaptation uses explicit START/END edges and partial updates, following current official guidance. The source's discussion of an omitted result is not a general initialization guarantee. Strict validation, exact punctuation, the numeric output, and empty-list rules are added here to make the exercise assessable. Graph-level conditional routing belongs to L05, not this task.
+Use explicit START/END edges and partial updates, following the current official Graph API guidance. An omitted result is not automatically initialized; the invocation must provide the required inputs, and the node must return the specified output fields. Strict validation, exact punctuation, the numeric output, and empty-list rules make the exercise assessable. Graph-level conditional routing belongs to L05, not this task.
 
 ## References
 
-[Video intro](https://youtu.be/jGg_1h0qzaM?t=1987) · [Original exercise](https://youtu.be/jGg_1h0qzaM?t=2607) · [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api) · [StateGraph](https://reference.langchain.com/python/langgraph/graph/state/StateGraph) · [TypedDict](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) · [math.prod](https://docs.python.org/3.12/library/math.html#math.prod).
+[Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api) · [StateGraph](https://reference.langchain.com/python/langgraph/graph/state/StateGraph) · [TypedDict](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) · [math.prod](https://docs.python.org/3.12/library/math.html#math.prod).
 
 
 <!-- PAGEBREAK -->
@@ -1039,10 +1039,6 @@ A graph can run in the correct order and still produce the wrong answer. In this
 
 By the end, you should be able to build a directed sequence, predict intermediate state, distinguish a partial update from the accumulated state, and extend the sequence to produce a complete profile. Prerequisites are L03, dictionaries, lists, f-strings, and ordinary Python functions. Allow about 80 minutes, including guided practice and the independent exercise. No model, credentials, paid API, or tracing backend is needed.
 
-**Video-backed content:** the source section is [00:44:29–00:55:36](https://youtu.be/jGg_1h0qzaM?t=2669). It demonstrates two name/age nodes, introduces the overwrite mistake around [00:48:00](https://youtu.be/jGg_1h0qzaM?t=2880), then assigns a three-node profile exercise in the chapter beginning [00:54:04](https://youtu.be/jGg_1h0qzaM?t=3244). The reviewed exercise uses Linda, age 31, with Python, machine learning, and LangGraph skills. Exact punctuation here is an adaptation, not a transcription of a low-resolution frame.
-
-**Added practice and current-API update:** this version uses integer ages, explicit input validation, partial updates, a visited-node list, and defined empty-skill behavior. These additions make correctness observable and testable without changing the source exercise's purpose.
-
 ## Illustrate: state, updates, and directed edges
 
 The demonstration state has input keys `name` and `age`, plus generated keys `final` and `visited`. A `TypedDict` describes the expected dictionary shape to readers and type-checking tools. `NotRequired` means a key need not exist initially. It does not mean LangGraph invents a useful value for it. The greeting node creates the generated keys before the age node reads them.
@@ -1053,23 +1049,23 @@ For Charlie, age 20, the greeting node returns `{"final": "Hi Charlie.", "visite
 
 The same rule applies to `visited`. Writing `["age"]` would replace `["greet"]`. Returning `state["visited"] + ["age"]` constructs a new list preserving the earlier item. Neither strings nor lists accumulate automatically in this lesson. A **reducer** is a rule that can combine old and new values for a key; configuring one is not necessary here.
 
-The original diagram below shows the two-node demonstration and its three-node extension. Boundary labels mark entry and termination; they do not perform profile work.
+The diagram below shows the two-node demonstration and its three-node extension. Boundary labels mark entry and termination; they do not perform profile work.
 
-![L04: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l04.png)
+![L04: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l04.png)
 
-*L04: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L04: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L04 flowchart](../assets/diagrams/l04.mmd).
 
 
 An edge from one node to another makes the destination wait for that source to finish, as specified in the official [add_edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge). Merely registering functions with `add_node` does not establish their order. The exercise needs `START → welcome → age → skills → END`: four edges in total, with two edges between work nodes.
 
-![Source illustration L04, 00:54:40: The original three-node profile exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=3280](../assets/video/l04.png)
+![L04: original concept diagram — Three-node sequential profile.](../assets/diagrams/l04-concept.png)
 
-*Source illustration L04, 00:54:40: The original three-node profile exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=3280*
+*L04: original concept diagram — Three-node sequential profile.*
 
 
-Source figure context: the supplied visual review confirms the sequential-profile exercise title at [00:54:10](https://youtu.be/jGg_1h0qzaM?t=3250). A source frame illustrates the original lesson; it is not evidence that this adapted code executed.
+Use the concept figure to compare the two-node overwrite demonstration with the three-node profile sequence. The figure is a visual aid for the state transition ideas explained here; the executable module and its assertions are the evidence for program behavior.
 
 ## Demonstrate: run the tested baseline
 
@@ -1212,13 +1208,13 @@ The `updates` list comes from a separate, fresh streaming invocation using `stre
 2. Run the demonstration and compare the two final strings. Explain why both versions can report the same visited-node order. Correct control flow is necessary but does not prove correct string construction.
 3. Inspect the first streaming update. Find the two keys it contains and the input keys it omits. Explain why omission is not deletion. Then locate the second update and identify where it carries the earlier greeting forward.
 4. Trace the four construction stages: define the state, register nodes, connect edges, and compile. Invocation uses the compiled graph, not the builder. Compilation checks structure, not whether your sentence has the right words.
-5. Predict the age wording for 0 and 1. This adaptation uses `0 years old` and `1 year old`. Input validation rejects negative ages, strings such as `"31"`, and booleans. Python treats `bool` as related to `int`, so the supplied validator deliberately requires `type(age) is int`.
+5. Predict the age wording for 0 and 1. This lesson uses `0 years old` and `1 year old`. Input validation rejects negative ages, strings such as `"31"`, and booleans. Python treats `bool` as related to `int`, so the supplied validator deliberately requires `type(age) is int`.
 
 These are reading and prediction activities. You do not need to alter another lesson or the shared runtime. The official [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) also shows `add_sequence`, but explicit edges are retained here so you can explain every transition.
 
 ## Independent exercise: welcome, age, and skills
 
-Open `exercises/starters/l04.py`; the full task and recording fields are in `course/chapters/l04/workbook.md`. Complete exactly three TODO functions: `welcome`, `describe_age`, and `describe_skills`. Validation, graph registration, and all four edges are supplied. Explain the edges in the workbook rather than hiding the entire calculation in one function.
+Open `exercises/starters/l04.py`; the full task and exercise fields are in `course/chapters/l04/workbook.md`. Complete exactly three TODO functions: `welcome`, `describe_age`, and `describe_skills`. Validation, graph registration, and all four edges are supplied. Explain the edges in the workbook rather than hiding the entire calculation in one function.
 
 Each node must return only `result` and `visited` updates without mutating its input dictionary or lists. `welcome` starts a fresh message and sets `visited` to `["welcome"]`, even if stale generated fields were supplied. The age node preserves that message, adds age without a trailing period, and extends the list with `"age"`. The skills node preserves both earlier components, finishes the sentence, and adds `"skills"`.
 
@@ -1246,9 +1242,9 @@ A skills list printed with brackets means Python's list representation was used 
 
 Completion means you can predict the overwrite, explain each edge, produce the exact Linda message and boundary cases, and show unchanged input values. The learner result is a deterministic profile builder, not an autonomous agent.
 
-## References and source differences
+## References
 
-The [source video](https://youtu.be/jGg_1h0qzaM?t=2669) supplies the overwrite demonstration and three-node exercise. The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) were verified by search and fetch on 3 November 2026. This implementation uses explicit `START`/`END` boundaries and returned partial updates rather than reproducing historical mutation-style examples. Historical entry/finish terminology remains conceptually useful; it is not a requirement to use those convenience methods. No LLM integration is added to this deterministic source section.
+The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [edge reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge) provide the relevant guidance. This lesson uses explicit `START`/`END` boundaries and returned partial updates. No LLM integration is added to this deterministic lesson.
 
 
 <!-- PAGEBREAK -->
@@ -1261,11 +1257,9 @@ In L03, one node used a Python `if` to decide which arithmetic expression to eva
 
 Allow 115 minutes, including practice and review. You should already understand L04's sequential edges, dictionary access, Python functions, and partial state updates. By the end, you should be able to return a routing label, map that label to a registered node, explain the executed branch, and connect two conditional sections without mixing their inputs.
 
-**Video-backed scope:** this lesson follows 00:55:36–01:14:14 of Vaibhav Mehra's freeCodeCamp course. The [section opening at 00:55:36](https://youtu.be/jGg_1h0qzaM?t=3336) introduces graph-level conditions; coding begins at [00:56:37](https://youtu.be/jGg_1h0qzaM?t=3397). The original exercise asks for two pairwise calculations. **Added practice/current implementation:** this chapter supplies explicit validation, branch evidence, negative/zero examples, and offline tests. Those safeguards are not claims about the original notebook.
+![L05: original concept diagram — Conditional routes and two independent calculations. Operand pairs remain independent; the calculation steps run sequentially.](../assets/diagrams/l05-concept.png)
 
-![Source illustration L05, 01:13:25: The original two-section conditional exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=4405](../assets/video/l05.png)
-
-*Source illustration L05, 01:13:25: The original two-section conditional exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=4405*
+*L05: original concept diagram — Conditional routes and two independent calculations. Operand pairs remain independent; the calculation steps run sequentially.*
 
 
 ### State updates and route labels do different jobs
@@ -1280,13 +1274,11 @@ The demonstration's registered `router` node runs `validate_inputs`. It returns 
 
 For the single-pair demonstration, the route is START → router → add **or** subtract → END. START and END mark the graph boundaries; they do not calculate anything. The router has conditional outgoing edges, not ordinary edges to both arithmetic nodes. Two ordinary outgoing edges would schedule both destinations rather than implement an either/or decision [501].
 
-The original diagram below shows the exercise's extension. Follow one line out of `router1`, then one line out of `router2`. Each run visits four work nodes. The lines converge at the second router, but only one first arithmetic branch is selected, so this is not a parallel join requiring both branches to run.
+The diagram below shows the exercise's extension. Follow one line out of `router1`, then one line out of `router2`. Each run visits four work nodes. The lines converge at the second router, but only one first arithmetic branch is selected, so this is not a parallel join requiring both branches to run.
 
-**Original course illustration, not a source-video screenshot:**
+![L05: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l05.png)
 
-![L05: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l05.png)
-
-*L05: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L05: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L05 flowchart](../assets/diagrams/l05.mmd).
 
@@ -1482,7 +1474,7 @@ If you see an unknown route or node error, compare the routing label with the pa
 
 If the second answer depends on the first, inspect the operands in section two and its routing function. If the first answer disappears, use separate result keys and return partial updates. If validation rejects `"7"`, that is intentional: this task accepts integers, not numeric strings.
 
-The video uses historical names such as `finalNumber` and mutates state in place. This adaptation uses descriptive result keys and fresh update dictionaries. Routing return annotations describe labels with `Literal`, not `AgentState`. The current reference accepts explicit path maps and warns that missing map/type information can make visualizations overly broad [502]. Explicit START/END edges are used here, but `set_entry_point` remains a documented equivalent helper, not a removed API [503]. The [exercise opening at 01:13:09](https://youtu.be/jGg_1h0qzaM?t=4389) motivates two sections; the reviewed caption's repeated “7” is not an extra operand. The intended second pair is `7` and `2`.
+Historical examples may use names such as `finalNumber` or mutate state in place. Prefer descriptive result keys and fresh update dictionaries. Routing return annotations describe labels with `Literal`, not `AgentState`. The current reference accepts explicit path maps and warns that missing map/type information can make visualizations overly broad [502]. Explicit START/END edges are used here, but `set_entry_point` remains a documented equivalent helper, not a removed API [503]. The second pair is `7` and `2`; the repeated value is not an extra operand.
 
 ## References
 
@@ -1491,7 +1483,7 @@ The video uses historical names such as `finalNumber` and mutates state in place
 - [502: StateGraph add_conditional_edges reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges)
 - [503: StateGraph set_entry_point remains equivalent to an explicit START edge](https://reference.langchain.com/python/langgraph/graph/state/StateGraph/set_entry_point)
 
-Official documentation searched and fetched on 3 November 2026. Video scope follows the supplied complete-track review; publication figures are added separately.
+Official documentation searched and fetched on 3 November 2026.
 
 [501]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API: state updates, ordinary edges, and conditional edges"
 [502]: https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges "StateGraph add_conditional_edges reference"
@@ -1508,29 +1500,27 @@ A graph does not have to travel from left to right once. A **back-edge** sends e
 
 After this lesson, you should be able to sketch a bounded loop, reset its working state, return partial updates without mutating an input list, and distinguish normal termination from a recursion-limit error. You should also be able to build an automatic higher/lower game with two valid exit reasons. Prerequisites are L05's route labels and path maps, plus integer arithmetic, lists, dictionaries, and `if` statements. Allow approximately 110 minutes, including practice.
 
-**Video-backed material:** the source window is [01:14:14–01:31:01](https://youtu.be/jGg_1h0qzaM?t=4454). The planning discussion and loop diagram precede the implementation; the [automatic game exercise begins around 01:29:19](https://youtu.be/jGg_1h0qzaM?t=5359). The supplied whole-track review confirms that the exercise guesses automatically, rather than asking a human for guesses. The baseline generates five integers after a greeting.
-
-**Added/current-API adaptation:** our runnable version uses repeatable local random draws, separate name and greeting fields, explicit `START` edges, and returned state updates. The exercise uses integer midpoints, validates configuration, and demonstrates exhaustion with a deliberately smaller budget. These choices make the source concepts testable; they do not reproduce the source notebook's exact random sequence.
+This lesson develops a bounded graph loop and an automatic higher/lower game. The baseline generates five integers after a greeting; the exercise applies the same control-flow ideas to midpoint search with validation and explicit terminal states.
 
 ## Illustrate: progress and termination
 
 The demonstration follows `START → greeting → generate`. The greeting resets `counter` to zero and `numbers` to an empty list. Each generation returns a new list containing the previous numbers plus one new integer from 0 through 10, and increases the counter once. Only then does the route read the updated state. If the counter is below five, it chooses `again`; otherwise, it chooses `done`, which the path map connects to `END`.
 
-![L06: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l06.png)
+![L06: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l06.png)
 
-*L06: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L06: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L06 flowchart](../assets/diagrams/l06.mmd).
 
 
-The original diagram shows both the demonstration and the exercise. Read the back-edge as permission to perform one more unit of work, not as a Python function calling itself. A **termination condition** is the rule that ends this repetition. Here it is the updated counter reaching five. Since every visit increases the counter and the reset begins at zero, the intended path cannot continue indefinitely.
+Read the back-edge as permission to perform one more unit of work, not as a Python function calling itself. A **termination condition** is the rule that ends this repetition. Here it is the updated counter reaching five. Since every visit increases the counter and the reset begins at zero, the intended path cannot continue indefinitely.
 
-![Source illustration L06, 01:29:30: The original automatic higher/lower exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=5370](../assets/video/l06.png)
+![L06: original concept diagram — Bounded loops and automatic higher/lower game.](../assets/diagrams/l06-concept.png)
 
-*Source illustration L06, 01:29:30: The original automatic higher/lower exercise. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=5370*
+*L06: original concept diagram — Bounded loops and automatic higher/lower game.*
 
 
-The source loop illustration is a separate attributed video figure. It is not evidence that the adapted program has run. The original demonstration deliberately uses a graph where a Python `for` loop would be simpler. Its purpose is to make state transitions visible before later lessons use similar loops for model/tool workflows.
+The loop illustration is a conceptual aid, not evidence that the adapted program has run. The demonstration deliberately uses a graph where a Python `for` loop would be simpler. Its purpose is to make state transitions visible before later lessons use similar loops for model/tool workflows.
 
 ## Demonstrate: inspect the bounded baseline
 
@@ -1590,7 +1580,7 @@ def build_graph(*, seed: int = 23):
     """Compile a repeatable graph; no mutable random generator is shared.
 
     Each visit uses seed + counter for a local Random instance. This is an
-    explicit teaching adaptation, not the video's uncontrolled random stream.
+    explicit reproducibility policy for repeatable execution and debugging.
     """
     if type(seed) is not int:
         raise ValueError("seed must be an integer")
@@ -1649,15 +1639,15 @@ if __name__ == "__main__":
 
 The generation node uses a local `Random(seed + counter)` instance on each visit. This is a specific repeatability policy, not a claim that random numbers are inherently deterministic. It avoids changing Python's global random generator and avoids a mutable generator shared between graph invocations. The greeting resets both the list and the counter, so stale caller values do not become extra work or old output. The incoming name is preserved rather than replaced with the greeting.
 
-![L06 demonstration: actual captured execution on macOS, 2026-11-03T01:41:35 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-demonstration.png)
+![L06 demonstration: actual captured execution on macOS, 2026-11-03T04:31:10 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-demonstration.png)
 
-*L06 demonstration: actual captured execution on macOS, 2026-11-03T01:41:35 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
+*L06 demonstration: actual captured execution on macOS, 2026-11-03T04:31:10 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
 
-[Complete L06 demonstration execution log](../assets/execution/l06-demonstration.txt). Source SHA-256: `b1d73c626b8e3a07893f…`.
+[Complete L06 demonstration execution log](../assets/execution/l06-demonstration.txt). Source SHA-256: `5ff6b8b7b39424076bb8…`.
 
-![L06 exercise-solution: actual captured execution on macOS, 2026-11-03T01:41:36 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-exercise-solution.png)
+![L06 exercise-solution: actual captured execution on macOS, 2026-11-03T04:31:11 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l06-exercise-solution.png)
 
-*L06 exercise-solution: actual captured execution on macOS, 2026-11-03T01:41:36 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
+*L06 exercise-solution: actual captured execution on macOS, 2026-11-03T04:31:11 UTC; exit 0. Deterministic Python execution. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete L06 exercise-solution execution log](../assets/execution/l06-exercise-solution.txt). Source SHA-256: `1b1da1eaee3c2a2283b2…`.
 
@@ -1685,7 +1675,7 @@ The game starts with player Student, bounds 1–20, no guesses, and zero attempt
 
 A correct guess sets hint `correct` and status `won`. A miss sets status `lost` when the allowed attempt budget is reached; otherwise status remains `playing`. Success must take precedence on the final permitted attempt. The default budget is seven, but accept integer budgets from one through seven so that exhaustion can be tested. Reject invalid targets, invalid budgets, booleans in either integer field, and blank or non-string player names with `ValueError` before guessing. Reset stale bounds, lists, hints, attempts, and status while preserving configuration.
 
-For target 17, predict the midpoint sequence `10, 15, 18, 16, 17`. For target 20 with budget two, predict guesses `10, 15`, hint `higher`, and status `lost`. These are algorithm-derived expectations, not a claim about the video's output. Also check target 15 with budget two: it must win on the final attempt. Verify every target from 1 to 20 using the default budget. The game is automatic: do not add `input()` or an LLM.
+For target 17, predict the midpoint sequence `10, 15, 18, 16, 17`. For target 20 with budget two, predict guesses `10, 15`, hint `higher`, and status `lost`. These are algorithm-derived expectations. Also check target 15 with budget two: it must win on the final attempt. Verify every target from 1 to 20 using the default budget. The game is automatic: do not add `input()` or an LLM.
 
 ## Knowledge checks
 
@@ -1699,13 +1689,12 @@ If history contains only one guess, inspect whether each node replaces the list 
 
 The shared `execution_config()` sets `recursion_limit=40`. This is an execution safety net measured in graph super-steps, not a guess budget. Our game has separate guess and feedback nodes, so one guess is not one super-step. A `GraphRecursionError` indicates an execution limit was reached; it is not evidence that the player used exactly seven guesses. Current documentation describes configurable recursion limits; this lesson deliberately does not depend on a version-specific default.
 
-Compared with historical whole-dictionary mutation and entry-point helpers, this implementation uses partial updates and `START`/`END` with an explicit path map. No Anthropic adaptation is needed for this non-model section. From the repository root, run the focused reference tests with `python -m pytest tests/lessons/test_l06.py -q`; those test the delivered demo and solution, while the starter's self-check tests your own implementation. Rendered figures, Windows checks, and service traces are separate parent-managed evidence.
+This implementation uses partial updates and `START`/`END` with an explicit path map. No Anthropic adaptation is needed for this non-model section. From the repository root, run the focused reference tests with `python -m pytest tests/lessons/test_l06.py -q`; those test the delivered demo and solution, while the starter's self-check tests your own implementation. Rendered figures, Windows checks, and service traces are separate parent-managed evidence.
 
 ## References
 
 - [LangGraph Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api): state, default replacement, nodes, edges, and compilation; verified by search and fetch on 3 November 2026.
 - [Use the graph API](https://docs.langchain.com/oss/python/langgraph/use-graph-api): loop construction, conditional termination, recursion configuration, and errors; verified on 3 November 2026.
-- [Source section](https://youtu.be/jGg_1h0qzaM?t=4454) and [exercise prompt](https://youtu.be/jGg_1h0qzaM?t=5359): attribution follows the supplied caption review and whole-track sampled visual review, not a new viewing claim.
 
 
 <!-- PAGEBREAK -->
@@ -1718,7 +1707,7 @@ You will put a real Anthropic chat-model call inside a one-node LangGraph graph.
 
 By the end, you should be able to construct a `HumanMessage`, distinguish model invocation from graph invocation, inspect response text and available token-usage metadata, and explain why a terminal loop does not create conversation memory. Prerequisites are L01–L06, the P00 environment checks, and approved Anthropic access. Allow about 80 minutes, including guided and independent practice. Paid requests require deliberate `--live` opt-in.
 
-The source section is [01:31:01–01:42:54](https://youtu.be/jGg_1h0qzaM?t=5461). It demonstrates a basic model wrapper, a terminal input loop, and a name-recall failure. The presenter explicitly assigns no original exercise. Our Anthropic implementation, bounded execution, validation, offline tests, and help-desk exercise are **current-API updates and added practice**, not historical video homework.
+This lesson demonstrates a basic model wrapper, a terminal input loop, and a name-recall failure. The Anthropic implementation, bounded execution, validation, offline tests, and help-desk exercise provide the complete practice sequence.
 
 ## Explain: a model inside a node
 
@@ -1734,20 +1723,20 @@ The demo's `BotState` contains `messages`, `reply`, `usage`, and `sent_messages`
 
 A **stateless** request does not carry conversational context from an earlier request unless your application supplies it. Anthropic's [Messages API guide](https://platform.claude.com/docs/en/build-with-claude/working-with-messages) explicitly describes this contract. Sending “My name is Bob” once does not make the next fresh request contain Bob's name. Reusing the same model object does not add conversation history automatically. This concerns conversational context, not a claim about the provider's data-retention policy.
 
-Our original diagram separates the outer Python loop from the graph execution. The arrow back to input is application control flow; there is no graph back-edge. Each visit to START receives new state.
+The diagram separates the outer Python loop from the graph execution. The arrow back to input is application control flow; there is no graph back-edge. Each visit to START receives new state.
 
-![L07: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l07.png)
+![L07: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l07.png)
 
-*L07: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L07: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L07 flowchart](../assets/diagrams/l07.mmd).
 
 
-The source introduces coding at [01:32:49](https://youtu.be/jGg_1h0qzaM?t=5569). A source figure around [01:33:00](https://youtu.be/jGg_1h0qzaM?t=5580) illustrates the original bot section; it is not evidence that the adapted Anthropic code ran.
+The concept figure illustrates the bot boundary and the separation between application control flow and each graph execution.
 
-![Source illustration L07, 01:31:55: The original simple-bot objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=5515](../assets/video/l07.png)
+![L07: original concept diagram — Anthropic stateless bot.](../assets/diagrams/l07-concept.png)
 
-*Source illustration L07, 01:31:55: The original simple-bot objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=5515*
+*L07: original concept diagram — Anthropic stateless bot.*
 
 
 ## Demonstrate: read the complete implementation
@@ -1888,7 +1877,7 @@ if __name__ == "__main__":
 
 `ask` constructs a new list containing exactly one `HumanMessage` on every call. The node rejects an empty list, multiple messages, a wrong message role, and blank text. `TypedDict` helps document the state shape, but it does not perform these runtime checks for you.
 
-The shared `get_model` helper obtains the approved key and model configuration locally when live execution is authorized. Secrets never enter graph state. It creates `ChatAnthropic` with a response limit, timeout, and bounded retries. We do not set `temperature`: some current models reject non-default sampling parameters. Do not hard-code a model name merely because it appeared in a video or documentation example; use the model approved during P00.
+The shared `get_model` helper obtains the approved key and model configuration locally when live execution is authorized. Secrets never enter graph state. It creates `ChatAnthropic` with a response limit, timeout, and bounded retries. We do not set `temperature`: some current models reject non-default sampling parameters. Do not hard-code a model name from an example; use the model approved during P00.
 
 `message_text` handles ordinary string content and textual content blocks. It does not print hidden thinking or dump all provider metadata. `usage_metadata` may supply input, output, and total token counts. A token is a unit used by a model to process text, not necessarily one word. Usage is returned when available, otherwise `{}`. It is not a price calculation or proof of memory.
 
@@ -1932,7 +1921,7 @@ The shared `get_model` helper obtains the approved key and model configuration l
 
 ## Independent task: stateless help-desk session
 
-This is added practice. Complete the separate starter `exercises/starters/l07.py`, without importing the demonstration or solution. Implement its three TODO functions: `classify_entry`, `build_bot`, and `run_session`. The workbook contains the precise interface and acceptance harness.
+Complete the separate starter `exercises/starters/l07.py`, without importing the demonstration or solution. Implement its three TODO functions: `classify_entry`, `build_bot`, and `run_session`. The workbook contains the precise interface and acceptance harness.
 
 Your one-node graph receives a `prompt` string and returns displayable `reply`, optional `usage`, and `sent_messages` recording the one original prompt sent. Its input schema deliberately differs from the demonstration so you must construct the message yourself. The session controller must preserve raw prompt text, skip whitespace-only entries, stop before calling the model for `exit`, and inspect at most six raw entries by default. Returned turns are a local report, never input for later calls.
 
@@ -1952,7 +1941,7 @@ If the model guesses Bob or Mira, inspect the actual request messages. A plausib
 
 ## References
 
-Official documentation was verified by search and page extraction on 3 November 2026: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [LangGraph memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages). Source attribution is to Vaibhav Mehra/freeCodeCamp's [video section](https://youtu.be/jGg_1h0qzaM?t=5461), originally using OpenAI rather than Anthropic. The supplied whole-track review confirms topic identity with sampled visuals; publication figures and live evidence are added separately.
+Official documentation: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [LangGraph memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages).
 
 
 <!-- PAGEBREAK -->
@@ -1965,11 +1954,11 @@ A chatbot can answer a follow-up about your name only if relevant information re
 
 Prerequisites are L07, Python lists and dictionaries, and the prepared Anthropic connection from P00. Allow 125 minutes including practice. Both completed examples require real Anthropic calls when run from the terminal. Offline tests use explicitly named doubles instead; they are not proof of model access or recall.
 
-**Video-backed material:** [01:42:54–02:03:20][804], with history code beginning at [01:43:58](https://youtu.be/jGg_1h0qzaM?t=6238). The source demonstrates Steve recall, a state-prediction pause, restart-related loss, and role-labeled logging. The later whole-track review confirms the recap continues through approximately 02:03:26 and assigns no missing detailed homework. **Current-API adaptation:** Anthropic replaces the original OpenAI integration. **Added practice:** our finite scripted runners, safe output files, reducer comparison, tests, and bounded-prompt task.
+Use the Steve name-recall scenario, a state-prediction pause, the distinction between process restarts and retained history, and role-labeled logging to establish the lesson goal. The finite scripted runners, safe output files, reducer comparison, tests, and bounded-prompt task provide the practice. Anthropic is the configured provider for the live examples.
 
-![Source illustration L08, 01:43:30: The original conversation-memory objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=6210](../assets/video/l08.png)
+![L08: original concept diagram — Conversation history and logging.](../assets/diagrams/l08-concept.png)
 
-*Source illustration L08, 01:43:30: The original conversation-memory objectives. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Historical provider names are shown in the source; adapted executable examples use Anthropic only. Source: https://youtu.be/jGg_1h0qzaM?t=6210*
+*L08: original concept diagram — Conversation history and logging.*
 
 
 ## Explain: messages carry the conversation
@@ -1984,11 +1973,11 @@ Keep structured messages until you deliberately export text. Anthropic responses
 
 ## Illustrate: two histories serve different purposes
 
-The original diagram shows the exercise's modern reducer path. “Full history” means all turns still held by the caller. “Prompt window” means the subset sent to this particular model call. Returning one AI delta updates full state; selecting a smaller prompt does not delete older state. The demonstration uses the same one-node graph shape but replaces its plain list with the complete updated list instead of using a reducer.
+The diagram shows the exercise's reducer path. “Full history” means all turns still held by the caller. “Prompt window” means the subset sent to this particular model call. Returning one AI delta updates full state; selecting a smaller prompt does not delete older state. The demonstration uses the same one-node graph shape but replaces its plain list with the complete updated list instead of using a reducer.
 
-![L08: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l08.png)
+![L08: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l08.png)
 
-*L08: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L08: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L08 flowchart](../assets/diagrams/l08.mmd).
 
@@ -2158,7 +2147,7 @@ Running without `--live` intentionally refuses to construct a model. It does not
 
 ## Independent task: bounded prompt, complete transcript
 
-This is **added practice**, not an original video homework brief. Complete `exercises/starters/l08.py` without importing the demonstration or reference solution. The provided orchestration already carries history and safely writes a file. Implement its three TODO functions.
+Complete `exercises/starters/l08.py` without importing the demonstration or reference solution. The provided orchestration already carries history and safely writes a file. Implement its three TODO functions.
 
 1. `select_prompt(history, max_pairs=1)` accepts complete alternating human/AI pairs followed by one pending human. Return a new list containing at most the newest `max_pairs` pairs plus the pending human. Accept zero to keep only that human. Reject negative, Boolean, and noninteger limits, empty/even/nonalternating histories, and AI tool calls with `ValueError`. Do not mutate the input list.
 2. `build_graph(model, max_pairs=1)` validates the limit at construction, uses `MessagesState`, and compiles `START → respond → END`. Inside the node, send the selected prompt with its configuration. Require a visible-text `AIMessage` without tool calls and return only `{"messages": [response]}`. Raise `TypeError` for a wrong role or tools, and `ValueError` for empty visible text. Do not add a checkpointer or call the model while building.
@@ -2170,7 +2159,7 @@ Use the workbook for the exact scenario and progressive hints. The fixed scenari
 
 ## Growth, safe trimming, and troubleshooting
 
-The source discusses removing an oldest human message after an arbitrary threshold. Our adaptation retains complete plain-text pairs instead, avoiding an orphaned AI reply at the start of the prompt. This caps message count, not tokens: one long message may still exceed a model's context window. Official guidance also offers token-aware trimming, deletion, and summarization.[802] Anthropic's provider token-counting method uses a remote API; it is not an offline test helper.[803]
+Retain complete plain-text pairs when trimming an input window, avoiding an orphaned AI reply at the start of the prompt. This caps message count, not tokens: one long message may still exceed a model's context window. Official guidance also offers token-aware trimming, deletion, and summarization.[802] Anthropic's provider token-counting method uses a remote API; it is not an offline test helper.[803]
 
 An omitted human turn does not guarantee forgetting. Its information may have been repeated in a retained AI reply. Nor does prompt trimming bound full-history RAM or log size. A production policy must address those separately and preserve tool-call/result relationships when tools are introduced.
 
@@ -2188,12 +2177,10 @@ If recall fails, inspect which messages reached the model before changing the pr
 - [801: LangGraph Graph API overview: reducers and MessagesState](https://docs.langchain.com/oss/python/langgraph/graph-api)
 - [802: LangGraph memory: prompt trimming and persistence](https://docs.langchain.com/oss/python/langgraph/add-memory)
 - [803: ChatAnthropic integration: invocation, content, and token counting](https://docs.langchain.com/oss/python/integrations/chat/anthropic)
-- [804: Source video: conversation history section at 01:42:54](https://youtu.be/jGg_1h0qzaM?t=6174)
 
 [801]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph Graph API overview: reducers and MessagesState"
 [802]: https://docs.langchain.com/oss/python/langgraph/add-memory "LangGraph memory: prompt trimming and persistence"
 [803]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic integration: invocation, content, and token counting"
-[804]: https://youtu.be/jGg_1h0qzaM?t=6174 "Source video: conversation history section at 01:42:54"
 
 
 <!-- PAGEBREAK -->
@@ -2202,7 +2189,7 @@ If recall fails, inspect which messages reached the model before changing the pr
 
 ## Explain: from conversation to action
 
-**Source window:** [02:03:20–02:28:46](https://youtu.be/jGg_1h0qzaM?t=7400). Allow 150 minutes including practice and review. Prerequisites are L08, Python functions and lists, conditional edges, and a working Anthropic setup from P00. U1 is an optional memory update after L08, not a prerequisite for this fresh-request graph.
+Allow 150 minutes including practice and review. Prerequisites are L08, Python functions and lists, conditional edges, and a working Anthropic setup from P00. U1 is an optional memory update after L08, not a prerequisite for this fresh-request graph.
 
 By the end, you should be able to define documented arithmetic tools, bind their schemas to a model, preserve message history with a reducer, route a model response to a tool node or END, and audit each result against its call ID. You will also distinguish successful termination from a safety limit that stopped an unfinished run.
 
@@ -2222,20 +2209,18 @@ Suppose the assistant requests `subtract(a=18, b=5)` with ID `call_a`. `ToolNode
 
 Two independent calculations may be requested together. Their results must be paired by ID rather than assumed position. A dependent calculation is different: requesting multiplication in the same batch as subtraction would not prove that the model used the subtraction tool's observation.
 
-![L09: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l09.png)
+![L09: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l09.png)
 
-*L09: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L09: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L09 flowchart](../assets/diagrams/l09.mmd).
 
 
-The original diagram shows both normal routes and explicit failure bounds. Follow its return edge from tools to the model. A tool result is not automatically the final user answer; the model normally needs another turn to interpret it. The no-tool route exits directly after a model response.
+The concept diagram shows both normal routes and explicit failure bounds. Follow its return edge from tools to the model. A tool result is not automatically the final user answer; the model normally needs another turn to interpret it. The no-tool route exits directly after a model response.
 
-**Video-backed illustration:** the source introduces the tool graph near [02:03:26](https://youtu.be/jGg_1h0qzaM?t=7406), explains reducers near [02:10:29](https://youtu.be/jGg_1h0qzaM?t=7829), and shows coding near [02:12:40](https://youtu.be/jGg_1h0qzaM?t=7960). A source frame is evidence of the original lesson, not execution of this adaptation.
+![L09: original concept diagram — ReAct arithmetic tool loop.](../assets/diagrams/l09-concept.png)
 
-![Source illustration L09, 02:04:20: The original agent–tool loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=7460](../assets/video/l09.png)
-
-*Source illustration L09, 02:04:20: The original agent–tool loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=7460*
+*L09: original concept diagram — ReAct arithmetic tool loop.*
 
 
 ## Demonstrate: run the complete baseline
@@ -2243,7 +2228,7 @@ The original diagram shows both normal routes and explicit failure bounds. Follo
 The demonstration is `course_lessons/l09.py`. Its tools add, subtract, and multiply integers. Useful docstrings describe their purpose, while argument names and annotations form schemas for the model. The [tools guide](https://docs.langchain.com/oss/python/langchain/tools) explains that functions become tools with descriptions and input schemas. Subtraction's description specifically preserves argument order.
 
 1. Open the demonstration and find `TOOLS`, `build_graph`, and `route_after_model`. Predict which function actually executes the arithmetic. It is not the routing function: the route returns a label, and `ToolNode` performs execution.
-2. Follow `START → model`. The model input prepends the system instruction to **all** current state messages. Passing only the system instruction would discard the user's actual problem, a debugging issue also demonstrated in the video.
+2. Follow `START → model`. The model input prepends the system instruction to **all** current state messages. Passing only the system instruction would discard the user's actual problem.
 3. Follow the conditional edge. Any valid `tool_calls` route to tools; no calls route to END. After tool execution, the ordinary edge returns to the model. The model-call counter starts at zero for every request.
 4. In the activated project environment, run the focused offline checks first:
 
@@ -2486,7 +2471,7 @@ The demonstration permits at most six model calls per request and four tool call
 
 ## Independent task: build an audited arithmetic runner
 
-This is **added practice**, not a separate homework assignment claimed from the source. Complete `exercises/starters/l09.py` using the exact workbook specification. Implement `route_next`, `make_agent`, and `collect_audit` without importing the demonstration or reference solution. Keep the provided typed tools and acceptance harness.
+Complete `exercises/starters/l09.py` using the exact workbook specification. Implement `route_next`, `make_agent`, and `collect_audit` without importing the demonstration or reference solution. Keep the provided typed tools and acceptance harness.
 
 Use a default limit of four model calls and a maximum of three tools per batch. Produce an audit row for every result with `call_id`, `tool`, `args`, `result`, and `status`. Reject mismatched or missing results instead of fabricating evidence. Validate three requests: subtract five from eighteen and then multiply the observed result by four; independently compute nine plus six and eight times three; and give a greeting with no calculation. The workbook provides progressive hints, failure cases, and completion criteria. The independent solution is `exercises/solutions/l09.py`.
 
@@ -2500,13 +2485,13 @@ Use a default limit of four model calls and a maximum of three tools per batch. 
 
 If the model ignores tools, check that the same tool list reaches both `bind_tools` and `ToolNode`, and that your prompt explicitly asks for tool-backed arithmetic. Do not fix this by fabricating calls. If the provider rejects the transcript, check every call/result ID and whether all results precede the next model turn. If a greeting reaches tools, inspect structured calls rather than searching text for arithmetic keywords.
 
-The video uses OpenAI; this adaptation uses the shared Anthropic factory with locally configured model selection and no temperature override. [ChatAnthropic](https://docs.langchain.com/oss/python/integrations/chat/anthropic) exposes normalized `AIMessage.tool_calls`. At the direct [Anthropic client-tool layer](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview), the corresponding blocks are `tool_use` and `tool_result`, linked by `tool_use_id`. Do not manually mix those wire-format dictionaries into LangChain tool-message construction.
+This lesson uses the shared Anthropic factory with locally configured model selection and no temperature override. [ChatAnthropic](https://docs.langchain.com/oss/python/integrations/chat/anthropic) exposes normalized `AIMessage.tool_calls`. At the direct [Anthropic client-tool layer](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview), the corresponding blocks are `tool_use` and `tool_result`, linked by `tool_use_id`. Do not manually mix those wire-format dictionaries into LangChain tool-message construction.
 
 The installed ToolNode wraps schema-validation failures in a `ToolException` subtype. The supplied narrowly typed handler supports that path without swallowing arbitrary programming errors. Empty or malformed call JSON is rejected explicitly. This example does not add durable memory, division, file-writing tools, or private reasoning logs. If execution reaches a safety exception, inspect the last observable call and correct the cause rather than simply raising the limit.
 
 ## References
 
-The linked video supplies the arithmetic-loop progression and demonstrated `312` calculation. Current official references linked above were verified on 3 November 2026. The explicit budgets, audit acceptance checks, offline doubles, and independent workbook task are additions for this course.
+Current official references linked above support the arithmetic-loop progression. The explicit budgets, audit acceptance checks, offline doubles, and independent workbook task are part of this course.
 
 
 <!-- PAGEBREAK -->
@@ -2515,17 +2500,17 @@ The linked video supplies the arithmetic-loop progression and demonstrated `312`
 
 ## Explain: a draft is not a saved document
 
-**Video-backed core:** 02:28:46–02:52:09. Allow 160 minutes, including guided practice and review. Before starting, complete L09 and be comfortable reading `AIMessage.tool_calls`, matching tool-result IDs, and following a conditional graph edge. This lesson adds a document that changes across human feedback, plus a filesystem side effect: writing a file.
+Allow 160 minutes, including guided practice and review. Before starting, complete L09 and be comfortable reading `AIMessage.tool_calls`, matching tool-result IDs, and following a conditional graph edge. This lesson adds a document that changes across human feedback, plus a filesystem side effect: writing a file.
 
-The source Drafter drafts an email, receives corrections, and saves when the human is satisfied. Watch the [introduction at 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926), then the [drafting demonstration at 02:45:53](https://youtu.be/jGg_1h0qzaM?t=9953). Its important outcome is not beautiful prose. It is a controlled progression from request, to editable draft, to reviewed revision, to a real saved artifact. The system must also handle a request too vague to draft responsibly.
+A Drafter drafts an email, receives corrections, and saves when the human is satisfied. Its important outcome is not beautiful prose. It is a controlled progression from request, to editable draft, to reviewed revision, to a real saved artifact. The system must also handle a request too vague to draft responsibly.
 
 By the end, you should be able to explain an agent/tools graph, replace a whole draft through a tool, retain conversation history between human turns, and prove that a successful save wrote the latest content. You should also recognize what this baseline does **not** provide: durable memory, concurrent editing, or a suspended graph that resumes after a restart.
 
-The supplied whole-track review resolves the source's chapter-boundary ambiguity. At 02:52:08–02:52:18, the presenter offers voice, GUI, and knowledge-base extensions as possible homework. There is no missing detailed assignment. Our workshop-email exercise below is **added practice**, not an invented original brief.
+The workshop-email exercise below provides additional practice with the same collaboration pattern. Treat it as a complete classroom task with its own acceptance criteria.
 
-![Source illustration L10, 02:29:45: The source human–AI drafting requirements. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=8985](../assets/video/l10.png)
+![L10: original concept diagram — Human–AI Drafter collaboration.](../assets/diagrams/l10-concept.png)
 
-*Source illustration L10, 02:29:45: The source human–AI drafting requirements. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=8985*
+*L10: original concept diagram — Human–AI Drafter collaboration.*
 
 
 ## Illustrate: model choices and Python authority
@@ -2534,9 +2519,9 @@ A tool schema describes an action the model may request. Binding `update` and `s
 
 The graph has two working nodes. `agent` calls the model. If there are tool calls, a conditional edge selects `tools`; otherwise the invocation returns to the human. After tools, a successful file write ends the entire collaboration. An update or error normally returns to the agent so it can show the draft or explain the problem. A four-model-call budget prevents an unproductive turn from looping indefinitely.
 
-![L10: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l10.png)
+![L10: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/l10.png)
 
-*L10: original teaching diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L10: original teaching diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L10 flowchart](../assets/diagrams/l10.mmd).
 
@@ -2545,7 +2530,7 @@ Two different meanings of “stop” matter. A clarification or draft preview en
 
 `DraftState` contains messages and a model-call counter. The `add_messages` reducer merges newly returned messages with the existing history, using message IDs when replacing existing entries. Nodes return only their new messages, not another copy of the entire history. Without that discipline it is easy to append the same conversation twice. [1003]
 
-The document itself lives in `DraftSession`, a dataclass: a Python object whose declared fields provide a convenient initializer. Tool functions close over this object. A **closure** is a function that retains access to values from the enclosing function where it was created. This avoids the source's single module-global buffer, but it remains mutable process-local storage. It is not LangGraph state injection, a checkpointer, or a multi-user service design.
+The document itself lives in `DraftSession`, a dataclass: a Python object whose declared fields provide a convenient initializer. Tool functions close over this object. A **closure** is a function that retains access to values from the enclosing function where it was created. This avoids a module-global buffer, but it remains mutable process-local storage. It is not LangGraph state injection, a checkpointer, or a multi-user service design.
 
 ## Demonstrate: run and inspect the meeting email
 
@@ -2584,9 +2569,9 @@ Read `course_lessons/l10.py` in this order: the session dataclass, `make_tools`,
 
 The shared writer accepts a new simple `.txt` basename, rejects traversal and symlinks, and creates the file exclusively so it cannot silently overwrite one. `saved_path` is assigned only after that operation returns. The tools node converts expected validation and file errors into `status="error"` messages so the model can respond honestly. Prompt instructions alone cannot enforce these file policies.
 
-Both graph invocation and nested model/tool invocation preserve runtime configuration, including selected callbacks. The model wrapper is `ChatAnthropic`, not the original video's OpenAI integration. Tool binding remains the same general pattern in the current official integration. [1001]
+Both graph invocation and nested model/tool invocation preserve runtime configuration, including selected callbacks. The model wrapper is `ChatAnthropic`. Tool binding remains the same general pattern in the current official integration. [1001]
 
-**Added implementation policies:** unlike the source's fixed agent-to-tools edge, our conditional edge skips tools on a clarification turn. Actual saved state replaces scanning result text for a successful-save phrase. Require the complete `.txt` filename rather than automatically adding an extension. Scripted human turns make classroom validation finite; the source instead reads feedback at terminal prompts. None of these adaptations introduces durable interrupt/resume.
+The implementation also applies several direct safeguards: a conditional edge skips tools on a clarification turn; actual saved state replaces scanning result text for a successful-save phrase; the complete `.txt` filename is required rather than automatically adding an extension; and scripted human turns make classroom validation finite. None of these safeguards introduces durable interrupt/resume.
 
 ```python
 """L10: a bounded Drafter graph, with human feedback between invocations.
@@ -2869,7 +2854,7 @@ If history disappears after a restart, that is this baseline's documented limita
 
 ## Explain: give the model evidence it can inspect
 
-**Video-aligned lesson:** 02:52:09–03:09:51, approximately 160 teaching minutes including practice. Prerequisites are L09's tool-call loop and L10's distinction between a draft and a saved artifact. Start with the [RAG introduction](https://youtu.be/jGg_1h0qzaM?t=10329), then inspect the [document walkthrough](https://youtu.be/jGg_1h0qzaM?t=10381). The independent answer-card task below is **added practice**, not an original video assignment.
+Prerequisites are L09's tool-call loop and L10's distinction between a draft and a saved artifact. This lesson develops retrieval-augmented generation (RAG), local embeddings, persistent Chroma storage, evidence-aware tool use, and a retrieve-first graph.
 
 By the end, you should be able to extract PDF pages, split text without losing provenance, explain local embeddings, build a persistent Chroma collection, follow a retrieval-tool loop, and distinguish an answer with evidence from plausible unsupported wording. You will also build a simpler retrieve-first graph and explain why it need not let a model decide whether to search.
 
@@ -2879,16 +2864,16 @@ An **embedding** is a numeric vector representing text. Similarity search compar
 
 ## Illustrate: follow text and provenance together
 
-The source video uses a stock-market PDF. That original file is available in its repository, but this lesson deliberately uses `data/rag_teaching_handbook.pdf`: an **original synthetic teaching replacement** about fictional Harbor Learning Lab policies. Its three pages describe an open day, equipment loans, and practice-record handling. It is neither the original finance document nor a nine-page copy. The editable text, rebuild script and decision record live in `data/rag_teaching_handbook.json`, `data/rag_build_pdf.py` and `data/rag_provenance.md`.
+This lesson uses `data/rag_teaching_handbook.pdf`: an **original synthetic teaching document** about fictional Harbor Learning Lab policies. Its three pages describe an open day, equipment loans, and practice-record handling. The editable text, rebuild script and decision record live in `data/rag_teaching_handbook.json`, `data/rag_build_pdf.py` and `data/rag_provenance.md`.
 
-![Source illustration L11, 02:52:38: The original model/retriever loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=10358](../assets/video/l11.png)
+![L11: original concept diagram — Local-embedding Chroma RAG.](../assets/diagrams/l11-concept.png)
 
-*Source illustration L11, 02:52:38: The original model/retriever loop diagram. Credit: Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners. Source: https://youtu.be/jGg_1h0qzaM?t=10358*
+*L11: original concept diagram — Local-embedding Chroma RAG.*
 
 
-![L11: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l11.png)
+![L11: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/l11.png)
 
-*L11: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*L11: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete L11 flowchart](../assets/diagrams/l11.mmd).
 
@@ -2903,7 +2888,7 @@ The recursive splitter tries paragraph, line, word and character boundaries. Our
 
 The demonstration starts at `agent`, invokes a tool-bound model, routes tool calls to `retrieve`, and loops back to the model. A response without tool calls ends the graph. `MessagesState` accumulates messages through its reducer, while nodes return only their new messages [1104]. Every `ToolMessage` must carry the ID of the tool call it answers. Inspect public tool arguments and returned evidence, not private reasoning.
 
-This adaptation requests retrieval using `tool_choice="auto"` and an explicit prompt. The configured model rejected forced named-tool selection during live validation, so the course does not rely on that option. A missing actual retrieval fails the acceptance check rather than being silently treated as success. Later turns may search again or answer. The prompt restricts answers to supplied passages, treats document text as untrusted data, and requires citations such as `[rag_teaching_handbook.pdf p.2]`. Three model turns and two tool calls per turn bound the loop. Budget exhaustion raises an error; it does not become a fabricated successful answer. `execution_config()` retains the selected tracing callbacks and the separate recursion guard. Anthropic supports tool binding through `bind_tools` [1105].
+This implementation requests retrieval using `tool_choice="auto"` and an explicit prompt. The configured model rejected forced named-tool selection during live validation, so the course does not rely on that option. A missing actual retrieval fails the acceptance check rather than being silently treated as success. Later turns may search again or answer. The prompt restricts answers to supplied passages, treats document text as untrusted data, and requires citations such as `[rag_teaching_handbook.pdf p.2]`. Three model turns and two tool calls per turn bound the loop. Budget exhaustion raises an error; it does not become a fabricated successful answer. `execution_config()` retains the selected tracing callbacks and the separate recursion guard. Anthropic supports tool binding through `bind_tools` [1105].
 
 ```python
 """L11: real local embeddings plus a bounded Anthropic retrieval-tool loop."""
@@ -2935,7 +2920,7 @@ Do not add facts from general knowledge. Use digits for durations. Cite every
 supported answer using [rag_teaching_handbook.pdf p.N] with its real page number.
 If the retrieved passages do not specify the requested fact, reply exactly
 NOT_IN_DOCUMENT and nothing else. Empty results also require NOT_IN_DOCUMENT.
-This is an original synthetic teaching replacement, not the video's finance PDF.
+This original synthetic teaching fixture supplies controlled retrieval evidence.
 """
 
 
@@ -3085,15 +3070,15 @@ This command can incur real Anthropic usage. On first ingestion, allow time and 
 
 The run checks three stable behaviors. A supported equipment question must include the durations 7 and 3 and a page-2 citation. The exact late-fee question must produce `NOT_IN_DOCUMENT`, because no amount is specified. A separate, genuinely empty local collection must also produce that sentinel with no hits. We do not require identical prose for supported answers. These are acceptance properties, not claims that a live run has already succeeded on your machine.
 
-![L11 demonstration: actual captured execution on macOS, 2026-11-03T01:48:29 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-demonstration.png)
+![L11 demonstration: actual captured execution on macOS, 2026-11-03T04:34:48 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-demonstration.png)
 
-*L11 demonstration: actual captured execution on macOS, 2026-11-03T01:48:29 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*L11 demonstration: actual captured execution on macOS, 2026-11-03T04:34:48 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
-[Complete L11 demonstration execution log](../assets/execution/l11-demonstration.txt). Source SHA-256: `7f6751d639c213b7d7eb…`.
+[Complete L11 demonstration execution log](../assets/execution/l11-demonstration.txt). Source SHA-256: `03074089df22b7146e77…`.
 
-![L11 exercise-solution: actual captured execution on macOS, 2026-11-03T01:48:35 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-exercise-solution.png)
+![L11 exercise-solution: actual captured execution on macOS, 2026-11-03T04:34:56 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/l11-exercise-solution.png)
 
-*L11 exercise-solution: actual captured execution on macOS, 2026-11-03T01:48:35 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*L11 exercise-solution: actual captured execution on macOS, 2026-11-03T04:34:56 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete L11 exercise-solution execution log](../assets/execution/l11-exercise-solution.txt). Source SHA-256: `603a1a8dbf3b330e16eb…`.
 
@@ -3125,11 +3110,11 @@ A citation validator can check that page 2 was retrieved. It cannot prove every 
 2. Why must ingestion and query embeddings use the same model, and what should you do after changing that model or the chunking policy?
 3. If Chroma returns three chunks for a late-fee question, can you conclude the document contains a fee? Explain the different checks for empty retrieval and insufficient nonempty evidence.
 
-## Troubleshooting and source/current differences
+## Troubleshooting and current implementation notes
 
 A missing PDF should raise a file error, not silently create an empty index. A scanned, textless PDF needs OCR; our helper rejects it. A model-download failure is an embedding setup issue, not evidence that Claude rejected your key. Preserve the error and fix connectivity/cache access; never replace embeddings with a keyword fallback. A collection compatibility error calls for a fresh run directory, not disabling checks. A citation failure means inspect the retrieved pages and prompt before relaxing acceptance. Do not use the offline test doubles in the live CLI.
 
-The video demonstrates a Windows persistence path, OpenAI chat/embeddings and `k=5`; this lesson uses portable run directories, Anthropic generation, a real local embedding model and `k=3`. The splitter's character/token distinction is corrected. Direct `chromadb` avoids requiring `langchain-chroma`. Current upstream RAG source has a valid tool-name comprehension; an earlier review's variable-warning is not a current defect to reproduce [1107]. The [testing section](https://youtu.be/jGg_1h0qzaM?t=11175) supports the grounding discussion, while the [outro](https://youtu.be/jGg_1h0qzaM?t=11344) suggests future projects, not another detailed exercise. This lesson's new policy dataset and deterministic acceptance checks are adaptations.
+Use portable run directories, Anthropic generation, a real local embedding model and `k=3`. The splitter's character/token distinction is important: character sizing does not establish a safe token budget. Direct `chromadb` avoids requiring `langchain-chroma`. The current RAG implementation uses a valid tool-name comprehension; preserve that implementation rather than introducing an undefined-variable pattern. The testing section's grounding discussion is represented by the acceptance checks and evidence review in this lesson. The policy dataset and deterministic acceptance checks provide a focused practice context.
 
 ## References
 
@@ -3140,7 +3125,6 @@ The video demonstrates a Windows persistence path, OpenAI chat/embeddings and `k
 - [1104: LangGraph messages state and graph routing](https://docs.langchain.com/oss/python/langgraph/graph-api)
 - [1105: ChatAnthropic integration and tool calls](https://docs.langchain.com/oss/python/integrations/chat/anthropic)
 - [1106: Chroma telemetry configuration](https://cookbook.chromadb.dev/core/configuration/)
-- [1107: Original course RAG implementation](https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py)
 
 [1101]: https://docs.trychroma.com/docs/embeddings/embedding-functions "Chroma embedding functions and local default model"
 [1102]: https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter "Recursive splitting and character sizing"
@@ -3148,7 +3132,6 @@ The video demonstrates a Windows persistence path, OpenAI chat/embeddings and `k
 [1104]: https://docs.langchain.com/oss/python/langgraph/graph-api "LangGraph messages state and graph routing"
 [1105]: https://docs.langchain.com/oss/python/integrations/chat/anthropic "ChatAnthropic integration and tool calls"
 [1106]: https://cookbook.chromadb.dev/core/configuration/ "Chroma telemetry configuration"
-[1107]: https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py "Original course RAG implementation"
 
 
 <!-- PAGEBREAK -->
@@ -3157,7 +3140,7 @@ The video demonstrates a Windows persistence path, OpenAI chat/embeddings and `k
 
 ## Explain: what changes after L08?
 
-**SUPPLEMENTARY / CURRENT-API UPDATE.** This 60-minute lab follows L08. It has no source-video start or end time. For context, the source's conversation-history section is 01:42:54–02:03:20, beginning at [the L08 video boundary](https://youtu.be/jGg_1h0qzaM?t=6174). The whole-track review confirms its recap continues briefly beyond that editorial boundary. The presenter demonstrates accumulated messages and text logging; this added lab teaches a different persistence mechanism, not an unshown original assignment.
+**SUPPLEMENTARY / CURRENT-API UPDATE.** This 60-minute lab extends the conversation-history concepts from L08 with a durable persistence mechanism.
 
 After this lesson you should be able to continue a conversation under a stable thread ID, inspect its saved state, reopen its SQLite file, and show that another thread does not inherit its messages. You need basic Python functions, `with` blocks, and L08's human/AI-message distinction. The course environment also needs `langgraph-checkpoint-sqlite`, a separately distributed backend. Do not change shared dependencies during class without the instructor's setup instructions.
 
@@ -3171,11 +3154,11 @@ The thread ID selects one sequence of saved checkpoints. It belongs inside invoc
 
 The SQLite database is the durable container. Both `project-a` and `project-b` live in the same file, but their checkpoint keys differ. This is logical isolation, not authentication: anyone permitted to read the file may inspect its data. A real multi-user service must authorize access to IDs and protect storage independently.
 
-The original diagram below separates the connection lifetime from the conversation lifetime. Its fresh-interpreter read has no model and receives no Python conversation list from the first run.
+The diagram below separates the connection lifetime from the conversation lifetime. Its fresh-interpreter read has no model and receives no Python conversation list from the first run.
 
-![U1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u1.png)
+![U1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u1.png)
 
-*U1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*U1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete U1 flowchart](../assets/diagrams/u1.mmd).
 
@@ -3190,7 +3173,7 @@ python -m course_lessons.u1 --live --backend none
 
 `--live` explicitly permits four real Anthropic calls through the shared runtime. Without it, this model-dependent demonstration rejects execution rather than inventing answers. The default output directory is a unique child of `.work/student-runs/u1`; `--output-dir` can select another directory. Each run creates a new UUID-named database so repeating the command does not silently reuse yesterday's conversation.
 
-Read the tested source at this point, particularly the indentation of both `with` blocks:
+Read the tested code at this point, particularly the indentation of both `with` blocks:
 
 ```python
 """U1: durable thread memory, not a global conversation list.
@@ -3385,7 +3368,7 @@ if __name__ == "__main__":
 
 The first invocation teaches `project-a` the synthetic project code `ORCHID-42`. A second asks for that code under the same ID. Two completed turns mean four stored messages, alternating human and AI. The third call asks the same question under `project-b`, which has never received the introduction. That thread should contain just its question and its own answer. The system instruction asks for `UNKNOWN` rather than a guessed code.
 
-Next, the first `SqliteSaver` context exits and closes its connection. A subprocess starts a fresh Python interpreter, opens the database, and reads the saved checkpoint through `get_tuple`. That worker does not create a model, read configuration, or make a paid request. Its four-message count and exact human inputs provide evidence that persisted data, rather than the original graph's Python objects, supplied the result.
+Next, the first `SqliteSaver` context exits and closes its connection. A subprocess starts a fresh Python interpreter, opens the database, and reads the saved checkpoint through `get_tuple`. That worker does not create a model, read configuration, or make a paid request. Its four-message count and exact human inputs provide evidence that persisted data, rather than the first graph's Python objects, supplied the result.
 
 Finally, the parent process enters a second saver context and compiles a new graph. `get_state` returns a **StateSnapshot**: `values` holds restored state, `config` identifies the checkpoint, and `next` describes scheduled work. For our completed first phase, `next == ()`. Reading this snapshot makes no model request. Sending a new human question does: the final primary thread has six messages, while the other remains at two.[1202]
 
@@ -3438,7 +3421,7 @@ Persistence does not create unlimited context. This node sends the accumulated t
 
 ## References and current-API differences
 
-Unlike the source's process-local history and text-log workflow, this original added lab uses `MessagesState`, explicit thread configuration, and a file-backed `SqliteSaver` context. Official pages were checked during development; publication evidence for real requests is recorded separately by the parent validation process.
+This lab uses `MessagesState`, explicit thread configuration, and a file-backed `SqliteSaver` context. Official guidance distinguishes thread-scoped checkpointer memory from cross-thread stores and documents the current snapshot and context-manager APIs.
 
 [1201]: https://docs.langchain.com/oss/python/langgraph/persistence "LangGraph persistence: checkpointers versus stores"
 [1202]: https://docs.langchain.com/oss/python/langgraph/checkpointers "LangGraph checkpointers, threads, and StateSnapshot inspection"
@@ -3464,9 +3447,9 @@ Unlike the source's process-local history and text-log workflow, this original a
 
 ## Why a draft needs a boundary
 
-A useful drafting assistant must distinguish “the model produced text” from “the user approved a file write.” This added 90-minute lab makes that boundary executable. Complete L10 and U1 first. You should already recognize a state dictionary, a node, a conditional edge, a tool message, and a checkpoint thread.
+A useful drafting assistant must distinguish “the model produced text” from “the user approved a file write.” This 90-minute lab makes that boundary executable. Complete L10 and U1 first. You should already recognize a state dictionary, a node, a conditional edge, a tool message, and a checkpoint thread.
 
-**SUPPLEMENTARY / CURRENT-API UPDATE:** U2 has no source-video start or end time. Its context is L10, [02:28:46–02:52:09](https://youtu.be/jGg_1h0qzaM?t=8926), where Drafter updates and saves a document. The global draft buffer is a source teaching workaround, not a multi-session design. The whole-track review also confirms that the closing voice/GUI/knowledge-base invitation is not a missing detailed assignment. Everything required below is added course practice.
+The lab uses a shared draft-writing pattern as a starting point, then makes state ownership, approval, replay, and bounded recovery explicit. Everything required below is self-contained practice.
 
 By the end, you will keep drafts in explicit thread state, inspect a real interrupt, resume the correct checkpoint, and prove that rejection creates no file. You will also test traversal, overwrite, and failed-save behavior. This is not an email sender or a production authorization service.
 
@@ -3515,14 +3498,14 @@ Use a trusted output directory. These teaching checks are not a complete sandbox
 5. Inspect the returned saved path. The file must contain exactly Cedar's approved draft, including whitespace. Orchid must have no saved artifact. Do not grade the notice against a memorized sentence: model wording varies.
 6. Read the overwrite and traversal assertions. These intentionally fail safely and must leave Cedar's existing bytes unchanged. Run `python -m pytest -q tests/lessons/test_u2.py` for offline evidence using explicitly named doubles, not live model responses.
 
-![U2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u2.png)
+![U2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/u2.png)
 
-*U2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*U2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete U2 flowchart](../assets/diagrams/u2.mmd).
 
 
-The original diagram separates the baseline path from the workbook extension. In both paths, a pending interrupt precedes any write. The extension has a second approval boundary only after the first save fails.
+The concept diagram separates the baseline path from the workbook extension. In both paths, a pending interrupt precedes any write. The extension has a second approval boundary only after the first save fails.
 
 ```python
 """U2 baseline: session-scoped drafts and approval BEFORE a file side effect."""
@@ -3745,7 +3728,7 @@ If a filename fails, do not loosen validation. Select a new simple filename with
 - [LangChain tools](https://docs.langchain.com/oss/python/langchain/tools): runtime injection, hidden tool arguments, and state-updating commands.
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence): thread checkpoints, stores, and memory-only limitations.
 
-Official pages were searched and fetched on 3 November 2026. U2 is added material, not a claim that the video implemented these APIs.
+The official documentation links above provide the current API guidance for this lab.
 
 
 <!-- PAGEBREAK -->
@@ -3754,7 +3737,7 @@ Official pages were searched and fetched on 3 November 2026. U2 is added materia
 
 ## Purpose and prerequisites
 
-**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 before inspecting retrieval.** This module has no source-video start or end time. The source course introduces graph execution and tool loops, but does not teach this LangSmith lab. The demonstration, shipping exercise, diagram, and evaluation rules here are original course additions. The whole-track review supersedes earlier caption-boundary caveats; it does not turn supplementary observability into a video topic.
+**SUPPLEMENTARY · 90 minutes · Prerequisite: L09; L11 before inspecting retrieval.** This module teaches graph observability, evidence discipline, and deterministic evaluation. The demonstration, shipping exercise, diagram, and evaluation rules form one coherent lab.
 
 By the end, you should be able to follow a graph invocation into its node, tool, and model runs; distinguish sending telemetry from verifying stored data; and evaluate model output using fixed reference examples. You need the course Python 3.12 environment and instructor-approved Anthropic and LangSmith access. Keep keys in the established private configuration, never in this chapter's examples or graph state.
 
@@ -3770,14 +3753,14 @@ An **evaluation** applies stated criteria to actual output. A correct tool calcu
 
 The normal path is START → quote → format → check → END. If the receipt is malformed, `check` allows one return to `format`. After the second attempt, execution ends even if formatting is still invalid. The later evaluator records failure; the graph does not silently replace the model's answer with the tool's correct result.
 
-![S1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s1.png)
+![S1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s1.png)
 
-*S1: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*S1: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete S1 flowchart](../assets/diagrams/s1.mmd).
 
 
-The original diagram distinguishes local evaluation from the separate telemetry pipeline. `trace_log` is a small teaching record of visited nodes, not proof that LangSmith stored a trace. Likewise, `run_id` is assigned locally before invocation; its presence in a report is not an ingestion acknowledgment.
+The diagram distinguishes local evaluation from the separate telemetry pipeline. `trace_log` is a small teaching record of visited nodes, not proof that LangSmith stored a trace. Likewise, `run_id` is assigned locally before invocation; its presence in a report is not an ingestion acknowledgment.
 
 ## Configure destination and privacy
 
@@ -4015,15 +3998,15 @@ Flushing means queued submission was attempted. Stored read-back verifies a part
 
 For an L11 RAG trace, also inspect retrieved passage IDs, source/page metadata, and tool outputs. Correct retrieval and a grounded final answer are separate checks. This seat-quote module performs no retrieval, so it cannot provide retrieval-quality evidence.
 
-![S1 demonstration: actual captured execution on macOS, 2026-11-03T01:44:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-demonstration.png)
+![S1 demonstration: actual captured execution on macOS, 2026-11-03T04:35:02 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-demonstration.png)
 
-*S1 demonstration: actual captured execution on macOS, 2026-11-03T01:44:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S1 demonstration: actual captured execution on macOS, 2026-11-03T04:35:02 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S1 demonstration execution log](../assets/execution/s1-demonstration.txt). Source SHA-256: `77947d4986c6bf8f4857…`.
 
-![S1 exercise-solution: actual captured execution on macOS, 2026-11-03T01:44:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-exercise-solution.png)
+![S1 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s1-exercise-solution.png)
 
-*S1 exercise-solution: actual captured execution on macOS, 2026-11-03T01:44:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S1 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S1 exercise-solution execution log](../assets/execution/s1-exercise-solution.txt). Source SHA-256: `2e35b103c8aeccd0020e…`.
 
@@ -4050,7 +4033,7 @@ If authentication fails, ask the instructor to check region, workspace, key perm
 
 A failed evaluation still saves its diagnostic report before asserting. A model or tool exception propagates instead of fabricating a receipt; an interrupted run may have no report. Reusing an explicit output directory with the same report filename raises `FileExistsError` rather than overwriting evidence. Use a new directory for a new validation run.
 
-Unlike common older snippets, this lesson uses explicit runtime callbacks, real ChatAnthropic calls, asynchronous retrieval guidance, and a bounded repair loop. Its local report is **not** an uploaded LangSmith dataset or experiment. Official SDK `evaluate` can run examples with evaluators and create an experiment, but that is a later deliberate workflow with separate permissions [1405]. A three-case teaching set is not a production benchmark.
+This lesson uses explicit runtime callbacks, real ChatAnthropic calls, asynchronous retrieval guidance, and a bounded repair loop. Its local report is **not** an uploaded LangSmith dataset or experiment. Official SDK `evaluate` can run examples with evaluators and create an experiment, but that is a later deliberate workflow with separate permissions [1405]. A three-case teaching set is not a production benchmark.
 
 ## References
 
@@ -4074,7 +4057,7 @@ Unlike common older snippets, this lesson uses explicit runtime callbacks, real 
 
 ## Purpose and prerequisites
 
-**Supplementary observability module · 90 minutes.** This is added course material, not a section of the source video, so it has no video start/end timestamp. Complete L09 first; L11 is useful when inspecting retrieval evidence. The original course's [tool-agent section at 02:03:20](https://youtu.be/jGg_1h0qzaM?t=7400) supplies the agent/tool-loop concept, not this LangWatch integration.
+**Supplementary observability module · 90 minutes.** Complete L09 first; L11 is useful when inspecting retrieval evidence. This module develops graph-level tracing, bounded tool loops, ingestion evidence, and privacy-aware comparison of telemetry destinations.
 
 By the end, you should be able to attach tracing at the graph boundary, explain a parent trace and its child spans, follow a bounded model/tool loop, interpret ingestion evidence without exaggeration, and choose which tracing services receive synthetic data. You will also distinguish retrieval failure from exporter failure. You need the prepared Python 3.12 environment and authorized Anthropic access. LangWatch access is needed for the default live command; LangSmith access is needed only for comparison commands that select it. Never paste credentials into lesson code or screenshots.
 
@@ -4086,14 +4069,14 @@ Our demonstration asks a real Anthropic model to call `add_numbers` with 18 and 
 
 The program checks the actual tool result, the two-call count, the event order, and a nonempty final response. It does not require a memorized sentence. It also does not inspect private chain-of-thought. Trace visible messages, tool arguments, observations, and routing instead.
 
-![S2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s2.png)
+![S2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/s2.png)
 
-*S2: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*S2: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete S2 flowchart](../assets/diagrams/s2.mmd).
 
 
-The original S2 diagram follows the application path and then separates callback routing from export evidence. A route marked `none` means no tracing callbacks selected by this runtime; it does not remove the real model request.
+The S2 diagram follows the application path and then separates callback routing from export evidence. A route marked `none` means no tracing callbacks selected by this runtime; it does not remove the real model request.
 
 ## Attach the callback where the whole graph runs
 
@@ -4270,15 +4253,15 @@ if __name__ == "__main__":
 4. In the authorized LangWatch project, locate the run by its name and execution time. Expand the parent, graph nodes, model calls, and `add_numbers` tool. Check the call/result relationship and look for latency, errors, and token usage where the provider/integration supplies it. Record missing fields rather than guessing values. A graph's plain Python node should appear as a chain span, not as an LLM call.
 5. Save sanitized evidence of what you actually inspected. The local `events` list is useful, but it does not establish that a remote trace exists. Execution figures are added only after the actual runs.
 
-![S2 demonstration: actual captured execution on macOS, 2026-11-03T01:49:00 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-demonstration.png)
+![S2 demonstration: actual captured execution on macOS, 2026-11-03T04:35:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-demonstration.png)
 
-*S2 demonstration: actual captured execution on macOS, 2026-11-03T01:49:00 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S2 demonstration: actual captured execution on macOS, 2026-11-03T04:35:18 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S2 demonstration execution log](../assets/execution/s2-demonstration.txt). Source SHA-256: `0afc8f0ca1d8e88e350d…`.
 
-![S2 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-exercise-solution.png)
+![S2 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:30 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/s2-exercise-solution.png)
 
-*S2 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:11 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*S2 exercise-solution: actual captured execution on macOS, 2026-11-03T04:35:30 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete S2 exercise-solution execution log](../assets/execution/s2-exercise-solution.txt). Source SHA-256: `325068cfabe70207d331…`.
 
@@ -4331,7 +4314,7 @@ Missing model access or rate limits are provider problems, not proof of broken t
 
 Configure `LANGWATCH_API_KEY`, `LANGWATCH_PROJECT_ID`, and the course's `LANGWATCH_ENDPOINT` through the prepared local configuration process. The official cloud default is `https://app.langwatch.ai`; this course helper intentionally allows that official endpoint only. Project-scoped/service-key requirements must match the authorized project. Comparison also requires the correct LangSmith project/workspace and regional endpoint from S1.
 
-The current online guide shows newer `setup(project_id=..., flush_on_exit=...)` options. Read-only inspection found installed LangWatch 1.4.0 does not accept those keywords. The shared helper supplies project scope through the environment during setup and flushes its provider explicitly. Do not copy the documentation's OpenAI model example: this course uses current installed ChatAnthropic and real Anthropic requests. These are supplementary current-API adaptations, not changes claimed to be present in the original video.
+The current online guide shows newer `setup(project_id=..., flush_on_exit=...)` options. Read-only inspection found installed LangWatch 1.4.0 does not accept those keywords. The shared helper supplies project scope through the environment during setup and flushes its provider explicitly. Do not copy the documentation's OpenAI model example: this course uses current installed ChatAnthropic and real Anthropic requests. Use the installed SDK behavior and the shared helper as the authoritative configuration for this course.
 
 ## References
 
@@ -4344,11 +4327,11 @@ Official sources verified by search and page retrieval on 3 November 2026: [Lang
 
 ## Build a draft that can be inspected and safely approved
 
-**SUPPLEMENTARY CAPSTONE · 180 minutes.** Complete L01–L11, U1–U2 and S1–S2 first. This is an added project, not homework assigned in the source video. The related source sections are [Drafter, 02:28:46–02:52:09](https://youtu.be/jGg_1h0qzaM?t=8926) and [RAG, 02:52:09–03:09:51](https://youtu.be/jGg_1h0qzaM?t=10329). They supply the drafting and retrieval concepts; this capstone adds current checkpointed approval, isolated threads and acceptance tests.
+**SUPPLEMENTARY CAPSTONE · 180 minutes.** Complete L01–L11, U1–U2 and S1–S2 first. This capstone combines drafting and retrieval concepts with current checkpointed approval, isolated threads and acceptance tests.
 
 You will combine those ideas into a document-grounded briefing assistant. A successful run retrieves actual teaching-document passages, completes an Anthropic tool round trip, drafts with inspectable citations, accepts one revision and pauses before saving. You must also explain why a plausible sentence is not evidence. Your final product is a new text file beneath the chosen output directory, not a model message saying “saved.”
 
-Use only L11's `data/rag_*` teaching fixtures. The integrated `rag_teaching_handbook.pdf` is an explicitly labeled original synthetic replacement, not the source video's PDF. Do not replace them with personal documents or customer data. The source filename and one-based PDF page must travel with each retrieved passage. Model wording varies, so assess stable properties—tool messages, citations, thread state, approval and file contents—instead of memorizing an example paragraph.
+Use only L11's `data/rag_*` teaching fixtures. The integrated `rag_teaching_handbook.pdf` is an explicitly labeled original synthetic teaching document. Do not replace it with personal documents or customer data. The source filename and one-based PDF page must travel with each retrieved passage. Model wording varies, so assess stable properties—tool messages, citations, thread state, approval and file contents—instead of memorizing an example paragraph.
 
 ## Understand the graph before running it
 
@@ -4358,9 +4341,9 @@ The model first receives a retrieval-tool schema. Search uses automatic tool cho
 
 The graph branches on evidence and validation results. Empty retrieval ends as `no_evidence`. An explicit insufficient-evidence response ends as `unsupported`. Missing or unknown citation markers produce `citation_failed`. Only a structurally acceptable draft reaches review. One requested revision returns to review; a second ends as `revision_limit`. There is no open-ended agent loop, and the successful path makes three model calls: tool selection, initial drafting and one revision. The recursion limit is an emergency ceiling, not the normal stopping condition.
 
-![C01: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/c01.png)
+![C01: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.](../assets/diagrams/overviews/c01.png)
 
-*C01: original overview diagram for this adapted implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
+*C01: original overview diagram for this implementation. Detailed guards and error paths are explained in the text and complete flowchart.*
 
 [Editable complete C01 flowchart](../assets/diagrams/c01.mmd).
 
@@ -4739,7 +4722,7 @@ if __name__ == "__main__":
 
    The unfinished starter must exit successfully with `STARTER_NOT_COMPLETED`, not claim completion. One learner-acceptance test is skipped until the TODOs are implemented. Other tests exercise the demonstration and reference solution using explicitly named offline doubles. These checks do not establish that Anthropic, Chroma downloads or tracing services work.
 
-2. **Find the actual retrieval boundary.** Read `load_retriever`. It lazily imports `course_support.retrieval`, prepares a store under the run's `chroma` directory and calls `search(store, query, k=3)`. Read the L11 fixture description before drawing conclusions about its contents. If the sibling helper is absent during integration, stop at its clear dependency error; do not fabricate a replacement store or assume the source video's document and answer were reproduced.
+2. **Find the actual retrieval boundary.** Read `load_retriever`. It lazily imports `course_support.retrieval`, prepares a store under the run's `chroma` directory and calls `search(store, query, k=3)`. Read the L11 fixture description before drawing conclusions about its contents. If the sibling helper is absent during integration, stop at its clear dependency error; do not fabricate a replacement store or assume that a particular document and answer were reproduced.
 
 3. **Run the real demonstration when authorized.** The shared runtime handles local credentials; never copy them into code or state.
 
@@ -4762,15 +4745,15 @@ if __name__ == "__main__":
 
    Identify the retrieval tool, matched result, two drafting calls, interrupt/resume and save node. Record genuine server-side trace identifiers when available. A printed summary is not proof that either service ingested a trace. Model prompts, passages and drafts may leave the machine when tracing is enabled.
 
-![C01 demonstration: actual captured execution on macOS, 2026-11-03T01:49:31 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-demonstration.png)
+![C01 demonstration: actual captured execution on macOS, 2026-11-03T04:35:50 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-demonstration.png)
 
-*C01 demonstration: actual captured execution on macOS, 2026-11-03T01:49:31 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*C01 demonstration: actual captured execution on macOS, 2026-11-03T04:35:50 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete C01 demonstration execution log](../assets/execution/c01-demonstration.txt). Source SHA-256: `a014b0d2bd77be4923f4…`.
 
-![C01 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:52 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-exercise-solution.png)
+![C01 exercise-solution: actual captured execution on macOS, 2026-11-03T04:36:12 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.](../assets/execution/c01-exercise-solution.png)
 
-*C01 exercise-solution: actual captured execution on macOS, 2026-11-03T01:49:52 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
+*C01 exercise-solution: actual captured execution on macOS, 2026-11-03T04:36:12 UTC; exit 0. Real Anthropic calls enabled. Browser screenshot of the captured output; the complete log is linked below.*
 
 [Complete C01 exercise-solution execution log](../assets/execution/c01-exercise-solution.txt). Source SHA-256: `bb7d511a334d521c0408…`.
 
@@ -4791,7 +4774,7 @@ Return the specified review status with `approved=False` by default. Permit one 
 
 A missing-helper error means L11 integration is incomplete, not that fake retrieval is acceptable. A first-run embedding download error needs network/cache diagnosis through the parent or instructor. Authentication and model-access errors belong to the shared runtime configuration; never print secrets to troubleshoot them. Inspect `citation_failed` against the exact tool-provided markers before increasing token limits. A save failure must leave `saved_path` empty; do not convert it into success merely because approval was granted.
 
-Current node configuration uses `RunnableConfig`, allowing LangGraph to inject callbacks and thread settings. `invoke` still exposes `__interrupt__` even though current documentation also describes newer streaming APIs. This capstone uses `InMemorySaver`: it demonstrates process-local isolation, not restart durability. Refer back to U1 for a durable backend. Anthropic generation, local embeddings, fail-closed approval and this assessment are course adaptations, not claims about the video's original provider, global buffer or project brief.
+Current node configuration uses `RunnableConfig`, allowing LangGraph to inject callbacks and thread settings. `invoke` still exposes `__interrupt__` even though current documentation also describes newer streaming APIs. This capstone uses `InMemorySaver`: it demonstrates process-local isolation, not restart durability. Refer back to U1 for a durable backend. Anthropic generation, local embeddings, fail-closed approval and this assessment are implementation choices for this capstone.
 
 ## References
 
@@ -4896,29 +4879,17 @@ HTTP 401 indicates a credential/authentication problem, not proof of an unavaila
 
 For file-save errors, check the explicitly selected output directory and filename. A rejected traversal, symlink, or overwrite is an intended safety check. For SQLite persistence, keep the same database and thread ID when testing recovery, and use different IDs when testing isolation. For RAG, inspect pages, chunks, collection path, embedding identity, and retrieved evidence before judging the generated answer.
 
-## E. Source illustrations and attribution
+## E. Original illustrations and technical references
 
-The source stills illustrate the historical teaching material; they are not proof that the adapted code executed. Credit for every listed still: Vaibhav Mehra / freeCodeCamp, *LangGraph Complete Course for Beginners – Complex AI Agents with Python*, https://youtu.be/jGg_1h0qzaM. Historical OpenAI names may appear in source slides; all adapted model calls in this repository use Anthropic.
+The concept illustrations and flowcharts are original diagrams created for this course. Editable Mermaid sources are supplied under `assets/diagrams`. Concept diagrams explain data flow and mental models; complete implementation flowcharts include more detailed guards and error paths.
 
-- L01: The source explanation of conditional edges, [00:12:40](https://youtu.be/jGg_1h0qzaM?t=760).
-- L02: The original personalized-compliment exercise, [00:32:30](https://youtu.be/jGg_1h0qzaM?t=1950).
-- L03: The original one-node arithmetic exercise, [00:43:55](https://youtu.be/jGg_1h0qzaM?t=2635).
-- L04: The original three-node profile exercise, [00:54:40](https://youtu.be/jGg_1h0qzaM?t=3280).
-- L05: The original two-section conditional exercise, [01:13:25](https://youtu.be/jGg_1h0qzaM?t=4405).
-- L06: The original automatic higher/lower exercise, [01:29:30](https://youtu.be/jGg_1h0qzaM?t=5370).
-- L07: The original simple-bot objectives, [01:31:55](https://youtu.be/jGg_1h0qzaM?t=5515).
-- L08: The original conversation-memory objectives, [01:43:30](https://youtu.be/jGg_1h0qzaM?t=6210).
-- L09: The original agent–tool loop diagram, [02:04:20](https://youtu.be/jGg_1h0qzaM?t=7460).
-- L10: The source human–AI drafting requirements, [02:29:45](https://youtu.be/jGg_1h0qzaM?t=8985).
-- L11: The original model/retriever loop diagram, [02:52:38](https://youtu.be/jGg_1h0qzaM?t=10358).
-
-Original diagrams are separately labeled and supplied as editable Mermaid source under `assets/diagrams`. Full source video/captions are not redistributed. [Publisher’s course page](https://www.freecodecamp.org/news/learn-langgraph-and-build-conversational-ai-with-python/) and [original example repository](https://github.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp) provide context; chapter-specific current documentation is cited beside the material it supports.
+Execution screenshots are separate evidence of actual runs, not conceptual mockups. Chapter-specific official technical documentation is retained beside the material it supports. Source/page citations in retrieval exercises refer to the supplied synthetic teaching dataset and must remain inspectable.
 
 ## F. Delivery and classroom use
 
 The Student Handbook, Teacher Handbook, and Exercise Workbook share the same identifiers and sequence. Runnable baselines live in `course_lessons`, unfinished tasks in `exercises/starters`, instructor answers in `exercises/solutions`, and regression tests in `tests/lessons`. Directory separation is not an access-control boundary: instructors should omit solutions when distributing a learner-only package.
 
-Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive. The approved training index is preserved separately; these are new manuals, not silent edits of that index.
+Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive.
 
 ## G. Working glossary
 

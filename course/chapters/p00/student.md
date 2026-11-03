@@ -2,7 +2,7 @@
 
 ## What this preparation establishes
 
-**SUPPLEMENTARY / ADDED PRACTICE — 60 minutes.** P00 is preparation for the approved course, not a chapter or exercise from the source video. It has no source-video start or end timestamp. Continue afterward with L01, whose [source introduction begins at 00:00:00](https://youtu.be/jGg_1h0qzaM?t=0). The reviewed video establishes a deterministic foundations sequence before its AI-agent sequence; this preparation deliberately keeps those boundaries.
+**SUPPLEMENTARY PRACTICE — 60 minutes.** P00 is preparation for the approved course. Continue afterward with L01.
 
 By the end, you should identify the Python environment running your code, execute a non-LLM graph, reject unsupported service URLs, and propose safe recovery steps without exposing credentials. An LLM is a large language model accessed through a local model or remote provider. P00 needs neither. Its code never reads `.env` and never checks a real account.
 
@@ -46,7 +46,7 @@ A graph organizes work into nodes connected by edges. Here each node is an ordin
 
 The builder registers `check_label` and `finish_setup`. Explicit edges connect START to the first node, then the second node, then END. START and END mark boundaries; they do not call services. `compile()` produces the executable graph; `invoke()` runs it. Nodes return partial updates rather than mutate the supplied input dictionary. This usage follows the current Graph API and does not require an agent or chat-model wrapper [2].
 
-**Original diagram:** the connected local demonstration and workbook paths are separate from the disconnected, instructor-authorized real-service path.
+**Concept diagram:** the connected local demonstration and workbook paths are separate from the disconnected, instructor-authorized real-service path.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -111,7 +111,7 @@ For a later real check, keep only a sanitized status, service, and request ID. A
 
 ## References and current-API differences
 
-P00's environment audit, safety policy and independent task are added preparation. They are not source-video homework or evidence of a service run. Current official documentation was checked on 3 November 2026. The course uses explicit graph boundaries and partial updates; later model lessons adapt the video to Anthropic. No model-price or account-access promises are made here.
+P00's environment audit, safety policy and independent task provide preparation. Current official documentation was checked on 3 November 2026. The course uses explicit graph boundaries and partial updates; later model lessons use Anthropic. No model-price or account-access promises are made here.
 
 [1]: https://docs.python.org/3.12/library/venv.html "Python 3.12 virtual environments"
 [2]: https://docs.langchain.com/oss/python/langgraph/overview "LangGraph overview and deterministic graph example"

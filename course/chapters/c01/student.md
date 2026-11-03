@@ -2,11 +2,11 @@
 
 ## Build a draft that can be inspected and safely approved
 
-**SUPPLEMENTARY CAPSTONE · 180 minutes.** Complete L01–L11, U1–U2 and S1–S2 first. This is an added project, not homework assigned in the source video. The related source sections are [Drafter, 02:28:46–02:52:09](https://youtu.be/jGg_1h0qzaM?t=8926) and [RAG, 02:52:09–03:09:51](https://youtu.be/jGg_1h0qzaM?t=10329). They supply the drafting and retrieval concepts; this capstone adds current checkpointed approval, isolated threads and acceptance tests.
+**SUPPLEMENTARY CAPSTONE · 180 minutes.** Complete L01–L11, U1–U2 and S1–S2 first. This capstone combines drafting and retrieval concepts with current checkpointed approval, isolated threads and acceptance tests.
 
 You will combine those ideas into a document-grounded briefing assistant. A successful run retrieves actual teaching-document passages, completes an Anthropic tool round trip, drafts with inspectable citations, accepts one revision and pauses before saving. You must also explain why a plausible sentence is not evidence. Your final product is a new text file beneath the chosen output directory, not a model message saying “saved.”
 
-Use only L11's `data/rag_*` teaching fixtures. The integrated `rag_teaching_handbook.pdf` is an explicitly labeled original synthetic replacement, not the source video's PDF. Do not replace them with personal documents or customer data. The source filename and one-based PDF page must travel with each retrieved passage. Model wording varies, so assess stable properties—tool messages, citations, thread state, approval and file contents—instead of memorizing an example paragraph.
+Use only L11's `data/rag_*` teaching fixtures. The integrated `rag_teaching_handbook.pdf` is an explicitly labeled original synthetic teaching document. Do not replace it with personal documents or customer data. The source filename and one-based PDF page must travel with each retrieved passage. Model wording varies, so assess stable properties—tool messages, citations, thread state, approval and file contents—instead of memorizing an example paragraph.
 
 ## Understand the graph before running it
 
@@ -37,7 +37,7 @@ The demonstration is `course_lessons/c01.py`. Its builder accepts an injected mo
 
    The unfinished starter must exit successfully with `STARTER_NOT_COMPLETED`, not claim completion. One learner-acceptance test is skipped until the TODOs are implemented. Other tests exercise the demonstration and reference solution using explicitly named offline doubles. These checks do not establish that Anthropic, Chroma downloads or tracing services work.
 
-2. **Find the actual retrieval boundary.** Read `load_retriever`. It lazily imports `course_support.retrieval`, prepares a store under the run's `chroma` directory and calls `search(store, query, k=3)`. Read the L11 fixture description before drawing conclusions about its contents. If the sibling helper is absent during integration, stop at its clear dependency error; do not fabricate a replacement store or assume the source video's document and answer were reproduced.
+2. **Find the actual retrieval boundary.** Read `load_retriever`. It lazily imports `course_support.retrieval`, prepares a store under the run's `chroma` directory and calls `search(store, query, k=3)`. Read the L11 fixture description before drawing conclusions about its contents. If the sibling helper is absent during integration, stop at its clear dependency error; do not fabricate a replacement store or assume that a particular document and answer were reproduced.
 
 3. **Run the real demonstration when authorized.** The shared runtime handles local credentials; never copy them into code or state.
 
@@ -78,7 +78,7 @@ Return the specified review status with `approved=False` by default. Permit one 
 
 A missing-helper error means L11 integration is incomplete, not that fake retrieval is acceptable. A first-run embedding download error needs network/cache diagnosis through the parent or instructor. Authentication and model-access errors belong to the shared runtime configuration; never print secrets to troubleshoot them. Inspect `citation_failed` against the exact tool-provided markers before increasing token limits. A save failure must leave `saved_path` empty; do not convert it into success merely because approval was granted.
 
-Current node configuration uses `RunnableConfig`, allowing LangGraph to inject callbacks and thread settings. `invoke` still exposes `__interrupt__` even though current documentation also describes newer streaming APIs. This capstone uses `InMemorySaver`: it demonstrates process-local isolation, not restart durability. Refer back to U1 for a durable backend. Anthropic generation, local embeddings, fail-closed approval and this assessment are course adaptations, not claims about the video's original provider, global buffer or project brief.
+Current node configuration uses `RunnableConfig`, allowing LangGraph to inject callbacks and thread settings. `invoke` still exposes `__interrupt__` even though current documentation also describes newer streaming APIs. This capstone uses `InMemorySaver`: it demonstrates process-local isolation, not restart durability. Refer back to U1 for a durable backend. Anthropic generation, local embeddings, fail-closed approval and this assessment are implementation choices for this capstone.
 
 ## References
 

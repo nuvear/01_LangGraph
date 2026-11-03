@@ -1,5 +1,5 @@
 Command: python -m exercises.solutions.c01 --output-dir <run-output>/C01/exercise-solution --live --backend both
-UTC: 2026-11-03T01:49:52.564579+00:00
+UTC: 2026-11-03T04:36:12.969866+00:00
 Exit: 0
 
 STDOUT
@@ -9,7 +9,7 @@ STDOUT
   "live_api_enabled": true,
   "backend": "both",
   "result": {
-    "saved_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/C01/exercise-solution/artifacts/artifacts/exercise-brief.txt",
+    "saved_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T043435Z-a15f52/C01/exercise-solution/artifacts/artifacts/exercise-brief.txt",
     "status": "saved",
     "retrieved_chunks": 3,
     "model_calls": 3,

@@ -2,7 +2,7 @@
 
 ## Teaching purpose and preparation
 
-**Supplementary module · 90 minutes · prerequisite L09; L11 recommended for retrieval context.** S2 has no source-video timestamp. The [video tool-agent section at 02:03:20](https://youtu.be/jGg_1h0qzaM?t=7400) supports the loop concept only. Do not attribute this SDK setup, privacy comparison, or exercise to the presenter.
+**Supplementary module · 90 minutes · prerequisite L09; L11 recommended for retrieval context.** S2 develops graph-level tracing, bounded tool loops, privacy comparison, and conservative evidence interpretation.
 
 Prepare the approved Python 3.12 environment and authorized Anthropic/LangWatch project access. Comparison needs LangSmith access with its correct workspace and regional endpoint. Never display credential files. Read `course_support/runtime.py` and `course_support/observability.py` before class: the CLI already creates the parent trace, selects callbacks, and flushes on context exit. Students should not add a second SDK initialization or attach another callback inside every node.
 
@@ -83,7 +83,7 @@ Use a ten-point rubric: two points for the correct four-backend privacy plan; tw
 
 Common misconceptions are treating `supported` as automatic factual correctness, treating HTTP 200 as complete acceptance, equating `none` with no network, and treating identical-looking answers as evidence of identical traces. Ask students which specific field or visible span supports each claim.
 
-For provider failures, check sanitized model access/rate-limit diagnostics without showing headers. For export failures, check LangWatch project scope and the course-supported cloud endpoint separately. For missing nodes, inspect callback placement/config propagation. For file collisions, select a new output directory. For current SDK mismatch, do not copy newer `setup(project_id=..., flush_on_exit=...)` options: installed LangWatch 1.4.0 lacks them, and the shared helper already handles scope and flush.
+For provider failures, check sanitized model access/rate-limit diagnostics without showing headers. For export failures, check LangWatch project scope and the course-supported cloud endpoint separately. For missing nodes, inspect callback placement/config propagation. For file collisions, select a new output directory. For current SDK mismatch, do not use `setup(project_id=..., flush_on_exit=...)`: installed LangWatch 1.4.0 lacks those keywords, and the shared helper already handles scope and flush.
 
 ## References
 

@@ -6,19 +6,19 @@ This 110-minute lesson completes the deterministic foundations. After L05's cond
 
 Before class, select the prepared Python 3.12 environment and open `course_lessons/l06.py`, `exercises/starters/l06.py`, and the workbook. Keep `exercises/solutions/l06.py` for the debrief. Work from the repository root so imports resolve. Use installed course dependencies; provider keys are unnecessary. The shared runtime imports foundation packages but never requests configuration here.
 
-Allocate 15 minutes to explanation, 10 to illustration, 10 to the demonstration, 25 to guided practice, 40 to independent work, and 10 to review. Selected video viewing is included in these periods, not added afterward. Source context is [01:14:14–01:31:01](https://youtu.be/jGg_1h0qzaM?t=4454), with the automatic game assignment near [01:29:19](https://youtu.be/jGg_1h0qzaM?t=5359). The supplied whole-track visual review confirms the exercise identity and seven-guess cap; it supersedes the older caption review's statement that no frames had been inspected.
+Allocate 15 minutes to explanation, 10 to illustration, 10 to the demonstration, 25 to guided practice, 40 to independent work, and 10 to review.
 
 ## Illustrate: make the stopping rule visible
 
 In minutes 0–15, ask, “What state changes when a node runs for the second time?” Expected response: it receives accumulated updates, not the original input. Sketch the greeting reset followed by generation and conditional return. Define a back-edge as graph control flow, not Python call-stack recursion. Have learners identify the progress value, its increment, its initial value, and the comparison that ends the loop.
 
-In minutes 15–25, use the original diagram and source figure separately. The first explains our implementation; the second attributes the video's conceptual loop. Do not imply that a source frame is an execution screenshot of adapted code.
+In minutes 15–25, use the original diagram and the conceptual figure separately. The first explains our implementation; the second explains the conceptual loop. Do not imply that a conceptual figure is an execution screenshot of adapted code.
 
 <!-- ORIGINAL_DIAGRAM -->
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
-Ask why resetting only the counter is incomplete. Expected response: stale values in the list would still appear in a new run, even if the number of new generations were correct. Our adaptation clears both derived fields and preserves `name` in a separate field. Explain that current LangGraph partial updates replace ordinary list-valued keys unless a reducer is supplied. Here the node explicitly builds the complete new list; no accumulator reducer is present.
+Ask why resetting only the counter is incomplete. Expected response: stale values in the list would still appear in a new run, even if the number of new generations were correct. The implementation clears both derived fields and preserves `name` in a separate field. Explain that current LangGraph partial updates replace ordinary list-valued keys unless a reducer is supplied. Here the node explicitly builds the complete new list; no accumulator reducer is present.
 
 ## Demonstrate: a ten-minute bounded run
 
@@ -30,7 +30,7 @@ python -m course_lessons.l06 --backend none
 
 Spend two minutes locating reset and progress updates, three tracing the conditional path map, three examining the returned summary, and two distinguishing the safety limit from the loop rule. Expected stable properties are counter five, list length five, every integer within 0–10, a Student greeting, and repeatability across fresh runs. Do not grade the exact random list or narrate unrecorded service evidence.
 
-The local `Random(seed + counter)` policy is added for deterministic instruction. It neither uses a global random seed nor leaves a mutable generator advancing between runs. The source used random generation to teach graph repetition; its exact output is not the goal. Modern explicit `START` edges and dictionary updates also replace historical presentation choices. The [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) supports these current semantics.
+The local `Random(seed + counter)` policy provides deterministic instruction. It neither uses a global random seed nor leaves a mutable generator advancing between runs. Random generation makes graph repetition visible; its exact output is not the goal. Explicit `START` edges and dictionary updates support the current Graph API semantics described in the [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
 <!-- EXECUTION_FIGURES -->
 
@@ -79,4 +79,4 @@ If history is truncated, inspect singleton list replacement. If guesses repeat, 
 
 ## References
 
-The [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) and [loop/control guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) were verified by search and fetch on 3 November 2026. They support the current state-update, compilation, conditional-edge, and recursion-error teaching points. Source attribution follows the supplied caption and whole-track visual reviews. Parent-managed rendering, screenshots, integration, and any later platform validation remain separate from this offline lesson.
+The [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) and [loop/control guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api) support the current state-update, compilation, conditional-edge, and recursion-error teaching points. Parent-managed rendering, screenshots, integration, and any later platform validation remain separate from this offline lesson.

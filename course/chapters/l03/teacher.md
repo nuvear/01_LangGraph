@@ -4,7 +4,7 @@
 
 Teach this as deterministic graph programming, not as an AI agent demonstration. Learners bring Python lists, dictionaries, functions, and L02's compile/invoke distinction. The desired transfer is that a node can consume several differently typed state fields and produce a small update without changing graph topology. Keep model access and observability setup out of the lesson.
 
-The source window is [00:33:07–00:44:29](https://youtu.be/jGg_1h0qzaM?t=1987). Its original exercise uses one node to add or multiply a list; the supplied whole-track review confirms the exercise slide at 00:43:35. This adaptation adds strict validation, separate numeric output, precise punctuation, and empty-list rules. Do not attribute those assessment choices to the presenter. Current partial-update guidance comes from the [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), verified for this lesson.
+The core activity uses one node to add or multiply a list. Teach strict validation, separate numeric output, precise punctuation, and empty-list rules as the explicit assessment contract. Current partial-update guidance comes from the [official Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
 Before class, activate the prepared Python 3.12 environment at the repository root. Have these commands ready:
 
@@ -21,11 +21,11 @@ Do not use `--live`. The demo and solution use the real installed LangGraph engi
 
 Spend the first five minutes eliciting the inputs and outputs. Ask, “Which field is a list? Which field do we calculate?” Expected responses are `values` and `total`/`result`, respectively. Write `NotRequired` beside derived fields. Explain that it permits absence, whereas `str | None` permits a null value in a present key. The [Python typing reference](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) states that TypedDict does not enforce values at runtime.
 
-At minutes 5–9, show the source coding context near [00:34:20](https://youtu.be/jGg_1h0qzaM?t=2060), then compare it with the adapted schema. Clarify that the supplied visual review is sampled, not a claim that every video frame was inspected. Do not infer exact Python syntax from the low-resolution source figure.
+At minutes 5–9, compare the baseline schema with the exercise schema. Emphasize that the same node pattern supports several typed inputs and a small partial update. Use the exact Python code supplied in the lesson rather than inferring syntax from a diagram.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
-At minutes 9–12, use the original diagram to ask learners how many work-performing nodes execute. The answer is one. START and END are boundary markers, not extra computation nodes. In the baseline the node is `processor`; in the exercise it is `calculator`. The `if` changes arithmetic inside that node, not the graph's route.
+At minutes 9–12, use the concept diagram to ask learners how many work-performing nodes execute. The answer is one. START and END are boundary markers, not extra computation nodes. In the baseline the node is `processor`; in the exercise it is `calculator`. The `if` changes arithmetic inside that node, not the graph's route.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -79,6 +79,5 @@ For recovery, isolate the earliest failing layer. Test `validate_inputs` directl
 
 ## References
 
-- [Source lesson](https://youtu.be/jGg_1h0qzaM?t=1987) and [source exercise](https://youtu.be/jGg_1h0qzaM?t=2607).
 - [LangGraph Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) and [StateGraph reference](https://reference.langchain.com/python/langgraph/graph/state/StateGraph).
 - [Python 3.12 TypedDict](https://docs.python.org/3.12/library/typing.html#typing.TypedDict) and [math.prod](https://docs.python.org/3.12/library/math.html#math.prod).

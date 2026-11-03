@@ -30,11 +30,6 @@
     "exit_code": 0
   },
   {
-    "id": "L06",
-    "status": "passed",
-    "exit_code": 0
-  },
-  {
     "id": "L07",
     "status": "passed",
     "exit_code": 0
@@ -55,12 +50,17 @@
     "exit_code": 0
   },
   {
-    "id": "S1",
+    "id": "L10",
     "status": "passed",
     "exit_code": 0
   },
   {
-    "id": "L10",
+    "id": "U1",
+    "status": "passed",
+    "exit_code": 0
+  },
+  {
+    "id": "L06",
     "status": "passed",
     "exit_code": 0
   },
@@ -70,7 +70,7 @@
     "exit_code": 0
   },
   {
-    "id": "U1",
+    "id": "S1",
     "status": "passed",
     "exit_code": 0
   },

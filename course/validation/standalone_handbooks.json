@@ -1,0 +1,35 @@
+[
+  {
+    "book": "LangGraph_Student_Handbook",
+    "docx_sha256": "25993fb9dbdb2e2fb9dc099b02259d31ae2f403351f9d10dc474f48fb2235b09",
+    "prohibited_reference_matches": 0,
+    "old_artwork_matches": 0,
+    "embedded_images": 62,
+    "lesson_count": 17,
+    "original_concepts_verified": 11,
+    "execution_screenshots_verified": 34,
+    "status": "passed"
+  },
+  {
+    "book": "LangGraph_Teacher_Handbook",
+    "docx_sha256": "6395b97624056422677c9ea6ee7e1ae664875b350457fe920e86fdbf59e2e7fe",
+    "prohibited_reference_matches": 0,
+    "old_artwork_matches": 0,
+    "embedded_images": 62,
+    "lesson_count": 17,
+    "original_concepts_verified": 11,
+    "execution_screenshots_verified": 34,
+    "status": "passed"
+  },
+  {
+    "book": "LangGraph_Exercise_Workbook",
+    "docx_sha256": "30ea1a81c9b1b1619d27a5d0af7117477e2e25812da8dfe547327e6a9f198db4",
+    "prohibited_reference_matches": 0,
+    "old_artwork_matches": 0,
+    "embedded_images": 0,
+    "lesson_count": 17,
+    "original_concepts_verified": 0,
+    "execution_screenshots_verified": 0,
+    "status": "passed"
+  }
+]

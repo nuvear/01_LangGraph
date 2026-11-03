@@ -2,7 +2,7 @@
 
 ## Task: build a profile in three ordered updates
 
-Complete `exercises/starters/l04.py` after studying the two-node demonstration. This is the source video's three-node name/age/skills exercise, with explicitly added validation and boundary cases. The source lesson runs [00:44:29–00:55:36](https://youtu.be/jGg_1h0qzaM?t=2669); the exercise chapter begins [00:54:04](https://youtu.be/jGg_1h0qzaM?t=3244). Do not use a model or tracing service.
+Complete `exercises/starters/l04.py` after studying the two-node demonstration. Build the three-node name/age/skills exercise with the supplied validation and boundary cases. Do not use a model or tracing service.
 
 The starter supplies the state schema, input validation, graph builder, and local checks. Your implementation work is confined to three TODO functions: `welcome`, `describe_age`, and `describe_skills`. Do not replace the graph with a single function or import the demonstration or reference solution. Keep the supplied edges and explain them below.
 
@@ -83,4 +83,4 @@ You are finished when all three nodes return nonmutating partial updates, all re
 
 Optional stretch: run a second profile through the same compiled graph, and then invoke it using a previous output as input. Predict whether any old generated text or visited items will leak. Record your prediction and actual result. Keep the same three-node topology, avoid persistence or model calls, and explain why resetting generated fields in `welcome` matters.
 
-For API clarification, consult the official [partial-update explanation](https://docs.langchain.com/oss/python/langgraph/graph-api) and [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api), verified on 3 November 2026. Their shorthand sequence builder is not required for this explicit-edge exercise.
+For API clarification, consult the official [partial-update explanation](https://docs.langchain.com/oss/python/langgraph/graph-api) and [sequential graph guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api). Their shorthand sequence builder is not required for this explicit-edge exercise.

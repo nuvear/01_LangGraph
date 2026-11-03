@@ -2,7 +2,7 @@
 
 ## Your task: workshop notice and honest save recovery
 
-This **added practice** follows the video's 02:28:46–02:52:09 drafting workflow, not a detailed original assignment. See the [Drafter introduction](https://youtu.be/jGg_1h0qzaM?t=8926). Prerequisite: L09. Allow 90 minutes including guided practice; use synthetic data only.
+This task applies a drafting workflow in which a complete email is revised through human feedback and saved only after an authorized successful write. Prerequisite: L09. Allow 90 minutes including guided practice; use synthetic data only.
 
 Build a process-local Drafter that revises a complete email, fails safely on an occupied filename, then saves after new human feedback. Assess orchestration and file evidence, not exact wording. Persistence, voice, GUI, retrieval, and durable interrupts are outside this task; U2 adds safer state and approval/resume.
 

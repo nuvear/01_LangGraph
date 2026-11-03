@@ -27,7 +27,7 @@ Do not add facts from general knowledge. Use digits for durations. Cite every
 supported answer using [rag_teaching_handbook.pdf p.N] with its real page number.
 If the retrieved passages do not specify the requested fact, reply exactly
 NOT_IN_DOCUMENT and nothing else. Empty results also require NOT_IN_DOCUMENT.
-This is an original synthetic teaching replacement, not the video's finance PDF.
+This original synthetic teaching fixture supplies controlled retrieval evidence.
 """
 
 

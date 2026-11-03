@@ -4,9 +4,9 @@
 
 Follow the student sequence Explain → Illustrate → Demonstrate → Guided practice → Independent exercise → Review. Allocate 100 minutes: 20 for Python types, 15 for graph vocabulary, 10 for demonstration, 15 for guided practice, 30 for independent work, and 10 for assessment. P00 should provide an activated Python 3.12 environment. Work from the project root. No credentials, model initialization or tracing service is needed.
 
-The source window is [00:00:00–00:18:39](https://youtu.be/jGg_1h0qzaM?t=0). Select concepts at [00:01:24](https://youtu.be/jGg_1h0qzaM?t=84) and [00:08:35](https://youtu.be/jGg_1h0qzaM?t=515) within the allocated time. The supplied whole-track record includes sampled visual checks, not continuous viewing. No source-assigned exercise occurs here. Label the movie graph, badge exercise, validation rules and conditional sketch as original added practice.
+Frame this lesson as a standalone introduction to Python typing, graph vocabulary, message roles, and partial state updates. Use the deterministic movie graph and the workshop-badge exercise to make the distinctions observable. No source recording, model request, or remote service is required.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 Inspect `course_lessons/l01.py`, `exercises/starters/l01.py`, and `exercises/solutions/l01.py`. Keep backend `none`. Both complete modules have independent `run_demo` entry points. The starter is deliberately incomplete; a successful process exit initially means only that it honestly reported incomplete work.
 
@@ -20,7 +20,7 @@ Show `Union[int, float]` beside `int | float`, then `Any`. Neither converts or v
 
 ## Illustrate: minutes 20–35, graph vocabulary
 
-Use the original diagram to identify two work nodes and two boundary sentinels. START and END do not trim strings or format cards.
+Use the concept diagram to identify two work nodes and two boundary sentinels. START and END do not trim strings or format cards.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -35,7 +35,7 @@ Distinguish builder from compiled runnable. Compilation checks structure; assert
 3. For two minutes, trace `START → normalize_title → describe_movie → END`. Ask which line preserves year. Precise answer: neither node must return it; update application retains untouched state channels.
 4. For three minutes, read `message_examples`. System carries instructions/context; human carries user input; AI carries assistant content or requests; tool carries a result. All objects are hand-authored, and `l01-square-1` links request and result. No model generated them.
 
-The [message guide](https://docs.langchain.com/oss/python/langchain/messages) supports AI tool-call requests paired with ToolMessage results. The video's “function message” wording is legacy/imprecise here, not a fifth required role. This course imports `langchain_core.messages`; documentation may use `langchain.messages`. No provider migration is needed because L01 makes no provider request.
+The [message guide](https://docs.langchain.com/oss/python/langchain/messages) supports AI tool-call requests paired with ToolMessage results. Use the current terminology and explain that the request ID must match the result's `tool_call_id`. This course imports `langchain_core.messages`; documentation may use `langchain.messages`. No provider migration is needed because L01 makes no provider request.
 
 <!-- EXECUTION_FIGURES -->
 
@@ -87,4 +87,4 @@ For import failures, recover the P00 environment and module invocation rather th
 
 ## References and publication boundary
 
-Official [typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [construction](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [message](https://docs.langchain.com/oss/python/langchain/messages) pages were searched and retrieved on 3 November 2026. Parent handles figures, rendering and handbook integration. No Windows execution, model request or dashboard inspection is claimed.
+Official [typing](https://docs.python.org/3.12/library/typing.html), [map](https://docs.python.org/3.12/library/functions.html#map), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [construction](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [message](https://docs.langchain.com/oss/python/langchain/messages) pages. Parent handles figures, rendering and handbook integration. No Windows execution, model request or dashboard inspection is claimed.

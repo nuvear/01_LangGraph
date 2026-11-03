@@ -2,7 +2,7 @@
 
 ## Your task: automatic guessing, not human input
 
-Build a LangGraph game that finds a synthetic target between 1 and 20 using automatic higher/lower feedback. The default maximum is seven guesses. The graph must also stop honestly when a smaller allowed budget is exhausted. This adapts the [source exercise near 01:29:19](https://youtu.be/jGg_1h0qzaM?t=5359) within the 01:14:14–01:31:01 source section. Deterministic midpoints, validation, and a reduced-budget test are added teaching requirements; exact video guesses are not acceptance criteria.
+Build a LangGraph game that finds a synthetic target between 1 and 20 using automatic higher/lower feedback. The default maximum is seven guesses. The graph must also stop honestly when a smaller allowed budget is exhausted. Deterministic midpoints, validation, and a reduced-budget test are required teaching conditions; exact random output is not an acceptance criterion.
 
 Use the separate starter at `exercises/starters/l06.py`. It does not import the answer. The reference solution is `exercises/solutions/l06.py`; consult it after attempting the task. The demonstration at `course_lessons/l06.py` teaches five bounded generations, not this game's solution. No model, API key, tracing service, `input()`, or additional package installation is needed for this prepared environment.
 
@@ -36,7 +36,7 @@ Record the following fields using observed state, not copied expected text:
 - Dirty input with target 10, guesses `[999]`, attempts `-8`, and wrong bounds: final guesses ___; attempts ___; original caller list unchanged ___ .
 - Invalid target 0 and invalid budget 8: exception type ___; why neither should start guessing ___ .
 
-For the first case, expect `10, 15, 18, 16, 17` and a five-attempt win. For the two-attempt exhaustion case, expect `10, 15`, bounds 16–20, hint `higher`, and `lost`. The final-attempt case must win. These are predictions of the specified algorithm, not invented execution evidence.
+For the first case, expect `10, 15, 18, 16, 17` and a five-attempt win. For the two-attempt exhaustion case, expect `10, 15`, bounds 16–20, hint `higher`, and `lost`. The final-attempt case must win. These are predictions of the specified algorithm, not execution evidence.
 
 ## Three progressive hints
 

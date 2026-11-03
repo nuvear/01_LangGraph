@@ -2,7 +2,7 @@
 
 ## Independent task: approve the current draft, not an earlier version
 
-**SUPPLEMENTARY · 180-minute capstone session.** This added exercise combines the drafting and retrieval ideas from [Drafter, 02:28:46](https://youtu.be/jGg_1h0qzaM?t=8926) and [RAG, 02:52:09](https://youtu.be/jGg_1h0qzaM?t=10329). It is not original video homework. Complete L01–L11, U1–U2 and S1–S2 before starting.
+**SUPPLEMENTARY · 180-minute capstone session.** This added exercise combines drafting and retrieval ideas with explicit approval and bounded execution. Complete L01–L11, U1–U2 and S1–S2 before starting.
 
 Your client wants a short teammate briefing based only on the supplied L11 synthetic teaching document, `data/rag_teaching_handbook.pdf`. A reviewer may ask for one revision, reject the draft or approve its current contents. Saving must require explicit approval of the current draft. The finished file must include a reproducible inventory of the evidence the assistant retrieved. Do not add another knowledge base, paid provider, global draft buffer or unbounded tool loop.
 

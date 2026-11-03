@@ -6,15 +6,15 @@ A LangGraph graph does not need an AI model. In this lesson, one ordinary Python
 
 Allow 70 minutes. Before starting, complete L01 and be comfortable with dictionary lookup, function calls, string formatting, and `TypedDict`. By the end, you should be able to define a one-field state, register one node, connect START and END, compile the builder, invoke the compiled graph, and inspect its returned `message`. You will also distinguish changing graph state from mutating the caller's input dictionary.
 
-**Video-backed:** the source section runs from [00:18:39](https://youtu.be/jGg_1h0qzaM?t=1119) to 00:33:07. Its coding chapter begins at [00:21:08](https://youtu.be/jGg_1h0qzaM?t=1268), and the personalized-compliment exercise begins at [00:32:22](https://youtu.be/jGg_1h0qzaM?t=1942). The supplied whole-track visual review confirms the exercise slide at 00:32:30. These references identify source teaching, not execution of our adapted files.
+This lesson presents a compact, deterministic graph so you can separate graph construction from node behavior and execution.
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 ## Explain: a state, a function, and a path
 
-Our `MessageState` describes a dictionary containing one key, `message`, whose value is a string. At input, the string is a person's name, such as `Bob`. After the node runs, the same channel contains the full greeting. A **channel** here means one named field that LangGraph tracks in its state. We deliberately reuse one field to stay close to the source exercise; we are not creating chat history.
+Our `MessageState` describes a dictionary containing one key, `message`, whose value is a string. At input, the string is a person's name, such as `Bob`. After the node runs, the same channel contains the full greeting. A **channel** here means one named field that LangGraph tracks in its state. We deliberately reuse one field for this compact exercise; we are not creating chat history.
 
-`TypedDict` helps readers and static type checkers understand that structure. At runtime, the value is still an ordinary dictionary. The annotation does not automatically reject a number or guarantee that a key exists. The [official Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) explains this distinction. Our explicit `read_name` checks are **added practice**: missing or non-string values raise `TypeError`; empty or whitespace-only strings raise `ValueError`.
+`TypedDict` helps readers and static type checkers understand that structure. At runtime, the value is still an ordinary dictionary. The annotation does not automatically reject a number or guarantee that a key exists. The [official Python typing specification](https://typing.python.org/en/latest/spec/typeddict.html) explains this distinction. Our explicit `read_name` checks mean that missing or non-string values raise `TypeError`; empty or whitespace-only strings raise `ValueError`.
 
 A **node** is the callable registered in the graph. Our greeting node reads the name and returns a newly constructed dictionary. It never assigns into the dictionary it receives. `read_name` is a helper function called inside that node; it is not a second graph node. In this lesson the returned update contains the only state field, but it follows the same partial-update pattern that later lessons use with several fields.
 
@@ -22,7 +22,7 @@ An **edge** specifies what runs next. The path is START → greeter → END. STA
 
 ## Illustrate: follow one invocation
 
-The following original diagram shows the common topology. Use the greeter in the demonstration or the compliment node in the exercise; they are alternatives, not two nodes connected together.
+The following diagram shows the common topology. Use the greeter in the demonstration or the compliment node in the exercise; they are alternatives, not two nodes connected together.
 
 <!-- ORIGINAL_DIAGRAM -->
 
@@ -86,8 +86,8 @@ If imports fail, check the active virtual environment and run from the repositor
 
 A wrong name usually means a constant was used instead of `state["message"]`. A lost name means the output replaced the channel without incorporating its previous value. A padded name losing spaces means the validation function returned a stripped value. Invalid-input errors are intentional and are not model failures.
 
-**Current-API update:** the video uses entry/finish terminology and mutates its state dictionary. This adaptation uses explicit START/END edges and returns updates, following the [current official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api). Entry-point helpers still appear in current documentation; they are not presented here as removed APIs. Exact punctuation, validation cases, automated tests, and CLI summaries are course additions. Later lessons introduce larger state schemas and real model calls; adding either here would obscure the one-node lesson.
+**Current-API guidance:** use explicit START/END edges and return updates, following the [current official usage guide](https://docs.langchain.com/oss/python/langgraph/use-graph-api). Entry-point helpers still appear in current documentation; they are not presented here as removed APIs. Exact punctuation, validation cases, automated tests, and CLI summaries are part of this lesson. Later lessons introduce larger state schemas and real model calls; adding either here would obscure the one-node lesson.
 
 ## References
 
-Official references were verified through search and fetch on 3 November 2026: [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [Graph API usage](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [Python TypedDict specification](https://typing.python.org/en/latest/spec/typeddict.html). Source teaching: Vaibhav Mehra / freeCodeCamp, [first graph](https://youtu.be/jGg_1h0qzaM?t=1119), [coding chapter](https://youtu.be/jGg_1h0qzaM?t=1268), and [compliment exercise](https://youtu.be/jGg_1h0qzaM?t=1942).
+Official references: [Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api), [Graph API usage](https://docs.langchain.com/oss/python/langgraph/use-graph-api), and [Python TypedDict specification](https://typing.python.org/en/latest/spec/typeddict.html).

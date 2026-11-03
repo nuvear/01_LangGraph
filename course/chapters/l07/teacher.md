@@ -4,9 +4,9 @@
 
 Teach one new boundary: a Python graph node can invoke a language model. Preserve the intentionally stateless behavior; do not introduce a checkpointer, append previous messages, or add tools. Learners should leave with a precise account of what was sent, not a belief that a Python loop automatically gives a bot memory.
 
-Allocate 80 minutes: 10 to explain, 10 to illustrate, 15 for demonstration, 15 for guided practice, 20 for the independent task, and 10 for review. These periods include selected source clips. Prerequisites are L06 completion and an approved P00 Anthropic setup. Prepare synthetic prompts, the project environment, and permission for paid requests. Run the focused offline file, not the entire course suite while other lessons are being developed.
+Allocate 80 minutes: 10 to explain, 10 to illustrate, 15 for demonstration, 15 for guided practice, 20 for the independent task, and 10 for review. Prerequisites are L06 completion and an approved P00 Anthropic setup. Prepare synthetic prompts, the project environment, and permission for paid requests. Run the focused offline file, not the entire course suite while other lessons are being developed.
 
-The source window is [01:31:01–01:42:54](https://youtu.be/jGg_1h0qzaM?t=5461); coding begins at [01:32:49](https://youtu.be/jGg_1h0qzaM?t=5569). The presenter uses OpenAI, calls the example a basic wrapper rather than a mature agent, and assigns no original exercise. The Anthropic adaptation and help-desk assignment are explicitly added practice. The supplied full-track review supersedes older “no visual review” caveats: selected frames were inspected, not every frame continuously.
+The example is a basic wrapper rather than a mature agent. The Anthropic implementation and help-desk assignment provide the complete practice sequence.
 
 ## Explain and illustrate: minutes 0–20
 
@@ -14,13 +14,13 @@ Ask learners to predict which component chooses the next node. Expected answer: 
 
 Trace the three invocations verbally. Compilation creates an executable graph. Graph invocation processes state. Model invocation inside the node produces an `AIMessage`. Emphasize partial updates: returning `reply`, `usage`, and `sent_messages` does not remove unchanged `messages` from the final graph state. A `TypedDict` annotation describes shape but does not validate incoming values; explicit checks enforce the lesson's one-message contract. These behaviors follow the [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api).
 
-Use the original diagram to distinguish the external input loop from a graph cycle. Point at the fresh-state node before each START. Collecting results for display is not the same as forwarding them to the model.
+Use the concept diagram to distinguish the external input loop from a graph cycle. Point at the fresh-state node before each START. Collecting results for display is not the same as forwarding them to the model.
 
 <!-- ORIGINAL_DIAGRAM -->
 
-Use the source figure at approximately [01:33:00](https://youtu.be/jGg_1h0qzaM?t=5580) for historical context. Attribute it to the original video, not the adapted program. At [01:41:25](https://youtu.be/jGg_1h0qzaM?t=6085), the Bob/name demonstration establishes the intended teaching question.
+Use the concept figure to establish the intended teaching question: could the model guess a name even with no history?
 
-<!-- VIDEO_FIGURE -->
+<!-- CONCEPT_FIGURE -->
 
 Ask, “Could the model guess a name even with no history?” Expected answer: yes. This is why exact response wording is not our test of state isolation. Anthropic's [Messages API documentation](https://platform.claude.com/docs/en/build-with-claude/working-with-messages) states that conversational context must be supplied by the caller. Explain that API statelessness is not a promise about data-retention policy.
 
@@ -47,7 +47,7 @@ Use the final three minutes to inspect `terminal_chat`: blank input is skipped, 
 
 Have pairs annotate the actual second request. Correct response: only `What is my name?`, without Bob, the first greeting, or an earlier AI response. Ask learners to predict behavior for blank input, ` ExIt `, and a model returning text blocks. The first two cause no model call; the helper extracts only textual response blocks from the third.
 
-Introduce `exercises/starters/l07.py`. It is a separate implementation exercise with three TODO functions, not an import wrapper. Its initial CLI deliberately prints `STARTER_NOT_COMPLETED`; successful process exit is not successful assessment. Learners use the workbook's offline harness to check their own implementation. The delivered focused tests validate the demo and reference answer, not unfinished learner functions.
+Introduce `exercises/starters/l07.py`. It is a separate implementation exercise with three TODO functions, not an import wrapper. Its initial CLI deliberately prints `STARTER_NOT_COMPLETED`; successful process exit is not successful assessment. Learners use the workbook's offline harness to check their own implementation. The delivered focused tests validate the demo and reference answer; the workbook harness assesses the learner functions.
 
 The task's graph input is `prompt`, not the demonstration's `messages`. This deliberate variation checks whether learners can construct a message rather than merely copy a call. The required input sequence contains a blank, Mira's introduction, a name question, a mixed-case exit, and an unreachable final prompt. Require exact control behavior and inspectable one-message requests.
 
@@ -91,4 +91,4 @@ If learners accidentally append history, remove that list and reconstruct state 
 
 ## References
 
-Verified on 3 November 2026: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages). The [source video](https://youtu.be/jGg_1h0qzaM?t=5461) supplies the conceptual sequence, not the provider adaptation or independent assignment.
+References: [ChatAnthropic integration](https://docs.langchain.com/oss/python/integrations/chat/anthropic), [Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api), [memory](https://docs.langchain.com/oss/python/langgraph/add-memory), and [Anthropic Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages).
