@@ -1,0 +1,5 @@
+flowchart LR
+A["Request"] --> B["Retrieve"] --> C["Cited draft"] --> D{"Human review"}
+D -->|"Revise once"| C
+D -->|"Approve"| E["Safe new file"]
+D -->|"Reject or error"| F["No save"]

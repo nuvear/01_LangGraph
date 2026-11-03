@@ -1,0 +1,82 @@
+{
+  "id": "C01",
+  "title": "Document-grounded drafting capstone",
+  "video_start": null,
+  "video_end": null,
+  "supplementary": true,
+  "live": true,
+  "demo_command": "python -m course_lessons.c01 --live --backend none",
+  "solution_command": "python -m exercises.solutions.c01 --live",
+  "tests": "python -m pytest tests/lessons/test_c01.py -q",
+  "required_packages": [
+    "langgraph",
+    "langchain-core",
+    "langchain-anthropic",
+    "anthropic",
+    "chromadb",
+    "onnxruntime",
+    "langchain-text-splitters",
+    "pypdf",
+    "pytest"
+  ],
+  "sources": [
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "verified": "2026-11-03",
+      "finding": "invoke surfaces __interrupt__; resume with Command and the same thread_id; an interrupted node restarts, so separate approval from file side effects."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/integrations/chat/anthropic",
+      "verified": "2026-11-03",
+      "finding": "ChatAnthropic supports bind_tools and standardized AIMessage.tool_calls; return a ToolMessage matching the call ID."
+    },
+    {
+      "url": "https://reference.langchain.com/python/langchain-anthropic/chat_models/ChatAnthropic/bind_tools",
+      "verified": "2026-11-03",
+      "finding": "A tool name forces that tool; parallel_tool_calls=False disables parallel calls. The capstone still validates exactly one call."
+    },
+    {
+      "url": "https://docs.trychroma.com/docs/embeddings/embedding-functions",
+      "verified": "2026-11-03",
+      "finding": "DefaultEmbeddingFunction uses local all-MiniLM-L6-v2 embeddings and may automatically download model files on first use."
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=8926",
+      "finding": "Related source Drafter introduction, 02:28:46; C01 is an added capstone, not a video assignment."
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=10329",
+      "finding": "Related source RAG introduction, 02:52:09; local embeddings, Anthropic generation and checkpoint approval are course adaptations."
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
+      "verified": "2026-11-03",
+      "finding": "Some current models reject forced tool choice. Search uses auto plus explicit instructions and an exactly-one-call gate; draft turns retain tools with tool_choice none."
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+      "verified": "2026-11-03",
+      "finding": "Client tools run in the application, and the next request returns matching tool_result blocks while retaining tool definitions."
+    }
+  ],
+  "limitations": [
+    "Development runs offline tests only; parent must validate real Anthropic, Chroma/ONNX download, tracing and screenshots.",
+    "Requires L11 course_support.retrieval and data/rag_* teaching fixtures; helper is imported lazily, never replaced with a fake live retrieval implementation.",
+    "InMemorySaver isolates threads within one process; this capstone does not claim restart-durable checkpoints.",
+    "Citation checks validate references against retrieved source/page metadata, not semantic entailment; a human must inspect the draft.",
+    "One retrieval call, at most one revision and three model calls per successful thread; no retry loop for malformed model output.",
+    "safe_write_text prevents overwrite but is not a transactional exactly-once save across process crashes.",
+    "CLI run_demo is a scripted teaching driver: it explicitly supplies review decisions; an external UI must authenticate its real approver.",
+    "Windows execution and dashboard trace ingestion are not validated by this module author."
+  ],
+  "offline_validation": {
+    "command": "python -m pytest tests/lessons/test_c01.py -q",
+    "result": "69 passed, 1 intentionally skipped (unfinished learner starter)",
+    "python": "3.12.13",
+    "langgraph": "1.2.19",
+    "langchain_core": "1.7.4",
+    "langchain_anthropic": "1.7.9",
+    "live_requests_made": false
+  },
+  "retrieval_fixture": "data/rag_teaching_handbook.pdf (original synthetic replacement owned by L11)"
+}

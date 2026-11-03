@@ -1,0 +1,27 @@
+Command: python -m course_lessons.l02 --output-dir <run-output>/L02/demonstration --backend none
+UTC: 2026-11-03T01:41:25.309743+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L02",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "input_name": "Bob",
+    "message": "Hello, Bob! How is your day going?",
+    "checked_names": [
+      "Bob",
+      "Ada Lovelace",
+      "Zo\u00eb",
+      "  Bob  "
+    ],
+    "input_unchanged": true,
+    "deterministic": true,
+    "graph_node": "greeter",
+    "model_used": false
+  }
+}
+
+STDERR

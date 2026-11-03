@@ -1,0 +1,24 @@
+Command: python -m course_lessons.u1 --output-dir <run-output>/U1/demonstration --live --backend none
+UTC: 2026-11-03T01:48:43.359096+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "U1",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "database": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/U1/demonstration/artifacts/u1-demo-8daedda1228d470492945693baafc79f.sqlite3",
+    "same_thread_recall": true,
+    "separate_thread_isolation": true,
+    "closed_and_reopened": true,
+    "fresh_process_checkpoint_read": true,
+    "primary_message_count": 6,
+    "other_message_count": 2,
+    "model_calls": 4,
+    "recovered_answer": "Your project code is ORCHID-42."
+  }
+}
+
+STDERR

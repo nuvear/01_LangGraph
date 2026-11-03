@@ -1,0 +1,47 @@
+Command: python -m course_lessons.l05 --output-dir <run-output>/L05/demonstration --backend none
+UTC: 2026-11-03T01:41:33.184156+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L05",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "cases": [
+      {
+        "number1": 10,
+        "operation": "-",
+        "number2": 5,
+        "result": 5,
+        "selected_node": "subtract"
+      },
+      {
+        "number1": 7,
+        "operation": "+",
+        "number2": 2,
+        "result": 9,
+        "selected_node": "add"
+      },
+      {
+        "number1": 0,
+        "operation": "-",
+        "number2": 7,
+        "result": -7,
+        "selected_node": "subtract"
+      },
+      {
+        "number1": -3,
+        "operation": "+",
+        "number2": 0,
+        "result": -3,
+        "selected_node": "add"
+      }
+    ],
+    "unsupported_operation_rejected": true,
+    "model_calls": 0
+  }
+}
+
+STDERR

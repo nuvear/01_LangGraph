@@ -1,0 +1,28 @@
+Command: python -m course_lessons.c01 --output-dir <run-output>/C01/demonstration --live --backend both
+UTC: 2026-11-03T01:49:31.855681+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "C01",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "both",
+  "result": {
+    "saved_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/C01/demonstration/artifacts/artifacts/demo-brief.txt",
+    "status": "saved",
+    "retrieved_chunks": 3,
+    "model_calls": 3,
+    "tool_round_trip": true,
+    "revisions": 1,
+    "thread_isolation": true,
+    "clarification_failure": "clarification_failed",
+    "unsafe_and_duplicate_saves_blocked": true,
+    "explicit_approval": true,
+    "artifact_matches_draft": true,
+    "checkpoint_scope": "in-process only",
+    "approval_driver": "scripted"
+  }
+}
+
+STDERR

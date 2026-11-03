@@ -1,0 +1,27 @@
+Command: python -m course_lessons.l06 --output-dir <run-output>/L06/demonstration --backend none
+UTC: 2026-11-03T01:41:35.608293+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L06",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "counter": 5,
+    "numbers": [
+      4,
+      6,
+      6,
+      3,
+      10
+    ],
+    "greeting": "Hi there, Student!",
+    "repeatable": true,
+    "stale_state_reset": true,
+    "model_used": false
+  }
+}
+
+STDERR

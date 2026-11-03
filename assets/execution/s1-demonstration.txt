@@ -1,0 +1,21 @@
+Command: python -m course_lessons.s1 --output-dir <run-output>/S1/demonstration --live --backend langsmith
+UTC: 2026-11-03T01:44:11.762889+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "S1",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "langsmith",
+  "result": {
+    "examples": 3,
+    "passed": 3,
+    "model_calls": 3,
+    "report_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014118Z-9bc275/S1/demonstration/artifacts/s1-demo-evaluation.txt",
+    "langsmith_experiment_created": false,
+    "dashboard_visually_verified": false
+  }
+}
+
+STDERR

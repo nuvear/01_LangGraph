@@ -1,0 +1,45 @@
+Command: python -m course_lessons.l03 --output-dir <run-output>/L03/demonstration --backend none
+UTC: 2026-11-03T01:41:27.935857+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L03",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "node": "processor",
+    "input": {
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "name": "Steve"
+    },
+    "node_update": {
+      "total": 10,
+      "result": "Hi there Steve! Your sum = 10."
+    },
+    "final_state": {
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "name": "Steve",
+      "total": 10,
+      "result": "Hi there Steve! Your sum = 10."
+    },
+    "selected_result": "Hi there Steve! Your sum = 10.",
+    "empty_sum": 0,
+    "signed_sum": 2,
+    "inputs_unchanged": true,
+    "model_used": false
+  }
+}
+
+STDERR

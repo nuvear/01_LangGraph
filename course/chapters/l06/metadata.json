@@ -1,0 +1,52 @@
+{
+  "id": "L06",
+  "title": "Bounded loops and automatic higher/lower game",
+  "video_start": "01:14:14",
+  "video_end": "01:31:01",
+  "supplementary": false,
+  "live": false,
+  "demo_command": "python -m course_lessons.l06 --backend none",
+  "solution_command": "python -m exercises.solutions.l06 --backend none",
+  "starter_command": "python -m exercises.starters.l06",
+  "tests": ["python -m pytest tests/lessons/test_l06.py -q"],
+  "required_packages": ["langgraph", "langsmith", "python-dotenv", "pytest"],
+  "sources": [
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "title": "Graph API overview",
+      "verified": "2026-11-03",
+      "method": "web search followed by fetch",
+      "supports": "StateGraph compilation, partial state updates, default replacement semantics, nodes and edges"
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/use-graph-api",
+      "title": "Use the graph API",
+      "verified": "2026-11-03",
+      "method": "web search followed by fetch",
+      "supports": "Conditional back-edges, END termination, recursion_limit in invocation configuration, GraphRecursionError"
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=4454",
+      "title": "Source video: bounded loops section",
+      "evidence": "Supplied caption review and whole-track visual review; not newly viewed by lesson author"
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=5359",
+      "title": "Source video: automatic higher/lower exercise",
+      "evidence": "Supplied caption review and sampled exercise-slide confirmation at 01:29:30"
+    }
+  ],
+  "api_notes": [
+    "Use explicit START edges, conditional path maps, compilation, and returned partial updates.",
+    "A route label is not a state-update dictionary; only conditional routing leaves a loop node.",
+    "The shared execution_config sets recursion_limit=40; this safety net is not a seven-attempt business rule.",
+    "Per-iteration local seeds and midpoint guessing are original deterministic adaptations, not a reproduction of the source output sequence."
+  ],
+  "limitations": [
+    "No LLM, provider, credential access, or live tracing is required or performed by this module.",
+    "The target is synthetic state visible to the feedback node; this is not a security boundary or interactive game.",
+    "The midpoint policy finds every valid target before seven attempts, so a smaller allowed budget is used to demonstrate normal exhaustion.",
+    "Parent handles source figures, Mermaid rendering, execution screenshots, integration, and publication.",
+    "Only focused offline tests are authorized here; no Windows or service-dashboard validation is claimed."
+  ]
+}

@@ -1,0 +1,146 @@
+Command: python -m course_lessons.l09 --output-dir <run-output>/L09/demonstration --live --backend none
+UTC: 2026-11-03T01:42:37.971861+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L09",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "checked_cases": {
+      "single": {
+        "model_calls": 2,
+        "tool_calls": 1,
+        "observations": [
+          {
+            "id": "toolu_01BuBe8pNyS5fADwU5iKsQFL",
+            "tool": "add",
+            "args": {
+              "a": 3,
+              "b": 4
+            },
+            "result": "7",
+            "status": "success"
+          }
+        ],
+        "final_text": "3 + 4 = 7"
+      },
+      "larger": {
+        "model_calls": 2,
+        "tool_calls": 1,
+        "observations": [
+          {
+            "id": "toolu_01RMD1oYcyhzpHND7rvFqZ2t",
+            "tool": "add",
+            "args": {
+              "a": 34,
+              "b": 21
+            },
+            "result": "55",
+            "status": "success"
+          }
+        ],
+        "final_text": "34 + 21 = 55"
+      },
+      "multiple": {
+        "model_calls": 2,
+        "tool_calls": 2,
+        "observations": [
+          {
+            "id": "toolu_01QMPcC1D9sMWviNsYgeYQUB",
+            "tool": "add",
+            "args": {
+              "a": 34,
+              "b": 21
+            },
+            "result": "55",
+            "status": "success"
+          },
+          {
+            "id": "toolu_01ETDdtwQfLZy2ANZzreDoFx",
+            "tool": "add",
+            "args": {
+              "a": 3,
+              "b": 4
+            },
+            "result": "7",
+            "status": "success"
+          }
+        ],
+        "final_text": "34 + 21 = 55, and 3 + 4 = 7."
+      },
+      "sequential": {
+        "model_calls": 3,
+        "tool_calls": 2,
+        "observations": [
+          {
+            "id": "toolu_01JQQHXoKMHti65fy4FyAdyR",
+            "tool": "add",
+            "args": {
+              "a": 40,
+              "b": 12
+            },
+            "result": "52",
+            "status": "success"
+          },
+          {
+            "id": "toolu_012X6kEUF94hiBQ66d8rixbj",
+            "tool": "multiply",
+            "args": {
+              "a": 52,
+              "b": 6
+            },
+            "result": "312",
+            "status": "success"
+          }
+        ],
+        "final_text": "40 + 12 = 52, and 52 \u00d7 6 = **312**."
+      },
+      "subtract": {
+        "model_calls": 2,
+        "tool_calls": 1,
+        "observations": [
+          {
+            "id": "toolu_01VcMwyQVzvTTYvethxfgs8u",
+            "tool": "subtract",
+            "args": {
+              "a": 29,
+              "b": 12
+            },
+            "result": "17",
+            "status": "success"
+          }
+        ],
+        "final_text": "29 - 12 = 17"
+      },
+      "mixed": {
+        "model_calls": 2,
+        "tool_calls": 1,
+        "observations": [
+          {
+            "id": "toolu_01RjTCfVJ82qjLu2JRhoChwC",
+            "tool": "add",
+            "args": {
+              "a": 9,
+              "b": 9
+            },
+            "result": "18",
+            "status": "success"
+          }
+        ],
+        "final_text": "9 + 9 = **18**\n\nHere's a joke: Why was 6 afraid of 7? Because 7, 8, 9!"
+      },
+      "no_tool": {
+        "model_calls": 1,
+        "tool_calls": 0,
+        "observations": [],
+        "final_text": "Hello! I'm glad you're here. Whenever you want to work through some math, just let me know."
+      }
+    },
+    "persistent_memory": false
+  }
+}
+
+STDERR

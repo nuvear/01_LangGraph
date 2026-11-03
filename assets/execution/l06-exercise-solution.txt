@@ -1,0 +1,41 @@
+Command: python -m exercises.solutions.l06 --output-dir <run-output>/L06/exercise-solution --backend none
+UTC: 2026-11-03T01:41:36.661014+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L06",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "success": {
+      "target": 17,
+      "guesses": [
+        10,
+        15,
+        18,
+        16,
+        17
+      ],
+      "attempts": 5,
+      "status": "won"
+    },
+    "exhausted": {
+      "target": 20,
+      "guesses": [
+        10,
+        15
+      ],
+      "attempts": 2,
+      "status": "lost",
+      "hint": "higher"
+    },
+    "success_on_final_attempt": "won",
+    "targets_checked": 20,
+    "max_attempts_observed": 5,
+    "model_used": false
+  }
+}
+
+STDERR

@@ -1,0 +1,42 @@
+Command: python -m course_lessons.l04 --output-dir <run-output>/L04/demonstration --backend none
+UTC: 2026-11-03T01:41:30.828707+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L04",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "broken_final": "You are 20 years old.",
+    "corrected_final": "Hi Charlie. You are 20 years old.",
+    "node_order": [
+      "greet",
+      "age"
+    ],
+    "updates": [
+      {
+        "greet": {
+          "final": "Hi Charlie.",
+          "visited": [
+            "greet"
+          ]
+        }
+      },
+      {
+        "age": {
+          "final": "Hi Charlie. You are 20 years old.",
+          "visited": [
+            "greet",
+            "age"
+          ]
+        }
+      }
+    ],
+    "inputs_unchanged": true,
+    "model_calls": 0
+  }
+}
+
+STDERR

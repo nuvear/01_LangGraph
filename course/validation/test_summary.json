@@ -1,0 +1,12 @@
+{
+  "passed": 860,
+  "failed": 0,
+  "skipped": 9,
+  "skip_reasons": [
+    "C01 unfinished learner acceptance: 1",
+    "S1 unfinished learner acceptance: 1",
+    "U2 unfinished learner acceptance: 7"
+  ],
+  "clean_runtime_same_result": true,
+  "all_34_real_execution_cases_passed": true
+}

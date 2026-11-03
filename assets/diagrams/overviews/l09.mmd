@@ -1,0 +1,6 @@
+flowchart LR
+A["Messages"] --> B{"Budget left?"}
+B -->|"Yes"| C["Anthropic"]
+C -->|"Tool calls"| D["ToolNode"] --> C
+C -->|"Final answer"| E["End"]
+B -->|"No"| F["Budget error"]

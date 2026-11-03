@@ -1,0 +1,19 @@
+flowchart TD
+    PDF["Synthetic PDF: 3 pages"] --> Split["Split each page: 650 characters"]
+    Split --> Embed["Local ONNX embeddings"]
+    Embed --> Store["Versioned persistent Chroma"]
+    Start["START: question"] --> Agent["Agent: bounded model turn"]
+    Agent --> Route["Tool calls?"]
+    Route -->|"Yes"| Retrieve["Retrieve: query and top 3 chunks"]
+    Store --> Retrieve
+    Retrieve --> Evidence["ToolMessage: text and page metadata"]
+    Evidence --> Agent
+    Route -->|"No"| Answer["Cited answer or NOT_IN_DOCUMENT"]
+    Answer --> End["END"]
+    Card["Added answer-card task"] --> First["Retrieve original question"]
+    Store --> First
+    First --> Gate["Any evidence?"]
+    Gate -->|"Yes"| Generate["Generate with citations"]
+    Gate -->|"No"| Abstain["Abstain without model call"]
+    Generate --> Validate["Validate card provenance"]
+    Abstain --> Validate

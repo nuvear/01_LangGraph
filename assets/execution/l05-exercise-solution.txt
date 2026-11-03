@@ -1,0 +1,68 @@
+Command: python -m exercises.solutions.l05 --output-dir <run-output>/L05/exercise-solution --backend none
+UTC: 2026-11-03T01:41:34.382918+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L05",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "cases": [
+      {
+        "operation1": "+",
+        "operation2": "+",
+        "result1": 15,
+        "result2": 9,
+        "visited": [
+          "router1",
+          "add1",
+          "router2",
+          "add2"
+        ]
+      },
+      {
+        "operation1": "+",
+        "operation2": "-",
+        "result1": 15,
+        "result2": 5,
+        "visited": [
+          "router1",
+          "add1",
+          "router2",
+          "subtract2"
+        ]
+      },
+      {
+        "operation1": "-",
+        "operation2": "+",
+        "result1": 5,
+        "result2": 9,
+        "visited": [
+          "router1",
+          "subtract1",
+          "router2",
+          "add2"
+        ]
+      },
+      {
+        "operation1": "-",
+        "operation2": "-",
+        "result1": 5,
+        "result2": 5,
+        "visited": [
+          "router1",
+          "subtract1",
+          "router2",
+          "subtract2"
+        ]
+      }
+    ],
+    "independent_pairs_checked": true,
+    "both_invalid_operations_rejected": true,
+    "model_calls": 0
+  }
+}
+
+STDERR

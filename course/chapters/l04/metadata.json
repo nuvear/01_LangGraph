@@ -1,0 +1,47 @@
+{
+  "id": "L04",
+  "title": "Three-node sequential profile",
+  "video_start": "00:44:29",
+  "video_end": "00:55:36",
+  "supplementary": false,
+  "live": false,
+  "demo_command": "python -m course_lessons.l04 --backend none",
+  "solution_command": "python -m exercises.solutions.l04 --backend none",
+  "tests": "python -m pytest tests/lessons/test_l04.py -q",
+  "required_packages": ["langgraph", "langchain-core", "langsmith", "python-dotenv", "pytest"],
+  "sources": [
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=2669",
+      "title": "Source lesson: sequential graph, 00:44:29–00:55:36",
+      "basis": "Supplied full-caption review and whole-track sampled visual review; no new frame inspection by this lesson author."
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=3244",
+      "title": "Source three-node profile exercise, 00:54:04 chapter boundary"
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "title": "Graph API overview",
+      "verified": "2026-11-03 by search then fetch",
+      "findings": "Nodes can return partial updates. Default per-key updates overwrite previous values. Compile the builder before invoking."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/use-graph-api",
+      "title": "Use the graph API: create a sequence of steps",
+      "verified": "2026-11-03 by search then fetch",
+      "findings": "Explicit add_node/add_edge supports sequential steps; add_sequence is an optional shorthand. This lesson intentionally teaches explicit edges."
+    },
+    {
+      "url": "https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_edge",
+      "title": "StateGraph.add_edge reference",
+      "verified": "2026-11-03 by search then fetch",
+      "findings": "A single-source directed edge waits for its source to complete before running its destination."
+    }
+  ],
+  "limitations": [
+    "Deterministic Python only: no LLM, live API, telemetry, persistence, or file-writing exercise is required.",
+    "Source concepts and Linda exercise are preserved; punctuation, integer ages, runtime validation, empty-skill behavior, and visited-node checks are explicitly added teaching choices.",
+    "Source screenshots, diagram rendering, execution screenshots, Windows verification, and final handbook integration belong to the parent task.",
+    "Verified locally with Python 3.12.13, langgraph 1.2.19, langchain-core 1.7.4, pytest 9.2.0; no packages installed by this lesson task."
+  ]
+}

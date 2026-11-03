@@ -1,0 +1,24 @@
+Command: python -m exercises.solutions.l10 --output-dir <run-output>/L10/exercise-solution --live --backend none
+UTC: 2026-11-03T01:48:17.725355+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L10",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "saved_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/L10/exercise-solution/artifacts/workshop_notice.txt",
+    "revision_count": 2,
+    "collision_preserved_existing_file": true,
+    "failed_save_did_not_finish": true,
+    "recovery_saved_latest_draft": true,
+    "ended_on_successful_save": true,
+    "clarification_without_tools": true,
+    "clarifying_response": "I can help with that. I just need two details before I start the workshop email:\n\n1. **Who's it going to?** For example, workshop participants, a speaker or facilitator, or the venue coordinator.\n2. **What's it for?** For example, an invitation, a schedule confirmation, a reminder or a follow-up.\n\nIf you have them, also send any names, dates, times, locations or other details to include. I'll use them exactly as you write them.",
+    "final_document": "Subject: Postponing Our Training Workshop\n\nHi Elena,\n\nI hope you're well. I'm writing to let you know that we need to postpone our upcoming training workshop. I apologise for any inconvenience this may cause.\n\nI'd like to propose rescheduling to 18 November at 14:30 Singapore time. Please let me know whether this works for you, or suggest an alternative time if it doesn't.\n\nThank you for your understanding. I look forward to hearing from you.\n\nBest regards,\nArun"
+  }
+}
+
+STDERR

@@ -1,0 +1,12 @@
+flowchart TD
+    H["Process-local full history"] --> P["Add one human message"]
+    P --> G["Invoke fresh graph state"]
+    G --> W["Select recent complete pairs"]
+    W --> M["Anthropic sees prompt window"]
+    M --> A["Return one AI message"]
+    A --> R["Reducer updates full history"]
+    R --> H
+    R --> L["Role-labeled text export"]
+    L --> F["New file in output directory"]
+    X["New process or empty caller history"] --> E["No earlier turns supplied"]
+    E --> G

@@ -1,0 +1,76 @@
+Command: python -m exercises.solutions.l09 --output-dir <run-output>/L09/exercise-solution --live --backend none
+UTC: 2026-11-03T01:42:48.785260+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L09",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "compound": {
+      "model_calls": 3,
+      "tool_calls": 2,
+      "audit": [
+        {
+          "call_id": "toolu_016ZLrz2R5gQwMYY1V8nXyye",
+          "tool": "subtract",
+          "args": {
+            "a": 18,
+            "b": 5
+          },
+          "result": "13",
+          "status": "success"
+        },
+        {
+          "call_id": "toolu_01DCm2btD6CihVcEJGhsgffX",
+          "tool": "multiply",
+          "args": {
+            "a": 13,
+            "b": 4
+          },
+          "result": "52",
+          "status": "success"
+        }
+      ],
+      "final_text": "18 minus 5 is 13, and 13 times 4 is **52**."
+    },
+    "independent": {
+      "model_calls": 2,
+      "tool_calls": 2,
+      "audit": [
+        {
+          "call_id": "toolu_01G6c33bvSuZ2WbJJafA7j52",
+          "tool": "add",
+          "args": {
+            "a": 9,
+            "b": 6
+          },
+          "result": "15",
+          "status": "success"
+        },
+        {
+          "call_id": "toolu_01Se8CUeu6TeVY4a8omWBCQF",
+          "tool": "multiply",
+          "args": {
+            "a": 8,
+            "b": 3
+          },
+          "result": "24",
+          "status": "success"
+        }
+      ],
+      "final_text": "Here are the two results:\n- 9 + 6 = 15\n- 8 \u00d7 3 = 24"
+    },
+    "greeting": {
+      "model_calls": 1,
+      "tool_calls": 0,
+      "audit": [],
+      "final_text": "Hello! Nice to meet you. I hope your day is going well. What can I help you with?"
+    },
+    "audit_is_observable_messages_not_private_reasoning": true
+  }
+}
+
+STDERR

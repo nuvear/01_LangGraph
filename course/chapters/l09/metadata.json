@@ -1,0 +1,44 @@
+{
+  "id": "L09",
+  "title": "ReAct arithmetic tool loop",
+  "video_start": "02:03:20",
+  "video_end": "02:28:46",
+  "supplementary": false,
+  "live": true,
+  "demo_command": "python -m course_lessons.l09 --live --backend none",
+  "solution_command": "python -m exercises.solutions.l09 --live",
+  "tests": ["python -m pytest tests/lessons/test_l09.py -q"],
+  "offline_validation": {
+    "status": "passed",
+    "test_count": 52,
+    "command_used": ".venv/bin/python -m pytest tests/lessons/test_l09.py -q --tb=short",
+    "starter_command_used": ".venv/bin/python -m exercises.starters.l09",
+    "starter_observed": "STARTER_NOT_COMPLETED: TODO 1: route_next. Implement all three TODOs.",
+    "live_api_or_tracing_executed": false
+  },
+  "required_packages": ["langgraph", "langchain-core", "langchain-anthropic", "pytest"],
+  "sources": [
+    "https://youtu.be/jGg_1h0qzaM?t=7400",
+    "https://docs.langchain.com/oss/python/langgraph/quickstart",
+    "https://docs.langchain.com/oss/python/langgraph/graph-api",
+    "https://docs.langchain.com/oss/python/langchain/tools",
+    "https://docs.langchain.com/oss/python/integrations/chat/anthropic",
+    "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
+  ],
+  "source_notes": {
+    "verified_on": "2026-11-03",
+    "verification": "Official sources discovered with search and read with fetch; installed signatures inspected offline.",
+    "quickstart": "Confirms model -> tools -> model loop and conditional exit; this lesson instead uses ToolNode and add_messages.",
+    "graph_api": "Confirms add_messages appends new IDs, replaces existing IDs, and deserializes message updates.",
+    "anthropic": "Confirms bind_tools and standardized AIMessage.tool_calls; client tools run in the application and tool_result uses tool_use_id at the provider layer.",
+    "installed_versions": {"python": "3.12.13", "langgraph": "1.2.19", "langchain-core": "1.7.4", "langchain-anthropic": "1.7.9", "pytest": "9.2.0"}
+  },
+  "limitations": [
+    "Real Anthropic validation and tracing are reserved for the parent; offline tests use explicitly named model doubles.",
+    "No live execution results, dashboards, Windows validation, or rendered figures are claimed here.",
+    "Model prose and batching vary; assertions assess actual tool messages, final-answer numbers, IDs, and termination rather than exact sentences.",
+    "The integer-only tools intentionally omit division, external actions, persistent memory, and private chain-of-thought inspection.",
+    "The safety budget raises a clear exception on exhaustion; it does not invent a successful final model answer.",
+    "Unknown tools and invalid arguments are tested offline, not forced through paid live calls."
+  ]
+}

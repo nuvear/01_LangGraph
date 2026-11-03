@@ -1,0 +1,32 @@
+Command: python -m course_lessons.s2 --output-dir <run-output>/S2/demonstration --live --backend langwatch
+UTC: 2026-11-03T01:49:00.497035+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "S2",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "langwatch",
+  "result": {
+    "scenario": "synthetic-add-18-24",
+    "tool_results": [
+      "42"
+    ],
+    "model_calls": 2,
+    "events": [
+      "prepare",
+      "agent",
+      "tools",
+      "agent",
+      "finish"
+    ],
+    "answer": "The tool returned 42, which is the sum of 18 and 24.",
+    "ingestion_acknowledged": "not_checked",
+    "dashboard_visually_verified": false,
+    "flush_owner": "CLI tracing context after run_demo returns",
+    "report": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/S2/demonstration/artifacts/s2-demo.txt"
+  }
+}
+
+STDERR

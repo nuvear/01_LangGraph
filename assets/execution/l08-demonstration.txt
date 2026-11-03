@@ -1,0 +1,30 @@
+Command: python -m course_lessons.l08 --output-dir <run-output>/L08/demonstration --live --backend none
+UTC: 2026-11-03T01:41:54.894761+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L08",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "history_messages": 4,
+    "roles": [
+      "human",
+      "ai",
+      "human",
+      "ai"
+    ],
+    "recall_answer": "Good morning! You didn't give me a name. You told me *your* name, which is Steve. I'm Claude, but if you'd like to call me something else, feel free!",
+    "fresh_history_messages": 2,
+    "fresh_answer": "I don't know. You haven't given me a name in this conversation. By default I'm Claude, made by Anthropic, but if you'd like to call me something else, just let me know.",
+    "fresh_history_is_reset_simulation": true,
+    "log_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014118Z-9bc275/L08/demonstration/artifacts/conversation.txt",
+    "raw_input_preserved": true,
+    "automatic_log_reload": false,
+    "model_calls": 3
+  }
+}
+
+STDERR

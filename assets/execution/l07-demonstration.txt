@@ -1,0 +1,59 @@
+Command: python -m course_lessons.l07 --output-dir <run-output>/L07/demonstration --live --backend none
+UTC: 2026-11-03T01:41:41.525988+00:00
+Exit: 0
+
+STDOUT
+Hi Bob, nice to meet you! What can I help you with today?
+I don't know your name. I don't have access to personal information about you, and I don't retain memory between conversations. If you'd like, you can tell me your name and I'll use it for the rest of our chat.
+{
+  "lesson": "L07",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "checked_turns": 2,
+    "messages_per_request": [
+      1,
+      1
+    ],
+    "prior_turns_forwarded": false,
+    "stop_reason": "exit",
+    "replies": [
+      "Hi Bob, nice to meet you! What can I help you with today?",
+      "I don't know your name. I don't have access to personal information about you, and I don't retain memory between conversations. If you'd like, you can tell me your name and I'll use it for the rest of our chat."
+    ],
+    "usage": [
+      {
+        "input_tokens": 19,
+        "output_tokens": 24,
+        "total_tokens": 43,
+        "input_token_details": {
+          "cache_read": 0,
+          "cache_creation": 0,
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_token_details": {
+          "reasoning": 0
+        }
+      },
+      {
+        "input_tokens": 13,
+        "output_tokens": 79,
+        "total_tokens": 92,
+        "input_token_details": {
+          "cache_read": 0,
+          "cache_creation": 0,
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_token_details": {
+          "reasoning": 17
+        }
+      }
+    ],
+    "evidence": "Actual request construction; not exact name-recall wording."
+  }
+}
+
+STDERR

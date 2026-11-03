@@ -1,0 +1,35 @@
+Command: python -m exercises.solutions.l01 --output-dir <run-output>/L01/exercise-solution --backend none
+UTC: 2026-11-03T01:41:24.219250+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L01",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "mode": "deterministic_no_model",
+    "badges": [
+      {
+        "name": "Ada",
+        "sessions": 2,
+        "badge": "Ada: 2 sessions"
+      },
+      {
+        "name": "Visitor",
+        "sessions": 0,
+        "badge": "Visitor: 0 sessions"
+      },
+      {
+        "name": "Visitor",
+        "sessions": 1,
+        "badge": "Visitor: 1 session"
+      }
+    ],
+    "negative_sessions_rejected": true,
+    "inputs_unchanged": true
+  }
+}
+
+STDERR

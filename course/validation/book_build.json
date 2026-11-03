@@ -1,0 +1,23 @@
+[
+  {
+    "book": "student",
+    "words": 43566,
+    "images": 63,
+    "code_blocks": 19,
+    "markdown": "/Users/rajkumarrajagobalan/01-LangGraph/docs/LangGraph_Student_Handbook.md"
+  },
+  {
+    "book": "teacher",
+    "words": 41160,
+    "images": 64,
+    "code_blocks": 17,
+    "markdown": "/Users/rajkumarrajagobalan/01-LangGraph/docs/LangGraph_Teacher_Handbook.md"
+  },
+  {
+    "book": "workbook",
+    "words": 18446,
+    "images": 0,
+    "code_blocks": 3,
+    "markdown": "/Users/rajkumarrajagobalan/01-LangGraph/docs/LangGraph_Exercise_Workbook.md"
+  }
+]

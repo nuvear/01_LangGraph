@@ -1,0 +1,41 @@
+[
+  {
+    "service": "anthropic",
+    "checked_at_utc": "2026-11-03T01:49:46.905857+00:00",
+    "credential_values_logged": false,
+    "synthetic_data_only": true,
+    "status": "passed",
+    "configured_model": "claude-opus-5-5",
+    "response_model": "claude-opus-5-5",
+    "response_text": "ANTHROPIC_CONNECTION_OK",
+    "input_tokens": 39,
+    "output_tokens": 20,
+    "request_id": "req_011Cgf9wwBGR3o7NYVkzfg3V"
+  },
+  {
+    "service": "langsmith",
+    "checked_at_utc": "2026-11-03T01:49:49.229119+00:00",
+    "credential_values_logged": false,
+    "synthetic_data_only": true,
+    "status": "passed",
+    "endpoint": "https://apac.api.smith.langchain.com",
+    "run_id": "b30178df-56aa-4254-a45b-079fe55369e0",
+    "ingestion_acknowledged": true,
+    "readback_verified": true,
+    "dashboard_visually_verified": false
+  },
+  {
+    "service": "langwatch",
+    "checked_at_utc": "2026-11-03T01:49:51.644471+00:00",
+    "credential_values_logged": false,
+    "synthetic_data_only": true,
+    "status": "passed",
+    "endpoint": "https://app.langwatch.ai",
+    "http_status": 200,
+    "ingestion_acknowledged": true,
+    "rejected_spans": 0,
+    "acknowledgment_format": "json",
+    "trace_id": "343074a8749ec6082c23894052842914",
+    "dashboard_visually_verified": false
+  }
+]

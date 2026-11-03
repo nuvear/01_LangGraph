@@ -1,0 +1,81 @@
+{
+  "id": "L02",
+  "title": "Hello World and personalized compliment",
+  "video_start": "00:18:39",
+  "video_end": "00:33:07",
+  "supplementary": false,
+  "live": false,
+  "demo_command": "python -m course_lessons.l02 --backend none",
+  "solution_command": "python -m exercises.solutions.l02 --backend none",
+  "starter_command": "python -m exercises.starters.l02",
+  "tests": ["python -m pytest tests/lessons/test_l02.py -q"],
+  "offline_validation": {
+    "status": "passed",
+    "focused_tests_passed": 27,
+    "duration_seconds": 0.17,
+    "python_version": "3.12.13",
+    "langgraph_version": "1.2.19",
+    "pytest_version": "9.2.0",
+    "platform": "macOS",
+    "network_model_and_environment_file_access": "Blocked in focused pytest fixture; no live requests made.",
+    "chapter_word_counts": {
+      "student": 1562,
+      "teacher": 1475,
+      "workbook": 972
+    },
+    "checks": "Owned Python files parse successfully; source lines at most 88 characters; metadata JSON valid; required chapter insertion markers present exactly once."
+  },
+  "required_packages": [
+    "langgraph",
+    "langchain-core",
+    "langsmith",
+    "python-dotenv",
+    "pytest"
+  ],
+  "sources": [
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "title": "LangGraph Graph API overview",
+      "verified_date": "2026-11-03",
+      "verification": "Search result followed by successful fetch of official documentation.",
+      "supports": "State, ordinary Python nodes, default replacement of updated keys, partial state updates, and compilation before execution."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/use-graph-api",
+      "title": "Use the LangGraph Graph API",
+      "verified_date": "2026-11-03",
+      "verification": "Search result followed by successful fetch of official documentation.",
+      "supports": "Return updates rather than mutate state; add_node, explicit START/END edges, compile, invoke, and visualization."
+    },
+    {
+      "url": "https://typing.python.org/en/latest/spec/typeddict.html",
+      "title": "Python typing specification: Typed dictionaries",
+      "verified_date": "2026-11-03",
+      "verification": "Search result followed by successful fetch of official documentation.",
+      "supports": "TypedDict describes dictionary structure to type checkers; runtime values are ordinary dictionaries. Explicit input checks are added lesson practice."
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=1119",
+      "title": "Vaibhav Mehra / freeCodeCamp: first graph introduction, 00:18:39",
+      "verification": "Supplied caption review plus whole-track sampled visual review; not a new viewing by the lesson author."
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=1268",
+      "title": "Source coding chapter, 00:21:08",
+      "verification": "Supplied approved index and caption review."
+    },
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=1942",
+      "title": "Source personalized compliment exercise, 00:32:22",
+      "verification": "Supplied caption review; whole-track review confirms exercise slide at 00:32:30."
+    }
+  ],
+  "limitations": [
+    "Deterministic ordinary Python nodes only; no LLM, model credentials, or live API request is required or performed.",
+    "Explicit validation, exact output punctuation, Unicode/whitespace cases, and automated tests are course adaptations, not claims about source notebook details.",
+    "The single message field changes from the supplied name to formatted output. Name preservation means inclusion in that output, not a separate name channel or durable memory.",
+    "Tracing backends other than none are parent-owned validation and are not exercised here.",
+    "Source figures, execution screenshots, diagram rendering, handbook integration, and publication are parent-owned.",
+    "Windows execution is not validated by this lesson author."
+  ]
+}

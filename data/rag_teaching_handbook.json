@@ -1,0 +1,30 @@
+{
+  "title": "Harbor Learning Lab — Practice Handbook",
+  "label": "ORIGINAL SYNTHETIC TEACHING REPLACEMENT — not the source video PDF",
+  "pages": [
+    {
+      "heading": "Open day and access",
+      "paragraphs": [
+        "Harbor Learning Lab is a fictional community learning project. These policies exist only for Python RAG practice. No organisation, booking, person, price or event described here is real.",
+        "The Harbor Learning Lab open day is 14 March 2027. The welcome session begins at 10:00 and ends at 12:00. There are 24 seats. Visitors reserve a seat by emailing welcome@harbor.example with the subject Open day reservation. The event is free. Reservations close on 10 March 2027.",
+        "The venue is the fictional North Room. Step-free access is available through the east entrance. Visitors may request a large-print guide when reserving. The handbook does not specify catering, parking, transport or a weather-cancellation policy. Staff must not invent policies for omitted topics."
+      ]
+    },
+    {
+      "heading": "Equipment loans and returns",
+      "paragraphs": [
+        "Harbor Learning Lab lends practice equipment to registered learners. The standard equipment loan lasts 7 calendar days. A learner may request one renewal of 3 additional calendar days if no other learner has reserved the equipment. A renewal must be requested before the original due date.",
+        "An equipment loan request must include the learner's name, item name and preferred collection date. Send the request to equipment@harbor.example. A facilitator confirms availability before collection; sending a request does not guarantee a booking. No deposits or late-fee amounts are specified in this handbook.",
+        "If an item is damaged or missing, stop using it and contact equipment@harbor.example promptly. Do not attempt a repair. Returns go to the fictional North Room equipment desk. The handbook does not specify replacement costs or purchase prices."
+      ]
+    },
+    {
+      "heading": "Practice records and escalation",
+      "paragraphs": [
+        "Use synthetic names and invented example messages in all coding practice. Never put credentials, medical details or real learner contact information in a prompt or trace. Harbor Learning Lab practice reservation records are retained for 30 days and then deleted. This is a fictional classroom policy, not legal advice.",
+        "An unanswered policy question must be escalated to coordinator@harbor.example. State which fact is missing and do not guess. A draft message is not a sent message: learners must review the recipient, facts and wording before using a draft. Nothing in this handbook authorises an application to send email automatically.",
+        "This document contains no stock-market returns, company earnings, opening hours beyond the open-day welcome session, catering menu, late-fee schedule or production security standard. Similar-looking retrieved text does not supply those missing facts. Cite the actual page supporting a claim, not merely the first search result."
+      ]
+    }
+  ]
+}

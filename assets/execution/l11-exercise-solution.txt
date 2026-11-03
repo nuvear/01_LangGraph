@@ -1,0 +1,39 @@
+Command: python -m exercises.solutions.l11 --output-dir <run-output>/L11/exercise-solution --live --backend none
+UTC: 2026-11-03T01:48:35.166753+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L11",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "supported_card": {
+      "question": "How long is the equipment loan, and what renewal is allowed? Use digits.",
+      "answer": "The standard equipment loan is 7 calendar days. You can request 1 renewal of 3 additional calendar days, but only if no other learner has reserved the equipment. The renewal must be requested before the original due date. [rag_teaching_handbook.pdf p.2]",
+      "status": "grounded",
+      "sources": [
+        {
+          "source": "rag_teaching_handbook.pdf",
+          "page": 2
+        },
+        {
+          "source": "rag_teaching_handbook.pdf",
+          "page": 3
+        }
+      ]
+    },
+    "unsupported_card": {
+      "question": "What is the exact equipment late fee in dollars?",
+      "answer": "NOT_IN_DOCUMENT",
+      "status": "not_in_document",
+      "sources": []
+    },
+    "blank_search_hits": 0,
+    "indexed_chunks": 6,
+    "index_directory": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/L11/exercise-solution/artifacts/answer-card-index/chroma"
+  }
+}
+
+STDERR

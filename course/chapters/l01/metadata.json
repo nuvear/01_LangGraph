@@ -1,0 +1,63 @@
+{
+  "id": "L01",
+  "title": "Python types and graph elements",
+  "video_start": "00:00:00",
+  "video_end": "00:18:39",
+  "supplementary": false,
+  "live": false,
+  "demo_command": "python -m course_lessons.l01 --backend none",
+  "solution_command": "python -m exercises.solutions.l01",
+  "starter_command": "python -m exercises.starters.l01",
+  "tests": "python -m pytest tests/lessons/test_l01.py -q -p no:cacheprovider",
+  "required_packages": ["langgraph", "langchain-core", "pytest", "langsmith", "python-dotenv"],
+  "sources": [
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=0",
+      "title": "Source course introduction and L01 window",
+      "basis": "Supplied caption review and whole-track sampled visual-review record; no new frame capture by the L01 author."
+    },
+    {
+      "url": "https://docs.python.org/3.12/library/typing.html",
+      "title": "Python 3.12 typing",
+      "verified": "2026-11-03",
+      "method": "search then fetch",
+      "supports": "TypedDict is a runtime dict, not automatic validation; Union equivalence; NotRequired denotes a potentially absent key; Optional allows None."
+    },
+    {
+      "url": "https://docs.python.org/3.12/library/functions.html#map",
+      "title": "Python 3.12 map",
+      "verified": "2026-11-03",
+      "method": "search then fetch",
+      "supports": "map returns an iterator applying a function to iterable items."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "title": "Graph API overview",
+      "verified": "2026-11-03",
+      "method": "search then fetch",
+      "supports": "State, nodes, edges, schema, compilation, default replacement of updated fields, and partial state updates."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/use-graph-api",
+      "title": "Use the graph API",
+      "verified": "2026-11-03",
+      "method": "search then fetch",
+      "supports": "Return updates rather than mutate state; explicit START/END connections; add_node; compile; invoke; conditional routing."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langchain/messages",
+      "title": "Messages",
+      "verified": "2026-11-03",
+      "method": "search then fetch",
+      "supports": "System, human, AI and tool roles; AI tool_calls carry requests; ToolMessage.tool_call_id matches the request ID; examples may be hand-authored."
+    }
+  ],
+  "limitations": [
+    "The movie-card demo, badge exercise, strict input validation and conditional paper sketch are original added practice, not video-assigned homework.",
+    "No LLM, tool dispatcher, external API or tracing request is required or performed. Message objects are explicitly hand-authored teaching examples.",
+    "The runnable badge graph is linear and includes zero sessions; the conditional alternative is a paper-only preview for L05.",
+    "Shared runtime imports langsmith and python-dotenv but the default none backend does not load .env. No agent accessed .env.",
+    "The shared CLI can deliberately enable remote tracing with other backends; L01 validation uses none only. --live is unnecessary and does not add a model call.",
+    "Parent owns source frames, rendered diagrams, execution figures, final handbook integration and publication. No Windows execution is claimed."
+  ]
+}

@@ -1,0 +1,10 @@
+flowchart TD
+    start["START"] --> router1["router1: validate all inputs"]
+    router1 -->|"operation1 +: addition"| add1["add1: result1 = number1 + number2"]
+    router1 -->|"operation1 -: subtraction"| subtract1["subtract1: result1 = number1 - number2"]
+    add1 --> router2["router2: use operation2"]
+    subtract1 --> router2
+    router2 -->|"operation2 +: addition"| add2["add2: result2 = number3 + number4"]
+    router2 -->|"operation2 -: subtraction"| subtract2["subtract2: result2 = number3 - number4"]
+    add2 --> finish["END: retain result1 and result2"]
+    subtract2 --> finish

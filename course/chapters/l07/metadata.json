@@ -1,0 +1,33 @@
+{
+  "id": "L07",
+  "title": "Anthropic stateless bot",
+  "video_start": "01:31:01",
+  "video_end": "01:42:54",
+  "supplementary": false,
+  "live": true,
+  "demo_command": "python -m course_lessons.l07 --live --backend none",
+  "solution_command": "python -m exercises.solutions.l07 --live",
+  "tests": ["python -m pytest tests/lessons/test_l07.py -q"],
+  "required_packages": ["langgraph", "langchain-anthropic", "langchain-core", "anthropic", "pytest"],
+  "offline_validation": {
+    "status": "39 passed; workbook acceptance harness also passed against the independent solution; starter reports STARTER_NOT_COMPLETED",
+    "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 LANGSMITH_TRACING=false .venv/bin/python -m pytest tests/lessons/test_l07.py -q",
+    "python": "3.12.13",
+    "packages": {"langgraph": "1.2.19", "langchain-anthropic": "1.7.9", "langchain-core": "1.7.4", "pytest": "9.2.0"},
+    "live_requests_made": false
+  },
+  "sources": [
+    {"url": "https://youtu.be/jGg_1h0qzaM?t=5461", "verified": "supplied full-caption and sampled-visual reviews", "supports": "01:31:01–01:42:54: single-node bot, terminal loop, name-recall demonstration; no original exercise"},
+    {"url": "https://docs.langchain.com/oss/python/integrations/chat/anthropic", "verified": "search then fetch, 2026-11-03", "supports": "ChatAnthropic, invoke, AIMessage content blocks, usage_metadata, omit sampling overrides"},
+    {"url": "https://docs.langchain.com/oss/python/langgraph/graph-api", "verified": "search then fetch, 2026-11-03", "supports": "TypedDict state, partial updates, explicit edges, compile before invoke"},
+    {"url": "https://docs.langchain.com/oss/python/langgraph/add-memory", "verified": "search then fetch, 2026-11-03", "supports": "Checkpointer plus thread ID enables thread-level persistence; deliberately absent here"},
+    {"url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages", "verified": "search then fetch, 2026-11-03", "supports": "Messages API is stateless; application supplies conversational history"}
+  ],
+  "limitations": [
+    "No live API or tracing requests were made by the lesson author; parent must validate both --live commands and capture evidence.",
+    "Name-recall wording is probabilistic; acceptance checks inspect actual request messages, not an exact denial sentence.",
+    "The demo's default CLI uses two scripted terminal entries and exit for unattended validation; terminal_chat also accepts real terminal input.",
+    "Usage metadata can be absent and is not a price estimate. No checkpointer, tools, or cross-request history is implemented.",
+    "The independent workbook exercise is added practice, not an assignment from the source video."
+  ]
+}

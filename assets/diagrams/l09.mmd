@@ -1,0 +1,14 @@
+flowchart TD
+    start["START with fresh human message"] --> budget["Check model-call budget"]
+    budget -->|"Available"| model["Model sees instructions and messages"]
+    budget -->|"Exhausted"| failed["Raise limit error; no success claimed"]
+    model --> reply["Append AI message; increment counter"]
+    reply --> route["Inspect structured tool calls"]
+    route -->|"No calls"| final["END with final AI answer"]
+    route -->|"Malformed calls"| invalid["Raise validation error"]
+    route -->|"Tool calls"| batch["Check tool batch size"]
+    batch -->|"Too large"| failed
+    batch -->|"Within bound"| tools["ToolNode executes registered Python tools"]
+    tools --> results["Append success or error ToolMessages"]
+    results --> paired["Each result carries its tool-call ID"]
+    paired --> budget

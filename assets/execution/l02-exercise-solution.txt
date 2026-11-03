@@ -1,0 +1,28 @@
+Command: python -m exercises.solutions.l02 --output-dir <run-output>/L02/exercise-solution --backend none
+UTC: 2026-11-03T01:41:26.593819+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L02",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "input_name": "Bob",
+    "message": "Bob, you're doing an amazing job learning LangGraph.",
+    "checked_names": [
+      "Bob",
+      "Ada Lovelace",
+      "Zo\u00eb",
+      "  Bob  "
+    ],
+    "input_unchanged": true,
+    "deterministic": true,
+    "invalid_inputs_rejected": 4,
+    "graph_node": "compliment",
+    "model_used": false
+  }
+}
+
+STDERR

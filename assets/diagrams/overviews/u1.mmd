@@ -1,0 +1,5 @@
+flowchart LR
+A["Thread A or B"] --> B["Graph + model"]
+B <--> C[("SQLite file")]
+D["Close + reopen"] --> C
+C --> E["Inspect snapshots"] --> B

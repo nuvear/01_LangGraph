@@ -1,0 +1,55 @@
+{
+  "id": "L08",
+  "title": "Conversation history and logging",
+  "video_start": "01:42:54",
+  "video_end": "02:03:20",
+  "supplementary": false,
+  "live": true,
+  "demo_command": "python -m course_lessons.l08 --live --backend none",
+  "solution_command": "python -m exercises.solutions.l08 --live --backend none",
+  "tests": "python -m pytest tests/lessons/test_l08.py -q",
+  "required_packages": [
+    "anthropic",
+    "langgraph",
+    "langchain-anthropic",
+    "langchain-core",
+    "langsmith",
+    "python-dotenv",
+    "pytest"
+  ],
+  "sources": [
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=6174",
+      "title": "LangGraph Complete Course for Beginners: conversation memory section",
+      "evidence": "Supplied caption review plus whole-track sampled visual review; code begins 01:43:58. Closing recap continues at 02:03:19–02:03:26; no missing assignment."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "title": "Graph API overview",
+      "verified": "2026-11-03 via search and fetch",
+      "supports": "Default list replacement; add_messages appends new IDs and updates matching IDs; MessagesState uses this reducer."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/add-memory",
+      "title": "Memory",
+      "verified": "2026-11-03 via search and fetch",
+      "supports": "Checkpointed state and model input are separate; trimming model input need not delete state; context windows require token-aware policies."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/integrations/chat/anthropic",
+      "title": "ChatAnthropic integration",
+      "verified": "2026-11-03 via search and fetch",
+      "supports": "invoke accepts message lists and returns AIMessage; content may be blocks; usage_metadata is retained; provider token counting uses a remote API."
+    }
+  ],
+  "limitations": [
+    "Authoring validation is offline only with explicit test doubles; parent must run real Anthropic demonstration and solution and record evidence.",
+    "Fresh-history invocation simulates application reset; no actual cross-process model restart test is claimed.",
+    "History remains process-local and is carried by the caller. Text logs are readable exports, not automatic reloads or durable checkpoints; see U1.",
+    "The exercise bounds model-input message count only, not tokens, total transcript size, file size, or retained facts.",
+    "Only alternating HumanMessage/AIMessage text-chat turns are supported; system and tool message trimming needs a separate policy.",
+    "Prior AI replies can repeat facts from omitted turns, so trimming the original human turn does not guarantee forgetting or privacy erasure.",
+    "Raw transcripts may contain sensitive or role-like multiline content; use synthetic inputs. Logs are not an unambiguous parsing format, encrypted store, or concurrent-session persistence layer.",
+    "No source figures, rendered diagrams, live screenshots, Windows validation, telemetry requests, or dashboard validation were performed by the lesson author."
+  ]
+}

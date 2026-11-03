@@ -1,0 +1,55 @@
+Command: python -m exercises.solutions.l03 --output-dir <run-output>/L03/exercise-solution --backend none
+UTC: 2026-11-03T01:41:29.271119+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L03",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "node": "calculator",
+    "checked_cases": [
+      {
+        "operation": "*",
+        "answer": 24
+      },
+      {
+        "operation": "+",
+        "answer": 10
+      },
+      {
+        "operation": "+",
+        "answer": 2
+      },
+      {
+        "operation": "*",
+        "answer": 0
+      },
+      {
+        "operation": "+",
+        "answer": 0
+      },
+      {
+        "operation": "*",
+        "answer": 1
+      },
+      {
+        "operation": "*",
+        "answer": -6
+      },
+      {
+        "operation": "+",
+        "answer": 7
+      }
+    ],
+    "case_count": 8,
+    "jack_sparrow_result": "Hi Jack Sparrow, your answer is 24.",
+    "unsupported_operation_rejected": true,
+    "inputs_unchanged": true,
+    "model_used": false
+  }
+}
+
+STDERR

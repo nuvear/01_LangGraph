@@ -1,0 +1,10 @@
+flowchart TD
+    D0["Demo START"] --> D1["Greet and reset"]
+    D1 --> D2["Draw and increment"]
+    D2 -->|"counter below 5"| D2
+    D2 -->|"counter equals 5"| D3["Demo END"]
+    G0["Game START"] --> G1["Validate and reset"]
+    G1 --> G2["Midpoint guess"]
+    G2 --> G3["Compare and update"]
+    G3 -->|"playing"| G2
+    G3 -->|"won or lost"| G4["Game END"]

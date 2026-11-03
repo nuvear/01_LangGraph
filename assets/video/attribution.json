@@ -1,0 +1,112 @@
+[
+  {
+    "lesson": "L01",
+    "file": "assets/video/l01.png",
+    "seconds": 760,
+    "timestamp": "00:12:40",
+    "description": "The source explanation of conditional edges",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=760",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L02",
+    "file": "assets/video/l02.png",
+    "seconds": 1950,
+    "timestamp": "00:32:30",
+    "description": "The original personalized-compliment exercise",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=1950",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L03",
+    "file": "assets/video/l03.png",
+    "seconds": 2635,
+    "timestamp": "00:43:55",
+    "description": "The original one-node arithmetic exercise",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=2635",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L04",
+    "file": "assets/video/l04.png",
+    "seconds": 3280,
+    "timestamp": "00:54:40",
+    "description": "The original three-node profile exercise",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=3280",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L05",
+    "file": "assets/video/l05.png",
+    "seconds": 4405,
+    "timestamp": "01:13:25",
+    "description": "The original two-section conditional exercise",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=4405",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L06",
+    "file": "assets/video/l06.png",
+    "seconds": 5370,
+    "timestamp": "01:29:30",
+    "description": "The original automatic higher/lower exercise",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=5370",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L07",
+    "file": "assets/video/l07.png",
+    "seconds": 5515,
+    "timestamp": "01:31:55",
+    "description": "The original simple-bot objectives",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=5515",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": " Historical provider names are shown in the source; adapted executable examples use Anthropic only."
+  },
+  {
+    "lesson": "L08",
+    "file": "assets/video/l08.png",
+    "seconds": 6210,
+    "timestamp": "01:43:30",
+    "description": "The original conversation-memory objectives",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=6210",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": " Historical provider names are shown in the source; adapted executable examples use Anthropic only."
+  },
+  {
+    "lesson": "L09",
+    "file": "assets/video/l09.png",
+    "seconds": 7460,
+    "timestamp": "02:04:20",
+    "description": "The original agent\u2013tool loop diagram",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=7460",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L10",
+    "file": "assets/video/l10.png",
+    "seconds": 8985,
+    "timestamp": "02:29:45",
+    "description": "The source human\u2013AI drafting requirements",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=8985",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  },
+  {
+    "lesson": "L11",
+    "file": "assets/video/l11.png",
+    "seconds": 10358,
+    "timestamp": "02:52:38",
+    "description": "The original model/retriever loop diagram",
+    "source_url": "https://youtu.be/jGg_1h0qzaM?t=10358",
+    "credit": "Vaibhav Mehra / freeCodeCamp, LangGraph Complete Course for Beginners",
+    "note": ""
+  }
+]

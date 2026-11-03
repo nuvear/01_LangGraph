@@ -1,0 +1,18 @@
+flowchart TD
+    A["Synthetic example"] --> B["Graph root"]
+    B --> C["Quote node"]
+    C --> T["Nested credit tool"]
+    T --> D["Format node"]
+    D --> M["Nested Anthropic call"]
+    M --> E["Schema check"]
+    E -->|"Invalid and attempt under two"| D
+    E -->|"Valid or budget spent"| F["End graph"]
+    F --> G["Five deterministic checks"]
+    R["Reference outputs"] --> G
+    G --> H["New local report"]
+    H --> I["Assert all cases pass"]
+    B --> J["Runtime callbacks"]
+    J --> K["Flush submission"]
+    K --> L["LangSmith storage"]
+    L --> N["Async payload read-back"]
+    L --> O["Separate dashboard inspection"]

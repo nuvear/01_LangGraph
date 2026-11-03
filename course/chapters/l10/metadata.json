@@ -1,0 +1,27 @@
+{
+  "id": "L10",
+  "title": "Human–AI Drafter collaboration",
+  "video_start": "02:28:46",
+  "video_end": "02:52:09",
+  "supplementary": false,
+  "live": true,
+  "demo_command": "python -m course_lessons.l10 --live --backend none",
+  "solution_command": "python -m exercises.solutions.l10 --live",
+  "tests": "python -m pytest tests/lessons/test_l10.py -q",
+  "required_packages": ["langgraph", "langchain-core", "langchain-anthropic", "anthropic", "python-dotenv", "langsmith", "pytest"],
+  "sources": [
+    {"url": "https://youtu.be/jGg_1h0qzaM?t=8926", "purpose": "Video-aligned Drafter source window; source review and whole-track corrections supplied by parent."},
+    {"url": "https://docs.langchain.com/oss/python/langgraph/graph-api", "purpose": "Verified by search and fetch: message reducers, partial updates, conditional routing, START and END."},
+    {"url": "https://docs.langchain.com/oss/python/integrations/chat/anthropic", "purpose": "Verified by search and fetch: ChatAnthropic bind_tools and normalized AIMessage.tool_calls."},
+    {"url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview", "purpose": "Verified by search and fetch: client executes tools and returns results paired by tool-use ID."},
+    {"url": "https://docs.langchain.com/oss/python/langchain/models", "purpose": "Verified by search and fetch: binding does not execute tools, default optional tool selection, ToolMessage pairing, disabling parallel calls."}
+  ],
+  "limitations": [
+    "Real Anthropic calls, source figures, execution screenshots, rendering, and tracing are reserved for parent validation.",
+    "The draft buffer and message history are process-local; no durable interrupt/resume, checkpoint, concurrent-user guarantee, or state injection is claimed. U2 follows L10 for those concerns.",
+    "Scripted human feedback makes the live demonstration finite and repeatable; take_turn can also be driven manually. It is not a persistent terminal chat application.",
+    "Live wording varies. Assertions check state, required facts, tool execution, and exact saved-byte correspondence, not a memorized email.",
+    "Offline tests use explicitly named scripted model doubles and do not establish live model behavior.",
+    "A four-model-call per-turn budget rejects runaway retries. File-error details are returned as tool errors without false successful-save state."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "L11",
+  "title": "Local-embedding Chroma RAG",
+  "video_start": "02:52:09",
+  "video_end": "03:09:51",
+  "supplementary": false,
+  "live": true,
+  "demo_command": "python -m course_lessons.l11 --live --backend none",
+  "solution_command": "python -m exercises.solutions.l11 --live",
+  "tests": ["python -m pytest -q tests/lessons/test_l11.py"],
+  "required_packages": [
+    "langgraph", "langchain-anthropic", "langchain-core", "chromadb",
+    "onnxruntime", "langchain-text-splitters", "pypdf", "reportlab", "pytest"
+  ],
+  "sources": [
+    "https://youtu.be/jGg_1h0qzaM?t=10329",
+    "https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/RAG_Agent.py",
+    "https://raw.githubusercontent.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/main/Agents/Stock_Market_Performance_2024.pdf",
+    "https://api.github.com/repos/iamvaibhavmehra/LangGraph-Course-freeCodeCamp/git/trees/main?recursive=1",
+    "https://docs.trychroma.com/docs/embeddings/embedding-functions",
+    "https://cookbook.chromadb.dev/core/clients/",
+    "https://cookbook.chromadb.dev/core/configuration/",
+    "https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter",
+    "https://docs.langchain.com/oss/python/integrations/chat/anthropic",
+    "https://docs.langchain.com/oss/python/langgraph/graph-api"
+  ],
+  "limitations": [
+    "Original stock-market PDF is available but not used: financial assertions and incomplete source references were not independently validated. Delivered PDF is an original three-page synthetic replacement.",
+    "DefaultEmbeddingFunction uses a real local all-MiniLM-L6-v2 ONNX model; initial download needs internet and local cache permissions. Offline tests do not download it or establish semantic retrieval quality.",
+    "Anthropic calls, optional tracing, rendering and execution screenshots are reserved for parent live validation. No live-call or dashboard pass is claimed here.",
+    "Top-k similarity does not establish answerability. Source/page validation proves provenance only, not semantic entailment or general prompt-injection resistance.",
+    "Persistent indexing is serial classroom ingestion, not a concurrent migration service. Re-index deliberately after model/package behavior changes; index fingerprint covers the source and declared configuration.",
+    "ReportLab is needed only to rebuild the supplied teaching PDF. The answer-card exercise uses deterministic retrieval routing rather than duplicating the demo's tool loop."
+  ]
+}

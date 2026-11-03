@@ -1,0 +1,22 @@
+Command: python -m course_lessons.l10 --output-dir <run-output>/L10/demonstration --live --backend none
+UTC: 2026-11-03T01:47:46.917904+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L10",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "saved_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/L10/demonstration/artifacts/meeting_email.txt",
+    "revision_count": 2,
+    "saved_matches_latest_draft": true,
+    "ended_on_successful_save": true,
+    "clarification_without_tools": true,
+    "clarifying_response": "I can help with that. Who is the email going to, and what is it for? For example, it could be a reminder about a field trip for parents or an extension request to a teacher.",
+    "final_document": "Subject: Unable to Attend the 10 a.m. Meeting\n\nHi Tom,\n\nI hope you're doing well. Unfortunately, I won't be able to attend the 10 a.m. meeting. I apologize for any inconvenience this may cause.\n\nWould 12:00 New York time tomorrow work for you instead? If not, I'm happy to find another time that suits you.\n\nThank you for understanding.\n\nBest regards,\nPriya"
+  }
+}
+
+STDERR

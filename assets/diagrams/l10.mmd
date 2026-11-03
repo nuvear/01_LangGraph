@@ -1,0 +1,9 @@
+flowchart TD
+    N["New draft session"] --> H["Human feedback in Python"]
+    H --> A["Agent model call"]
+    A -- "No tool call" --> R["Return draft or question"]
+    R -- "Next human turn" --> H
+    A -- "Tool call" --> T["Execute one tool"]
+    T -- "File write succeeded" --> F["Finish saved workflow"]
+    T -- "Update or error; budget remains" --> A
+    T -- "Unsaved; budget exhausted" --> X["Stop with budget error"]

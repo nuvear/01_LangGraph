@@ -1,0 +1,30 @@
+Command: python -m exercises.solutions.u1 --output-dir <run-output>/U1/exercise-solution --live --backend none
+UTC: 2026-11-03T01:48:53.383466+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "U1",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "database": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/U1/exercise-solution/artifacts/u1-solution-513c70cfb79540198a8a0c2423805bbb.sqlite3",
+    "closed_and_reopened": true,
+    "recovered_checkpoint_ids_match": true,
+    "thread_isolation": true,
+    "message_counts": {
+      "trip-a": 4,
+      "trip-b": 4,
+      "trip-c": 2
+    },
+    "answers": {
+      "trip-a": "Your destination is Kyoto.",
+      "trip-b": "Your destination is Oslo.",
+      "trip-c": "Your destination is UNKNOWN because you haven't told me one yet."
+    },
+    "model_calls": 5
+  }
+}
+
+STDERR

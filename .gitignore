@@ -11,6 +11,8 @@
 inputs/
 # Canonical index is committed under docs/; these are local delivery copies.
 /outputs/training-index/
+# Complete export and archive duplicate the canonical repository materials.
+/outputs/course-handbooks/
 __pycache__/
 .pytest_cache/
 *.py[cod]

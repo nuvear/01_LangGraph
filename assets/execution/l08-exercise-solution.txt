@@ -1,0 +1,37 @@
+Command: python -m exercises.solutions.l08 --output-dir <run-output>/L08/exercise-solution --live --backend none
+UTC: 2026-11-03T01:42:04.159285+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L08",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "max_pairs": 1,
+    "prompt_message_counts": [
+      1,
+      3,
+      3
+    ],
+    "full_history_counts": [
+      2,
+      4,
+      6
+    ],
+    "recall_answer": "Good morning! You told me *your* name is Mira, but you haven't given me a name. I'm Claude, though you're welcome to call me something else if you'd like!",
+    "third_answer": "Good morning! (And a correction: you never actually told me your name; I made up \"Mira,\" sorry about that.)",
+    "oldest_human_excluded_from_third_prompt": true,
+    "full_transcript_messages": 6,
+    "raw_input_preserved": true,
+    "fresh_history_messages": 2,
+    "fresh_answer": "I don't know. You haven't given me a name in this conversation. By default I'm Claude, made by Anthropic, but if you'd like to call me something else, just let me know.",
+    "fresh_history_is_reset_simulation": true,
+    "log_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014118Z-9bc275/L08/exercise-solution/artifacts/bounded-conversation.txt",
+    "automatic_log_reload": false,
+    "model_calls": 4
+  }
+}
+
+STDERR

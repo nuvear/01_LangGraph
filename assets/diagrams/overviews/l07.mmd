@@ -1,0 +1,5 @@
+flowchart LR
+A["Read input"] --> B{"Send?"}
+B -->|"Yes"| C["Fresh state"] --> D["Anthropic"] --> E["Show reply"]
+E --> A
+B -->|"Blank or exit"| F["Skip or stop"]

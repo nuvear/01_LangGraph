@@ -1,0 +1,24 @@
+{
+  "id": "L05",
+  "title": "Conditional routes and two independent calculations",
+  "video_start": "00:55:36",
+  "video_end": "01:14:14",
+  "supplementary": false,
+  "live": false,
+  "demo_command": "python -m course_lessons.l05 --backend none",
+  "solution_command": "python -m exercises.solutions.l05 --backend none",
+  "tests": "python -m pytest tests/lessons/test_l05.py -q",
+  "required_packages": ["langgraph", "langsmith", "python-dotenv", "pytest"],
+  "sources": [
+    "https://youtu.be/jGg_1h0qzaM?t=3336",
+    "https://docs.langchain.com/oss/python/langgraph/graph-api",
+    "https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges",
+    "https://reference.langchain.com/python/langgraph/graph/state/StateGraph/set_entry_point"
+  ],
+  "limitations": [
+    "Supports integer operands and the exact operation strings + and - only; booleans are rejected.",
+    "The exercise executes two sections sequentially; independent means separate operand pairs, not parallel execution.",
+    "No LLM, credentials, live API, tracing request, Windows validation, rendered diagram, or execution screenshot is required or claimed by this lesson.",
+    "Official API sources were searched and fetched on 2026-11-03; local compatibility is checked with the installed packages rather than every historical release."
+  ]
+}

@@ -1,0 +1,20 @@
+flowchart TD
+    A["Fresh thread input"] --> B["Check request"]
+    B -->|"Blank"| C["Interrupt for clarification"]
+    C -->|"Valid answer"| D["Anthropic requests one tool"]
+    C -->|"Invalid answer"| Z["End without save"]
+    B -->|"Request present"| D
+    D -->|"One allowed call"| E["L11 local embedding retrieval"]
+    D -->|"Malformed call"| Z
+    E -->|"Empty or invalid evidence"| Z
+    E -->|"Matching ToolMessage and passages"| F["Anthropic drafts with citations"]
+    F -->|"Unsupported or invalid citations"| Z
+    F -->|"Valid references"| G["Interrupt for draft review"]
+    G -->|"One revision request"| H["Anthropic revises once"]
+    H -->|"Valid references"| G
+    H -->|"Invalid references"| Z
+    G -->|"Reject or invalid decision"| Z
+    G -->|"Second revision request"| Z
+    G -->|"Approve current draft"| I["Safe new text file write"]
+    I -->|"Unsafe path or existing file"| Z
+    I -->|"Write succeeds"| J["Saved artifact"]

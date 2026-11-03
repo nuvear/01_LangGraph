@@ -1,0 +1,104 @@
+[
+  {
+    "id": "P00",
+    "title": "Setup and safe service checks",
+    "live": false,
+    "number": 0
+  },
+  {
+    "id": "L01",
+    "title": "Python types and graph elements",
+    "live": false,
+    "number": 1
+  },
+  {
+    "id": "L02",
+    "title": "Hello World and personalized compliment",
+    "live": false,
+    "number": 2
+  },
+  {
+    "id": "L03",
+    "title": "Multiple inputs and one-node arithmetic",
+    "live": false,
+    "number": 3
+  },
+  {
+    "id": "L04",
+    "title": "Three-node sequential profile",
+    "live": false,
+    "number": 4
+  },
+  {
+    "id": "L05",
+    "title": "Conditional routes and two independent calculations",
+    "live": false,
+    "number": 5
+  },
+  {
+    "id": "L06",
+    "title": "Bounded loops and automatic higher/lower game",
+    "live": false,
+    "number": 6
+  },
+  {
+    "id": "L07",
+    "title": "Anthropic stateless bot",
+    "live": true,
+    "number": 7
+  },
+  {
+    "id": "L08",
+    "title": "Conversation history and logging",
+    "live": true,
+    "number": 8
+  },
+  {
+    "id": "L09",
+    "title": "ReAct arithmetic tool loop",
+    "live": true,
+    "number": 9
+  },
+  {
+    "id": "L10",
+    "title": "Human\u2013AI Drafter collaboration",
+    "live": true,
+    "number": 10
+  },
+  {
+    "id": "L11",
+    "title": "Local-embedding Chroma RAG",
+    "live": true,
+    "number": 11
+  },
+  {
+    "id": "U1",
+    "title": "Thread memory and durable SQLite checkpoints",
+    "live": true,
+    "number": 12
+  },
+  {
+    "id": "U2",
+    "title": "Safe draft state and human approval/resume",
+    "live": true,
+    "number": 13
+  },
+  {
+    "id": "S1",
+    "title": "LangSmith observability and evaluation",
+    "live": true,
+    "number": 14
+  },
+  {
+    "id": "S2",
+    "title": "LangWatch observability and comparison",
+    "live": true,
+    "number": 15
+  },
+  {
+    "id": "C01",
+    "title": "Document-grounded drafting capstone",
+    "live": true,
+    "number": 16
+  }
+]

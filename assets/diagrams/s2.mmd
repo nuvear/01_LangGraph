@@ -1,0 +1,23 @@
+flowchart TD
+    A["CLI selects tracing backend"] --> B["Shared parent trace context"]
+    B --> C["Invoke graph with callbacks"]
+    C --> D["Prepare synthetic state"]
+    D --> E["Agent: real model call"]
+    E -->|"First turn: one tool call"| F["Invoke named tool with config"]
+    F --> G["Arithmetic or handout retrieval"]
+    G --> H["ToolMessage with matching call ID"]
+    H --> E
+    E -->|"Second turn: final text"| I["Finish and assert local properties"]
+    I --> J["Close parent span"]
+    J --> K["Attempt flush then shutdown"]
+    C --> L["Selected callback destinations"]
+    L --> M["None: no course telemetry callbacks"]
+    L --> N["LangWatch only"]
+    L --> O["LangSmith only"]
+    L --> P["Both: same execution to both services"]
+    K --> Q["Lesson ingestion remains unverified"]
+    R["Separately authorized service checker"] --> S["Inspect HTTP response and rejected spans"]
+    S --> T["Acknowledgment covers checker trace only"]
+    T --> U["Separately inspect actual lesson trace tree"]
+    Q --> U
+    V["Live always sends model messages to Anthropic"] --> E

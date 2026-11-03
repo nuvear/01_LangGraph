@@ -1,0 +1,28 @@
+{
+  "id": "P00",
+  "title": "Setup and safe service checks",
+  "video_start": null,
+  "video_end": null,
+  "supplementary": true,
+  "live": false,
+  "demo_command": "python -m course_lessons.p00 --backend none",
+  "solution_command": "python -m exercises.solutions.p00 --backend none",
+  "tests": "python -m pytest tests/lessons/test_p00.py -q",
+  "required_packages": ["langgraph", "langchain-core", "langchain-anthropic", "anthropic", "python-dotenv", "langsmith", "langwatch", "pytest"],
+  "sources": [
+    {"url": "https://docs.python.org/3.12/library/venv.html", "verified": "2026-11-03", "supports": "Virtual environments isolate interpreters/packages; sys.prefix differs from sys.base_prefix; activation is optional when using the interpreter path; POSIX and Windows commands."},
+    {"url": "https://docs.langchain.com/oss/python/langgraph/overview", "verified": "2026-11-03", "supports": "StateGraph compilation, START/END edges and deterministic Python steps do not require a model."},
+    {"url": "https://docs.langchain.com/langsmith/cloud", "verified": "2026-11-03", "supports": "US, EU, APAC and AWS US have distinct official SaaS API endpoints; dashboard hosts are not API hosts."},
+    {"url": "https://langwatch.ai/docs/integration/python/guide", "verified": "2026-11-03", "supports": "Default cloud endpoint is https://app.langwatch.ai; Settings API keys need LANGWATCH_PROJECT_ID; project scope, SDK setup and flush do not replace dashboard verification."},
+    {"url": "https://platform.claude.com/docs/en/api/errors", "verified": "2026-11-03", "supports": "401 authentication, 403 permissions, 404 resource, 429 rate/cap limits, 529 overload, request IDs and bounded retry diagnostics."}
+  ],
+  "limitations": [
+    "P00 is added preparation, not a source-video chapter or original exercise.",
+    "No .env was accessed and no live API, telemetry or dashboard checks were performed for this module.",
+    "Readiness means local/syntactic readiness only; it does not establish credential validity, model access, network connectivity or trace ingestion.",
+    "P00 deliberately rejects --live and non-none tracing backends; the separate shared connection-check CLI requires explicit instructor authorization and reads local configuration.",
+    "Only listed official cloud origins are supported by the teaching validator; self-hosted/proxy endpoints require a separately reviewed policy.",
+    "The synthetic model ID claude-course-example demonstrates syntax only and is not a recommendation or claim of availability.",
+    "Windows instructions are supplied from official documentation but have not been executed on Windows."
+  ]
+}

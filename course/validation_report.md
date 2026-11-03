@@ -1,43 +1,73 @@
-# Foundation and training-index validation
+# Complete LangGraph course — validation report
 
-Validated on 3 November 2026 on macOS 26.6.2 / arm64, Python 3.12.13.
+Validated on **3 November 2026**, using Python **3.12.13** on **macOS/arm64**. This report supersedes the earlier index-and-foundation status; the original training index and its source-review records remain preserved.
 
-## Passed
+## Delivery and scope
 
-- After the user replaced the rejected key locally, the actual Anthropic Messages request returned exactly `ANTHROPIC_CONNECTION_OK` using the configured `claude-opus-5-5` model (39 input and 20 output tokens).
-- A real ChatAnthropic call inside a compiled LangGraph returned `LANGGRAPH_ANTHROPIC_OK`, retained two messages, and reported 41 input plus 22 output tokens. Both tracing callbacks were enabled.
-- LangSmith acknowledged the synthetic trace and the current asynchronous API retrieved and matched the stored synthetic input/output. The configured APAC endpoint was used.
-- LangWatch acknowledged an actual synthetic OTLP ingestion request with HTTP 200 and no rejected spans. The checker validates the response, rather than claiming that an empty local queue proves delivery.
-- The deterministic two-node graph passed with `none`, `langsmith`, `langwatch`, and `both` backend selections.
-- Nineteen offline regression tests passed. They cover deterministic graph behavior, supported official HTTPS endpoints, invalid endpoints, configuration failure, and credential-safe error reports.
-- A clean native Python virtual environment installed `requirements.lock.txt`, ran the offline graph, and passed all nineteen tests independently of the original uv environment.
-- The working environment passed the dependency consistency check. Optional Word-build dependencies are separate from the runtime lock.
-- The complete 03:09:51 caption track was reviewed in eleven sections. Thirty-six timestamped source-video frames were inspected across the runtime; both apparent caption-boundary truncations were resolved against the continuous track.
-- The 10-page Word training index was rendered through LibreOffice. All pages were checked as image contact sheets; dense pages were also inspected at readable size. A cover-formatting defect found during QA was corrected and the cover was re-rendered.
+The complete sequence is P00, L01–L11, U1–U2, S1–S2, and C01: **17 modules**, including the capstone. All three matched chapter sets, complete demonstrations, separate learner starters and instructor solutions, test files, original diagrams, attributed video illustrations, and execution records are delivered. Added teaching material is distinguished from original video assignments and source timestamps.
 
-## Tested runtime versions
+| Word document | Actual rendered pages | Embedded images |
+| --- | ---: | ---: |
+| Student Handbook | 141 | 62 |
+| Teacher Handbook | 140 | 62 |
+| Exercise Workbook | 50 | 0 |
 
-- `anthropic==2.4.0`
-- `langgraph==1.2.19`
-- `langchain-anthropic==1.7.9`
-- `langchain-core==1.7.4`
-- `langwatch==1.4.0`
-- `langsmith==0.14.17`
-- `python-dotenv==1.2.4`
-- `pytest==9.2.0`
+Both handbooks contain all **34 actual execution screenshots**, 11 timestamped source-video stills, and 17 original teaching/overview diagrams. Editable detailed Mermaid flowcharts remain available; compact overviews improve the printed readability of dense workflows. The workbook contains concrete tasks, progressive hints, expected behavior, observed-result fields, and completion criteria. The teacher edition includes independent solutions and reasoned answers to the corresponding knowledge checks.
 
-`requirements.lock.txt` pins the full runtime environment; `requirements-docs.txt` pins the additional Word builder. The clean runtime reinstall and current workspace both passed the foundation tests.
+The three editions also have editable Markdown and self-contained HTML versions. The complete export preserves relative code/data/asset links; the ZIP excludes local credentials and working environments.
 
-## Security
+## Execution: 34 of 34 passed
 
-Keys remain only in the local ignored `.env`. That file has owner-only 0600 permissions on macOS. Reports do not record credential values. Traces contain synthetic teaching data. The downloaded full source video, captions, complete service reports, working logs, virtual environments, and task metadata are not intended repository deliverables and are ignored by Git. Only an empty-secret `.env.example` is published.
+Every module’s baseline demonstration and independent instructor reference were executed successfully: **34/34 passed**. Fourteen runs were deterministic/model-free; **20 runs used real Anthropic-enabled implementations**. Live execution never substitutes an offline model double.
 
-## Explicit limits
+The [execution manifest](validation/execution_manifest.json) records exact commands, UTC times, exit codes, selected backends, source hashes, logs and screenshots. Each current demonstration/solution file was checked against its recorded hash. The complete captured stdout/stderr is retained in `assets/execution`; screenshots are genuine browser captures of that actual stdout, explicitly labeled as such—not simulated terminal windows or fabricated model replies. The figures link to their full recorded output.
 
-This is the index-and-foundation phase, not a completed course. No full student/teacher/workbook documents, completed lesson exercise set, RAG implementation, durable-checkpoint lab, or capstone are claimed. Their code, acceptance tests, and genuine execution screenshots will be produced after scope approval. The source-video visual checks are not screenshots of executed adapted Python code.
+The runs cover stateless and history-based chat, real model-requested arithmetic tools, iterative drafting and saving, local ONNX embeddings with persistent Chroma retrieval, supported/unsupported/empty evidence, SQLite close/reopen and fresh-interpreter reading, actual interrupt/resume mechanics, bounded approval/revision paths, LangSmith/LangWatch callbacks, and both capstone implementations.
 
-Dashboard pages for LangWatch and LangSmith were not visually inspected. Ingestion/read-back API checks and graph callback completion do not substitute for dashboard-layout checks or prove every future span relationship.
+The enhanced capstone returned `saved`, retrieved three chunks, completed the real tool-result continuation, used three model calls, made one revision, verified thread isolation and current-draft fingerprint approval, rejected unsafe/duplicate saves, and produced an actual 1,742-byte cited artifact. Its finite command-line harness scripts clarification/revision/approval decisions; that is explicitly disclosed rather than presented as independent human review.
 
-Windows setup instructions are documented but were not executed on Windows. Windows dependency wheels, filesystem behavior, and the final commands must be tested separately or remain explicitly marked untested.
+## Offline tests and clean setup
 
-The local embedding model, original RAG PDF availability/rights or labeled replacement, and exact durable-checkpoint/tool-runtime package choices remain implementation decisions. A text log is not durable graph state; an in-memory checkpoint does not survive process restart.
+**860 passed; 9 intentionally skipped; no failures.** The identical result passed in a clean native Python virtual environment installed from the platform-aware runtime lock.
+
+The nine skips are unfinished **learner-starter acceptance** cases: C01 one, S1 one, and U2 seven. They are not claimed passes. Corresponding reference behavior is exercised separately. Untouched starter commands honestly report `STARTER_NOT_COMPLETED`; workbook instructions explain how to assess edited starters instead of treating reference tests as evidence of learner completion.
+
+The [test summary](validation/test_summary.json) and [environment record](validation/environment.json) give the exact result and installed versions. `requirements.txt` pins top-level runtime dependencies; `requirements.lock.txt` retains complete runtime pins and platform markers. Optional authoring dependencies are separate in `requirements-docs.txt`, with the complete tested authoring environment in `requirements-docs.lock.txt`.
+
+Real Chroma default ONNX embeddings were downloaded/used; retrieval was not replaced by a keyword or fake-embedding fallback. The clearly labeled original three-page synthetic teaching PDF is supplied with editable data, a rebuild script, and [provenance](../data/rag_provenance.md). It is not misrepresented as the original video’s finance PDF.
+
+## Current integrations and resolved compatibility issues
+
+The saved configurable model, `claude-opus-5-5`, passed a real Messages API check returning `ANTHROPIC_CONNECTION_OK`. Model/account availability is not assumed for other students. The earlier rejected credential was replaced privately; no key value appears in the materials.
+
+LangSmith acknowledged a synthetic check trace, and the current asynchronous retrieval API read back and matched its stored inputs/outputs at the configured APAC endpoint. LangWatch acknowledged a separate real OTLP check with **HTTP 200 and zero rejected spans**. See [service-check evidence](validation/service_checks.json). A check trace is not proof that every lesson trace is visible in a dashboard.
+
+Live testing identified rejection of forced named-tool selection by the configured model. L11 and S2 now use supported automatic tool choice, explicit prompts, and strict checks that the intended actual calls occurred. The model was not silently changed and a missing tool call is not accepted as a success.
+
+The integration review also found and closed two reference-integrity gaps: U1 now inspects **both** recovered snapshots before either recall, with an ordering regression; L11 rejects a fabricated non-PDF source/page marker even when accompanied by a valid PDF citation. Added regression tests pass. Current official-source references and video-versus-current differences appear in the matched chapters.
+
+## Word rendering and visual inspection
+
+All **331 actual PDF-proof pages** were rendered from the final DOCX files through LibreOffice. All page contact sheets were visually reviewed, with covers, dense code, diagrams, and warning pages also inspected at readable size. Targeted corrections removed orphaned reference-only pages, obsolete production wording, and duplicated bibliography headings. Dense original diagrams retain detailed editable sources and use more readable printed overviews where appropriate.
+
+The final [document-layout record](validation/document_layout.json) records DOCX/PDF hashes, actual PDF page counts, image counts, and page-bound checks. Final automated checks found **no overflow candidates and no sparse-page warnings**. Draft page images are cleared before inspection so old pages cannot inflate counts. DOCX packages were reopened and checked for corruption and unresolved insertion markers. PDFs and page proofs are working QA artifacts, not additional promised course deliverables. Microsoft Word may repaginate according to its fonts/printer configuration; inspection here used LibreOffice rendering.
+
+## Source review and attribution
+
+The complete **03:09:51** caption track was reviewed across eleven sections. The index phase checked 36 timestamped video frames; handbook production added visual selection and eleven attributed stills. Continuous-caption checks resolved the apparent memory/tools and Drafter/RAG chapter-boundary issues. This is a complete content review supported by sampled visuals, **not** a claim that every video frame was watched in real time.
+
+See the [timestamped source map](video_source_map.md), [visual review](video_visual_review.md), and chapter-level current official references. Video excerpts credit Vaibhav Mehra/freeCodeCamp with exact timestamps and source URLs; rights in those excerpts remain with their owners. The supplementary labs, synthetic dataset, original diagrams, and additional exercises are identified as adaptations, not publisher-endorsed source material.
+
+## Security and explicit limits
+
+The private `.env` stays ignored and owner-readable/writable only on macOS. `.env.example` contains blank secret placeholders and safe public configuration defaults. The exporter checks known local secret values and high-confidence key patterns, including the XML inside DOCX packages, before copying tracked files. No full source video/caption download, private task metadata, working logs, virtual environment, or credential file belongs in the delivery archive or commit. Synthetic data only was used for model calls and selected telemetry.
+
+Windows setup is documented using Python 3.12, the platform-aware lock, and direct virtual-environment interpreter commands. **Windows installation, filesystem/symlink behavior, and execution were not tested.** No Windows pass is claimed.
+
+LangSmith/LangWatch **dashboard pages were not visually inspected**. Submission, HTTP acknowledgment, stored API read-back, callback ancestry, and local flush are distinguished; none is mislabeled as dashboard verification or proof of all remote span relationships.
+
+Optional stretch/design prompts are not additional validated implementations unless explicitly identified. U2/C01 checkpoints are in-process; U1 separately covers durable SQLite state. Thread IDs are not authentication. Fingerprint approval and safe file creation are classroom patterns, not authenticated production authorization, transactional exactly-once saving, crash/power-loss recovery, or production security certification. Citation integrity is not semantic entailment; human evidence review remains required.
+
+## Repository and reuse
+
+Canonical materials are published on **`course/anthropic-observability-2026-11-03`** in [nuvear/01_LangGraph](https://github.com/nuvear/01_LangGraph/tree/course/anthropic-observability-2026-11-03). Existing foundation examples, source-review records, and the original Word training index are retained. The open index file is not replaced by a handbook. The README contains exact setup, module execution, authoring, and evidence-regeneration commands.

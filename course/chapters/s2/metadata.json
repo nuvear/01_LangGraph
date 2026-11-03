@@ -1,0 +1,37 @@
+{
+  "id": "S2",
+  "title": "LangWatch observability and comparison",
+  "video_start": null,
+  "video_end": null,
+  "supplementary": true,
+  "live": true,
+  "demo_command": "python -m course_lessons.s2 --live",
+  "solution_command": "python -m exercises.solutions.s2 --live",
+  "tests": "python -m pytest tests/lessons/test_s2.py -q",
+  "required_packages": ["anthropic", "langgraph", "langchain-anthropic", "langchain-core", "langwatch", "langsmith", "opentelemetry-sdk", "opentelemetry-exporter-otlp-proto-http", "python-dotenv", "requests", "pytest"],
+  "sources": [
+    {"url": "https://langwatch.ai/docs/integration/python/integrations/langgraph", "verified": "2026-11-03", "supports": "Parent trace and callback attached to graph invocation, including ordinary nodes, tools, and model spans."},
+    {"url": "https://langwatch.ai/docs/integration/python/guide", "verified": "2026-11-03", "supports": "Setup, project scope, OpenTelemetry provider, exit flushing; latest documentation differs from installed SDK."},
+    {"url": "https://langwatch.ai/docs/integration/python/reference", "verified": "2026-11-03", "supports": "Trace context manager and capture flags apply to the root span; callback returns child instrumentation."},
+    {"url": "https://docs.langchain.com/langsmith/trace-with-langchain", "verified": "2026-11-03", "supports": "Selective callbacks, inherited tags/metadata, background tracing and wait_for_all_tracers."},
+    {"url": "https://docs.langchain.com/langsmith/mask-inputs-outputs", "verified": "2026-11-03", "supports": "Hiding, masking, metadata controls, and conditional disabling are separate privacy measures."},
+    {"url": "https://opentelemetry.io/docs/specs/otlp/", "verified": "2026-11-03", "supports": "HTTP 200 can include partial success; inspect rejected spans rather than HTTP status alone."}
+  ],
+  "installed_api_observation": {
+    "langgraph": "1.2.19",
+    "langchain-anthropic": "1.7.9",
+    "langchain-core": "1.7.4",
+    "langwatch": "1.4.0",
+    "langsmith": "0.14.17",
+    "opentelemetry-sdk": "1.45.2",
+    "note": "Read-only signature inspection only. Installed langwatch.setup has no project_id or flush_on_exit keyword; reuse the shared helper's environment-scoped project and provider flush instead of copying newer documentation arguments."
+  },
+  "limitations": [
+    "No live Anthropic, tracing export, service checker, or dashboard operation was performed by the module author; parent must validate these separately.",
+    "run_demo reports application checks only; the CLI tracing context attempts flush after run_demo returns and does not return a server ingestion acknowledgment.",
+    "Synthetic exact-ID retrieval is solely a tracing fixture, not semantic search or a substitute for L11 Chroma RAG.",
+    "Root capture_input/capture_output flags do not sanitize callback-generated child spans. Both tracing backends receive synthetic graph/model/tool data when selected.",
+    "The privacy plan describes the supplied runtime's selected routes, not proof of redaction or a general firewall against unrelated process instrumentation.",
+    "LangWatch checker evidence concerns its separate connection-check trace, not automatic proof that a later lesson trace was stored or displayed."
+  ]
+}

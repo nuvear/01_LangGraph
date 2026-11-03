@@ -1,0 +1,45 @@
+{
+  "id": "S1",
+  "title": "LangSmith observability and evaluation",
+  "video_start": null,
+  "video_end": null,
+  "supplementary": true,
+  "live": true,
+  "demo_command": "python -m course_lessons.s1 --live",
+  "solution_command": "python -m exercises.solutions.s1 --live",
+  "starter_command": "python -m exercises.starters.s1",
+  "completed_starter_command": "python -m exercises.starters.s1 --live",
+  "default_backend": "langsmith",
+  "tests": ["tests/lessons/test_s1.py"],
+  "test_command": "python -m pytest tests/lessons/test_s1.py -q",
+  "required_packages": [
+    "anthropic",
+    "langgraph",
+    "langchain-core",
+    "langchain-anthropic",
+    "langsmith",
+    "python-dotenv",
+    "pytest"
+  ],
+  "sources": [
+    "https://docs.langchain.com/langsmith/trace-with-langgraph",
+    "https://docs.langchain.com/langsmith/evaluation-concepts",
+    "https://docs.langchain.com/langsmith/create-account-api-key",
+    "https://docs.langchain.com/langsmith/smithdb-sdk-migration-runs",
+    "https://docs.langchain.com/langsmith/evaluate-llm-application"
+  ],
+  "sources_verified_on": "2026-11-03",
+  "limitations": [
+    "Supplementary original material: no source-video timestamp or source-video figures.",
+    "Authoring validation is offline only; the parent must execute real Anthropic demo and solution calls and verify traces.",
+    "Local assigned run IDs and callback ancestry do not prove remote persistence; flush, read-back, and dashboard inspection are separate evidence.",
+    "The three-example JSON-text reports are local evaluations, not uploaded LangSmith datasets or experiments.",
+    "Graph formatting is bounded to two model invocations per case; SDK transport retries can issue additional requests.",
+    "Model or tool exceptions propagate and can prevent report creation; failed completed evaluations save reports before asserting.",
+    "The lab uses deterministic tool selection and no retrieval; RAG evidence discussion refers to L11 rather than claiming an S1 retrieval run.",
+    "The shared helper uses project addressing; agent-based workspaces require instructor provisioning and a compatibility project name.",
+    "A tracing-only key cannot perform stored read-back; the service checker needs appropriate ingestion and read permissions.",
+    "The learner-starter acceptance check is intentionally skipped until all three TODO functions are implemented.",
+    "Windows execution and dashboard visibility were not validated by this module author."
+  ]
+}

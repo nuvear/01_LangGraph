@@ -1,0 +1,22 @@
+Command: python -m course_lessons.u2 --output-dir <run-output>/U2/demonstration --live --backend none
+UTC: 2026-11-03T01:43:53.866848+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "U2",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "paused_sessions": 2,
+    "isolation_checked": true,
+    "approved_status": "saved",
+    "rejected_status": "rejected",
+    "overwrite_status": "save_failed",
+    "traversal_status": "save_failed",
+    "saved_path": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014118Z-9bc275/U2/demonstration/artifacts/cedar.txt"
+  }
+}
+
+STDERR

@@ -1,0 +1,51 @@
+{
+  "id": "L03",
+  "title": "Multiple inputs and one-node arithmetic",
+  "video_start": "00:33:07",
+  "video_end": "00:44:29",
+  "supplementary": false,
+  "live": false,
+  "demo_command": "python -m course_lessons.l03 --backend none",
+  "solution_command": "python -m exercises.solutions.l03 --backend none",
+  "starter_command": "python -m exercises.starters.l03",
+  "tests": ["python -m pytest tests/lessons/test_l03.py -q"],
+  "required_packages": ["langgraph", "langsmith", "pytest", "python-dotenv"],
+  "sources": [
+    {
+      "url": "https://youtu.be/jGg_1h0qzaM?t=1987",
+      "title": "Source video: multiple inputs, 00:33:07–00:44:29",
+      "verification": "Supplied complete-caption review and whole-track sampled visual review; parent owns source figure capture."
+    },
+    {
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "title": "Official LangGraph Graph API overview",
+      "verified": "2026-11-03",
+      "supports": "Typed state, partial node updates, default per-key replacement, explicit START/END edges, compilation."
+    },
+    {
+      "url": "https://reference.langchain.com/python/langgraph/graph/state/StateGraph",
+      "title": "Official StateGraph reference",
+      "verified": "2026-11-03",
+      "supports": "StateGraph is a builder; compile produces an executable graph; nodes return partial state updates."
+    },
+    {
+      "url": "https://docs.python.org/3.12/library/typing.html#typing.TypedDict",
+      "title": "Python 3.12 typing: TypedDict and NotRequired",
+      "verified": "2026-11-03",
+      "supports": "TypedDict is a plain dictionary at runtime, type hints do not validate values, NotRequired permits an absent key."
+    },
+    {
+      "url": "https://docs.python.org/3.12/library/math.html#math.prod",
+      "title": "Python 3.12 math.prod",
+      "verified": "2026-11-03",
+      "supports": "Product starts at 1 and an empty iterable returns that starting value."
+    }
+  ],
+  "limitations": [
+    "No LLM, credentials, environment-file loading, or network is needed for L03; tracing must remain backend none for offline validation.",
+    "The + and * tokens, exact output punctuation, strict integer validation, numeric answer field, and empty-list identities are explicit teaching adaptations.",
+    "Source-video statements about an omitted result becoming None are not treated as a runtime guarantee.",
+    "Parent owns source screenshots, execution figures, Mermaid rendering, handbook integration, and publication.",
+    "Offline verification is local Python 3.12 only; no Windows execution or live tracing verification is claimed."
+  ]
+}

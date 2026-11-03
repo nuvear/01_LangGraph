@@ -1,0 +1,49 @@
+Command: python -m exercises.solutions.p00 --output-dir <run-output>/P00/exercise-solution --backend none
+UTC: 2026-11-03T01:41:21.867292+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "P00",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "ready_case": {
+      "status": "ready",
+      "issues": [],
+      "endpoints": {
+        "langsmith": "https://eu.api.smith.langchain.com",
+        "langwatch": "https://app.langwatch.ai"
+      },
+      "remote_checked": false,
+      "message": "Local profile ready."
+    },
+    "repair_case": {
+      "status": "needs_attention",
+      "issues": [
+        "model_invalid",
+        "langsmith_endpoint_invalid",
+        "langwatch_project_required"
+      ],
+      "endpoints": {
+        "langwatch": "https://app.langwatch.ai"
+      },
+      "remote_checked": false,
+      "message": "Repair public settings."
+    },
+    "triage": {
+      "network": "Check network, DNS, proxy and TLS; never disable certificate checks.",
+      "401": "Verify or rotate the key privately; do not print it.",
+      "403": "Check organization/workspace permissions and model access.",
+      "404": "Check the configured model ID and API resource path.",
+      "429": "Check rate and spend limits; honor Retry-After when present.",
+      "529": "Wait and retry within a bounded backoff budget.",
+      "418": "Record a sanitized status and request ID; consult official errors."
+    },
+    "remote_checked": false,
+    "environment_file_read": false
+  }
+}
+
+STDERR

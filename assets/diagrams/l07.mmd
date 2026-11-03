@@ -1,0 +1,13 @@
+flowchart TD
+    input["Read entry: bounded Python loop"] --> control["Check blank or exit"]
+    control -->|"blank"| skip["Skip: no model call"]
+    skip --> input
+    control -->|"exit or budget"| stop["Stop terminal session"]
+    control -->|"send"| fresh["New state: one human message"]
+    fresh --> start["START"]
+    start --> node["Model node"]
+    node --> model["ChatAnthropic invoke"]
+    model --> reply["Text and optional usage"]
+    reply --> finish["END"]
+    finish --> display["Display reply: do not reuse state"]
+    display --> input

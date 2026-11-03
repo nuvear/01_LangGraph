@@ -1,0 +1,45 @@
+Command: python -m course_lessons.p00 --output-dir <run-output>/P00/demonstration --backend none
+UTC: 2026-11-03T01:41:19.546119+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "P00",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "environment": {
+      "python": "3.12",
+      "python_supported": true,
+      "virtual_environment": true,
+      "packages": {
+        "langgraph": "1.2.19",
+        "langchain-core": "1.7.4",
+        "langchain-anthropic": "1.7.9",
+        "anthropic": "2.4.0",
+        "python-dotenv": "1.2.4",
+        "langsmith": "0.14.17",
+        "langwatch": "1.4.0",
+        "pytest": "9.2.0"
+      },
+      "missing_packages": [],
+      "ready": true
+    },
+    "graph_checks": [
+      "label_checked",
+      "graph_completed"
+    ],
+    "message": "Offline setup graph ready for learner.",
+    "supported_endpoints": {
+      "anthropic": "https://api.anthropic.com",
+      "langsmith": "https://api.smith.langchain.com",
+      "langwatch": "https://app.langwatch.ai"
+    },
+    "unsafe_examples_rejected": 3,
+    "remote_checked": false,
+    "environment_file_read": false
+  }
+}
+
+STDERR

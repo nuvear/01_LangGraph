@@ -1,0 +1,25 @@
+Command: python -m exercises.solutions.l04 --output-dir <run-output>/L04/exercise-solution --backend none
+UTC: 2026-11-03T01:41:31.912180+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L04",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "result": "Linda welcome to the system. You are 31 years old and you have skills in Python, machine learning and LangGraph.",
+    "node_order": [
+      "welcome",
+      "age",
+      "skills"
+    ],
+    "empty_skills_result": "Ari welcome to the system. You are 0 years old and you have no listed skills.",
+    "single_skill_result": "Jo welcome to the system. You are 1 year old and you have skills in Python.",
+    "inputs_unchanged": true,
+    "model_calls": 0
+  }
+}
+
+STDERR

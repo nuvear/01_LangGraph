@@ -1,0 +1,74 @@
+Command: python -m course_lessons.l11 --output-dir <run-output>/L11/demonstration --live --backend none
+UTC: 2026-11-03T01:48:29.122848+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L11",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "document": "original synthetic three-page teaching replacement",
+    "indexed_chunks": 6,
+    "supported": {
+      "answer": "A standard equipment loan lasts 7 calendar days. You can ask for 1 renewal of 3 more calendar days, but only if no other learner has reserved the item, and you must ask before the original due date [rag_teaching_handbook.pdf p.2].",
+      "hits": [
+        {
+          "id": "b338f2664341f300-p2-c1",
+          "text": "L11 / C01 synthetic practice source\nPage 2\nORIGINAL SYNTHETIC TEACHING REPLACEMENT \u2014 not the source video PDF\n Harbor Learning Lab \u2014 Practice Handbook\nEquipment loans and returns\nHarbor Learning Lab lends practice equipment to registered learners. The standard\nequipment loan lasts 7 calendar days. A learner may request one renewal of 3 additional\ncalendar days if no other learner has reserved the equipment. A renewal must be requested\nbefore the original due date.\nAn equipment loan request must include the learner's name, item name and preferred\ncollection date. Send the request to equipment@harbor.example. A facilitator confirms",
+          "source": "rag_teaching_handbook.pdf",
+          "page": 2
+        },
+        {
+          "id": "b338f2664341f300-p2-c2",
+          "text": "collection date. Send the request to equipment@harbor.example. A facilitator confirms\navailability before collection; sending a request does not guarantee a booking. No deposits\nor late-fee amounts are specified in this handbook.\nIf an item is damaged or missing, stop using it and contact equipment@harbor.example\npromptly. Do not attempt a repair. Returns go to the fictional North Room equipment desk.\nThe handbook does not specify replacement costs or purchase prices.",
+          "source": "rag_teaching_handbook.pdf",
+          "page": 2
+        },
+        {
+          "id": "b338f2664341f300-p1-c1",
+          "text": "L11 / C01 synthetic practice source\nPage 1\nORIGINAL SYNTHETIC TEACHING REPLACEMENT \u2014 not the source video PDF\n Harbor Learning Lab \u2014 Practice Handbook\nOpen day and access\nHarbor Learning Lab is a fictional community learning project. These policies exist only for\nPython RAG practice. No organisation, booking, person, price or event described here is\nreal.\nThe Harbor Learning Lab open day is 14 March 2027. The welcome session begins at 10:00\nand ends at 12:00. There are 24 seats. Visitors reserve a seat by emailing\nwelcome@harbor.example with the subject Open day reservation. The event is free.\nReservations close on 10 March 2027.",
+          "source": "rag_teaching_handbook.pdf",
+          "page": 1
+        }
+      ],
+      "model_turns": 2,
+      "tool_rounds": 1
+    },
+    "unsupported": {
+      "answer": "NOT_IN_DOCUMENT",
+      "hits": [
+        {
+          "id": "b338f2664341f300-p2-c2",
+          "text": "collection date. Send the request to equipment@harbor.example. A facilitator confirms\navailability before collection; sending a request does not guarantee a booking. No deposits\nor late-fee amounts are specified in this handbook.\nIf an item is damaged or missing, stop using it and contact equipment@harbor.example\npromptly. Do not attempt a repair. Returns go to the fictional North Room equipment desk.\nThe handbook does not specify replacement costs or purchase prices.",
+          "source": "rag_teaching_handbook.pdf",
+          "page": 2
+        },
+        {
+          "id": "b338f2664341f300-p2-c1",
+          "text": "L11 / C01 synthetic practice source\nPage 2\nORIGINAL SYNTHETIC TEACHING REPLACEMENT \u2014 not the source video PDF\n Harbor Learning Lab \u2014 Practice Handbook\nEquipment loans and returns\nHarbor Learning Lab lends practice equipment to registered learners. The standard\nequipment loan lasts 7 calendar days. A learner may request one renewal of 3 additional\ncalendar days if no other learner has reserved the equipment. A renewal must be requested\nbefore the original due date.\nAn equipment loan request must include the learner's name, item name and preferred\ncollection date. Send the request to equipment@harbor.example. A facilitator confirms",
+          "source": "rag_teaching_handbook.pdf",
+          "page": 2
+        },
+        {
+          "id": "b338f2664341f300-p1-c1",
+          "text": "L11 / C01 synthetic practice source\nPage 1\nORIGINAL SYNTHETIC TEACHING REPLACEMENT \u2014 not the source video PDF\n Harbor Learning Lab \u2014 Practice Handbook\nOpen day and access\nHarbor Learning Lab is a fictional community learning project. These policies exist only for\nPython RAG practice. No organisation, booking, person, price or event described here is\nreal.\nThe Harbor Learning Lab open day is 14 March 2027. The welcome session begins at 10:00\nand ends at 12:00. There are 24 seats. Visitors reserve a seat by emailing\nwelcome@harbor.example with the subject Open day reservation. The event is free.\nReservations close on 10 March 2027.",
+          "source": "rag_teaching_handbook.pdf",
+          "page": 1
+        }
+      ],
+      "model_turns": 2,
+      "tool_rounds": 1
+    },
+    "empty_collection": {
+      "answer": "NOT_IN_DOCUMENT",
+      "hits": [],
+      "model_turns": 3,
+      "tool_rounds": 2
+    },
+    "persistent_directory": "/Users/rajkumarrajagobalan/01-LangGraph/.work/course-validation/20261103T014731Z-a42a5c/L11/demonstration/artifacts/index/chroma"
+  }
+}
+
+STDERR

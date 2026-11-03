@@ -1,0 +1,58 @@
+Command: python -m exercises.solutions.l07 --output-dir <run-output>/L07/exercise-solution --live --backend none
+UTC: 2026-11-03T01:41:47.588766+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L07",
+  "status": "passed",
+  "live_api_enabled": true,
+  "backend": "none",
+  "result": {
+    "checked_turns": 2,
+    "skipped": 1,
+    "inspected": 4,
+    "stop_reason": "exit",
+    "messages_per_request": [
+      1,
+      1
+    ],
+    "prior_turns_forwarded": false,
+    "replies": [
+      "Hello, Mira! Nice to meet you.",
+      "I don't know your name. You haven't mentioned it in our conversation, and I can't see personal information about you or remember past conversations.\n\nIf you'd like me to use your name, just tell me what it is!"
+    ],
+    "usage": [
+      {
+        "input_tokens": 23,
+        "output_tokens": 18,
+        "total_tokens": 41,
+        "input_token_details": {
+          "cache_read": 0,
+          "cache_creation": 0,
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_token_details": {
+          "reasoning": 0
+        }
+      },
+      {
+        "input_tokens": 13,
+        "output_tokens": 79,
+        "total_tokens": 92,
+        "input_token_details": {
+          "cache_read": 0,
+          "cache_creation": 0,
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_token_details": {
+          "reasoning": 17
+        }
+      }
+    ]
+  }
+}
+
+STDERR

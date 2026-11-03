@@ -1,0 +1,4 @@
+flowchart LR
+A["Thread draft"] --> B["Interrupt"] --> C{"Approve draft?"}
+C -->|"Yes"| D["Safe new file"] --> E["Saved"]
+C -->|"No or invalid"| F["No write"]

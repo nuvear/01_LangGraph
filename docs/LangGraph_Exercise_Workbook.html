@@ -1,0 +1,1050 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LangGraph — Exercise Workbook</title><style>
+:root{--ink:#17324d;--teal:#087f8c;--muted:#536477;--paper:#fff;--back:#edf2f7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--back);color:var(--ink);font:18px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1060px;margin:30px auto;padding:55px 65px;background:var(--paper);box-shadow:0 12px 45px #17324d12}h1,h2,h3{line-height:1.25}h1{font-size:2.1rem;color:var(--teal);margin-top:2.5em;padding-top:.5em;border-top:1px solid #dce8ed}h1:first-child{font-size:2.6rem;color:var(--ink);margin-top:0;border:0}h2{font-size:1.5rem;margin-top:1.8em}h3{font-size:1.16rem}a{color:#087f8c;text-underline-offset:3px}p,li{overflow-wrap:anywhere}pre{padding:22px;background:#112338;color:#eef6ff;border-radius:8px;overflow:auto;font:14px/1.55 Consolas,"SFMono-Regular",monospace}code{font-family:Consolas,"SFMono-Regular",monospace}p code,li code{font-size:.9em;background:#edf4f7;padding:.12em .28em;border-radius:3px}img{display:block;max-width:100%;max-height:780px;height:auto;margin:24px auto 8px;object-fit:contain}p:has(>em:only-child){font-size:.86em;color:var(--muted)}blockquote{margin:18px 0;padding:8px 22px;border-left:4px solid var(--teal);background:#edf6f8}table{border-collapse:collapse;width:100%}td,th{padding:8px;border:1px solid #dbe5ec;text-align:left}.top{position:fixed;right:20px;bottom:20px;background:#087f8c;color:white;padding:8px 14px;border-radius:6px;text-decoration:none;font-size:14px}@media(max-width:700px){body{font-size:17px}main{margin:0;padding:28px 22px}h1{font-size:1.8rem}pre{font-size:12px}}@media print{body{background:white;font-size:11pt}main{margin:0;padding:0;max-width:none;box-shadow:none}h1{page-break-before:always}h1:first-child{page-break-before:auto}.top{display:none}pre{white-space:pre-wrap;font-size:8pt}img{max-height:600px}}
+</style></head><body><main id="top"><h1>LangGraph Python Training</h1>
+<h2>Exercise Workbook</h2>
+<p><strong>Version 1.0 · 3 November 2026 · Author: Manus AI</strong></p>
+<p>A complete Python course based on Vaibhav Mehra’s freeCodeCamp video, <em>LangGraph Complete Course for Beginners – Complex AI Agents with Python</em>. Source: https://youtu.be/jGg_1h0qzaM. Repository: https://github.com/nuvear/01_LangGraph.</p>
+<p>Work in exercises/starters, record observations, and use the progressive hints before opening exercises/solutions. Acceptance criteria describe behavior rather than a single wording from a language model. This workbook accompanies the Student Handbook; it is not a substitute for the explanations or complete examples.</p>
+<p>The eleven video-aligned lessons retain the source progression. Preparation P00, durable memory U1, safe approval/state U2, LangSmith S1, LangWatch S2, and capstone C01 are clearly labeled additions. The estimated full teaching track is 29 hours 55 minutes excluding breaks; source viewing is included rather than added twice.</p>
+<p><strong>Validation and platforms.</strong> Delivered demonstrations and independent reference solutions are executed and recorded in the validation appendix. Model-based checks use the real configured Anthropic API; offline tests use explicitly identified test doubles. macOS/Python 3.12 is the actual execution platform. Windows commands are supplied but Windows execution is untested. Dashboard visual inspection is not implied by API ingestion checks.</p>
+<p><strong>Credentials and data.</strong> Keep <code>ANTHROPIC_API_KEY</code> in the local ignored <code>.env</code> and select the model with <code>ANTHROPIC_MODEL</code>. Do not put keys in state, prompts, source files, screenshots, traces, or submissions. Tracing sends synthetic lesson data to the selected service. A local embedding model requires a first download but no additional paid embedding API key. Examples are teaching applications, not production-security certifications.</p>
+<p><strong>How to run the code.</strong> Commands assume the repository root and an activated Python 3.12 virtual environment. Start with P00. Without activation, substitute <code>.venv/bin/python</code> on macOS or <code>.\.venv\Scripts\python.exe</code> in PowerShell for <code>python</code>. <code>--live</code> is an explicit opt-in to paid model calls; it is never a fake-response switch. Use a new <code>--output-dir</code> when repeating a save exercise because file writes do not silently overwrite existing work.</p>
+<!-- PAGEBREAK -->
+<h1>Contents</h1>
+<p>Use these links in HTML/Markdown and Word’s linked contents or Navigation Pane. Module IDs remain the same in all three manuals.</p>
+<ul>
+<li><a href="#p00">P00 — Setup and safe service checks</a></li>
+<li><a href="#l01">L01 — Python types and graph elements</a></li>
+<li><a href="#l02">L02 — Hello World and personalized compliment</a></li>
+<li><a href="#l03">L03 — Multiple inputs and one-node arithmetic</a></li>
+<li><a href="#l04">L04 — Three-node sequential profile</a></li>
+<li><a href="#l05">L05 — Conditional routes and two independent calculations</a></li>
+<li><a href="#l06">L06 — Bounded loops and automatic higher/lower game</a></li>
+<li><a href="#l07">L07 — Anthropic stateless bot</a></li>
+<li><a href="#l08">L08 — Conversation history and logging</a></li>
+<li><a href="#l09">L09 — ReAct arithmetic tool loop</a></li>
+<li><a href="#l10">L10 — Human–AI Drafter collaboration</a></li>
+<li><a href="#l11">L11 — Local-embedding Chroma RAG</a></li>
+<li><a href="#u1">U1 — Thread memory and durable SQLite checkpoints</a></li>
+<li><a href="#u2">U2 — Safe draft state and human approval/resume</a></li>
+<li><a href="#s1">S1 — LangSmith observability and evaluation</a></li>
+<li><a href="#s2">S2 — LangWatch observability and comparison</a></li>
+<li><a href="#c01">C01 — Document-grounded drafting capstone</a></li>
+<li><a href="#appendices">Appendices: commands, versions, validation, and sources</a></li>
+</ul>
+<!-- PAGEBREAK -->
+<p><a id="p00"></a></p>
+<h1>P00 — Setup and safe service checks</h1>
+<h2>Your independent task</h2>
+<p><strong>SUPPLEMENTARY / ADDED PRACTICE.</strong> Build an offline public-profile readiness checker. This is new preparation, not an original video exercise, and has no source-video timestamp. Use basic Python dictionaries, functions and conditionals. The graph wrapper is supplied so you can focus on safe validation. No account, key, <code>.env</code>, model invocation or tracing export is part of this task.</p>
+<p>Edit only <code>exercises/starters/p00.py</code>. Complete its three TODO functions without importing the demonstration or reference solution. Keep the supplied fixtures and graph wiring. The independent teacher reference is <code>exercises/solutions/p00.py</code>; the demonstration is <code>course_lessons/p00.py</code>.</p>
+<p>From the project root, with the prepared Python 3.12 environment selected:</p>
+<pre><code class="language-bash">python -m course_lessons.p00 --backend none
+python -m exercises.starters.p00
+</code></pre>
+<p>Before editing, the starter must exit successfully with <code>STARTER_NOT_COMPLETED</code>. This means work remains; it does not mean the exercise passed. Dependency installation belongs to preparation, not this offline activity.</p>
+<h2>Step 1: implement <code>validate_endpoint</code></h2>
+<p>Accept <code>service</code> and an optional string <code>value</code>, defaulting to blank. The starter's ORIGINS contains the exact supported hosts: Anthropic's API origin; the US, EU, APAC and AWS US LangSmith API origins; and LangWatch's cloud origin. An unsupported service raises <code>ValueError</code>.</p>
+<p>Strip surrounding whitespace. Blank uses the first host for that service. Accept HTTPS, no port or literal <code>:443</code>, and either no path or one trailing slash. Reject unknown or lookalike hosts, credentials, other paths, malformed or other ports, dangling colons, backslashes, embedded control characters/whitespace, and any <code>?</code> or <code>#</code>, even when its component is empty. Return <code>https://HOST</code> without a port or slash. Use fixed exception text that does not echo the input.</p>
+<p>For example, <code>https://eu.api.smith.langchain.com:443/</code> canonicalizes to the EU API origin. <code>https://smith.langchain.com</code> and <code>https://app.langwatch.ai?token=sample</code> must fail. The former is a dashboard host; the latter is not a bare origin. See the official <a href="https://docs.langchain.com/langsmith/cloud">LangSmith regional list</a>.</p>
+<h2>Step 2: implement <code>check_profile</code></h2>
+<p>Accept a mapping and return exactly <code>status</code>, <code>issues</code>, <code>endpoints</code>, and <code>remote_checked</code>. Do not mutate or return the input. <code>remote_checked</code> is always false. Status is <code>ready</code> when there are no issues, otherwise <code>needs_attention</code>.</p>
+<p>Only the six PUBLIC_FIELDS from the starter are allowed. Unknown keys produce only <code>unsupported_fields</code> with an empty endpoint map. Otherwise any non-string value produces only <code>invalid_value_type</code>, also with an empty map. Do not echo unknown keys or values, even in exceptions.</p>
+<p>For an ordinary public profile, append issues in this exact order:</p>
+<ol>
+<li>Append <code>model_invalid</code> unless the model fully matches <code>claude-[A-Za-z0-9_.:-]+</code>. Missing model is invalid. This is syntax only, not availability.</li>
+<li>Append <code>backend_invalid</code> unless the backend is <code>none</code>, <code>langsmith</code>, <code>langwatch</code>, or <code>both</code>. A missing backend defaults to <code>none</code>.</li>
+<li>Validate LangSmith then LangWatch origins, even when the proposed backend is <code>none</code>. Missing endpoint values default to blank. Retain only valid canonical origins; append <code>langsmith_endpoint_invalid</code> or <code>langwatch_endpoint_invalid</code> for failures.</li>
+<li>Only for proposed <code>langwatch</code> or <code>both</code>, validate key kind: missing defaults to <code>project</code>; allowed kinds are <code>project</code>, <code>service</code>, and <code>personal</code>. Invalid kind appends <code>langwatch_key_kind_invalid</code>. Otherwise service/personal kind with a missing or whitespace-only project ID appends <code>langwatch_project_required</code>. Project-bound kind needs no explicit ID in this exercise.</li>
+</ol>
+<p>The <a href="https://langwatch.ai/docs/integration/python/guide">LangWatch guide</a> explains project scope. Your function does not examine a real key. The supplied wrapper validates before invoking its graph; only the safe report enters graph state. Proposed backend data never turns on tracing.</p>
+<h2>Step 3: implement <code>classify_failure</code></h2>
+<p>Return these exact fixed strings for simulated status inputs; perform no request, sleep or retry:</p>
+<ul>
+<li><code>None</code>: <code>Check network, DNS, proxy and TLS; never disable certificate checks.</code></li>
+<li><code>401</code>: <code>Verify or rotate the key privately; do not print it.</code></li>
+<li><code>403</code>: <code>Check organization/workspace permissions and model access.</code></li>
+<li><code>404</code>: <code>Check the configured model ID and API resource path.</code></li>
+<li><code>429</code>: <code>Check rate and spend limits; honor Retry-After when present.</code></li>
+<li><code>529</code>: <code>Wait and retry within a bounded backoff budget.</code></li>
+<li>Any other status: <code>Record a sanitized status and request ID; consult official errors.</code></li>
+</ul>
+<p>These teaching mappings are not a complete SDK error handler. Consult the <a href="https://platform.claude.com/docs/en/api/errors">official Anthropic error reference</a> for other statuses.</p>
+<h2>Run and observe</h2>
+<pre><code class="language-bash">python -m exercises.starters.p00
+python -m pytest tests/lessons/test_p00.py -q
+# Teacher reference, after your attempt:
+python -m exercises.solutions.p00 --backend none
+</code></pre>
+<p>The starter's self-checks assess your edited functions. The focused pytest file checks the demonstration/reference and starter scaffolding; its passing does not replace inspecting your implementation. Do not run the whole course suite.</p>
+<p>READY_PROFILE must produce <code>ready</code>, no issues, and the canonical EU LangSmith/default LangWatch origins. REPAIR_PROFILE must produce exactly <code>model_invalid</code>, <code>langsmith_endpoint_invalid</code>, <code>langwatch_project_required</code>, in that order. Its status is <code>needs_attention</code>, and its endpoint map contains only LangWatch. The graph messages are respectively <code>Local profile ready.</code> and <code>Repair public settings.</code> Both reports retain <code>remote_checked: false</code>.</p>
+<p>Record four concrete observations: your Python minor version and isolation result; the two ordered demonstration graph checks; the repaired profile's exact issue list before repair; and the reason a locally ready profile cannot prove authentication. Include sanitized values only.</p>
+<h2>Three progressive hints</h2>
+<ol>
+<li>Start with unknown-field/type rejection. It prevents configuration data from leaking into a report or graph before detailed validation begins.</li>
+<li><code>urlsplit</code> separates components, but parsing is not validation. Inspect the exact host, raw delimiters, user information, path and port; catch malformed-port errors without echoing input.</li>
+<li>Build one issue list in the specified order. Keep valid endpoints separately and derive status from whether that list is empty. A small dictionary can implement the fixed failure mappings.</li>
+</ol>
+<h2>Completion and stretch</h2>
+<p>Completion requires three implemented functions, passing starter self-checks, both exact fixture outcomes, unchanged input profiles, secret-free errors, and no file/environment access or remote calls. Until completion retain the honest unfinished behavior; never replace TODOs with unconditional success. P00 rejects <code>--live</code> and actual non-none tracing options.</p>
+<p>For a stretch, add your own offline assertions for a lookalike host, embedded tab, unknown credential field and personal key with blank project scope. Explain why a proposed <code>both</code> profile is not permission to export data. Do not turn the stretch into a real connection check: the separate shared CLI reads private configuration and makes actual requests only after instructor authorization.</p>
+<!-- PAGEBREAK -->
+<p><a id="l01"></a></p>
+<h1>L01 — Python types and graph elements</h1>
+<h2>Task: make typed workshop badges</h2>
+<p>This is <strong>added practice</strong>, not source-video homework. It applies types and graph vocabulary introduced at <a href="https://youtu.be/jGg_1h0qzaM?t=84">00:01:24</a> and <a href="https://youtu.be/jGg_1h0qzaM?t=515">00:08:35</a>, within L01's 00:00:00–00:18:39 window. Allow 30 minutes after guided practice. Use P00's Python 3.12 environment from the project root. No model or credentials are needed.</p>
+<p>Starter: <code>exercises/starters/l01.py</code>. Instructor reference: <code>exercises/solutions/l01.py</code>; try the task first. The demonstration <code>course_lessons/l01.py</code> uses movies, not badges, so reproducing its output does not complete this exercise.</p>
+<p>The supplied <code>BadgeState</code> requires <code>name: str | None</code> and <code>sessions: int</code>; <code>badge: NotRequired[str]</code> may be absent initially. The name key must exist, but may contain None. Type hints do not enforce runtime rules; see the <a href="https://docs.python.org/3.12/library/typing.html">Python typing reference</a>.</p>
+<h2>Establish your baseline</h2>
+<ol>
+<li>Run <code>python -m course_lessons.l01 --backend none</code>. Find the trimmed movie title, squares and two work-node names.</li>
+<li>Run <code>python -m exercises.starters.l01</code>. Initially it exits successfully but prints <code>STARTER_NOT_COMPLETED</code>. That is an incomplete status, not a pass.</li>
+<li>Locate exactly three TODO functions. Complete them without importing either the demonstration or reference solution; retain the checking harness.</li>
+</ol>
+<h2>Implement the exact behavior</h2>
+<h3>Step 1: normalize the name</h3>
+<p>Implement <code>normalize_name(state)</code>. Return a new dictionary containing only <code>name</code>. None, an empty string and whitespace-only text become <code>Visitor</code>. Otherwise remove surrounding whitespace, preserving spelling, case and internal spaces. Non-string/non-None values must raise TypeError. Do not mutate the input dictionary.</p>
+<h3>Step 2: create a badge update</h3>
+<p>Implement <code>make_badge(state)</code>. Its name has already been normalized. Require an integer sessions count, excluding booleans. Other types, including <code>&quot;2&quot;</code>, 2.0, None and True, must raise TypeError; negative integers must raise ValueError. Zero is valid.</p>
+<p>Return only <code>badge</code>, formatted exactly as <code>&lt;name&gt;: &lt;sessions&gt; session</code> for one, or <code>&lt;name&gt;: &lt;sessions&gt; sessions</code> otherwise. Do not change or return the count; do not mutate state. These are application rules, not annotation behavior.</p>
+<h3>Step 3: assemble the runnable</h3>
+<p>Implement <code>build_graph()</code> using <code>StateGraph(BadgeState)</code>. Register functions under the exact node names <code>normalize_name</code> and <code>make_badge</code>. Connect <code>START → normalize_name → make_badge → END</code>, then return the compiled graph. Both nodes execute even for zero sessions. Do not add conditional edges. The <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">graph guide</a> explains explicit edges and partial updates.</p>
+<h3>Step 4: check every required case</h3>
+<p>Run the starter. Its checks expect:</p>
+<ul>
+<li><code>{&quot;name&quot;: &quot;  Ada  &quot;, &quot;sessions&quot;: 2}</code> becomes <code>{&quot;name&quot;: &quot;Ada&quot;, &quot;sessions&quot;: 2, &quot;badge&quot;: &quot;Ada: 2 sessions&quot;}</code>.</li>
+<li><code>{&quot;name&quot;: None, &quot;sessions&quot;: 0}</code> becomes <code>{&quot;name&quot;: &quot;Visitor&quot;, &quot;sessions&quot;: 0, &quot;badge&quot;: &quot;Visitor: 0 sessions&quot;}</code>.</li>
+<li><code>{&quot;name&quot;: &quot;   &quot;, &quot;sessions&quot;: 1}</code> becomes <code>{&quot;name&quot;: &quot;Visitor&quot;, &quot;sessions&quot;: 1, &quot;badge&quot;: &quot;Visitor: 1 session&quot;}</code>.</li>
+</ul>
+<p>Each caller input must remain unchanged. Also check name 42 raises TypeError, sessions -1 raises ValueError, and sessions <code>&quot;2&quot;</code> or True raises TypeError. Missing required keys are outside this task. A completed starter reports <code>STARTER_CHECKS_PASSED</code>; a traceback means a failed check.</p>
+<h2>Draw a different route on paper</h2>
+<p>Sketch a two-work-node alternative: START to normalization; then <code>sessions == 0</code> to END or <code>sessions &gt; 0</code> to badge formatting, then END. Assume a valid nonnegative count. Label both routes and identify the absent zero-case output: no badge has been generated.</p>
+<p>Keep the sketch separate. It previews L05 and intentionally differs from the runnable, where zero still receives a badge. START/END are boundaries, not work functions. The student chapter's original diagram instead illustrates the movie demonstration.</p>
+<h2>Three progressive hints</h2>
+<ol>
+<li>Distinguish None before calling <code>.strip()</code>. A cleaned empty string needs the same fallback as None; a required nullable key is not a missing key.</li>
+<li>Return only each node's changed field; LangGraph retains other state keys. Remember bool is a subclass of int when validating sessions.</li>
+<li>If nodes never run, inspect construction first. Register both functions, add boundary and connecting edges, and return <code>builder.compile()</code>, not the builder. Compare all three final states before extensions.</li>
+</ol>
+<h2>Record observed results</h2>
+<p>Replace these prompts with evidence from your own run. Do not invent screenshots.</p>
+<ul>
+<li>Movie card and two node names: <strong>Record here.</strong></li>
+<li>Starter status before and after editing: <strong>Record here.</strong></li>
+<li>Actual three badge strings: <strong>Record here.</strong></li>
+<li>Error types for invalid name, negative count, text count and bool count: <strong>Record here.</strong></li>
+<li>Evidence of unchanged input and preserved sessions: <strong>Record here.</strong></li>
+<li>What the sketch's zero route omits, and why executable behavior differs: <strong>Record here.</strong></li>
+</ul>
+<h2>Completion and optional stretch</h2>
+<p>Finish when all TODOs are implemented independently, exact cases and invalid-type checks pass, outputs are partial updates, caller inputs remain unchanged, topology is linear, and the separate sketch has labeled routes. Explain why annotations alone did not validate values.</p>
+<p>Compare afterward with <code>python -m exercises.solutions.l01</code>. Run <code>python -m pytest tests/lessons/test_l01.py -q -p no:cacheprovider</code> to validate distributed demo/reference artifacts. That file does not grade your edited starter; use its own command. Keep backend <code>none</code>; no <code>--live</code> is needed.</p>
+<p>For a stretch, check <code>&quot;  Mei Lin  &quot;</code>/1 and an empty-string name/3 without changing required rules. Predict both badges first. Explain why constructing an AIMessage does not prove an API call. The <a href="https://docs.langchain.com/oss/python/langchain/messages">message guide</a>, typing and graph references were verified on 3 November 2026.</p>
+<!-- PAGEBREAK -->
+<p><a id="l02"></a></p>
+<h1>L02 — Hello World and personalized compliment</h1>
+<h2>Task and source</h2>
+<p>Build a deterministic personalized-compliment graph with one working node. The input dictionary contains one field, <code>message</code>, holding a person's name. The output uses that same field for the completed compliment. Do not add a model, provider key, tool, second node, conversation history, randomness, or a saved file.</p>
+<p>This task preserves the exercise introduced at <a href="https://youtu.be/jGg_1h0qzaM?t=1942">00:32:22 in the source video</a>, inside L02's 00:18:39–00:33:07 window. The supplied whole-track review confirms its slide at 00:32:30. Exact spelling, validation, padded-name handling, and executable acceptance checks below are <strong>added course requirements</strong>, not claims about source notebook punctuation. Plan about 20 minutes of independent work after guided practice.</p>
+<p>Start with <code>exercises/starters/l02.py</code>. It is a separate scaffold, not an import of the answer. Implement only the three marked functions and retain the supplied checks. After your attempt, compare with the independent reference at <code>exercises/solutions/l02.py</code>. The greeting demonstration is <code>course_lessons/l02.py</code>; do not simply submit its greeting as your compliment exercise.</p>
+<h2>Exact acceptance contract</h2>
+<p>Keep <code>MessageState</code> with the one string field <code>message</code>. Register your node as <code>compliment</code> and connect START → compliment → END. <code>build_graph</code> must return the compiled graph rather than the builder. Use <code>execution_config()</code> at invocation, as the scaffold does.</p>
+<p>For <code>{&quot;message&quot;: &quot;Bob&quot;}</code>, the final <code>message</code> must be exactly:</p>
+<pre><code class="language-text">Bob, you're doing an amazing job learning LangGraph.
+</code></pre>
+<p>For any other valid name, use that original name followed by the identical suffix. Check <code>Ada Lovelace</code>, <code>Zoë</code>, and <code> Bob </code> as well. The padded example contains two spaces before and two after Bob; those characters must remain before the comma is appended. Do not replace a person's name with a constant and do not normalize a valid name. This simple exercise tests state transformation, not a production name-cleaning policy.</p>
+<p>Missing <code>message</code> or a non-string value must raise <code>TypeError</code>. Empty or whitespace-only strings must raise <code>ValueError</code>. A valid node call returns a new dictionary without assigning into the supplied one. The name is preserved as part of the output sentence, not as a separate field or durable memory. A fresh invocation with Bob must give the same single compliment, not add another compliment to a previous result.</p>
+<h2>Work in small steps</h2>
+<ol>
+<li>
+<p>Activate the prepared Python 3.12 environment and work from the project root. Run the demonstration to remind yourself what a successful one-node graph does:</p>
+<pre><code class="language-bash">python -m course_lessons.l02 --backend none
+</code></pre>
+</li>
+<li>
+<p>Run the untouched starter:</p>
+<pre><code class="language-bash">python -m exercises.starters.l02
+</code></pre>
+<p>It should exit normally and print <code>STARTER_NOT_COMPLETED</code>. That message is a checkpoint, not success. The first reported unfinished function may be <code>build_graph</code>, since the acceptance harness builds before invoking.</p>
+</li>
+<li>
+<p>Implement TODO 1, <code>read_name</code>. Decide how to distinguish a missing or non-string value from a blank string. Use blankness checking without changing valid text.</p>
+</li>
+<li>
+<p>Implement TODO 2, <code>compliment_node</code>. Call your helper, construct the required string, and return a fresh one-field update. Compare the incoming dictionary before and after a direct node call.</p>
+</li>
+<li>
+<p>Implement TODO 3, <code>build_graph</code>. Pass the callable to <code>add_node</code>, not the result of calling it. Add both boundaries, then return compilation. Keep exactly one registered working node.</p>
+</li>
+<li>
+<p>Rerun the starter without changing its acceptance harness. Its completed path checks the four valid names, repeated invocations, purity, invalid inputs, and the two boundary edges. An assertion failure is not another TODO; investigate the stated property.</p>
+</li>
+<li>
+<p>After your own result is complete, run the independent reference and focused tests:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l02 --backend none
+python -m pytest tests/lessons/test_l02.py -q
+</code></pre>
+<p>These tests validate the shipped demonstration/reference and starter harness. They do not replace evidence from your completed starter. No <code>--live</code>, environment-file inspection, or tracing dashboard is needed for any step.</p>
+</li>
+</ol>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: inspect the input before formatting</h3>
+<p><code>TypedDict</code> does not enforce runtime values. Get the incoming field, check that it is a string, then check whether it contains any non-whitespace characters. Preserve the original string after those checks.</p>
+<h3>Hint 2: distinguish an update from mutation</h3>
+<p>A fresh dictionary containing the new <code>message</code> is enough. The default state behavior replaces that channel; it does not automatically append the old value. Your formatting expression must include the checked name explicitly.</p>
+<h3>Hint 3: separate topology from execution</h3>
+<p>The builder needs one registration and two edges. Compile only after wiring the path. Invoke the returned executable with a name dictionary and the shared configuration. A helper called by a node does not need its own graph registration.</p>
+<h2>Record observed results</h2>
+<p>Use brief notes from your actual run, not predictions presented as evidence.</p>
+<ul>
+<li>Command and interpreter/environment used: ______</li>
+<li>Bob output and one additional valid-name output: ______</li>
+<li>Padded-name and unchanged-input observations: ______</li>
+<li>Invalid cases tried, observed exception types, and starter completion status: ______</li>
+</ul>
+<p>Keep these notes beside your exercise; screenshots and handbook production are handled separately. Do not invent a pass if dependencies or imports prevent execution.</p>
+<h2>Completion and stretch</h2>
+<p>You are finished when all three TODOs are independently implemented, the starter reports <code>completed</code>, every acceptance case holds, and you can explain builder → compilation → invocation. Explain why one ordinary Python node needs no AI service and why successful compilation alone cannot prove correct wording.</p>
+<p>For an optional stretch, write an additional local test using a hyphenated name or a name with an apostrophe. Keep the original characters and the required suffix unchanged. Do not add input prompts, a second state field, or a model to solve the baseline task. Compare your reasoning with the student chapter's three knowledge checks before advancing to multiple-input processing in L03.</p>
+<h2>References</h2>
+<p>Current patterns were verified on 3 November 2026 against the official <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">LangGraph Graph API overview</a>, <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">Graph API usage guide</a>, and <a href="https://typing.python.org/en/latest/spec/typeddict.html">Python TypedDict specification</a>. The video uses historical mutation and entry/finish presentation; this workbook uses returned updates and explicit START/END edges.</p>
+<!-- PAGEBREAK -->
+<p><a id="l03"></a></p>
+<h1>L03 — Multiple inputs and one-node arithmetic</h1>
+<h2>Task: finish one calculator node</h2>
+<p>Build one compiled LangGraph graph that receives an integer list, a name, and an operation. Select addition or multiplication with Python logic inside one node. This follows the source's <a href="https://youtu.be/jGg_1h0qzaM?t=2607">addition/multiplication exercise at 00:43:27</a>, within the L03 source window 00:33:07–00:44:29. Strict validation, exact output formatting, numeric outputs, and empty-list rules below are added assessment requirements, not claims about the original slide.</p>
+<p>Start from <code>exercises/starters/l03.py</code>. Implement its three TODO functions, not a new script. Do not import <code>exercises.solutions.l03</code> or <code>course_lessons.l03</code> into your submission. The independent reference, for review after your attempt, is <code>exercises/solutions/l03.py</code>.</p>
+<h3>Exact input and output agreement</h3>
+<p>The required inputs are <code>values</code>, <code>name</code>, and <code>operation</code>. <code>values</code> must be a list containing only actual integers; booleans and floats are invalid. Empty lists are valid. <code>name</code> must be a string containing at least one non-whitespace character. Preserve the supplied valid name exactly rather than trimming it. <code>operation</code> must be the string <code>+</code> or <code>*</code>. Missing or invalid required inputs must raise <code>ValueError</code>.</p>
+<p>The node returns exactly two fields: <code>answer</code>, an integer, and <code>result</code>, formatted exactly as <code>Hi {name}, your answer is {answer}.</code> Include the comma and final period. Do not modify the supplied dictionary or its list. The final graph state must retain the three input fields and include the two outputs. If old outputs were supplied, replace them with the new calculation.</p>
+<p>Use exactly one work-performing node named <code>calculator</code>. Connect START to that node and the node to END with ordinary edges. Return the compiled graph from <code>build_graph</code>. Do not create separate addition/multiplication nodes or use graph-level conditional edges.</p>
+<h2>Work in three passes</h2>
+<ol>
+<li>Implement <code>validate_inputs</code>. Check all required fields explicitly; type hints alone are not runtime validation. Test a valid request, a missing operation, a blank name, and <code>[True]</code> before attempting the graph.</li>
+<li>Implement <code>process_values</code>. Call validation first. Use an <code>if</code> for <code>+</code> and multiplication for <code>*</code>. Return only the two computed fields. Check the function directly so arithmetic mistakes are separate from graph-building mistakes.</li>
+<li>Implement <code>build_graph</code>, compile it, and run the starter checks. Keep <code>execution_config()</code> in the supplied invocation calls. Stay offline and do not enable a tracing backend.</li>
+</ol>
+<p>From the repository root, using the activated Python 3.12 environment:</p>
+<pre><code class="language-bash">python -m exercises.starters.l03
+</code></pre>
+<p>Before implementation, expect <code>STARTER_NOT_COMPLETED</code>. That message is deliberately not success evidence. After all TODOs are complete and checks pass, expect <code>STARTER_CHECKS_PASSED</code>. A failed assertion or exception means there is still a concrete issue to fix; do not remove the check to obtain the message.</p>
+<p>After your attempt, compare with the independent reference and run the focused delivered-code tests:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l03 --backend none
+python -m pytest tests/lessons/test_l03.py -q
+</code></pre>
+<p>These pytest tests validate the delivered demo/reference and the starter's checker, not every line of your edited implementation. Your starter command and a review of the three functions establish your own completion. No <code>--live</code> flag or model connection belongs in this task.</p>
+<h2>Record observed behavior</h2>
+<p>Use Jack Sparrow and <code>[1, 2, 3, 4]</code> first. With <code>*</code>, the expected answer is 24 and the expected message is <code>Hi Jack Sparrow, your answer is 24.</code> With <code>+</code>, the expected answer is 10. Then test Mei with <code>[-3, 0, 5]</code>: addition should give 2 and multiplication should give 0. Test <code>[-2, 3]</code> with <code>*</code> for a negative product, and <code>[7]</code> with <code>+</code> for a singleton.</p>
+<p>Empty addition must return 0; empty multiplication must return 1. Try <code>/</code>, a tuple instead of a list, <code>[2.5]</code>, and a missing name. Each must raise <code>ValueError</code>, not calculate silently.</p>
+<p>Write the observations rather than copying these expectations:</p>
+<ul>
+<li>Starter status and command used: __________</li>
+<li>Jack Sparrow multiplication answer and exact message observed: __________</li>
+<li>Addition and signed/zero results observed: __________</li>
+<li>Empty <code>+</code> and empty <code>*</code> results observed: __________</li>
+<li>Invalid request tested and exception type observed: __________</li>
+<li>Evidence that input fields survived and the original list did not change: __________</li>
+</ul>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: inspect actual values</h3>
+<p>Use dictionary <code>.get</code> to inspect fields that might be absent. A <code>NotRequired</code> output may be missing; that says nothing about runtime validation of required inputs. Check <code>type(item) is int</code> if you need to exclude booleans.</p>
+<h3>Hint 2: choose the arithmetic identity</h3>
+<p><code>sum</code> naturally begins at 0. <code>math.prod</code>, already imported in the starter, begins at 1. If you write multiplication manually, think about the starting value before processing an empty list. Validate operation tokens before allowing an <code>else</code> to mean multiplication.</p>
+<h3>Hint 3: separate update from final state</h3>
+<p>Return only <code>answer</code> and <code>result</code> from the node. LangGraph retains input fields that were not updated. The builder must register <code>process_values</code> once and return the compiled executable, not itself.</p>
+<h2>Completion criteria and stretch</h2>
+<p>You are finished when the starter prints its checked-success message, both operations satisfy all listed cases, invalid/missing inputs raise <code>ValueError</code>, the node returns only computed fields, the final state retains the inputs, and the topology has exactly one arithmetic node. Explain why no model call or graph-level branch was needed.</p>
+<p>For an optional stretch, add your own test cases for large integers and names containing non-ASCII characters without changing the accepted operations or adding nodes. Verify exact preservation of the name. This is additional practice, not a new required task.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://docs.langchain.com/oss/python/langgraph/graph-api">Official Graph API state/update guidance</a>.</li>
+<li><a href="https://docs.python.org/3.12/library/typing.html#typing.TypedDict">Python 3.12 TypedDict and NotRequired</a>.</li>
+<li><a href="https://docs.python.org/3.12/library/math.html#math.prod">Python 3.12 math.prod and its starting value</a>.</li>
+</ul>
+<!-- PAGEBREAK -->
+<p><a id="l04"></a></p>
+<h1>L04 — Three-node sequential profile</h1>
+<h2>Task: build a profile in three ordered updates</h2>
+<p>Complete <code>exercises/starters/l04.py</code> after studying the two-node demonstration. This is the source video's three-node name/age/skills exercise, with explicitly added validation and boundary cases. The source lesson runs <a href="https://youtu.be/jGg_1h0qzaM?t=2669">00:44:29–00:55:36</a>; the exercise chapter begins <a href="https://youtu.be/jGg_1h0qzaM?t=3244">00:54:04</a>. Do not use a model or tracing service.</p>
+<p>The starter supplies the state schema, input validation, graph builder, and local checks. Your implementation work is confined to three TODO functions: <code>welcome</code>, <code>describe_age</code>, and <code>describe_skills</code>. Do not replace the graph with a single function or import the demonstration or reference solution. Keep the supplied edges and explain them below.</p>
+<h3>Required behavior</h3>
+<ol>
+<li><code>welcome</code> returns only <code>result</code> and <code>visited</code>. Start <code>result</code> with <code>&lt;name&gt; welcome to the system.</code> and reset <code>visited</code> to <code>[&quot;welcome&quot;]</code>, even when stale generated values are present.</li>
+<li><code>describe_age</code> retains the welcome and appends <code> You are &lt;age&gt; years old</code> without a final period. For age 1, use <code>year</code>. Extend the visited list with <code>&quot;age&quot;</code> by creating a new list.</li>
+<li><code>describe_skills</code> retains both earlier components and appends <code> and you have skills in &lt;formatted skills&gt;.</code> For an empty list, append <code> and you have no listed skills.</code> Extend the visited list with <code>&quot;skills&quot;</code>.</li>
+<li>Preserve skill order and duplicates. One item stands alone. Two items use <code>and</code>. Three or more use commas between earlier items and <code>and</code> before the last item, with no Oxford comma. Do not sort or normalize the input.</li>
+<li>Never mutate the dictionary or lists passed to a node. Every node returns only the two generated keys. The final graph state must retain the original <code>name</code>, <code>age</code>, and <code>skills</code> values.</li>
+</ol>
+<p>The target for Linda, 31, and <code>[&quot;Python&quot;, &quot;machine learning&quot;, &quot;LangGraph&quot;]</code> is exactly:</p>
+<pre><code class="language-text">Linda welcome to the system. You are 31 years old and you have skills in Python, machine learning and LangGraph.
+</code></pre>
+<p>The final visited list must be <code>[&quot;welcome&quot;, &quot;age&quot;, &quot;skills&quot;]</code>. There are exactly three work nodes, four total edges, and two edges between work nodes. Input validation is already complete: names must be nonblank strings, ages nonnegative integers excluding booleans, and skills a list of nonblank strings. An empty list is valid. Do not weaken those rules to make an example pass.</p>
+<h2>Work sequence and commands</h2>
+<p>Use the prepared environment and repository-root module commands. Do not install packages or modify shared runtime files.</p>
+<ol>
+<li>
+<p>Run the baseline and record why its two results differ:</p>
+<pre><code class="language-bash">python -m course_lessons.l04 --backend none
+</code></pre>
+</li>
+<li>
+<p>Run your starter once before editing:</p>
+<pre><code class="language-bash">python -m exercises.starters.l04
+</code></pre>
+<p><code>STARTER_NOT_COMPLETED</code> is expected at this stage. A successful process exit does not mean the task passed.</p>
+</li>
+<li>
+<p>Implement the TODO functions in order, rerunning after each change. Unfinished later functions still report incomplete work. After all checks pass, the starter prints <code>STARTER_CHECKS_PASSED</code> and the Linda message. If an assertion fails, repair your implementation, not the assertion.</p>
+</li>
+<li>
+<p>After an independent attempt, compare with the separate reference:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l04 --backend none
+python -m pytest tests/lessons/test_l04.py -q
+</code></pre>
+<p>The focused tests exercise the delivered demonstration and reference solution. They do not automatically assess edits to your starter. Use your starter checks, recorded cases, and teacher inspection as your own evidence.</p>
+</li>
+</ol>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: inspect the prior value</h3>
+<p>List exactly which keys each function reads and writes. The age node needs the previous <code>result</code> as well as <code>age</code>. Returning only an age sentence cannot preserve the welcome, regardless of the edges.</p>
+<h3>Hint 2: build a new value, not an in-place change</h3>
+<p>A partial update replaces each key it supplies. Construct the whole next string from the existing string plus the new clause. For the visited list, think of list concatenation producing a fresh list. The welcome node is intentionally different: it starts fresh rather than carrying stale generated data forward.</p>
+<h3>Hint 3: separate list formatting from sentence assembly</h3>
+<p>Inside the skills node, determine the skills phrase before adding it to the existing result. Distinguish zero items, one item, and at least two items. For the last case, a slice of all but the final item and a lookup of the final item let you place <code>and</code> exactly once. This <code>if</code> belongs inside the node, not in graph routing.</p>
+<h2>Observed results and explanations</h2>
+<p>Record actual values rather than writing “worked.” Keep these notes next to your starter or in your submitted workbook.</p>
+<ul>
+<li><strong>Baseline broken final:</strong> record the complete string and identify the missing component.</li>
+<li><strong>Baseline corrected final:</strong> record the complete string and the visited order.</li>
+<li><strong>Linda profile:</strong> record the complete result and final visited list.</li>
+<li><strong>Ari, age 0, no skills:</strong> record the complete result; check the <code>no listed skills</code> ending.</li>
+<li><strong>Jo, age 1, Python only:</strong> record the complete result; check singular <code>year</code> and no extra <code>and</code> within the skill phrase.</li>
+<li><strong>Bo, age 2, Python and SQL:</strong> record the complete result; check that no comma is needed between two skills.</li>
+<li><strong>Input preservation:</strong> record before/after values for <code>name</code>, <code>age</code>, and <code>skills</code>; explain how you avoided list mutation.</li>
+<li><strong>Edge explanation:</strong> write all four connections, identify the two work-node connections, and explain what would go wrong if the skills node ran before the welcome node.</li>
+</ul>
+<h2>Completion criteria and stretch</h2>
+<p>You are finished when all three nodes return nonmutating partial updates, all recorded cases match the wording rules, input fields remain unchanged, the visited list proves the required sequence, and you can explain why default replacement caused the baseline bug. Inspect each function: a hard-coded Linda sentence does not meet these criteria.</p>
+<p>Optional stretch: run a second profile through the same compiled graph, and then invoke it using a previous output as input. Predict whether any old generated text or visited items will leak. Record your prediction and actual result. Keep the same three-node topology, avoid persistence or model calls, and explain why resetting generated fields in <code>welcome</code> matters.</p>
+<p>For API clarification, consult the official <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">partial-update explanation</a> and <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">sequential graph guide</a>, verified on 3 November 2026. Their shorthand sequence builder is not required for this explicit-edge exercise.</p>
+<!-- PAGEBREAK -->
+<p><a id="l05"></a></p>
+<h1>L05 — Conditional routes and two independent calculations</h1>
+<h2>Task: connect two conditional sections</h2>
+<p>Build a deterministic graph that accepts four integers and two operation strings, then returns two independent pairwise answers. The sections execute in sequence, but the second calculation must never use the first answer as an operand. This preserves the original two-section exercise introduced at <a href="https://youtu.be/jGg_1h0qzaM?t=4389">01:13:09</a>, within the lesson's 00:55:36–01:14:14 source window. Validation and branch evidence below are added practice.</p>
+<p>Use <code>exercises/starters/l05.py</code>. Complete exactly three focused functions: <code>route_first</code>, <code>route_second</code>, and <code>build_graph</code>. The starter already provides <code>PairState</code>, validation, four arithmetic nodes, the second router node, and acceptance checks. Do not replace the graph with one Python calculator function, import the solution, or hard-code the sample answers.</p>
+<p>Your input fields are <code>number1</code>, <code>number2</code>, <code>number3</code>, <code>number4</code>, <code>operation1</code>, and <code>operation2</code>. Only the exact strings <code>+</code> and <code>-</code> are supported. Keep the supplied validation: actual integers are accepted, including zero and negatives, while numeric strings, floats, booleans, missing inputs, and unsupported operation tokens are rejected.</p>
+<p>Section one computes <code>result1</code> from the first two numbers. Section two computes <code>result2</code> from the last two numbers. Preserve both results, all original input fields, and a <code>visited</code> list naming the four executed work nodes. Routing functions return labels; arithmetic nodes return update dictionaries. Current official documentation describes the conditional edge's source, path callable, and optional label-to-node map <a href="https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges" title="Official conditional-edge reference, verified 3 November 2026">507</a>.</p>
+<h2>Prepare and predict</h2>
+<ol>
+<li>
+<p>Activate the P00 Python 3.12 environment and open a terminal at the repository root. Inspect the starter before editing. Run it once to confirm that unfinished work is honestly reported:</p>
+<pre><code class="language-bash">python -m exercises.starters.l05
+</code></pre>
+<p>Expected initial status: <code>STARTER_NOT_COMPLETED</code>, with a next-step message. A normal exit here does not mean the exercise passed.</p>
+</li>
+<li>
+<p>Sketch the topology. START reaches <code>router1</code>; exactly one first arithmetic node reaches <code>router2</code>; exactly one second arithmetic node reaches END. Name the six registered work nodes on your sketch. Do not draw an ordinary outgoing edge and a conditional edge from the same router.</p>
+</li>
+<li>
+<p>Before coding, predict the results and path for <code>10 - 5</code> followed by <code>7 + 2</code>. Record your prediction in one sentence in your notes. Then identify which input field each routing function should inspect. The two sections may reuse route labels but must have different destination maps.</p>
+</li>
+</ol>
+<h2>Implement and gather observations</h2>
+<ol start="4">
+<li>
+<p>Implement the two routing functions and connect the graph. Preserve the provided arithmetic and validation code. Return a compiled graph rather than the mutable builder. Use explicit START/END edges and explicit path maps.</p>
+</li>
+<li>
+<p>Run the starter again. After every TODO is implemented correctly, the built-in checks should report <code>COMPLETED</code>, four checked operation combinations, successful independence checks, rejected unsupported operations, and a zero/negative check. A traceback or assertion failure is evidence to investigate, not a result to hide.</p>
+</li>
+<li>
+<p>Inspect your own graph output, not just the reference solution. In a Python session, import <code>build_graph</code> from <code>exercises.starters.l05</code>, <code>execution_config</code> from <code>course_support.runtime</code>, and <code>graph_tracing</code> from <code>course_support.observability</code>. Inside <code>with graph_tracing(&quot;none&quot;):</code> invoke your compiled graph with the required input dictionary and <code>config=execution_config()</code>. Print the returned state. To confirm executed nodes, stream the same input with <code>stream_mode=&quot;updates&quot;</code> inside that context and record the update keys.</p>
+</li>
+</ol>
+<p>Use these short evidence fields; each should contain a concrete observation rather than “it worked”:</p>
+<ul>
+<li><strong>Baseline observation:</strong> both result values and the exact four-name <code>visited</code> list from your implementation.</li>
+<li><strong>Combination observation:</strong> result pairs for <code>++</code>, <code>+-</code>, <code>-+</code>, and <code>--</code>, using operands <code>10</code>, <code>5</code>, <code>7</code>, and <code>2</code> throughout.</li>
+<li><strong>Independence observation:</strong> result pairs after changing only <code>number1</code> to <code>100</code>, then after separately changing only <code>number3</code> to <code>-7</code> in the original baseline.</li>
+<li><strong>Edge/failure observation:</strong> the zero/negative case results, plus the exception type and field named when either operation is <code>*</code>.</li>
+</ul>
+<ol start="7">
+<li>
+<p>After collecting your own evidence, compare with the independent reference and run only this lesson's focused regression tests:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l05 --backend none
+python -m pytest tests/lessons/test_l05.py -q
+</code></pre>
+</li>
+</ol>
+<p>The reference source is <code>exercises/solutions/l05.py</code>; the baseline demonstration is <code>course_lessons/l05.py</code>. Pytest checks the demonstration/reference, not the correctness of your edited starter. Submit your starter and observations together. No API key, live request, dashboard, or remote trace is needed.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: separate the decisions</h3>
+<p>The first routing callable reads <code>operation1</code>; the second reads <code>operation2</code>. Each returns <code>&quot;addition&quot;</code> or <code>&quot;subtraction&quot;</code>, not a dictionary or an arithmetic function call. Keep explicit rejection for any other token.</p>
+<h3>Hint 2: map labels to the right section</h3>
+<p>The first path map targets nodes whose names end in <code>1</code>. The second targets nodes ending in <code>2</code>. The keys match routing return labels, not state keys. If a branch is unknown, check the keys first, then registered node names.</p>
+<h3>Hint 3: preserve the middle connection</h3>
+<p>Both possible first arithmetic nodes need their own ordinary edge to <code>router2</code>. Only the second pair's arithmetic nodes finish at END. Keep result updates separate so computing <code>result2</code> does not overwrite <code>result1</code>.</p>
+<h2>Completion criteria and stretch</h2>
+<p>The baseline must return <code>(5, 9)</code> and <code>visited=[&quot;router1&quot;, &quot;subtract1&quot;, &quot;router2&quot;, &quot;add2&quot;]</code>. With the same operands, <code>++</code>, <code>+-</code>, <code>-+</code>, and <code>--</code> must return <code>(15, 9)</code>, <code>(15, 5)</code>, <code>(5, 9)</code>, and <code>(5, 5)</code>. Changing only the first number to <code>100</code> must return <code>(95, 9)</code>; separately changing only the third number to <code>-7</code> must return <code>(5, -5)</code>. The zero/negative check uses <code>0 - 5</code> and <code>-7 + 0</code>, returning <code>(-5, -7)</code>. Both invalid-operation positions must be rejected before arithmetic. Your starter must report <code>COMPLETED</code>, retain inputs, and show exactly one selected branch in each section.</p>
+<p><strong>Optional stretch:</strong> sketch multiplication as a third route in both sections using the <a href="https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges" title="Official conditional-edge reference, verified 3 November 2026">official routing reference</a>. Explain which callable labels, maps, nodes, edges, and tests change. Preserve required plus/minus behavior; this extension is not assessed.</p>
+<!-- PAGEBREAK -->
+<p><a id="l06"></a></p>
+<h1>L06 — Bounded loops and automatic higher/lower game</h1>
+<h2>Your task: automatic guessing, not human input</h2>
+<p>Build a LangGraph game that finds a synthetic target between 1 and 20 using automatic higher/lower feedback. The default maximum is seven guesses. The graph must also stop honestly when a smaller allowed budget is exhausted. This adapts the <a href="https://youtu.be/jGg_1h0qzaM?t=5359">source exercise near 01:29:19</a> within the 01:14:14–01:31:01 source section. Deterministic midpoints, validation, and a reduced-budget test are added teaching requirements; exact video guesses are not acceptance criteria.</p>
+<p>Use the separate starter at <code>exercises/starters/l06.py</code>. It does not import the answer. The reference solution is <code>exercises/solutions/l06.py</code>; consult it after attempting the task. The demonstration at <code>course_lessons/l06.py</code> teaches five bounded generations, not this game's solution. No model, API key, tracing service, <code>input()</code>, or additional package installation is needed for this prepared environment.</p>
+<p>Run these commands from the repository root:</p>
+<pre><code class="language-bash">python -m course_lessons.l06 --backend none
+python -m exercises.starters.l06
+</code></pre>
+<p>The unfinished starter should print <code>STARTER_NOT_COMPLETED</code> and exit successfully. That message means work remains; it is not a pass. After your three functions work, its self-check should print <code>STARTER_CHECKS_PASSED</code>. Do not replace the status message or remove assertions to make the command appear successful.</p>
+<h2>Implement three focused functions</h2>
+<ol>
+<li><strong>Validate and reset in <code>reset_game</code>.</strong> Accept a nonblank string <code>player_name</code>, an integer <code>target</code> from 1 through 20, and an integer <code>max_attempts</code> from 1 through 7. Reject booleans for the two integer fields. Invalid configuration must raise <code>ValueError</code> before any guessing. Preserve these three configuration values. Reset <code>lower=1</code>, <code>upper=20</code>, <code>guesses=[]</code>, <code>attempts=0</code>, <code>hint=&quot;&quot;</code>, and <code>status=&quot;playing&quot;</code>, even if stale derived values were supplied.</li>
+<li><strong>Guess in <code>guess_node</code>.</strong> Compute the integer floor midpoint of the inclusive bounds. Do not consult the target to choose it. Return a new guesses list with that midpoint appended and increase attempts by one. Do not mutate the incoming list, change bounds, or increment attempts elsewhere.</li>
+<li><strong>Compare in <code>feedback_node</code>.</strong> Read the latest guess. Equality means hint <code>correct</code> and status <code>won</code>. A smaller guess means hint <code>higher</code> and the new lower bound is the failed guess plus one. A larger guess means hint <code>lower</code> and the new upper bound is the failed guess minus one. After a miss, status is <code>lost</code> if attempts has reached the budget, otherwise <code>playing</code>. Correctness takes priority even on the last allowed attempt.</li>
+</ol>
+<p>Keep the supplied topology: <code>START → reset → guess → feedback</code>, with a conditional route from feedback back to guess only while status is <code>playing</code>. Both <code>won</code> and <code>lost</code> route to <code>END</code>. Do not add an unconditional feedback-to-guess edge. The provided route returns labels; your node functions return partial update dictionaries.</p>
+<h2>Run and record observable results</h2>
+<p>Rerun <code>python -m exercises.starters.l06</code> after each TODO. For additional experiments, import your starter's <code>build_graph</code> and <code>new_game</code>. Pass <code>config=execution_config()</code> to <code>invoke</code> or <code>stream</code>. Wrap interactive experiments in <code>with tracing_context(enabled=False):</code> using the import from <code>langsmith</code>, so ambient tracing remains disabled.</p>
+<p>Record the following fields using observed state, not copied expected text:</p>
+<ul>
+<li>Target 17, budget seven: guesses ___; attempts ___; final hint ___; status ___. Explain one bound change: ___.</li>
+<li>Target 20, budget two: guesses ___; final inclusive bounds ___; hint ___; status ___. Did a third guess run? ___.</li>
+<li>Target 15, budget two: attempts ___; final status ___; why success takes priority ___.</li>
+<li>Every target 1–20, default budget: number successful ___; maximum attempts observed ___; any repeated guess within one game ___ .</li>
+<li>Dirty input with target 10, guesses <code>[999]</code>, attempts <code>-8</code>, and wrong bounds: final guesses ___; attempts ___; original caller list unchanged ___ .</li>
+<li>Invalid target 0 and invalid budget 8: exception type ___; why neither should start guessing ___ .</li>
+</ul>
+<p>For the first case, expect <code>10, 15, 18, 16, 17</code> and a five-attempt win. For the two-attempt exhaustion case, expect <code>10, 15</code>, bounds 16–20, hint <code>higher</code>, and <code>lost</code>. The final-attempt case must win. These are predictions of the specified algorithm, not invented execution evidence.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: isolate fresh-run fields</h3>
+<p>Configuration identifies the game; derived fields describe its progress. Reset only the derived fields. Use exact integer type checks where accepting <code>True</code> as target one would be misleading.</p>
+<h3>Hint 2: separate choosing from judging</h3>
+<p>The midpoint needs only <code>lower</code> and <code>upper</code>. The feedback node needs the target. Exclude a missed midpoint from the next inclusive interval; otherwise the same candidate can survive narrowing.</p>
+<h3>Hint 3: classify success before exhaustion</h3>
+<p>Write the equality branch first. Only a miss should be classified by the attempt cap. The router then reads status without changing it. A recursion-limit exception is not an alternative way to report a loss.</p>
+<h2>Completion criteria and comparison</h2>
+<p>Your implementation must pass the starter self-check without deleting checks, win for all 20 valid targets within seven guesses, produce both required exit reasons, and preserve input lists. For each miss, the new bounds must still contain the target, exclude that guess, and strictly shrink. Check this by streaming updates if your result is unexpected. Invalid configuration must fail before guessing. An ordinary run must not end with <code>GraphRecursionError</code>.</p>
+<p>After your attempt, compare with:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l06 --backend none
+python -m pytest tests/lessons/test_l06.py -q
+</code></pre>
+<p>Those focused tests validate the delivered demonstration and reference solution, not your edited starter. Record one difference between your implementation and the reference, with its behavioral effect: ___.</p>
+<h2>Optional design extension — not part of the validated execution set: make narrowing inspectable</h2>
+<p>Without changing required behavior, record each pre-guess interval and post-feedback interval in your own notes or a separate in-memory history field. Assert that every miss shrinks the interval and retains the target. Do not add network calls, an interactive player, or a larger budget. Explain why the execution safety guard counts graph super-steps rather than game guesses. The <a href="https://docs.langchain.com/oss/python/langgraph/use-graph-api">official loop guide</a>, verified on 3 November 2026, explains that distinction.</p>
+<!-- PAGEBREAK -->
+<p><a id="l07"></a></p>
+<h1>L07 — Anthropic stateless bot</h1>
+<h2>Assignment: a stateless help-desk session</h2>
+<p>Build a bounded session controller around a single-node model graph. This is <strong>added practice</strong>, not original video homework. The source's <a href="https://youtu.be/jGg_1h0qzaM?t=5461">01:31:01–01:42:54 section</a> demonstrates a bot and a failed name-recall test but assigns no exercise. Your goal is to prove which messages are sent, not to obtain a particular Claude sentence. Allow approximately 20 minutes after the guided practice.</p>
+<p>Work in <code>exercises/starters/l07.py</code>. The baseline demonstration is <code>course_lessons/l07.py</code>; the teacher reference is <code>exercises/solutions/l07.py</code>. Do not import either implementation into your starter. You may use shared runtime helpers. Use synthetic data only; credentials do not belong in state, worksheets, or screenshots.</p>
+<p>Start from the repository root in the prepared environment:</p>
+<pre><code class="language-bash">python -m exercises.starters.l07
+python -m pytest tests/lessons/test_l07.py -q
+</code></pre>
+<p>The starter initially reports <code>STARTER_NOT_COMPLETED</code>. Its exit code is not a passing grade. The focused test file checks the delivered demo and reference solution with explicit offline doubles; it does not automatically assess your modified starter. Use the learner-side harness below for that.</p>
+<h2>Required functions and behavior</h2>
+<ol>
+<li>Implement <code>classify_entry(raw)</code>. Reject non-string entries with <code>TypeError</code>. Return <code>exit</code> when <code>raw.strip().casefold()</code> is <code>exit</code>, <code>skip</code> for whitespace-only text, and <code>send</code> otherwise. Normalize only for these decisions; preserve original submitted text.</li>
+<li>Implement <code>build_bot(model)</code>. Create <code>START → respond → END</code>, without history, tools, or a checkpointer. Its input is <code>{'prompt': raw}</code>. Reject blank/exit prompts even if someone bypasses the session controller. Construct exactly one new <code>HumanMessage</code>; invoke the injected model with the node's <code>config</code>. Require an <code>AIMessage</code> with nonempty displayable text. Return <code>reply</code>, <code>sent_messages</code> containing just the original prompt, and <code>usage</code> from <code>usage_metadata</code>, using <code>{}</code> if absent. Use <code>message_text</code>, not a dump of all content blocks.</li>
+<li>Implement <code>run_session(graph, entries, *, max_entries=6)</code>. Return a dictionary containing <code>turns</code>, <code>skipped</code>, <code>inspected</code>, and <code>stop_reason</code>. Reject noninteger or nonpositive budgets with <code>ValueError</code>, including booleans. Inspect at most that many raw entries; blank and exit entries consume budget. Count each inspected entry, skip blanks, and stop before invoking on exit. Invoke with fresh state and <code>execution_config()</code> for each sent prompt. Store results only for the report, never as later input. Stop reasons are <code>exit</code>, <code>limit</code> when budget is reached, and <code>exhausted</code> when the source ends earlier. Reaching the budget takes precedence over detecting coincident source exhaustion.</li>
+</ol>
+<p>Use exactly this assessment sequence:</p>
+<pre><code class="language-python">entries = [
+    &quot;  &quot;,
+    &quot;My name is Mira. Say hello briefly.&quot;,
+    &quot;What is my name?&quot;,
+    &quot; ExIt &quot;,
+    &quot;This must never be sent.&quot;,
+]
+</code></pre>
+<h2>Check your starter without a paid request</h2>
+<p>After completing the TODOs, paste the following into a Python shell from the repository root. This is an explicit offline double, not Claude and not evidence of live integration. It supplies test responses only; it does not contain your solution's graph or controller logic.</p>
+<pre><code class="language-python">from langchain_core.messages import AIMessage, HumanMessage
+from exercises.starters import l07 as learner
+
+class OfflineWorkbookModel:
+    def __init__(self):
+        self.requests = []
+
+    def invoke(self, messages, config=None):
+        assert len(messages) == 1
+        assert isinstance(messages[0], HumanMessage)
+        assert config[&quot;recursion_limit&quot;] == 40
+        self.requests.append([m.content for m in messages])
+        return AIMessage(content=&quot;OFFLINE TEST response&quot;)
+
+entries = [&quot;  &quot;, &quot;My name is Mira. Say hello briefly.&quot;,
+           &quot;What is my name?&quot;, &quot; ExIt &quot;, &quot;This must never be sent.&quot;]
+model = OfflineWorkbookModel()
+graph = learner.build_bot(model)
+report = learner.run_session(graph, entries)
+assert model.requests == [[entries[1]], [entries[2]]]
+assert report[&quot;inspected&quot;] == 4 and report[&quot;skipped&quot;] == 1
+assert report[&quot;stop_reason&quot;] == &quot;exit&quot; and len(report[&quot;turns&quot;]) == 2
+assert all(t[&quot;reply&quot;].strip() and t[&quot;usage&quot;] == {} for t in report[&quot;turns&quot;])
+assert [t[&quot;sent_messages&quot;] for t in report[&quot;turns&quot;]] == model.requests
+</code></pre>
+<p>Also test <code>[]</code> for <code>exhausted</code>, two blanks with <code>max_entries=2</code> for <code>limit</code>, and <code>&quot;  Hello  &quot;</code> for preservation of spaces. Check that a zero budget raises <code>ValueError</code>. Explain why reusing the same <code>graph</code> in these tests does not introduce context into its requests.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: separate decisions from payloads</h3>
+<p>Use a normalized temporary value to recognize exit. Keep <code>raw</code> unchanged for <code>HumanMessage(content=raw)</code>. Do not make a model call to decide whether an entry is blank.</p>
+<h3>Hint 2: separate configuration from state</h3>
+<p>Accept <code>config: RunnableConfig</code> in the nested node and pass it to <code>model.invoke</code>. The session invokes the graph with <code>execution_config()</code>. A key, model object, or callback is not a state field.</p>
+<h3>Hint 3: bound consumption, not just successful turns</h3>
+<p><code>islice(entries, max_entries)</code> can cap inspected entries without consuming an extra iterator item. Increment <code>inspected</code> before handling skip/exit. A loop <code>else</code> can distinguish normal exhaustion/budget completion from an exit <code>break</code>.</p>
+<h2>Record observed results</h2>
+<p>Record the actual request lists, inspected count, skipped count, turn count, and stop reason from your harness in a short paragraph. Then record your empty-source and budget-limit observations. State explicitly that these are offline-double results. Add one sentence predicting the second live request's context without predicting its exact answer.</p>
+<p>For an authorized real comparison, the delivered implementations are runnable with:</p>
+<pre><code class="language-bash">python -m course_lessons.l07 --live --backend none
+python -m exercises.solutions.l07 --live
+</code></pre>
+<p>Both make two logical model calls using synthetic prompts. Their output validates those delivered implementations, not your starter. Record whether you actually ran them, any real error, and available usage metadata; do not invent a passed live result. See <a href="https://docs.langchain.com/oss/python/integrations/chat/anthropic">ChatAnthropic</a> for message/usage representation and <a href="https://platform.claude.com/docs/en/build-with-claude/working-with-messages">Anthropic's stateless contract</a>.</p>
+<h2>Completion criteria and stretch</h2>
+<p>Completion requires all three functions implemented independently; exact two one-message payloads for the assessment sequence; one skip, four inspected entries, two turns, and exit; no processing after exit; correct blank/limit/exhausted handling; preserved raw text; callback forwarding; nonempty textual replies; and no history or credentials in state. Demonstrate these with recorded evidence rather than changing the starter's status string.</p>
+<p>For a stretch task, add learner-owned offline tests for a non-string entry, an empty <code>AIMessage</code>, a simulated provider exception, and a source iterator whose unread tail remains untouched after the cap. Keep all failures honest: no canned answer fallback in production. Do not add memory; that deliberately changes the problem and belongs to L08/U1.</p>
+<!-- PAGEBREAK -->
+<p><a id="l08"></a></p>
+<h1>L08 — Conversation history and logging</h1>
+<h2>Your task: bounded prompt, complete transcript</h2>
+<p>Build a text-chat graph that sends a bounded recent window to the model while retaining a complete process-local transcript. This is <strong>added practice</strong> based on the source's <a href="https://youtu.be/jGg_1h0qzaM?t=6174" title="Source video: conversation history at 01:42:54">01:42:54–02:03:20 history/logging demonstration</a>, not a missing original homework assignment. The source code section begins at 01:43:58. Use Anthropic through the shared runtime, not an OpenAI client or a canned live response.</p>
+<p>Work in <code>exercises/starters/l08.py</code>. The independent instructor reference is <code>exercises/solutions/l08.py</code>; consult it only after attempting the task. Do not import either that reference or <code>course_lessons/l08.py</code> to replace your implementation. The delivered demonstration and reference have different state-update strategies, even though both carry history between calls.</p>
+<p>Before editing, run:</p>
+<pre><code class="language-bash">python -m exercises.starters.l08
+</code></pre>
+<p>Expect <code>STARTER_NOT_COMPLETED</code> and a successful process exit, with no model construction. This indicates an unfinished scaffold, not a passed exercise. Implement only the three TODO functions; the provided runner contains the acceptance scenario and safe file-writing behavior.</p>
+<h2>Implement the three functions</h2>
+<ol>
+<li><strong>Select model input.</strong> <code>select_prompt(history, max_pairs=1)</code> must accept alternating human/AI pairs followed by one pending human. Return a new list with the newest <code>max_pairs</code> complete pairs plus that human, without mutating the input. Zero keeps just the pending human. Raise <code>ValueError</code> for negative, Boolean, or noninteger limits; empty/even/nonalternating histories; and AI tool calls. This intentionally excludes system/tool conversations.</li>
+<li><strong>Build the graph.</strong> <code>build_graph(model, max_pairs=1)</code> must validate the limit at construction, compile <code>START → respond → END</code> with <code>MessagesState</code>, and invoke the injected model only inside the node. Forward the node's config. Return only the new <code>AIMessage</code> as a delta. Reject a wrong response role or tool call with <code>TypeError</code>, and empty visible text with <code>ValueError</code>. Do not use checkpoints or mutate state. Compilation with <code>model=None</code> must work for the starter readiness check.<a href="https://docs.langchain.com/oss/python/langgraph/graph-api" title="LangGraph Graph API: MessagesState and reducer updates">809</a></li>
+<li><strong>Export full history.</strong> <code>format_transcript(history)</code> must format every message as <code>&lt;role&gt;:\n&lt;text&gt;\n</code>, using <code>Human</code> or <code>AI</code>, and join entries with one extra newline. Return an empty string for an empty list; raise <code>TypeError</code> for other roles. Use <code>message_text</code> without correcting spelling or stripping stored content. Do not open files inside this function.</li>
+</ol>
+<h2>Follow the fixed scenario</h2>
+<p>The provided runner introduces <code>Hi, my name is Mira. Please acknowledge briefly.</code> Its second human input is exactly:</p>
+<pre><code class="language-text">gud morning!
+What name did I give you?
+</code></pre>
+<p>The third is <code>Reply with one short greeting.</code> Keep <code>max_pairs=1</code>. The runner should send 1, 3, then 3 messages, while retaining 2, 4, then 6. Its separate fourth call starts with no prior history, yielding two messages. Do not include that fresh conversation in the six-message log.</p>
+<p>The second answer must mention Mira. Wording otherwise varies. The third prompt must exclude the first human message by ID, but you must not claim this guarantees forgetting: a retained AI answer can repeat Mira. A pair cap is not a token cap, nor a bound on full-history memory or log size.<a href="https://docs.langchain.com/oss/python/langgraph/add-memory" title="LangGraph memory: trimming model input versus retained state">810</a> Anthropic content can be block-structured, so use the shared text helper for display/export.<a href="https://docs.langchain.com/oss/python/integrations/chat/anthropic" title="ChatAnthropic: messages, content blocks, and token counting">811</a></p>
+<h2>Test and record observations</h2>
+<p>For a small offline check, start <code>python</code> and paste this probe after implementing the TODOs. <code>WorkbookChatDouble</code> is explicitly a test double, not Anthropic evidence:</p>
+<pre><code class="language-python">from langchain_core.messages import HumanMessage, AIMessage
+from langsmith import tracing_context
+from exercises.starters import l08
+
+class WorkbookChatDouble:
+    def __init__(self):
+        self.calls = []
+    def invoke(self, messages, config=None):
+        self.calls.append(list(messages))
+        return AIMessage(content=&quot;offline reply&quot;)
+
+model = WorkbookChatDouble()
+graph = l08.build_graph(model, max_pairs=1)
+history = []
+with tracing_context(enabled=False):
+    for text in [&quot;first&quot;, &quot;gud morning!\nraw&quot;, &quot;third&quot;]:
+        history = l08.run_turn(graph, history, text)
+assert [len(call) for call in model.calls] == [1, 3, 3]
+assert len(history) == 6
+assert &quot;Human:\ngud morning!\nraw\n&quot; in l08.format_transcript(history)
+</code></pre>
+<p>Exit the interpreter. Run the focused delivered-code tests:</p>
+<pre><code class="language-bash">python -m pytest tests/lessons/test_l08.py -q
+</code></pre>
+<p>Those checks validate the delivered demo/reference and starter status; they do not automatically grade your edited TODOs. When authorized for paid calls, validate your implementation:</p>
+<pre><code class="language-bash">python -m exercises.starters.l08 --live --backend none
+</code></pre>
+<p>For comparison, the instructor reference command is:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l08 --live --backend none
+</code></pre>
+<p>Record actual observations, not invented replies: prompt counts <strong>[observed]</strong>; full-state counts <strong>[observed]</strong>; second answer <strong>[observed]</strong>; exact two-line input preserved <strong>[yes/no and location]</strong>; reported <code>log_path</code> <strong>[observed]</strong>; fresh-history count <strong>[observed]</strong>. Open <code>bounded-conversation.txt</code> at that path and verify three human and three AI entries. Default output directories are unique; a reused directory must not silently overwrite an existing log.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: count the pending turn separately</h3>
+<p>An input window has <code>2 * max_pairs + 1</code> entries at most. Before selecting, validate the full input's shape. Python's <code>bool</code> is an <code>int</code> subclass, so an integer check alone accepts <code>True</code> accidentally.</p>
+<h3>Hint 2: separate invocation input from node update</h3>
+<p>Without checkpoints, every invocation needs the caller's carried history. Within that invocation, <code>MessagesState</code> already preserves it through its reducer. Return only the new reply from the node; do not rebuild old messages with new IDs.</p>
+<h3>Hint 3: choose the correct source for the log</h3>
+<p>The prompt window and full returned history are different lists. Export the full list and preserve the raw human string. Validation can inspect stripped text without storing the stripped version.</p>
+<h2>Completion and stretch</h2>
+<p>Complete the task only when the implemented starter demonstrates the required counts, full six-message export, exact raw input, role labels, two-message reset simulation, and honest error behavior. Explain why no saved transcript is automatically reloaded. U1 is the separate durable-checkpoint lab; do not add persistence here.</p>
+<p>For a stretch task, compare <code>max_pairs=0</code> and <code>2</code> using the offline double. Predict the three prompt counts before running, then discuss how a token-aware policy would also preserve valid message structure. Do not invoke a remote token-counting API as an “offline” check or claim trimming erases information from retained replies.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://docs.langchain.com/oss/python/langgraph/graph-api">809: LangGraph Graph API: MessagesState and reducer updates</a></li>
+<li><a href="https://docs.langchain.com/oss/python/langgraph/add-memory">810: LangGraph memory: trimming model input versus retained state</a></li>
+<li><a href="https://docs.langchain.com/oss/python/integrations/chat/anthropic">811: ChatAnthropic: messages, content blocks, and token counting</a></li>
+<li><a href="https://youtu.be/jGg_1h0qzaM?t=6174">812: Source video: conversation history at 01:42:54</a></li>
+</ul>
+<!-- PAGEBREAK -->
+<p><a id="l09"></a></p>
+<h1>L09 — ReAct arithmetic tool loop</h1>
+<h2>Your task: an audited arithmetic runner</h2>
+<p>Build a small, bounded tool-using agent and prove what it executed. This is <strong>added practice</strong> based on the source's arithmetic loop, not a separate original video homework assignment. The source window is <a href="https://youtu.be/jGg_1h0qzaM?t=7400">02:03:20–02:28:46</a>. Use L08 message concepts and the baseline demonstration before starting. Plan approximately fifty minutes for the independent implementation within the lesson's broader practice allocation.</p>
+<p>Your editable starter is <code>exercises/starters/l09.py</code>. The independent reference is <code>exercises/solutions/l09.py</code>; keep it closed until review. The baseline is <code>course_lessons/l09.py</code>, and focused offline tests are <code>tests/lessons/test_l09.py</code>. Do not solve the task by importing either completed implementation. The starter already provides the integer tools, state schema, prompt, error-observation handler, CLI readiness probe, and three-case acceptance harness.</p>
+<p>An unchanged starter must print <code>STARTER_NOT_COMPLETED</code> and exit successfully. That message is intentionally not a passing exercise result. The readiness probe detects unfinished TODOs without making model calls; it is not a substitute for testing your implementation.</p>
+<h2>Implement three focused functions</h2>
+<ol>
+<li>Complete <code>route_next(state)</code>. Require the last message to be an <code>AIMessage</code>. Reject a different role with <code>TypeError</code>, malformed <code>invalid_tool_calls</code> with <code>ValueError</code>, and a batch above three calls with <code>AuditLimit</code>. Return <code>&quot;tools&quot;</code> for valid calls, otherwise END. Routing must not execute arithmetic.</li>
+<li>Complete <code>make_agent(model, *, max_model_calls=4)</code>. Accept budgets from one to ten, rejecting values outside that range. Bind the supplied tools to the injected model. Build <code>START → model</code>, a conditional tools/END route, and <code>tools → model</code>. The model node must prepend the system instruction, include accumulated messages, forward its <code>RunnableConfig</code>, return only the new reply and incremented count, and raise <code>AuditLimit</code> before any invocation beyond the budget. Use <code>ToolNode</code> with the supplied validation handler. Request invocation already uses <code>execution_config()</code>; preserve it.</li>
+<li>Complete <code>collect_audit(state)</code>. Return <code>model_calls</code>, <code>tool_calls</code>, <code>audit</code>, and <code>final_text</code>. Each audit row must contain <code>call_id</code>, <code>tool</code>, <code>args</code>, <code>result</code>, and <code>status</code>. Match results by call ID, even if a batch's results arrive in reverse order. Keep error results marked as errors. Raise <code>ValueError</code> for empty/duplicate call IDs, orphan/missing results, a non-tool message interrupting a pending batch, or a missing, empty, or still-tool-calling final AI answer. Never generate a result because you know the expected arithmetic.</li>
+</ol>
+<h2>Run and record the three exact cases</h2>
+<p>From the repository root, with the project environment active:</p>
+<pre><code class="language-bash">python -m exercises.starters.l09
+python -m pytest tests/lessons/test_l09.py -q
+</code></pre>
+<p>The supplied focused tests validate the baseline and independent reference solution with explicit offline model doubles. They do <strong>not</strong> automatically grade your edited starter. Inspect their scripted message sequences and apply the same cases to your injected-model builder during review. No API key is needed for this offline inspection; do not replace the actual live model factory with a canned responder.</p>
+<p>After instructor authorization, run your implemented starter:</p>
+<pre><code class="language-bash">python -m exercises.starters.l09 --live --backend none
+</code></pre>
+<p>This makes real paid Anthropic requests. Without <code>--live</code>, a completed model-based starter should refuse model creation rather than claim an offline success. The provided harness checks these exact requests:</p>
+<ul>
+<li><strong>Compound:</strong> “Subtract 5 from 18. After seeing the result, multiply that result by 4.” Observe successful results <code>13</code> then <code>52</code>, in separate tool rounds. The first call must be <code>subtract(a=18, b=5)</code>. The later multiplication must use <code>13</code> and <code>4</code>, and the final answer must include <code>52</code>.</li>
+<li><strong>Independent:</strong> “Compute 9 + 6 and separately 8 * 3.” Observe successful results <code>15</code> and <code>24</code> from add and multiply. One shared batch or separate valid batches are both acceptable within four model calls. The final answer must include both results.</li>
+<li><strong>Greeting:</strong> “Say a friendly hello. Do not calculate anything.” Observe a nonempty final answer, zero tools, and one model call.</li>
+</ul>
+<p>Record evidence, not private reasoning. For the compound case, note both call IDs, their matching result IDs, and the multiplication arguments: ______. For the independent case, note the chosen batching pattern and model-call count: ______. For the greeting, record the tool count and final-message role: ______. For an offline failure case, record whether it produced an error observation or a budget exception, and why: ______.</p>
+<h2>Three progressive hints</h2>
+<p><strong>Hint 1 — control flow:</strong> inspect structured <code>tool_calls</code>, not message text. The route returns a label; <code>ToolNode</code> executes the registered functions. The model must receive each observation on its next turn.</p>
+<p><strong>Hint 2 — state updates:</strong> <code>add_messages</code> merges the new message update. Return <code>[response]</code>, not a rebuilt history. Initialize the counter at zero and check it before each model invocation, not after an unwanted fifth call.</p>
+<p><strong>Hint 3 — auditing:</strong> keep a dictionary of pending calls keyed by ID and a set of IDs already used. Remove a pending call when its result arrives. A later AI message is invalid while any pending entries remain. Keep failed observations in your rows instead of converting them into numeric successes.</p>
+<h2>Completion, review, and stretch</h2>
+<p>Complete only when all three live cases satisfy the harness and an instructor has reviewed offline malformed-call, unknown-tool, missing-result, reversed-batch, and repeating-model behavior. A repeating double must stop at the configured model-call budget; a tool error may be explained or corrected, but must never be counted as a successful calculation. Exact model sentences and independent batching need not match the reference.</p>
+<p>After assessment, compare with:</p>
+<pre><code class="language-bash">python -m exercises.solutions.l09 --live
+</code></pre>
+<p>For a stretch, test negative and zero operands through your injected-model interface. Demonstrate that three minus eight returns a negative result and that a product with zero stays zero. Do not add division or new external services.</p>
+<h2>Reference to consult</h2>
+<p>The <a href="https://docs.langchain.com/oss/python/langgraph/quickstart">official graph quickstart</a> explains the tool loop, while the <a href="https://docs.langchain.com/oss/python/langgraph/graph-api">Graph API message guide</a> explains ID-aware updates. These current-API references support the exercise; the stricter audit and execution budgets are course additions.</p>
+<!-- PAGEBREAK -->
+<p><a id="l10"></a></p>
+<h1>L10 — Human–AI Drafter collaboration</h1>
+<h2>Your task: workshop notice and honest save recovery</h2>
+<p>This <strong>added practice</strong> follows the video's 02:28:46–02:52:09 drafting workflow, not a detailed original assignment. See the <a href="https://youtu.be/jGg_1h0qzaM?t=8926">Drafter introduction</a>. Prerequisite: L09. Allow 90 minutes including guided practice; use synthetic data only.</p>
+<p>Build a process-local Drafter that revises a complete email, fails safely on an occupied filename, then saves after new human feedback. Assess orchestration and file evidence, not exact wording. Persistence, voice, GUI, retrieval, and durable interrupts are outside this task; U2 adds safer state and approval/resume.</p>
+<p>Implement <code>exercises/starters/l10.py</code> without importing the baseline <code>course_lessons/l10.py</code> or reference <code>exercises/solutions/l10.py</code>. Leave the reference closed during your first attempt.</p>
+<h2>Exact scenario and implementation boundary</h2>
+<p>The supplied runner already provides the following human turns. Keep the scenario and its acceptance checks intact.</p>
+<ol>
+<li>Draft an email to <strong>Elena</strong> postponing the training workshop. Initially propose <code>17 November at 09:00 Singapore time</code> and sign <strong>Arun</strong>. Call <code>update</code> with the entire email, then show the draft without saving.</li>
+<li>Revise the schedule to the literal phrase <code>18 November at 14:30 Singapore time</code>. Remove <code>17 November</code> and <code>09:00</code>; preserve Elena and Arun. Put a blank line before the closing. Update the entire document again and wait.</li>
+<li>The runner creates <code>workshop_taken.txt</code> with the exact text <code>Existing classroom file: preserve me.</code> followed by a newline. Request a save to this occupied name. It must fail without changing that file, revising the document, or claiming completion. Explain the failure and wait rather than choosing a new filename automatically.</li>
+<li>After new human feedback, save the unchanged reviewed email as <code>workshop_notice.txt</code>. End immediately after the successful save tool result. Start a separate empty session with <code>write an email</code>; obtain clarification without a tool call, document update, or file write.</li>
+</ol>
+<p>Implement only the three marked functions. In <code>make_tools</code>, define decorated <code>update(content: str)</code> and <code>save(filename: str)</code> tools closed over the supplied session. Reject blank drafts, finished sessions, unauthorized saves, and empty-document saves. Count successful updates only. Use the shared <code>safe_write_text</code> helper; set <code>saved_path</code> only after it returns.</p>
+<p>In <code>after_tools</code>, return <code>end</code> when a real saved path exists or the four-model-call budget is exhausted; otherwise return <code>agent</code>. In <code>build_graph</code>, bind the tools, implement agent and tools nodes, preserve callbacks/configuration, and compile conditional routes. Reject unexpected multi-call batches without executing any member, but return an error for every call ID. Convert expected validation and filesystem exceptions into error <code>ToolMessage</code> results. The supplied host driver resets save permission and reports budget exhaustion.</p>
+<p>Current model documentation distinguishes requesting a tool from executing it. A <code>ToolMessage</code> must match the request ID; tool availability does not force use. <a href="https://docs.langchain.com/oss/python/langchain/models" title="Official LangChain tool requests, execution loops, and matching result IDs">1021</a></p>
+<h2>Run commands and collect evidence</h2>
+<p>From the repository root, with the prepared environment activated:</p>
+<pre><code class="language-bash">python -m exercises.starters.l10
+python -m pytest tests/lessons/test_l10.py -q
+</code></pre>
+<p>The untouched starter prints <code>STARTER_NOT_COMPLETED</code> and exits successfully without a model request or fake pass. Focused tests validate the demonstration/reference using named offline doubles, not your edited starter.</p>
+<p>After implementation, run your starter with authorized real calls:</p>
+<pre><code class="language-bash">python -m exercises.starters.l10 --live --backend none
+</code></pre>
+<p>For comparison after your attempt:</p>
+<pre><code class="language-bash">python -m course_lessons.l10 --live --backend none
+python -m exercises.solutions.l10 --live
+</code></pre>
+<p>Use the default unique directory or a fresh <code>--output-dir</code>. Never disable collision protection to repeat a run. Inspect facts and state rather than exact prose. <code>--backend none</code> still sends model input to Anthropic.</p>
+<p>Record these observed results in your working notes:</p>
+<ul>
+<li><strong>Draft revision:</strong> record the initial and revised schedule, retained recipient/sender, revision count, and whether the closing has a preceding blank line.</li>
+<li><strong>Collision:</strong> record the error type, <code>saved_path</code> value after failure, and the unchanged contents of <code>workshop_taken.txt</code>.</li>
+<li><strong>Recovery:</strong> record the actual final path and the result of comparing its complete UTF-8 text with the revised in-memory document.</li>
+<li><strong>Clarification:</strong> record the assistant's question, tool-result count, content length, and saved-path state for the new empty session.</li>
+</ul>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: separate history from the draft</h3>
+<p><code>messages</code> is reducer-managed graph state, while the document is in the supplied process-local session. Return only new messages from nodes. At the next host invocation, pass the previous returned history once. Replacing a complete document is easier to verify than applying an ambiguous prose patch.</p>
+<h3>Hint 2: implement truth before routing</h3>
+<p>Make the file writer the authority. A <code>FileExistsError</code> must reach the tools node, which produces <code>status=&quot;error&quot;</code> with the same call ID. Do not set the path in advance, in <code>finally</code>, or in an exception branch. Then let the router inspect actual session state, not words such as “saved” in the assistant response.</p>
+<h3>Hint 3: inspect the last message</h3>
+<p>After <code>agent</code>, route to tools only if the newest <code>AIMessage</code> has tool calls. After a successful save, do not call the model again. After an update or expected error, another model response can show the draft or explain the error. Forward the received <code>RunnableConfig</code> to both model and tool invocation; use <code>execution_config()</code> when entering the graph.</p>
+<h2>Completion and stretch</h2>
+<p>You are complete when the three functions are implemented independently; two successful whole-document updates retain the required facts; the occupied file remains byte-for-byte unchanged; failed saving leaves <code>saved_path=None</code>; a new human request saves the latest draft to <code>workshop_notice.txt</code>; execution stops on that successful tool result; and the separate vague request uses no tool. Also demonstrate rejection of an unsafe basename or missing save permission, and explain why this process-local session is not durable interrupt/resume. Preserve your notes and actual artifacts as evidence.</p>
+<p>For a stretch task, drive exactly three manually entered feedback turns through <code>take_turn</code>, displaying <code>session.content</code> after each. Keep the turn count bounded and retain the same save guards. Do not add an unbounded terminal loop or claim checkpoint persistence. Report which behavior depends on the model and which behavior is enforced by Python.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://docs.langchain.com/oss/python/langchain/models">1021: Official LangChain tool requests, execution loops, and matching result IDs</a></li>
+</ul>
+<!-- PAGEBREAK -->
+<p><a id="l11"></a></p>
+<h1>L11 — Local-embedding Chroma RAG</h1>
+<h2>Your task: produce an evidence-gated answer card</h2>
+<p>This is <strong>added practice</strong> based on the video's RAG lesson, 02:52:09–03:09:51. The video demonstrates a model/retriever loop; your task deliberately chooses a simpler retrieve-first topology. Build <code>START → retrieve → generate or abstain → END</code>. Explain why this guarantees a search happens without asking a model to select a tool. Budget approximately 45 minutes for implementation, followed by evidence review.</p>
+<p>Use the original synthetic replacement <code>data/rag_teaching_handbook.pdf</code>, not the video's stock-market PDF. Read its three pages first. Your supported question is: <strong>“How long is the equipment loan, and what renewal is allowed? Use digits.”</strong> Your unsupported question is: <strong>“What is the exact equipment late fee in dollars?”</strong> Do not invent any amount, substitute an external policy, or answer from general knowledge. Source/page citations must refer to the actual teaching PDF.</p>
+<p>Start in <code>exercises/starters/l11.py</code>. It contains three independent TODO functions and no import of the reference implementation. The reference is <code>exercises/solutions/l11.py</code>; use it after making your own attempt. The demonstration in <code>course_lessons/l11.py</code> is a different architecture, not your exercise solution.</p>
+<h2>Implement three functions</h2>
+<ol>
+<li><strong><code>format_evidence(hits)</code></strong> returns a string. For each hit, write <code>[source p.page]</code>, a newline, and its text. Separate hits with blank lines. Return an empty string for no hits. Use the already 1-based <code>page</code>; never derive it from the chunk position.</li>
+<li><strong><code>build_graph(model, store, *, search_fn=search)</code></strong> returns a compiled graph. Validate a nonblank string question before searching. Retrieve the original question with <code>k=3</code>. Route empty hits to an abstain node that sets <code>answer=&quot;NOT_IN_DOCUMENT&quot;</code>, <code>status=&quot;not_in_document&quot;</code> and <code>sources=[]</code>, without invoking the model. Route nonempty hits to generation. Pass labeled evidence and the question to the injected model, instructing it to use only that evidence, cite <code>[rag_teaching_handbook.pdf p.N]</code>, use digits, and output exactly <code>NOT_IN_DOCUMENT</code> for an unspecified fact. Forward the runnable config to <code>model.invoke</code>. Both branches end at END.</li>
+<li><strong><code>validate_card(result)</code></strong> returns only <code>question</code>, <code>answer</code>, <code>status</code> and <code>sources</code>. Accept only <code>grounded</code> or <code>not_in_document</code>. An abstention needs the exact sentinel and no sources. A grounded answer needs nonempty evidence and at least one citation; every cited source/page must exist among retrieved hits. Its sources must be the sorted, deduplicated inventory of retrieved source/page pairs. This inventory lists available evidence, not proof every page was used. Reject uncited or fabricated-page answers.</li>
+</ol>
+<p>Keep raw hits in graph state so you can inspect them before producing the small public card. You may reuse <code>course_support.retrieval</code>; do not replace its real ONNX embedding with a fake vector or keyword search. For normal runs, obtain the real Anthropic model from the shared runtime. Explicitly named doubles are for offline tests only.</p>
+<h2>Run and record meaningful observations</h2>
+<p>From the repository root in the prepared Python 3.12 environment:</p>
+<pre><code class="language-bash">python -m exercises.starters.l11
+python -m pytest -q tests/lessons/test_l11.py
+python -m course_lessons.l11 --live --backend none
+python -m exercises.solutions.l11 --live
+</code></pre>
+<p>The starter initially exits successfully with <code>STARTER_NOT_COMPLETED</code>; that is a deliberate unfinished state, not a pass. The delivered test file checks the demonstration and reference, not your edited starter automatically. Add equivalent learner checks that import your starter's functions. To run your own completed graph, use <code>get_model(live=True)</code>, <code>output_directory</code>, <code>prepare_store</code>, and <code>execution_config()</code> in a small local harness, following the demonstration's CLI pattern. Do not paste credentials into the starter or hardcode a model name.</p>
+<p>The live commands incur real Anthropic usage. Initial embedding computation can download the local model. An offline test pass does not verify embedding quality or Anthropic access. Chroma telemetry is disabled; retain the default no-tracing backend until you deliberately choose a synthetic-data tracing exercise.</p>
+<p>Record these observations in concise sentences, not just “worked”: <strong>Supported evidence:</strong> the actual supporting sentence and page. <strong>Supported card:</strong> durations found, citation accepted, and the source inventory. <strong>Missing fact:</strong> why the nearest returned passages do not provide a dollar amount. <strong>Empty branch:</strong> model invocation count observed with an explicitly named empty-store double. <strong>Failure check:</strong> exception observed for an uncited answer or page 99. Include your commands and test count without including secrets.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1 — keep labels attached</h3>
+<p>The retrieval helper returns dictionaries with <code>id</code>, <code>text</code>, <code>source</code> and <code>page</code>. Build formatting from those fields directly. An empty iterable joined with a separator already gives an empty string. Avoid a hardcoded citation unrelated to the hit.</p>
+<h3>Hint 2 — route before generating</h3>
+<p>After the retrieve node, a conditional route can examine <code>state[&quot;hits&quot;]</code>. Only the nonempty branch should contain <code>model.invoke</code>. Test the empty branch with a named model double that records calls, then assert that its call list remains empty. A nonempty list alone cannot establish answerability.</p>
+<h3>Hint 3 — compare pairs, not prose</h3>
+<p>Build a set of <code>(source, page)</code> pairs from hits. Extract citations from the answer and compare every pair against that set. Sort and deduplicate sources deliberately so repeated chunks from one page produce one inventory entry. This checks provenance, not semantic entailment.</p>
+<h2>Completion criteria and stretch</h2>
+<p>Complete means both branches terminate, a blank question is rejected, empty evidence skips the model, the supported answer contains <strong>7</strong>, <strong>3</strong> and a page-2 citation, the fee answer is exactly <code>NOT_IN_DOCUMENT</code>, and fabricated/absent citations are rejected. Your card has exactly four public keys and truthful status. Show offline evidence for routing and validation plus human inspection of a real generated answer. Do not replace variable wording with a memorized exact supported sentence.</p>
+<p>For a stretch task, try three paraphrases of the supported question and one catering question. Record retrieved pages before judging answers, then compare <code>k=1</code> and <code>k=3</code> in your own harness. Explain one observed trade-off without claiming a universal optimal k. Do not alter the shared index specification mid-run or claim these few questions establish production reliability.</p>
+<h2>Reference</h2>
+<p>The <a href="https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter">official recursive splitter guide</a> explains character sizing. The <a href="https://docs.trychroma.com/docs/embeddings/embedding-functions">Chroma embedding guide</a> explains the real local default model and its initial download. Use the student chapter for the full source/current-API comparison and troubleshooting.</p>
+<!-- PAGEBREAK -->
+<p><a id="u1"></a></p>
+<h1>U1 — Thread memory and durable SQLite checkpoints</h1>
+<h2>Your task: recover three travel notebooks</h2>
+<p><strong>SUPPLEMENTARY / ADDED PRACTICE.</strong> This is a new exercise after L08, not source-video homework. The contextual history section is 01:42:54–02:03:20, available at <a href="https://youtu.be/jGg_1h0qzaM?t=6174">the L08 start</a>. U1 itself has no video timestamps. Allow about 18 minutes for the first implementation, then use review time to investigate failed assertions.</p>
+<p>Build a small travel notebook that stores three logically isolated conversations in one local SQLite file. The important outcome is not a polished answer: it is recovery after a real connection close, with evidence that each thread receives only its own human inputs. Use synthetic destinations only. A checkpoint database contains conversation data and needs protection even when tracing is off.</p>
+<p>Your starter is <code>exercises/starters/u1.py</code>. Your teacher's independent reference is <code>exercises/solutions/u1.py</code>; do not import it or the demonstration into your work. The three TODOs are deliberately separated so you can test graph construction, invocation, and persistence orchestration independently.</p>
+<h2>Commands and baseline observations</h2>
+<p>From the repository root, with the prepared environment active:</p>
+<pre><code class="language-bash">python -m exercises.starters.u1
+python -m pytest -q tests/lessons/test_u1.py
+python -m course_lessons.u1 --live --backend none
+</code></pre>
+<p>The unmodified starter must exit successfully with <code>STARTER_NOT_COMPLETED</code>. That message is not a passing assessment. After implementing its TODOs, rerun the same starter command: it exercises your functions with the explicitly named <code>StarterDestinationDouble</code> in a temporary SQLite file and labels its output <code>OFFLINE_SELF_CHECK_ONLY</code>. The temporary file is removed afterward; use the live reference for a retained comparison artifact. The focused tests exercise the delivered demonstration and reference solution, not your edited starter. The live reference command, for comparison after attempting the task, is:</p>
+<pre><code class="language-bash">python -m exercises.solutions.u1 --live
+</code></pre>
+<p>This reference makes five real Anthropic calls. The project-code demonstration makes four. Neither command should be described as offline. If the optional SQLite dependency is skipped, arrange environment setup before claiming persistence completion.</p>
+<h2>Implement the three functions</h2>
+<ol>
+<li>Complete <code>build_notebook(model, checkpointer)</code>. Use <code>MessagesState</code>, one response node, and explicit <code>START</code>/<code>END</code> edges. Pass <code>NOTEBOOK_RULE</code> followed by the restored messages to the injected model, forwarding <code>config</code>. Require an <code>AIMessage</code> response. Return only that new message and compile with the supplied checkpointer.</li>
+<li>Complete <code>ask(graph, thread_id, text)</code>. Reject non-string or whitespace-only IDs and text with <code>ValueError</code>, before graph invocation. For valid text, preserve its exact characters. Submit one new <code>HumanMessage</code> with <code>config=execution_config(thread_id)</code>; do not resubmit the existing history.</li>
+<li>Complete <code>run_lab(model, database)</code>. Require a new database path, raising <code>FileExistsError</code> for an existing file. Create its parent directory. Import <code>SqliteSaver</code> from <code>langgraph.checkpoint.sqlite</code>, then use its <code>from_conn_string</code> context manager for both connection lifetimes.<a href="https://reference.langchain.com/python/langgraph.checkpoint.sqlite/SqliteSaver/from_conn_string" title="File-backed SqliteSaver context-manager usage">1221</a></li>
+</ol>
+<p>In the first context, send <code>My destination is Kyoto. Remember it.</code> to <code>trip-a</code> and <code>My destination is Oslo. Remember it.</code> to <code>trip-b</code>. After each turn, require two messages and a completed snapshot. Save the snapshot's checkpoint ID. Exit the context completely.</p>
+<p>In the second context, reopen the <strong>same file</strong> and build a <strong>new graph</strong>. Before recall, require each thread to have its original two messages, no pending work, and its original checkpoint ID. Ask <code>What is my destination?</code> in <code>trip-a</code>, <code>trip-b</code>, and new <code>trip-c</code>. Do not seed the third thread with a city.</p>
+<p>Require the first two answers to include their own city and exclude the other city. Require the third to include <code>UNKNOWN</code> and neither city. Generated wording may vary: compare case-insensitive city inclusion, not an entire model sentence. Verify <code>trip-a</code>'s human texts are exactly its Kyoto introduction and question; <code>trip-b</code>'s are exactly its Oslo introduction and question; <code>trip-c</code> has only the question. Final total-message counts must be <code>{&quot;trip-a&quot;: 4, &quot;trip-b&quot;: 4, &quot;trip-c&quot;: 2}</code>.</p>
+<p>Return a JSON-serializable dictionary with <code>database</code>, <code>closed_and_reopened</code>, <code>recovered_checkpoint_ids_match</code>, <code>thread_isolation</code>, <code>message_counts</code>, <code>answers</code>, and <code>model_calls</code> equal to 5. Set success flags only after assertions pass. Keep model construction out of these functions so offline tests can inject a double.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: separate responsibilities</h3>
+<p>The reducer merges messages, the saver stores state, and configuration selects the thread. A global conversation list would defeat this separation. Look at the type of the node's output: it is an update dictionary, not a replacement graph or a text answer alone.</p>
+<h3>Hint 2: prove restoration before another call</h3>
+<p>Use <code>graph.get_state(execution_config(thread_id))</code> inside the reopened context. Its <code>values</code>, <code>next</code>, and <code>config</code> let you inspect the state without another model request. Check the saved checkpoint ID before sending a new question, because a completed new call creates newer checkpoints.<a href="https://docs.langchain.com/oss/python/langgraph/checkpointers" title="Inspecting checkpoints and StateSnapshot fields">1222</a></p>
+<h3>Hint 3: isolate inputs as well as answers</h3>
+<p>Select human messages by <code>isinstance(item, HumanMessage)</code> and compare their text to the exact expected list. Count both human and AI messages. If an unrelated city appears, investigate reused IDs, shared lists, or manually supplied history before blaming SQLite.</p>
+<h2>Record evidence and check completion</h2>
+<p>Record your database path and the two recovered checkpoint-ID comparisons. Note the final counts for <code>trip-a</code>, <code>trip-b</code>, and <code>trip-c</code>, and describe the exact human inputs seen in each thread. Record whether your evidence used offline doubles or real Anthropic, including the command used; do not treat one as proof of the other.</p>
+<p>Completion requires all three functions, an actual closed/reopened file, matching pre-recall snapshot IDs, counts 4/4/2, no crossed facts, third-thread unknown behavior, rejection of blank inputs and pre-existing databases, and a truthful returned summary. Explain why an isolated thread is not a security boundary. Preserve a failed database for diagnosis instead of hiding an API failure behind a manufactured response.</p>
+<h2>Optional design extension — not part of the validated execution set</h2>
+<p>Add a fresh-interpreter checkpoint read between the contexts without invoking a model. Pass only the database path and thread ID to the worker, and compare the saved human inputs. Explain why this strengthens restart evidence but still does not test power-loss recovery, backup restoration, or authorization. Do not weaken the core acceptance conditions to finish the extension.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://reference.langchain.com/python/langgraph.checkpoint.sqlite/SqliteSaver/from_conn_string">1221: File-backed SqliteSaver context-manager usage</a></li>
+<li><a href="https://docs.langchain.com/oss/python/langgraph/checkpointers">1222: Inspecting checkpoints and StateSnapshot fields</a></li>
+</ul>
+<!-- PAGEBREAK -->
+<p><a id="u2"></a></p>
+<h1>U2 — Safe draft state and human approval/resume</h1>
+<h2>Task: approve exact content, repair a filename once</h2>
+<p>This is <strong>added supplementary practice</strong>, not original video homework. Allow about 30 minutes within the 90-minute U2 lab. Complete L10 and U1 first. You are extending the safety protocol, not writing a GUI or adding another provider.</p>
+<p>Your fictional workshop assistant must generate each thread's notice once, pause before writing, and bind approval to the exact draft. If the first write fails, offer one filename-repair opportunity. Never regenerate or edit the text during repair. A second failed write must stop rather than create a retry loop.</p>
+<p>Edit <code>exercises/starters/u2.py</code>. It is independent of the demonstration and has three focused TODO functions. Read <code>course_lessons/u2.py</code> for the baseline pattern. Consult <code>exercises/solutions/u2.py</code> only after attempting the task or during teacher review. The reference uses direct state updates and an additional hash/repair protocol; it is not an import of the baseline.</p>
+<h2>Establish the starting behavior</h2>
+<p>From the repository root with the prepared environment active, run:</p>
+<pre><code class="language-bash">python -m exercises.starters.u2
+python -m pytest -q tests/lessons/test_u2.py
+</code></pre>
+<p>The untouched starter prints <code>STARTER_NOT_COMPLETED</code> and exits successfully without loading credentials, invoking a model, or claiming a pass. The offline suite validates the demonstration and reference with named model doubles. Its completed-starter acceptance cases are explicitly skipped until your TODO functions exist; a skip is not exercise completion.</p>
+<p>When authorized for real model use, the supplied reference commands are:</p>
+<pre><code class="language-bash">python -m course_lessons.u2 --live --backend none
+python -m exercises.solutions.u2 --live --backend none
+</code></pre>
+<p>After completing your starter, run <code>python -m exercises.starters.u2 --live --backend none</code>. Do not modify the shared runtime, load credentials into graph state, or replace the real CLI model with canned output. Each live harness generates two notices and supplies scripted decisions; the approval protocol is real, but a separate human is not being simulated as evidence.</p>
+<h2>Implement the three functions</h2>
+<ol>
+<li><strong><code>approval_update</code>:</strong> accept only a dictionary containing the actual boolean <code>True</code> under <code>approve</code> and a <code>draft_hash</code> matching the exact current draft and stored fingerprint. Reject malformed, missing, negative, or stale decisions. Clear any saved path. During repair, require a nonblank string filename, increment <code>repairs</code> once, and copy the filename only on valid approval. Never change <code>draft</code>.</li>
+<li><strong><code>attempt_save</code>:</strong> require approved status and an approval fingerprint matching current content. Raise <code>ValueError</code> if that guard fails. Then call <code>safe_write_text</code>, returning <code>saved</code> and the actual path only after success. A writer <code>OSError</code> or <code>ValueError</code> must return <code>save_failed</code>, an empty path, and a useful error. Preserve any existing file.</li>
+<li><strong><code>build_graph</code>:</strong> register the supplied nodes and compile with the supplied checkpointer or a new <code>InMemorySaver</code>. Route <code>START → generate → review</code>. Approved review goes to save; rejection ends. Successful save ends; first failure goes to repair. Approved repair goes to retry_save; rejection ends. retry_save always ends, including on failure. There must be no back edge.</li>
+</ol>
+<p>Resume a pending ordinary review on the same thread with <code>Command(resume={&quot;approve&quot;: True, &quot;draft_hash&quot;: paused[&quot;draft_hash&quot;]})</code>. Resume a repair with the same keys plus <code>&quot;filename&quot;: &quot;recovered.txt&quot;</code>. Reject using <code>{&quot;approve&quot;: False}</code>. Do not use an empty <code>Command(resume=None)</code> as rejection: the installed runtime does not treat it as a valid decision.</p>
+<p>The SHA-256 digest fingerprints exact UTF-8 bytes, including whitespace. It detects stale approval; it does not authenticate a person. A server would separately authorize thread access. Keep the same graph/checkpointer instance for in-process resume; this lab does not promise restart persistence.</p>
+<h2>Three progressive hints</h2>
+<h3>Hint 1: separate decision and effect</h3>
+<p>An interrupt payload is a request for a decision, not permission to write. The review node may replay. Return state updates after the decision; keep the writer in its later node. Use <code>is True</code>, not a generic truthiness test.</p>
+<h3>Hint 2: compare the right hashes</h3>
+<p>Compare the submitted hash to the digest of current text, and ensure the stored fingerprint is also current. Before saving, compare <code>approved_hash</code> to the text again. A stale decision must never be repaired by silently changing its hash.</p>
+<h3>Hint 3: bound recovery structurally</h3>
+<p>Use a separate <code>retry_save</code> node with an edge directly to END. Reusing the Python save function is fine; routing retry failure back to repair is not. Validate malformed repair names before approval, and let the safe writer reject traversal and collisions.</p>
+<h2>Record concrete observed results</h2>
+<p>Record the command used and whether the evidence came from an offline double or a real Anthropic run: __________.</p>
+<p>Record Cedar's thread ID, Orchid's different thread ID, and the two pending node names before either write: __________.</p>
+<p>Record the first failed filename, failure status, empty saved-path value, and error class: __________.</p>
+<p>Record the final artifact path and whether its exact text equals the original paused draft: __________.</p>
+<p>Record the model-call count across repair, final repair count, and Orchid's unchanged pending draft before rejection: __________.</p>
+<p>Record the stale-hash result and the terminal result after a second unsafe filename: __________.</p>
+<p>These fields require observations, not predicted screenshots. Model wording can vary; do not require a particular greeting.</p>
+<h2>Completion criteria and stretch</h2>
+<p>Run <code>python -m pytest -q tests/lessons/test_u2.py -k completed_starter</code> after implementation. All completed-starter acceptance cases must run rather than skip. Also run the full focused U2 test file, not the whole course suite.</p>
+<p>Completion requires no write before approval; isolated pending drafts; rejection of stale approval; an unchanged existing file after collision; exactly one repair; unchanged content and no extra generation during repair; and a terminal honest failure if the repaired name remains unsafe. A fresh successful output must contain the exact approved bytes. Only authorized parent or classroom live validation establishes real model behavior; offline doubles cannot do so.</p>
+<p>As a stretch, design a reconciliation policy for a crash after file creation but before checkpoint confirmation. Describe how to inspect the existing artifact without overwriting it or falsely declaring exactly-once delivery. Implementation is optional and must not weaken the required bounded workflow.</p>
+<h2>Reference</h2>
+<p>The current <a href="https://docs.langchain.com/oss/python/langgraph/interrupts">LangGraph interrupt documentation</a>, searched and fetched on 3 November 2026, explains same-thread <code>Command</code> resume and replay rules. The accompanying student chapter explains how this added task differs from L10's video workflow.</p>
+<!-- PAGEBREAK -->
+<p><a id="s1"></a></p>
+<h1>S1 — LangSmith observability and evaluation</h1>
+<h2>Task: audit synthetic shipping receipts</h2>
+<p><strong>SUPPLEMENTARY added practice · No source-video timestamp · Allow 25 minutes of independent work.</strong> Complete three functions that calculate a synthetic shipping quote, decode the model's receipt, and score actual output. The supplied graph and report writer remain unchanged. Your implementation must not import the demonstration or teacher solution.</p>
+<p>Start in <code>exercises/starters/s1.py</code>. The independent reference is <code>exercises/solutions/s1.py</code>; consult it only after attempting the task. The separate demonstration is <code>course_lessons/s1.py</code>. Required background is L09 and the S1 guided trace inspection. All data are invented teaching values, not shipping prices or customer information.</p>
+<p>Run the starter from the repository root:</p>
+<pre><code class="language-bash">python -m exercises.starters.s1
+</code></pre>
+<p>Initially, it must print <code>STARTER_NOT_COMPLETED</code> and exit successfully without contacting services. This status does not pass the task. After implementation, use its live command only with instructor approval:</p>
+<pre><code class="language-bash">python -m exercises.starters.s1 --live
+</code></pre>
+<p>S1 defaults to LangSmith. <code>--backend none</code> can disable tracing for diagnosis, but <code>--live</code> still authorizes a real Anthropic request. Never include keys or configuration dictionaries in code, state, prompts, metadata, reports, or screenshots.</p>
+<h2>Implement the three functions</h2>
+<ol>
+<li>Implement <code>shipping_quote(region, weight)</code>. Local costs <code>3 + 2 * weight</code> credits; regional costs <code>5 + 3 * weight</code>. Weight must be an integer from one through ten inclusive. Reject booleans, floats, strings, out-of-range weights, and unsupported region names with <code>ValueError</code>. Return exactly <code>total</code>, <code>unit</code> equal to <code>credits</code>, and <code>source</code> equal to <code>shipping-policy-v1</code>.</li>
+<li>Implement <code>decode_receipt(text)</code>. Accept only a JSON object with exactly <code>total</code>, <code>unit</code>, and <code>source</code>. Require an integer total excluding booleans, the unit <code>credits</code>, and a nonblank string source. Return <code>{}</code> for invalid JSON/schema, including arrays, missing/extra fields, or Markdown fences. Keep a schema-valid wrong amount or wrong nonblank source unchanged; do not copy the correct values into it.</li>
+<li>Implement <code>evaluate_receipt(outputs, reference_outputs)</code>. Decode <code>outputs.get(&quot;raw&quot;, &quot;&quot;)</code>. Return exactly five named booleans. <code>schema_ok</code> means decoding succeeded. <code>amount_ok</code> compares the decoded total to the reference total. <code>source_ok</code> compares its source to the reference source. <code>bounded_attempts</code> requires an integer attempt count of one or two. <code>tool_evidence</code> requires the tool result's source to equal <code>shipping-policy-v1</code> and exactly one <code>quote</code> entry in <code>trace_log</code>. Missing raw text or tool evidence must fail the relevant metrics, not produce a guessed pass.</li>
+</ol>
+<p>The fixed dataset has local/two kilograms → seven credits, regional/three → fourteen, and local/one → five. These references are used by the evaluator, not added to graph input. The formatter receives the tool's result as factual task input.</p>
+<p>The supplied graph invokes the tool once, formats a receipt, and checks schema. A malformed first response allows one additional formatting attempt. After the second attempt it terminates even if schema is still invalid. A schema-valid wrong amount fails evaluation without triggering a formatting retry.</p>
+<h2>Verify without mislabeling evidence</h2>
+<p>Run the focused suite:</p>
+<pre><code class="language-bash">python -m pytest tests/lessons/test_s1.py -q
+</code></pre>
+<p>The suite tests both demonstration and reference solution using an explicitly named offline chat-model double. It also contains a completed-starter contract check: while TODOs remain, that check is skipped rather than falsely passing. Inspect the skip reason. After implementation, the starter contract check must run and pass. Passing only the reference tests is not evidence that your functions work.</p>
+<p>For instructor-approved live comparison, run:</p>
+<pre><code class="language-bash">python -m course_lessons.s1 --live
+python -m exercises.solutions.s1 --live
+</code></pre>
+<p>Each command performs three to six graph-level model invocations; SDK retries can add requests. The starter saves <code>s1-starter-evaluation.txt</code>, the demo saves <code>s1-demo-evaluation.txt</code>, and the solution saves <code>s1-solution-evaluation.txt</code>, each beneath its run directory. Use <code>report_path</code> rather than assuming the current directory. Each file is a JSON report, not an uploaded LangSmith experiment <a href="https://docs.langchain.com/langsmith/evaluation-concepts" title="Official datasets, experiments, and evaluator concepts">1421</a>.</p>
+<h2>Progressive hints</h2>
+<h3>Hint 1: separate calculation from formatting</h3>
+<p>Represent each region with a base charge and a per-kilogram charge. Validate weight before arithmetic. Remember that <code>isinstance(True, int)</code> is true in Python; decide how to reject that input explicitly.</p>
+<h3>Hint 2: parse before comparing</h3>
+<p>Use <code>json.loads</code> and verify the object type before inspecting keys. An invalid schema returns <code>{}</code>. The decoder does not know the expected amount; that belongs to the evaluator. Whitespace and JSON key order should not affect acceptance.</p>
+<h3>Hint 3: use the actual model output</h3>
+<p>Read <code>raw</code>, not merely the tool's correct calculation. A valid receipt can still have the wrong amount. Keep the five metric results separate so a failure explains what went wrong. A single <code>quote</code> visit is local execution evidence, not remote-ingestion proof.</p>
+<h2>Record observed results</h2>
+<p>Record your offline command, test counts, and whether the completed-starter check ran: <strong>Command and result:</strong> ______.</p>
+<p>Record the three observed totals and their five metric results: <strong>local/two:</strong> ______; <strong>regional/three:</strong> ______; <strong>local/one:</strong> ______. Note whether the evidence used a test double or real Anthropic calls: ______.</p>
+<p>Record one report path, assigned run ID, and observed node path: ______. Separately record <strong>remote payload read-back:</strong> verified / failed / not checked; and <strong>dashboard hierarchy:</strong> observed / unavailable / not checked. Add the evidence identifier or reason: ______. A flush or local UUID alone cannot fill either field as verified.</p>
+<h2>Completion criteria and stretch</h2>
+<p>Completion requires three passing dataset rows, a strict decoder that rejects malformed schema, a failing amount score for a valid receipt containing eight instead of seven, correct weight/region rejection, and no more than two formatter invocations per example. The report must be a new file, preserve raw model output, and leave dashboard verification false unless separate inspection is genuinely recorded outside the program. Explain why the local report does not prove trace persistence.</p>
+<p>For a stretch task, propose a fourth independent case and a failure-specific metric, without changing the required three-case baseline. Explain whether a deterministic rule or a reviewed LLM-judge rubric is appropriate. Do not upload a dataset or enable another tracing service as part of this stretch.</p>
+<h2>Reference</h2>
+<ul>
+<li><a href="https://docs.langchain.com/langsmith/evaluation-concepts">1421: Official datasets, experiments, and evaluator concepts</a></li>
+</ul>
+<!-- PAGEBREAK -->
+<p><a id="s2"></a></p>
+<h1>S2 — LangWatch observability and comparison</h1>
+<h2>Exercise: trace a handout lookup without overstating evidence</h2>
+<p><strong>Supplementary added practice · 25 minutes within the 90-minute module.</strong> No source-video timestamp applies. Complete the S2 guided arithmetic demonstration first. You will build a different workflow: a synthetic handout lookup with real model, tool, and retriever operations, plus two small privacy/evidence helpers. This is a tracing fixture, not a replacement for L11 vector retrieval.</p>
+<p>Your starter is <code>exercises/starters/s2.py</code>; the independent reference is <code>exercises/solutions/s2.py</code>. Do not import the solution into the starter. The supplied <code>HandoutRetriever</code> returns one document for <code>TRACE-101</code> and no documents for <code>MISSING-999</code>. Its original text explains that flush does not prove acknowledgment or dashboard visibility. A found document has ID <code>TRACE-101</code>, source <code>synthetic-s2-handout</code>, page 1, and text in <code>DOCUMENT_TEXT</code>.</p>
+<p>Run from the repository root with the prepared environment:</p>
+<pre><code class="language-bash">python -m exercises.starters.s2
+python -m pytest tests/lessons/test_s2.py -q
+</code></pre>
+<p>Initially the starter must exit successfully with <code>STARTER_NOT_COMPLETED</code>. It must not claim a pass or make requests. The supplied focused tests exercise the demonstration and reference solution using named offline doubles; passing them alone does not assess your edited starter. Redirect or add equivalent local tests for your implementation before claiming completion.</p>
+<h2>Implement exactly three functions</h2>
+<ol>
+<li>Complete <code>privacy_plan(backend)</code>. Accept only <code>none</code>, <code>langsmith</code>, <code>langwatch</code>, and <code>both</code>; reject unknown names with <code>ValueError</code>. Return <code>backend</code>, <code>telemetry_recipients</code>, <code>model_recipient</code>, <code>payload</code>, <code>root_capture_is_child_redaction</code>, and <code>plan_only</code>. Recipients are respectively an empty list, <code>[&quot;LangSmith&quot;]</code>, <code>[&quot;LangWatch&quot;]</code>, and <code>[&quot;LangSmith&quot;, &quot;LangWatch&quot;]</code>. Use the model-recipient text <code>Anthropic when --live is used</code>. Set the last two fields to <code>False</code> and <code>True</code>. Describe synthetic messages, state, tool arguments/results, and retrieved text in <code>payload</code>. This is a routing plan, not a redaction guarantee.</li>
+<li>Complete <code>classify_ingestion(report)</code>. Acknowledge only a record with <code>service=&quot;langwatch&quot;</code>, <code>status=&quot;passed&quot;</code>, <code>http_status=200</code>, <code>ingestion_acknowledged</code> equal to boolean <code>True</code>, and <code>rejected_spans</code> equal to integer zero. Missing fields, string zero, boolean false, partial rejection, or failures must not pass. Return <code>checker_ingestion</code> as <code>acknowledged</code> or <code>not_established</code>; always leave <code>lesson_trace_ingestion</code> and <code>dashboard_visibility</code> as <code>not_checked</code>. Never create a success record merely because your graph finished.</li>
+<li>Complete <code>build_graph(model)</code>. Make a <code>HandoutRetriever</code> and a tool named <code>lookup_handout</code>. The tool accepts <code>document_id</code> and the injected <code>RunnableConfig</code>; invoke the retriever with that config. Return JSON with <code>found</code> and <code>documents</code>, where each document contains <code>id</code>, <code>source</code>, <code>page</code>, and <code>text</code>. Bind this tool for the first model call with <code>tool_choice=&quot;auto&quot;</code>, explicitly request its use in the prompt, and disable parallel tool calls. Validate that exactly the intended call actually occurred; automatic selection is not a guarantee. Use the unbound model for the second call.</li>
+<li>Inside that builder, register <code>prepare</code>, <code>agent</code>, <code>tools</code>, and <code>finish</code>. Connect <code>START → prepare → agent</code>, route <code>agent</code> to <code>tools</code> if a call is present or to <code>finish</code> otherwise, connect <code>tools → agent</code>, and connect <code>finish → END</code>. Preserve the config on model/tool invocations and pass the entire tool-call dictionary into the tool. Reject blank document IDs, absent/multiple first calls, unknown tools, changed requested IDs, more than two model calls, further second-turn tool requests, and empty final text.</li>
+<li>Return partial state updates and append events. A successful case must visit <code>prepare, agent, tools, agent, finish</code>, make two model calls, and set status to <code>supported</code> or <code>no_evidence</code> from the retrieved payload in Python. Require nonempty model text, but do not compare an exact sentence. Manually review whether it respects retrieved evidence.</li>
+<li>After all TODOs are implemented and locally checked, replace the bottom <code>main()</code> call with <code>run_cli(&quot;S2&quot;, run_demo)</code>. With authorization, run <code>python -m exercises.starters.s2 --live</code>. The supplied runner checks both IDs and writes a new report; it makes four real Anthropic calls. S2 defaults to LangWatch. Use a fresh output directory when repeating a run.</li>
+</ol>
+<h2>Three progressive hints</h2>
+<p><strong>Hint 1 — separate responsibilities.</strong> Privacy mapping and checker interpretation are ordinary Python functions. Test these without a model. An HTTP status code alone cannot tell you how many spans were rejected.</p>
+<p><strong>Hint 2 — preserve the nested operation.</strong> The graph receives runtime callbacks through <code>execution_config()</code>. Nodes receive <code>config</code>; carry that same config into the model, tool, and retriever. Use the existing demonstration's message-ID handling as a pattern, not its arithmetic tool as the answer.</p>
+<p><strong>Hint 3 — make absence deterministic.</strong> Parse the tool's JSON into <code>evidence</code>. Derive the final status from <code>evidence[&quot;found&quot;]</code>; do not ask the model to invent a missing handout or trust a generated “success” label. Force one first tool call, then reject additional rounds instead of looping indefinitely.</p>
+<h2>Observe the result and compare destinations</h2>
+<p>After authorization, use the reference and service checker separately:</p>
+<pre><code class="language-bash">python -m exercises.solutions.s2 --live
+python -m exercises.solutions.s2 --live --backend both
+python -m course_support.check_connections --service langwatch
+</code></pre>
+<p>The <code>both</code> command routes one execution to two telemetry services; it does not double the model calls. Inspect actual corresponding operations in each authorized project. A checker acknowledgment belongs to its own check, not automatically to the lesson run.</p>
+<p>Record concise observations: your command and report path; status and document count for each ID; source/page for the found document; model-call count and event order; selected telemetry destinations and the remaining Anthropic destination; checker status/rejected count; and whether you personally inspected the lesson's model/tool/retriever tree. Mark unperformed checks <code>not_checked</code>. Do not record keys, real personal information, fabricated trace IDs, or invented screenshots.</p>
+<h2>Completion criteria and stretch</h2>
+<p>Complete means all three functions are implemented, known/missing cases have the specified evidence and statuses, callbacks reach model/tool/retriever, call IDs match, budgets and invalid-input cases fail honestly, and the report is written without overwriting. Distinguish offline-double evidence, local application success, separate checker acknowledgment, and actual dashboard inspection. Passing local assertions alone is not proof of remote visibility.</p>
+<p><strong>Stretch:</strong> add an offline test in your own implementation that emits a second-turn tool request and proves termination before a third model call. Then write a short comparison of one genuinely inspected <code>both</code> execution, noting unavailable fields rather than assuming identical tree layout or timing.</p>
+<h2>References</h2>
+<p>Use the verified official <a href="https://langwatch.ai/docs/integration/python/integrations/langgraph">LangWatch graph callback guide</a> and <a href="https://opentelemetry.io/docs/specs/otlp/">OTLP partial-success specification</a> to justify callback placement and evidence handling. The current online setup examples may use arguments absent from installed LangWatch 1.4.0; keep using the supplied shared runtime instead of replacing its configuration.</p>
+<!-- PAGEBREAK -->
+<p><a id="c01"></a></p>
+<h1>C01 — Document-grounded drafting capstone</h1>
+<h2>Independent task: approve the current draft, not an earlier version</h2>
+<p><strong>SUPPLEMENTARY · 180-minute capstone session.</strong> This added exercise combines the drafting and retrieval ideas from <a href="https://youtu.be/jGg_1h0qzaM?t=8926">Drafter, 02:28:46</a> and <a href="https://youtu.be/jGg_1h0qzaM?t=10329">RAG, 02:52:09</a>. It is not original video homework. Complete L01–L11, U1–U2 and S1–S2 before starting.</p>
+<p>Your client wants a short teammate briefing based only on the supplied L11 synthetic teaching document, <code>data/rag_teaching_handbook.pdf</code>. A reviewer may ask for one revision, reject the draft or approve its current contents. Saving must require explicit approval of the current draft. The finished file must include a reproducible inventory of the evidence the assistant retrieved. Do not add another knowledge base, paid provider, global draft buffer or unbounded tool loop.</p>
+<p>Use <code>exercises/starters/c01.py</code>. The independent instructor reference is <code>exercises/solutions/c01.py</code>; compare it only after your attempt. The baseline demonstration is <code>course_lessons/c01.py</code>. Keep the provided scaffold and implement its three TODO functions instead of importing another implementation.</p>
+<h2>Establish the baseline</h2>
+<p>From the repository root with the prepared Python environment active:</p>
+<pre><code class="language-bash">python -m exercises.starters.c01
+python -m pytest tests/lessons/test_c01.py -q
+</code></pre>
+<p>Before implementation, the starter must report <code>STARTER_NOT_COMPLETED</code> and exit successfully without paid calls or model downloads. The test suite checks the complete baseline and reference using named offline doubles; the dedicated learner-acceptance test skips while TODOs remain. This is not a completed capstone or proof of live services.</p>
+<h2>Implement the three functions</h2>
+<ol>
+<li>
+<p><strong><code>assess_citations(draft, hits)</code>.</strong> Return false for blank text, any case-insensitive occurrence of <code>INSUFFICIENT_EVIDENCE</code>, or no citation markers. Collect markers matching <code>r&quot;\[[^\[\]\n]+ p\.\d+\]&quot;</code>. Every collected marker must be exactly <code>citation(hit)</code> for one of the retrieved records. At least one is required. Preserve the helper's source and one-based page. This function checks reference integrity, not semantic truth.</p>
+</li>
+<li>
+<p><strong><code>decide_review(payload, draft, revisions)</code>.</strong> Always return the keys <code>approved</code>, <code>feedback</code> and <code>status</code>. The default is <code>False</code>, an empty string and <code>invalid_review</code>. Non-dictionaries remain invalid. An <code>approve</code> action requires <code>payload['fingerprint'] == fingerprint(draft)</code>; only then return <code>approved=True</code> with status <code>approved</code>. A <code>reject</code> action returns <code>rejected</code>, without approval. A <code>revise</code> action allows stripped string feedback of 1–500 characters when <code>revisions &lt; 1</code>, returning <code>revision_requested</code> and that feedback. If a revision already occurred, return <code>revision_limit</code>. All malformed decisions must fail closed.</p>
+</li>
+<li>
+<p><strong><code>render_artifact(draft, hits)</code>.</strong> Start with <code>draft.strip()</code>, then a blank line and the literal heading <code>Evidence inventory</code>. Deduplicate tuples <code>(source, page, id)</code> from every retrieved chunk, sort those tuples and format each line as <code>- [SOURCE p.PAGE] (chunk ID)</code>. End with a newline. Include retrieved chunks even when the model did not cite them; distinguish available evidence from evidence actually used. Do not change save behavior to overwrite an existing file.</p>
+</li>
+</ol>
+<p>The scaffold already performs actual L11 retrieval, checks tool IDs and metadata, isolates state with checkpoint thread IDs, interrupts for clarification/review, resets approval after revision and limits successful threads to three model calls. Leave these controls intact.</p>
+<h2>Three progressive hints</h2>
+<p><strong>Hint 1:</strong> Turn both citation collections into Python sets. Check that the found set is nonempty before using <code>issubset</code>. Otherwise an uncited draft could pass because the empty set is a subset of every set.</p>
+<p><strong>Hint 2:</strong> Construct the default review dictionary first. Return a new update only when one of the allowed decisions is validated. Do not use truthiness such as <code>bool(payload)</code> as approval, and do not reuse the pre-revision fingerprint.</p>
+<p><strong>Hint 3:</strong> Build an inventory set of tuples before sorting. Sorting strings containing page numbers can order page 10 before page 2; keep the page as an integer in the sorting tuple. Formatting belongs after sorting.</p>
+<h2>Check your completed starter</h2>
+<pre><code class="language-bash">python -m exercises.starters.c01
+python -m pytest tests/lessons/test_c01.py -q -k implemented_starter_acceptance
+python -m pytest tests/lessons/test_c01.py -q
+</code></pre>
+<p>The targeted acceptance test must <strong>pass, not skip</strong>. It checks your three functions, the approved save, the revision limit and stale approval using explicit offline dependencies. After completing the functions and receiving live-call authorization, run your actual starter and the separate instructor reference:</p>
+<pre><code class="language-bash">python -m exercises.starters.c01 --live
+python -m exercises.solutions.c01 --live
+</code></pre>
+<p>Each needs L11's actual helper, local embeddings and Anthropic access. Use a fresh output directory for each run. Neither command should silently replace a failed live call with scripted output. The teaching driver supplies explicit review decisions; inspect the draft yourself rather than treating the script as an authenticated human interface.</p>
+<h2>Record observed results</h2>
+<p>Record your targeted-test outcome and whether it passed or skipped: __________. Record the actual fixture source/page you inspected and a supported claim: __________. Record the real saved artifact path and verify its fingerprint-approved draft plus inventory: __________. Record the status returned for stale approval, a second revision and an unsafe filename: __________.</p>
+<p>Run the same synthetic scenario with each configured tracing backend separately. Record the backend, server-side trace identifier and where the retrieval/tool result appears: __________. If unavailable, write the concrete blocker rather than inventing an identifier. Never record credentials.</p>
+<h2>Completion criteria and stretch task</h2>
+<p>Completion requires a passing learner-acceptance test; real retrieval and an Anthropic tool round trip; inspectable valid citations; no saved file before approval; stale-approval rejection; one bounded revision; two-thread isolation; a correctly formatted new file inside the allowed directory; and documented failure behavior. Submit the actual artifact and test/live evidence, not an exact expected model sentence. Explain why an in-memory checkpoint does not survive restart and why citation formatting alone cannot establish grounding.</p>
+<p>For a stretch task, design an authenticated review interface that displays the current fingerprint and requires a named reviewer to confirm it. Sketch how a durable checkpoint backend and crash-recovery policy would prevent confusing a pre-existing artifact with a newly completed save. Do not implement unattended approval or introduce private documents. Use the <a href="https://docs.langchain.com/oss/python/langgraph/interrupts">official interrupt semantics</a> and <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview">Anthropic client-tool protocol</a> when explaining the design.</p>
+<!-- PAGEBREAK -->
+<p><a id="appendices"></a></p>
+<h1>Appendices</h1>
+<h2>A. Execution command reference</h2>
+<p>Run commands from the repository root, not from inside a lesson folder. Starters intentionally report <code>STARTER_NOT_COMPLETED</code> until edited; that is not a successful completed exercise. The matching instructor solution is the executable acceptance reference.</p>
+<pre><code class="language-bash">python -m course_lessons.p00
+python -m exercises.starters.p00
+python -m course_lessons.l01
+python -m exercises.starters.l01
+python -m course_lessons.l02
+python -m exercises.starters.l02
+python -m course_lessons.l03
+python -m exercises.starters.l03
+python -m course_lessons.l04
+python -m exercises.starters.l04
+python -m course_lessons.l05
+python -m exercises.starters.l05
+python -m course_lessons.l06
+python -m exercises.starters.l06
+python -m course_lessons.l07 --live
+python -m exercises.starters.l07
+python -m course_lessons.l08 --live
+python -m exercises.starters.l08
+python -m course_lessons.l09 --live
+python -m exercises.starters.l09
+python -m course_lessons.l10 --live
+python -m exercises.starters.l10
+python -m course_lessons.l11 --live
+python -m exercises.starters.l11
+python -m course_lessons.u1 --live
+python -m exercises.starters.u1
+python -m course_lessons.u2 --live
+python -m exercises.starters.u2
+python -m course_lessons.s1 --live --backend langsmith
+python -m exercises.starters.s1
+python -m course_lessons.s2 --live --backend langwatch
+python -m exercises.starters.s2
+python -m course_lessons.c01 --live --backend both
+python -m exercises.starters.c01
+python -m pytest -q
+</code></pre>
+<h2>B. Reproducible setup and versions</h2>
+<p>For a fresh checkout, first install Git and Python 3.12, then obtain the course branch. Skip cloning when you already have this repository open:</p>
+<pre><code class="language-bash">git clone --branch course/anthropic-observability-2026-11-03 https://github.com/nuvear/01_LangGraph.git
+cd 01_LangGraph
+</code></pre>
+<p>macOS:</p>
+<pre><code class="language-bash">python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.lock.txt
+test -f .env || cp .env.example .env
+chmod 600 .env
+</code></pre>
+<p>Windows PowerShell, without activation or execution-policy changes:</p>
+<pre><code class="language-powershell">py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.lock.txt
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+.\.venv\Scripts\python.exe -m examples.observability_demo --backend none
+</code></pre>
+<p>Privately edit <code>.env</code> in a local text editor: set <code>ANTHROPIC_API_KEY</code> to your own Anthropic Console key and keep or replace the configurable <code>ANTHROPIC_MODEL</code>. The supplied example uses <code>claude-opus-5-5</code>, which passed this project's real connection check; your account must have access to the selected model. LangSmith and LangWatch fields are needed only for the corresponding tracing modules or a command selecting both. Choose the LangSmith endpoint for your actual account region. Close the file before screen sharing and never paste its contents into a terminal command. These guarded copy commands preserve an existing <code>.env</code>; do not replace them with an unconditional overwrite.</p>
+<p>Install the locked runtime before trying the per-lesson commands. Authoring/rendering tools are separated in <code>requirements-docs.txt</code>; students do not need Mermaid, LibreOffice, Playwright, or Word-building tools to run ordinary lessons.</p>
+<p>Actual validation interpreter: <code>3.12.13</code>. Runtime package versions:</p>
+<ul>
+<li><code>anthropic==2.4.0</code></li>
+<li><code>langgraph==1.2.19</code></li>
+<li><code>langchain-core==1.7.4</code></li>
+<li><code>langchain-anthropic==1.7.9</code></li>
+<li><code>langgraph-checkpoint-sqlite==3.1.3</code></li>
+<li><code>langchain-text-splitters==1.1.3</code></li>
+<li><code>chromadb==1.5.9</code></li>
+<li><code>onnxruntime==1.31.1</code></li>
+<li><code>pypdf==6.21.4</code></li>
+<li><code>reportlab==5.1.0</code></li>
+<li><code>langsmith==0.14.17</code></li>
+<li><code>langwatch==1.4.0</code></li>
+<li><code>python-dotenv==1.2.4</code></li>
+<li><code>pytest==9.2.0</code></li>
+</ul>
+<p>The complete transitive pins are in <code>requirements.lock.txt</code>. Platform-specific wheels and native libraries can differ; a successful macOS install is not a Windows test. The first local-embedding run downloads model weights; offline tests do not stand in for that real download/indexing check.</p>
+<h2>C. Actual execution and test results</h2>
+<p>The validation harness recorded <strong>34/34 successful demonstration/reference-solution executions</strong>. It records command, UTC time, duration, exit code, backend, code hash, log hash, and screenshot path in <code>course/validation/execution_manifest.json</code>.</p>
+<p>Offline test result: <strong>860 passed</strong>, <strong>0 failed</strong>, <strong>9 skipped</strong>. Offline model doubles validate orchestration deterministically; the separate <code>--live</code> runs validate actual provider behavior. Each screenshot in the two handbooks is captured from a browser displaying the actual stdout/stderr produced by the indicated process. It is explicitly labeled rather than made to resemble a native Terminal application. A viewport can show only part of a long log; complete text logs are supplied alongside images.</p>
+<p><a href="../course/validation_report.md">Full validation report</a>. <a href="../course/validation/execution_manifest.json">Machine-readable execution manifest</a>.</p>
+<p>The local supplied Anthropic model is configurable; exact model wording and latency are not guaranteed. Independent exercises have executable reference solutions. Optional design extensions are not additional validated software deliverables unless their solution is explicitly implemented and tested.</p>
+<h2>D. Troubleshooting map</h2>
+<p>A missing module normally means the environment or working directory is wrong: verify the selected interpreter, install the lock, and run a module command from the repository root. A graph-build error should be diagnosed before adding an LLM. A recursion-limit failure means the loop did not terminate as intended; inspect state, routing labels, and tool results instead of increasing the limit blindly.</p>
+<p>HTTP 401 indicates a credential/authentication problem, not proof of an unavailable graph. Model access, usage limits, network errors, and regional tracing endpoints are separate checks. Never paste a key into an exception report. A missing trace can result from a wrong backend, key scope, endpoint, or unflushed exporter; verify ingestion independently from callback completion. No-tracing mode should remain available for privacy and debugging.</p>
+<p>For file-save errors, check the explicitly selected output directory and filename. A rejected traversal, symlink, or overwrite is an intended safety check. For SQLite persistence, keep the same database and thread ID when testing recovery, and use different IDs when testing isolation. For RAG, inspect pages, chunks, collection path, embedding identity, and retrieved evidence before judging the generated answer.</p>
+<h2>E. Source illustrations and attribution</h2>
+<p>The source stills illustrate the historical teaching material; they are not proof that the adapted code executed. Credit for every listed still: Vaibhav Mehra / freeCodeCamp, <em>LangGraph Complete Course for Beginners – Complex AI Agents with Python</em>, https://youtu.be/jGg_1h0qzaM. Historical OpenAI names may appear in source slides; all adapted model calls in this repository use Anthropic.</p>
+<ul>
+<li>L01: The source explanation of conditional edges, <a href="https://youtu.be/jGg_1h0qzaM?t=760">00:12:40</a>.</li>
+<li>L02: The original personalized-compliment exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=1950">00:32:30</a>.</li>
+<li>L03: The original one-node arithmetic exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=2635">00:43:55</a>.</li>
+<li>L04: The original three-node profile exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=3280">00:54:40</a>.</li>
+<li>L05: The original two-section conditional exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=4405">01:13:25</a>.</li>
+<li>L06: The original automatic higher/lower exercise, <a href="https://youtu.be/jGg_1h0qzaM?t=5370">01:29:30</a>.</li>
+<li>L07: The original simple-bot objectives, <a href="https://youtu.be/jGg_1h0qzaM?t=5515">01:31:55</a>.</li>
+<li>L08: The original conversation-memory objectives, <a href="https://youtu.be/jGg_1h0qzaM?t=6210">01:43:30</a>.</li>
+<li>L09: The original agent–tool loop diagram, <a href="https://youtu.be/jGg_1h0qzaM?t=7460">02:04:20</a>.</li>
+<li>L10: The source human–AI drafting requirements, <a href="https://youtu.be/jGg_1h0qzaM?t=8985">02:29:45</a>.</li>
+<li>L11: The original model/retriever loop diagram, <a href="https://youtu.be/jGg_1h0qzaM?t=10358">02:52:38</a>.</li>
+</ul>
+<p>Original diagrams are separately labeled and supplied as editable Mermaid source under <code>assets/diagrams</code>. Full source video/captions are not redistributed. <a href="https://www.freecodecamp.org/news/learn-langgraph-and-build-conversational-ai-with-python/">Publisher’s course page</a> and <a href="https://github.com/iamvaibhavmehra/LangGraph-Course-freeCodeCamp">original example repository</a> provide context; chapter-specific current documentation is cited beside the material it supports.</p>
+<h2>F. Delivery and classroom use</h2>
+<p>The Student Handbook, Teacher Handbook, and Exercise Workbook share the same identifiers and sequence. Runnable baselines live in <code>course_lessons</code>, unfinished tasks in <code>exercises/starters</code>, instructor answers in <code>exercises/solutions</code>, and regression tests in <code>tests/lessons</code>. Directory separation is not an access-control boundary: instructors should omit solutions when distributing a learner-only package.</p>
+<p>Word contains embedded images. HTML embeds its images for standalone reading. Markdown keeps relative links and should be distributed with the supplied asset folders or complete course archive. The approved training index is preserved separately; these are new manuals, not silent edits of that index.</p>
+<h2>G. Working glossary</h2>
+<p><strong>State</strong> is the graph's structured working data. A <strong>partial update</strong> contains only the state fields a node changes. A <strong>TypedDict</strong> describes expected dictionary keys for type checking; it does not automatically validate arbitrary input at runtime.</p>
+<p>A <strong>node</strong> is a named processing step. An <strong>edge</strong> schedules a next step. A <strong>conditional edge</strong> chooses a destination from state. <strong>START</strong> and <strong>END</strong> are graph boundaries, not work-performing business functions. A <strong>compiled graph</strong> is the executable produced by the builder; compilation does not prove its answers are correct.</p>
+<p>A <strong>reducer</strong> defines how an update combines with an existing state field. Without an accumulating reducer, a later update commonly replaces an earlier value. <strong>MessagesState</strong> supplies a message channel with <strong>add_messages</strong>, which handles message identity as well as appending new turns.</p>
+<p>A <strong>tool schema</strong> describes an available function. A <strong>tool call</strong> is the model's request to use it, not the function's execution. The application executes the tool and returns a <strong>tool result</strong> linked to that call. A <strong>ReAct-style loop</strong> alternates model and tool steps until an exit condition is reached.</p>
+<p>A <strong>thread ID</strong> selects a unit of conversation/checkpoint history; it is not an operating-system thread. A <strong>checkpoint</strong> records graph execution state. <strong>Durable persistence</strong> survives the process only when the chosen storage backend actually retains the data. An <strong>interrupt</strong> pauses execution at an explicit point, and a resume command supplies the human decision to the persisted workflow.</p>
+<p><strong>Retrieval</strong> selects passages relevant to a query. An <strong>embedding</strong> maps text to a numeric vector; the index and query must use compatible embeddings. A <strong>vector store</strong> such as Chroma stores and searches vectors with their document metadata. <strong>RAG</strong>, retrieval-augmented generation, supplies retrieved evidence to a model; it does not guarantee that every generated claim is correct. A <strong>citation</strong> should lead to inspectable source/page evidence.</p>
+<p>A <strong>trace</strong> records an execution; a <strong>span</strong> records an operation within it. Traces can expose inputs and outputs, so they require deliberate data selection. <strong>Latency</strong> is elapsed time, and <strong>token usage</strong> measures provider-accounted input/output units. Neither tracing nor a token count reveals private model chain-of-thought.</p>
+</main><a class="top" href="#top">Contents / top</a></body></html>

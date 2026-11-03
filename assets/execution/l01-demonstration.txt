@@ -1,0 +1,38 @@
+Command: python -m course_lessons.l01 --output-dir <run-output>/L01/demonstration --backend none
+UTC: 2026-11-03T01:41:23.036041+00:00
+Exit: 0
+
+STDOUT
+{
+  "lesson": "L01",
+  "status": "passed",
+  "live_api_enabled": false,
+  "backend": "none",
+  "result": {
+    "mode": "deterministic_no_model",
+    "movie": {
+      "title": "The Clockwork Garden",
+      "year": 2025,
+      "card": "The Clockwork Garden (2025)"
+    },
+    "squares": [
+      1,
+      4,
+      9,
+      16
+    ],
+    "numeric_square": 6.25,
+    "fallback_greeting": "Hello, visitor!",
+    "message_roles": [
+      "system",
+      "human",
+      "ai",
+      "tool"
+    ],
+    "message_objects_are_hand_authored": true,
+    "tool_call_id_matches": true,
+    "input_unchanged": true
+  }
+}
+
+STDERR
