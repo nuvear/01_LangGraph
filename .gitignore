@@ -1,0 +1,17 @@
+# Local environment files can contain API keys; never commit them.
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Local dependencies, private source material, and development artifacts.
+.venv/
+.work/
+.manus/
+inputs/
+# Canonical index is committed under docs/; these are local delivery copies.
+/outputs/training-index/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.DS_Store

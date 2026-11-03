@@ -1,0 +1,2 @@
+# Additional dependency for tools/build_training_index.py.
+python-docx==1.2.0

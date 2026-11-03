@@ -1,0 +1,8 @@
+# Tested with Python 3.12.13 on macOS arm64; transitive pins in requirements.lock.txt.
+anthropic==2.4.0
+python-dotenv==1.2.4
+langgraph==1.2.19
+langchain-anthropic==1.7.9
+langsmith==0.14.17
+langwatch==1.4.0
+pytest==9.2.0
